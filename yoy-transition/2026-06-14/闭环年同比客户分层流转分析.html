@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>闭环年同比客户分层流转分析</title><style>*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#f0f2f5;color:#333;line-height:1.5}
+.dashboard{max-width:720px;margin:0 auto;background:#fff}
+.header{background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%);color:#fff;padding:18px 20px}
+.header-title{font-size:20px;font-weight:700}
+.header-sub{font-size:12px;opacity:.85;margin-top:4px;display:flex;justify-content:space-between}
+.sec-title{font-size:15px;font-weight:700;color:#1e3a8a;padding:16px 20px 8px;display:flex;align-items:center;gap:6px}
+.sec-title::before{content:'';display:inline-block;width:4px;height:16px;background:#3b82f6;border-radius:2px}
+.segment-divider{height:32px;background:#f0f2f5;border-top:2px solid #e2e8f0;border-bottom:2px solid #e2e8f0}
+.segment-label{font-size:18px;font-weight:700;color:#fff;background:linear-gradient(135deg,#0f172a,#1e3a8a);padding:14px 20px;text-align:center}
+.kpi-row{display:flex;gap:8px;padding:0 20px 12px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:100px;background:#f8fafc;border-radius:8px;padding:10px;border:1px solid #e2e8f0}
+.kpi-label{font-size:10px;color:#64748b;margin-bottom:2px}
+.kpi-value{font-size:18px;font-weight:700;color:#1e293b}
+.kpi-change{font-size:10px;margin-top:2px}
+.kpi-change.up{color:#16a34a}
+.kpi-change.down{color:#dc2626}
+.matrix-wrap{margin:0 20px 12px;background:#f8fafc;border-radius:8px;padding:10px;border:1px solid #e2e8f0}
+.matrix-table{width:100%;border-collapse:collapse;font-size:11px}
+.matrix-table th,.matrix-table td{border:1px solid #cbd5e1;padding:5px 3px;text-align:center}
+.matrix-table th{background:#1e3a8a;color:#fff;font-weight:600}
+.matrix-table .row-label{background:#dbeafe;font-weight:600;color:#1e3a8a}
+.matrix-table .col-total{background:#e0f2fe;font-weight:600}
+.cell-maintain{background:#dcfce7}
+.cell-upgrade{background:#fef9c3}
+.cell-downgrade{background:#fce7f3}
+.cell-lost{background:#f1f5f9;color:#64748b}
+.cell-new{background:#ecfdf5;color:#047857}
+.cell-zero{color:#cbd5e1}
+.spend-table{width:100%;border-collapse:collapse;font-size:10px;margin-top:8px}
+.spend-table th,.spend-table td{border:1px solid #cbd5e1;padding:4px 3px;text-align:center}
+.spend-table th{background:#334155;color:#fff;font-weight:600;font-size:10px}
+.spend-table .row-label{background:#e0f2fe;font-weight:600;color:#1e3a8a}
+.spend-pos{color:#16a34a;font-weight:600}
+.spend-neg{color:#dc2626;font-weight:600}
+.layer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 20px 12px}
+.layer-card{background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;overflow:hidden}
+.layer-header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fff;border-bottom:1px solid #e2e8f0}
+.layer-name{font-size:13px;font-weight:700;color:#1e293b}
+.layer-tag{font-size:9px;padding:2px 6px;border-radius:10px;background:#dbeafe;color:#1d4ed8}
+.layer-body{padding:8px 12px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.layer-item{text-align:center}
+.layer-item-label{font-size:9px;color:#64748b}
+.layer-item-value{font-size:14px;font-weight:700;color:#1e293b}
+.layer-item-sub{font-size:9px;margin-top:1px}
+.footer{text-align:center;padding:10px;font-size:10px;color:#94a3b8;border-top:1px solid #e2e8f0}
+.num{font-family:"SF Mono",Monaco,monospace}
+.legend{margin:4px 20px 8px;font-size:10px;color:#64748b;display:flex;gap:12px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:3px}
+.legend-dot{display:inline-block;width:10px;height:10px;border-radius:2px}</style></head>
+<body><div class="dashboard">
+<div class="header"><div class="header-title">闭环年同比客户分层流转分析</div>
+<div class="header-sub"><span>数据范围：25年Q2 vs 26年Q2 | 分层：超头+头部合并 / 腰部 / 尾部</span><span>更新：2026-06-14 10:42</span></div></div>
+<div class="segment-label">整体全部客户 · 客户分层流转分析</div><div class="kpi-row">
+  <div class="kpi-card"><div class="kpi-label">26年Q2活跃客户</div><div class="kpi-value">16713<span style="font-size:11px;color:#64748b">家</span></div>
+    <div class="kpi-change up">同比 +275.1%</div></div>
+  <div class="kpi-card"><div class="kpi-label">26年Q2消耗合计</div><div class="kpi-value">704.8<span style="font-size:11px;color:#64748b">万</span></div>
+    <div class="kpi-change up">同比 +20.7%</div></div>
+  <div class="kpi-card"><div class="kpi-label">跃迁到头部</div><div class="kpi-value">0<span style="font-size:11px;color:#64748b">家</span></div></div>
+  <div class="kpi-card"><div class="kpi-label">流失</div><div class="kpi-value">3493<span style="font-size:11px;color:#64748b">家</span></div></div>
+  <div class="kpi-card"><div class="kpi-label">新增</div><div class="kpi-value">15750<span style="font-size:11px;color:#64748b">家</span></div></div>
+</div><div class="sec-title">分层概览（超头+头部合并）</div><div class="layer-grid"><div class="layer-card">
+    <div class="layer-header"><span class="layer-name">头部</span><span class="layer-tag">日均≥1万</span></div>
+    <div class="layer-body">
+      <div class="layer-item"><div class="layer-item-label">客户数</div><div class="layer-item-value">0</div>
+        <div class="layer-item-sub" style="color:#16a34a">+0家</div></div>
+      <div class="layer-item"><div class="layer-item-label">Q2消耗</div><div class="layer-item-value">0</div>
+        <div class="layer-item-sub" style="color:#16a34a">+0.0%</div></div>
+    </div></div><div class="layer-card">
+    <div class="layer-header"><span class="layer-name">腰部</span><span class="layer-tag">日均1千-1万</span></div>
+    <div class="layer-body">
+      <div class="layer-item"><div class="layer-item-label">客户数</div><div class="layer-item-value">6</div>
+        <div class="layer-item-sub" style="color:#dc2626">-1家</div></div>
+      <div class="layer-item"><div class="layer-item-label">Q2消耗</div><div class="layer-item-value">91.5<span style='font-size:10px'>万</span></div>
+        <div class="layer-item-sub" style="color:#dc2626">-34.3%</div></div>
+    </div></div><div class="layer-card">
+    <div class="layer-header"><span class="layer-name">尾部</span><span class="layer-tag">日均<1千</span></div>
+    <div class="layer-body">
+      <div class="layer-item"><div class="layer-item-label">客户数</div><div class="layer-item-value">16707</div>
+        <div class="layer-item-sub" style="color:#16a34a">+12258家</div></div>
+      <div class="layer-item"><div class="layer-item-label">Q2消耗</div><div class="layer-item-value">613.4<span style='font-size:10px'>万</span></div>
+        <div class="layer-item-sub" style="color:#16a34a">+37.8%</div></div>
+    </div></div></div><div class="sec-title">客户数流转矩阵（25年Q2→26年Q2）</div><div class="matrix-wrap"><table class="matrix-table"><tr><th>25年\26年</th><th>头部</th><th>腰部</th><th>尾部</th><th>流失</th><th style="background:#0f172a">25年合计</th></tr><tr><td class="row-label">头部</td><td class="cell-zero">0</td><td class="cell-zero">0</td><td class="cell-zero">0</td><td class="cell-lost">0</td><td class="col-total">0</td></tr><tr><td class="row-label">腰部</td><td class="cell-zero">0</td><td class="cell-maintain">3</td><td class="cell-downgrade">4</td><td class="cell-lost">0</td><td class="col-total">7</td></tr><tr><td class="row-label">尾部</td><td class="cell-zero">0</td><td class="cell-upgrade">2</td><td class="cell-maintain">954</td><td class="cell-lost">3493</td><td class="col-total">4449</td></tr><tr><td class="row-label" style="background:#ecfdf5;color:#047857">新增</td><td class="cell-new">0</td><td class="cell-new">1</td><td class="cell-new">15749</td><td class="cell-zero">—</td><td class="col-total">{nt}</td></tr><tr><td class="col-total">26年合计</td><td class="col-total">0</td><td class="col-total">6</td><td class="col-total">16707</td><td class="col-total">3493</td><td class="col-total">20206</td></tr></table><div class="legend"><span class="legend-item"><span class="legend-dot" style="background:#dcfce7"></span>维持</span><span class="legend-item"><span class="legend-dot" style="background:#fef9c3"></span>升级</span><span class="legend-item"><span class="legend-dot" style="background:#fce7f3"></span>降级</span><span class="legend-item"><span class="legend-dot" style="background:#f1f5f9"></span>流失</span><span class="legend-item"><span class="legend-dot" style="background:#ecfdf5"></span>新增</span></div></div><div class="sec-title">消耗年同比变化矩阵（万元）</div><div class="matrix-wrap"><table class="spend-table"><tr><th>25年\26年</th><th>头部</th><th>腰部</th><th>尾部</th><th>流失</th></tr><tr><td class="row-label">头部</td><td class="">+0.0</td><td class="">+0.0</td><td class="">+0.0</td><td class="spend-neg">+0.0</td></tr><tr><td class="row-label">腰部</td><td class="">+0.0</td><td class="spend-neg">-8.2</td><td class="spend-neg">-63.9</td><td class="spend-neg">+0.0</td></tr><tr><td class="row-label">尾部</td><td class="">+0.0</td><td class="spend-pos">+23.7</td><td class="spend-neg">-16.8</td><td class="spend-neg">-176.9</td></tr><tr><td class="row-label" style="background:#ecfdf5;color:#047857">新增</td><td class="spend-pos">0.0</td><td class="spend-pos">11.4</td><td class="spend-pos">351.2</td><td>—</td></tr></table></div><div class="sec-title">流转状态 · 消耗年同比变化</div><div class="matrix-wrap"><table class="spend-table" style="font-size:11px"><thead><tr><th style="text-align:left;width:28%">流转状态</th><th>客户数</th><th>25年Q2消耗</th><th>26年Q2消耗</th><th>消耗变化</th></tr></thead><tbody><tr><td style="background:#fef9c3;color:#92400e;font-weight:600;padding-left:8px">尾部→腰部 升级</td><td class="num">2</td><td class="num">3.4万</td><td class="num">27.1万</td><td class="num spend-pos">+23.7万</td></tr><tr><td style="background:#dcfce7;color:#166534;font-weight:600;padding-left:8px">维持尾部</td><td class="num">954</td><td class="num">264.8万</td><td class="num">247.9万</td><td class="num spend-neg">-16.8万</td></tr><tr><td style="background:#dcfce7;color:#166534;font-weight:600;padding-left:8px">维持腰部</td><td class="num">3</td><td class="num">61.1万</td><td class="num">52.9万</td><td class="num spend-neg">-8.2万</td></tr><tr><td style="background:#fce7f3;color:#9d174d;font-weight:600;padding-left:8px">腰部→尾部 降级</td><td class="num">4</td><td class="num">78.1万</td><td class="num">14.2万</td><td class="num spend-neg">-63.9万</td></tr><tr><td style="background:#f1f5f9;color:#64748b;font-weight:600;padding-left:8px">尾部→流失</td><td class="num">3493</td><td class="num">176.9万</td><td class="num">—</td><td class="num spend-neg">-176.9万</td></tr><tr><td style="background:#ecfdf5;color:#047857;font-weight:600;padding-left:8px">新增→尾部</td><td class="num">15749</td><td class="num">—</td><td class="num">351.2万</td><td class="num spend-pos">+351.2万</td></tr><tr><td style="background:#ecfdf5;color:#047857;font-weight:600;padding-left:8px">新增→腰部</td><td class="num">1</td><td class="num">—</td><td class="num">11.4万</td><td class="num spend-pos">+11.4万</td></tr></tbody></table></div><div class="segment-divider"></div><div class="segment-label">贴身衣物 · 客户分层流转分析</div><div class="kpi-row">
+  <div class="kpi-card"><div class="kpi-label">26年Q2活跃客户</div><div class="kpi-value">379<span style="font-size:11px;color:#64748b">家</span></div>
+    <div class="kpi-change up">同比 +33.9%</div></div>
+  <div class="kpi-card"><div class="kpi-label">26年Q2消耗合计</div><div class="kpi-value">213.9<span style="font-size:11px;color:#64748b">万</span></div>
+    <div class="kpi-change up">同比 +2.5%</div></div>
+  <div class="kpi-card"><div class="kpi-label">跃迁到头部</div><div class="kpi-value">0<span style="font-size:11px;color:#64748b">家</span></div></div>
+  <div class="kpi-card"><div class="kpi-label">流失</div><div class="kpi-value">161<span style="font-size:11px;color:#64748b">家</span></div></div>
+  <div class="kpi-card"><div class="kpi-label">新增</div><div class="kpi-value">257<span style="font-size:11px;color:#64748b">家</span></div></div>
+</div><div class="sec-title">分层概览（超头+头部合并）</div><div class="layer-grid"><div class="layer-card">
+    <div class="layer-header"><span class="layer-name">头部</span><span class="layer-tag">日均≥1万</span></div>
+    <div class="layer-body">
+      <div class="layer-item"><div class="layer-item-label">客户数</div><div class="layer-item-value">0</div>
+        <div class="layer-item-sub" style="color:#16a34a">+0家</div></div>
+      <div class="layer-item"><div class="layer-item-label">Q2消耗</div><div class="layer-item-value">0</div>
+        <div class="layer-item-sub" style="color:#16a34a">+0.0%</div></div>
+    </div></div><div class="layer-card">
+    <div class="layer-header"><span class="layer-name">腰部</span><span class="layer-tag">日均1千-1万</span></div>
+    <div class="layer-body">
+      <div class="layer-item"><div class="layer-item-label">客户数</div><div class="layer-item-value">4</div>
+        <div class="layer-item-sub" style="color:#16a34a">+0家</div></div>
+      <div class="layer-item"><div class="layer-item-label">Q2消耗</div><div class="layer-item-value">70.3<span style='font-size:10px'>万</span></div>
+        <div class="layer-item-sub" style="color:#dc2626">-2.1%</div></div>
+    </div></div><div class="layer-card">
+    <div class="layer-header"><span class="layer-name">尾部</span><span class="layer-tag">日均<1千</span></div>
+    <div class="layer-body">
+      <div class="layer-item"><div class="layer-item-label">客户数</div><div class="layer-item-value">375</div>
+        <div class="layer-item-sub" style="color:#16a34a">+96家</div></div>
+      <div class="layer-item"><div class="layer-item-label">Q2消耗</div><div class="layer-item-value">143.5<span style='font-size:10px'>万</span></div>
+        <div class="layer-item-sub" style="color:#16a34a">+5.0%</div></div>
+    </div></div></div><div class="sec-title">客户数流转矩阵（25年Q2→26年Q2）</div><div class="matrix-wrap"><table class="matrix-table"><tr><th>25年\26年</th><th>头部</th><th>腰部</th><th>尾部</th><th>流失</th><th style="background:#0f172a">25年合计</th></tr><tr><td class="row-label">头部</td><td class="cell-zero">0</td><td class="cell-zero">0</td><td class="cell-zero">0</td><td class="cell-lost">0</td><td class="col-total">0</td></tr><tr><td class="row-label">腰部</td><td class="cell-zero">0</td><td class="cell-maintain">3</td><td class="cell-downgrade">1</td><td class="cell-lost">0</td><td class="col-total">4</td></tr><tr><td class="row-label">尾部</td><td class="cell-zero">0</td><td class="cell-upgrade">1</td><td class="cell-maintain">117</td><td class="cell-lost">161</td><td class="col-total">279</td></tr><tr><td class="row-label" style="background:#ecfdf5;color:#047857">新增</td><td class="cell-new">0</td><td class="cell-new">0</td><td class="cell-new">257</td><td class="cell-zero">—</td><td class="col-total">{nt}</td></tr><tr><td class="col-total">26年合计</td><td class="col-total">0</td><td class="col-total">4</td><td class="col-total">375</td><td class="col-total">161</td><td class="col-total">540</td></tr></table><div class="legend"><span class="legend-item"><span class="legend-dot" style="background:#dcfce7"></span>维持</span><span class="legend-item"><span class="legend-dot" style="background:#fef9c3"></span>升级</span><span class="legend-item"><span class="legend-dot" style="background:#fce7f3"></span>降级</span><span class="legend-item"><span class="legend-dot" style="background:#f1f5f9"></span>流失</span><span class="legend-item"><span class="legend-dot" style="background:#ecfdf5"></span>新增</span></div></div><div class="sec-title">消耗年同比变化矩阵（万元）</div><div class="matrix-wrap"><table class="spend-table"><tr><th>25年\26年</th><th>头部</th><th>腰部</th><th>尾部</th><th>流失</th></tr><tr><td class="row-label">头部</td><td class="">+0.0</td><td class="">+0.0</td><td class="">+0.0</td><td class="spend-neg">+0.0</td></tr><tr><td class="row-label">腰部</td><td class="">+0.0</td><td class="spend-neg">-8.2</td><td class="spend-neg">-6.1</td><td class="spend-neg">+0.0</td></tr><tr><td class="row-label">尾部</td><td class="">+0.0</td><td class="spend-pos">+14.0</td><td class="spend-neg">-6.5</td><td class="spend-neg">-20.7</td></tr><tr><td class="row-label" style="background:#ecfdf5;color:#047857">新增</td><td class="spend-pos">0.0</td><td class="spend-pos">0.0</td><td class="spend-pos">32.8</td><td>—</td></tr></table></div><div class="sec-title">流转状态 · 消耗年同比变化</div><div class="matrix-wrap"><table class="spend-table" style="font-size:11px"><thead><tr><th style="text-align:left;width:28%">流转状态</th><th>客户数</th><th>25年Q2消耗</th><th>26年Q2消耗</th><th>消耗变化</th></tr></thead><tbody><tr><td style="background:#fef9c3;color:#92400e;font-weight:600;padding-left:8px">尾部→腰部 升级</td><td class="num">1</td><td class="num">3.4万</td><td class="num">17.4万</td><td class="num spend-pos">+14.0万</td></tr><tr><td style="background:#dcfce7;color:#166534;font-weight:600;padding-left:8px">维持尾部</td><td class="num">117</td><td class="num">112.6万</td><td class="num">106.2万</td><td class="num spend-neg">-6.5万</td></tr><tr><td style="background:#dcfce7;color:#166534;font-weight:600;padding-left:8px">维持腰部</td><td class="num">3</td><td class="num">61.1万</td><td class="num">52.9万</td><td class="num spend-neg">-8.2万</td></tr><tr><td style="background:#fce7f3;color:#9d174d;font-weight:600;padding-left:8px">腰部→尾部 降级</td><td class="num">1</td><td class="num">10.8万</td><td class="num">4.6万</td><td class="num spend-neg">-6.1万</td></tr><tr><td style="background:#f1f5f9;color:#64748b;font-weight:600;padding-left:8px">尾部→流失</td><td class="num">161</td><td class="num">20.7万</td><td class="num">—</td><td class="num spend-neg">-20.7万</td></tr><tr><td style="background:#ecfdf5;color:#047857;font-weight:600;padding-left:8px">新增→尾部</td><td class="num">257</td><td class="num">—</td><td class="num">32.8万</td><td class="num spend-pos">+32.8万</td></tr></tbody></table></div><div class="segment-divider"></div><div class="segment-label">男装 · 客户分层流转分析</div><div class="kpi-row">
+  <div class="kpi-card"><div class="kpi-label">26年Q2活跃客户</div><div class="kpi-value">268<span style="font-size:11px;color:#64748b">家</span></div>
+    <div class="kpi-change up">同比 +8.5%</div></div>
+  <div class="kpi-card"><div class="kpi-label">26年Q2消耗合计</div><div class="kpi-value">104.8<span style="font-size:11px;color:#64748b">万</span></div>
+    <div class="kpi-change up">同比 +30.4%</div></div>
+  <div class="kpi-card"><div class="kpi-label">跃迁到头部</div><div class="kpi-value">0<span style="font-size:11px;color:#64748b">家</span></div></div>
+  <div class="kpi-card"><div class="kpi-label">流失</div><div class="kpi-value">160<span style="font-size:11px;color:#64748b">家</span></div></div>
+  <div class="kpi-card"><div class="kpi-label">新增</div><div class="kpi-value">181<span style="font-size:11px;color:#64748b">家</span></div></div>
+</div><div class="sec-title">分层概览（超头+头部合并）</div><div class="layer-grid"><div class="layer-card">
+    <div class="layer-header"><span class="layer-name">头部</span><span class="layer-tag">日均≥1万</span></div>
+    <div class="layer-body">
+      <div class="layer-item"><div class="layer-item-label">客户数</div><div class="layer-item-value">0</div>
+        <div class="layer-item-sub" style="color:#16a34a">+0家</div></div>
+      <div class="layer-item"><div class="layer-item-label">Q2消耗</div><div class="layer-item-value">0</div>
+        <div class="layer-item-sub" style="color:#16a34a">+0.0%</div></div>
+    </div></div><div class="layer-card">
+    <div class="layer-header"><span class="layer-name">腰部</span><span class="layer-tag">日均1千-1万</span></div>
+    <div class="layer-body">
+      <div class="layer-item"><div class="layer-item-label">客户数</div><div class="layer-item-value">2</div>
+        <div class="layer-item-sub" style="color:#16a34a">+2家</div></div>
+      <div class="layer-item"><div class="layer-item-label">Q2消耗</div><div class="layer-item-value">21.1<span style='font-size:10px'>万</span></div>
+        <div class="layer-item-sub" style="color:#16a34a">+0.0%</div></div>
+    </div></div><div class="layer-card">
+    <div class="layer-header"><span class="layer-name">尾部</span><span class="layer-tag">日均<1千</span></div>
+    <div class="layer-body">
+      <div class="layer-item"><div class="layer-item-label">客户数</div><div class="layer-item-value">266</div>
+        <div class="layer-item-sub" style="color:#16a34a">+19家</div></div>
+      <div class="layer-item"><div class="layer-item-label">Q2消耗</div><div class="layer-item-value">83.7<span style='font-size:10px'>万</span></div>
+        <div class="layer-item-sub" style="color:#16a34a">+4.1%</div></div>
+    </div></div></div><div class="sec-title">客户数流转矩阵（25年Q2→26年Q2）</div><div class="matrix-wrap"><table class="matrix-table"><tr><th>25年\26年</th><th>头部</th><th>腰部</th><th>尾部</th><th>流失</th><th style="background:#0f172a">25年合计</th></tr><tr><td class="row-label">头部</td><td class="cell-zero">0</td><td class="cell-zero">0</td><td class="cell-zero">0</td><td class="cell-lost">0</td><td class="col-total">0</td></tr><tr><td class="row-label">腰部</td><td class="cell-zero">0</td><td class="cell-zero">0</td><td class="cell-zero">0</td><td class="cell-lost">0</td><td class="col-total">0</td></tr><tr><td class="row-label">尾部</td><td class="cell-zero">0</td><td class="cell-upgrade">1</td><td class="cell-maintain">86</td><td class="cell-lost">160</td><td class="col-total">247</td></tr><tr><td class="row-label" style="background:#ecfdf5;color:#047857">新增</td><td class="cell-new">0</td><td class="cell-new">1</td><td class="cell-new">180</td><td class="cell-zero">—</td><td class="col-total">{nt}</td></tr><tr><td class="col-total">26年合计</td><td class="col-total">0</td><td class="col-total">2</td><td class="col-total">266</td><td class="col-total">160</td><td class="col-total">428</td></tr></table><div class="legend"><span class="legend-item"><span class="legend-dot" style="background:#dcfce7"></span>维持</span><span class="legend-item"><span class="legend-dot" style="background:#fef9c3"></span>升级</span><span class="legend-item"><span class="legend-dot" style="background:#fce7f3"></span>降级</span><span class="legend-item"><span class="legend-dot" style="background:#f1f5f9"></span>流失</span><span class="legend-item"><span class="legend-dot" style="background:#ecfdf5"></span>新增</span></div></div><div class="sec-title">消耗年同比变化矩阵（万元）</div><div class="matrix-wrap"><table class="spend-table"><tr><th>25年\26年</th><th>头部</th><th>腰部</th><th>尾部</th><th>流失</th></tr><tr><td class="row-label">头部</td><td class="">+0.0</td><td class="">+0.0</td><td class="">+0.0</td><td class="spend-neg">+0.0</td></tr><tr><td class="row-label">腰部</td><td class="">+0.0</td><td class="">+0.0</td><td class="">+0.0</td><td class="spend-neg">+0.0</td></tr><tr><td class="row-label">尾部</td><td class="">+0.0</td><td class="spend-pos">+9.7</td><td class="spend-neg">-10.9</td><td class="spend-neg">-20.5</td></tr><tr><td class="row-label" style="background:#ecfdf5;color:#047857">新增</td><td class="spend-pos">0.0</td><td class="spend-pos">11.4</td><td class="spend-pos">34.8</td><td>—</td></tr></table></div><div class="sec-title">流转状态 · 消耗年同比变化</div><div class="matrix-wrap"><table class="spend-table" style="font-size:11px"><thead><tr><th style="text-align:left;width:28%">流转状态</th><th>客户数</th><th>25年Q2消耗</th><th>26年Q2消耗</th><th>消耗变化</th></tr></thead><tbody><tr><td style="background:#fef9c3;color:#92400e;font-weight:600;padding-left:8px">尾部→腰部 升级</td><td class="num">1</td><td class="num">6元</td><td class="num">9.7万</td><td class="num spend-pos">+9.7万</td></tr><tr><td style="background:#dcfce7;color:#166534;font-weight:600;padding-left:8px">维持尾部</td><td class="num">86</td><td class="num">59.9万</td><td class="num">48.9万</td><td class="num spend-neg">-10.9万</td></tr><tr><td style="background:#f1f5f9;color:#64748b;font-weight:600;padding-left:8px">尾部→流失</td><td class="num">160</td><td class="num">20.5万</td><td class="num">—</td><td class="num spend-neg">-20.5万</td></tr><tr><td style="background:#ecfdf5;color:#047857;font-weight:600;padding-left:8px">新增→尾部</td><td class="num">180</td><td class="num">—</td><td class="num">34.8万</td><td class="num spend-pos">+34.8万</td></tr><tr><td style="background:#ecfdf5;color:#047857;font-weight:600;padding-left:8px">新增→腰部</td><td class="num">1</td><td class="num">—</td><td class="num">11.4万</td><td class="num spend-pos">+11.4万</td></tr></tbody></table></div><div class="segment-divider"></div><div class="segment-label">运动鞋服+运动用品 · 客户分层流转分析</div><div class="kpi-row">
+  <div class="kpi-card"><div class="kpi-label">26年Q2活跃客户</div><div class="kpi-value">183<span style="font-size:11px;color:#64748b">家</span></div>
+    <div class="kpi-change up">同比 +30.7%</div></div>
+  <div class="kpi-card"><div class="kpi-label">26年Q2消耗合计</div><div class="kpi-value">53.9<span style="font-size:11px;color:#64748b">万</span></div>
+    <div class="kpi-change down">同比 -38.3%</div></div>
+  <div class="kpi-card"><div class="kpi-label">跃迁到头部</div><div class="kpi-value">0<span style="font-size:11px;color:#64748b">家</span></div></div>
+  <div class="kpi-card"><div class="kpi-label">流失</div><div class="kpi-value">80<span style="font-size:11px;color:#64748b">家</span></div></div>
+  <div class="kpi-card"><div class="kpi-label">新增</div><div class="kpi-value">123<span style="font-size:11px;color:#64748b">家</span></div></div>
+</div><div class="sec-title">分层概览（超头+头部合并）</div><div class="layer-grid"><div class="layer-card">
+    <div class="layer-header"><span class="layer-name">头部</span><span class="layer-tag">日均≥1万</span></div>
+    <div class="layer-body">
+      <div class="layer-item"><div class="layer-item-label">客户数</div><div class="layer-item-value">0</div>
+        <div class="layer-item-sub" style="color:#16a34a">+0家</div></div>
+      <div class="layer-item"><div class="layer-item-label">Q2消耗</div><div class="layer-item-value">0</div>
+        <div class="layer-item-sub" style="color:#16a34a">+0.0%</div></div>
+    </div></div><div class="layer-card">
+    <div class="layer-header"><span class="layer-name">腰部</span><span class="layer-tag">日均1千-1万</span></div>
+    <div class="layer-body">
+      <div class="layer-item"><div class="layer-item-label">客户数</div><div class="layer-item-value">0</div>
+        <div class="layer-item-sub" style="color:#dc2626">-2家</div></div>
+      <div class="layer-item"><div class="layer-item-label">Q2消耗</div><div class="layer-item-value">0</div>
+        <div class="layer-item-sub" style="color:#dc2626">-100.0%</div></div>
+    </div></div><div class="layer-card">
+    <div class="layer-header"><span class="layer-name">尾部</span><span class="layer-tag">日均<1千</span></div>
+    <div class="layer-body">
+      <div class="layer-item"><div class="layer-item-label">客户数</div><div class="layer-item-value">183</div>
+        <div class="layer-item-sub" style="color:#16a34a">+45家</div></div>
+      <div class="layer-item"><div class="layer-item-label">Q2消耗</div><div class="layer-item-value">53.9<span style='font-size:10px'>万</span></div>
+        <div class="layer-item-sub" style="color:#16a34a">+77.9%</div></div>
+    </div></div></div><div class="sec-title">客户数流转矩阵（25年Q2→26年Q2）</div><div class="matrix-wrap"><table class="matrix-table"><tr><th>25年\26年</th><th>头部</th><th>腰部</th><th>尾部</th><th>流失</th><th style="background:#0f172a">25年合计</th></tr><tr><td class="row-label">头部</td><td class="cell-zero">0</td><td class="cell-zero">0</td><td class="cell-zero">0</td><td class="cell-lost">0</td><td class="col-total">0</td></tr><tr><td class="row-label">腰部</td><td class="cell-zero">0</td><td class="cell-zero">0</td><td class="cell-downgrade">2</td><td class="cell-lost">0</td><td class="col-total">2</td></tr><tr><td class="row-label">尾部</td><td class="cell-zero">0</td><td class="cell-zero">0</td><td class="cell-maintain">58</td><td class="cell-lost">80</td><td class="col-total">138</td></tr><tr><td class="row-label" style="background:#ecfdf5;color:#047857">新增</td><td class="cell-new">0</td><td class="cell-new">0</td><td class="cell-new">123</td><td class="cell-zero">—</td><td class="col-total">{nt}</td></tr><tr><td class="col-total">26年合计</td><td class="col-total">0</td><td class="col-total">0</td><td class="col-total">183</td><td class="col-total">80</td><td class="col-total">263</td></tr></table><div class="legend"><span class="legend-item"><span class="legend-dot" style="background:#dcfce7"></span>维持</span><span class="legend-item"><span class="legend-dot" style="background:#fef9c3"></span>升级</span><span class="legend-item"><span class="legend-dot" style="background:#fce7f3"></span>降级</span><span class="legend-item"><span class="legend-dot" style="background:#f1f5f9"></span>流失</span><span class="legend-item"><span class="legend-dot" style="background:#ecfdf5"></span>新增</span></div></div><div class="sec-title">消耗年同比变化矩阵（万元）</div><div class="matrix-wrap"><table class="spend-table"><tr><th>25年\26年</th><th>头部</th><th>腰部</th><th>尾部</th><th>流失</th></tr><tr><td class="row-label">头部</td><td class="">+0.0</td><td class="">+0.0</td><td class="">+0.0</td><td class="spend-neg">+0.0</td></tr><tr><td class="row-label">腰部</td><td class="">+0.0</td><td class="">+0.0</td><td class="spend-neg">-47.7</td><td class="spend-neg">+0.0</td></tr><tr><td class="row-label">尾部</td><td class="">+0.0</td><td class="">+0.0</td><td class="spend-pos">+4.7</td><td class="spend-neg">-8.5</td></tr><tr><td class="row-label" style="background:#ecfdf5;color:#047857">新增</td><td class="spend-pos">0.0</td><td class="spend-pos">0.0</td><td class="spend-pos">17.9</td><td>—</td></tr></table></div><div class="sec-title">流转状态 · 消耗年同比变化</div><div class="matrix-wrap"><table class="spend-table" style="font-size:11px"><thead><tr><th style="text-align:left;width:28%">流转状态</th><th>客户数</th><th>25年Q2消耗</th><th>26年Q2消耗</th><th>消耗变化</th></tr></thead><tbody><tr><td style="background:#dcfce7;color:#166534;font-weight:600;padding-left:8px">维持尾部</td><td class="num">58</td><td class="num">21.8万</td><td class="num">26.6万</td><td class="num spend-pos">+4.7万</td></tr><tr><td style="background:#fce7f3;color:#9d174d;font-weight:600;padding-left:8px">腰部→尾部 降级</td><td class="num">2</td><td class="num">57.1万</td><td class="num">9.4万</td><td class="num spend-neg">-47.7万</td></tr><tr><td style="background:#f1f5f9;color:#64748b;font-weight:600;padding-left:8px">尾部→流失</td><td class="num">80</td><td class="num">8.5万</td><td class="num">—</td><td class="num spend-neg">-8.5万</td></tr><tr><td style="background:#ecfdf5;color:#047857;font-weight:600;padding-left:8px">新增→尾部</td><td class="num">123</td><td class="num">—</td><td class="num">17.9万</td><td class="num spend-pos">+17.9万</td></tr></tbody></table></div>
+<div class="footer">闭环年同比客户分层流转分析 | 分层标准：头部≥1万 腰部1千-1万 尾部&lt;1千（日均消耗）| 超头与头部已合并</div>
+</div></body></html>
