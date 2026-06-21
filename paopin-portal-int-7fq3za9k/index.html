@@ -415,7 +415,7 @@ function colClass(col, value) {
 function diagOpen(btn) {
   var q = btn.getAttribute('data-q') || '';
   try { if (navigator.clipboard) navigator.clipboard.writeText(decodeURIComponent(q)); } catch (e) {}
-  window.open('https://adata.woa.com/bi/chatbi?q=' + q, '_blank');
+  window.open('https://adata.woa.com/bi/chatbi?q=' + q + '&question=' + q + '&query=' + q, '_blank');
   return false;
 }
 function tableHTML(rows, columns) {
