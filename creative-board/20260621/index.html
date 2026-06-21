@@ -66,7 +66,9 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .frame img{width:100%;height:100%;object-fit:cover;display:block}
 .frame span{position:absolute;bottom:2px;right:2px;background:rgba(0,0,0,.6);color:#fff;font-size:9px;padding:0 3px;border-radius:3px}
 .ptags{margin:6px 0}
-.ptag{display:inline-block;background:#1a2330;color:#86b3ff;font-size:11px;border-radius:5px;padding:1px 7px;margin:0 4px 4px 0}
+.ptag{display:inline-block;background:#1a2330;color:#86b3ff;font-size:11px;border-radius:5px;padding:1px 7px;margin:0 4px 4px 0;cursor:pointer;transition:.15s;user-select:none}
+.ptag:hover{background:#23304a;color:#aeccff}
+.ptag.active{background:#ffd479;color:#1a1d24;font-weight:600}
 .script{margin:6px 0}
 .srow{display:flex;gap:8px;margin-bottom:6px;font-size:12px}
 .slab{flex-shrink:0;font-size:11px;border-radius:5px;padding:1px 7px;height:fit-content;color:#fff}
@@ -141,7 +143,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f1.jpg" alt="t2.9s"><span>2.9s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f2.jpg" alt="t10.3s"><span>10.3s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f3.jpg" alt="t17.8s"><span>17.8s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f4.jpg" alt="t25.2s"><span>25.2s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f5.jpg" alt="t32.7s"><span>32.7s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f6.jpg" alt="t40.1s"><span>40.1s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f7.jpg" alt="t47.6s"><span>47.6s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f8.jpg" alt="t55.0s"><span>55.0s</span></div></div>
-      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>过激约会不知道穿什么小心机内裤的姐妹</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>趁现在活动有优惠</p></div>
@@ -159,7 +161,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f1.jpg" alt="t11.7s"><span>11.7s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f2.jpg" alt="t41.9s"><span>41.9s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f3.jpg" alt="t72.1s"><span>72.1s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f4.jpg" alt="t102.3s"><span>102.3s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f5.jpg" alt="t132.5s"><span>132.5s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f6.jpg" alt="t162.7s"><span>162.7s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f7.jpg" alt="t192.9s"><span>192.9s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f8.jpg" alt="t223.1s"><span>223.1s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span><span class="ptag" data-pattern="数字卖点">数字卖点</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>王总 我衣服后面的拉链好像没有拉好</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>你看我今天没穿粉底也得衣</p></div>
@@ -177,7 +179,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f1.jpg" alt="t7.9s"><span>7.9s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f2.jpg" alt="t28.3s"><span>28.3s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f3.jpg" alt="t48.6s"><span>48.6s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f4.jpg" alt="t69.0s"><span>69.0s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f5.jpg" alt="t89.3s"><span>89.3s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f6.jpg" alt="t109.7s"><span>109.7s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f7.jpg" alt="t130.0s"><span>130.0s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f8.jpg" alt="t150.4s"><span>150.4s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>我的天这不谁看谁迷惑啊</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>今天晚上</p></div>
@@ -226,7 +228,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f1.jpg" alt="t2.4s"><span>2.4s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f2.jpg" alt="t8.6s"><span>8.6s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f3.jpg" alt="t14.8s"><span>14.8s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f4.jpg" alt="t21.0s"><span>21.0s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f5.jpg" alt="t27.2s"><span>27.2s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f6.jpg" alt="t33.4s"><span>33.4s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f7.jpg" alt="t39.6s"><span>39.6s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f8.jpg" alt="t45.8s"><span>45.8s</span></div></div>
-      <div class="ptags"><span class="ptag">行动号召</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="行动号召">行动号召</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>剪招大露了99.9</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>而且链接里把好看的颜色特别多</p></div>
@@ -244,7 +246,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f1.jpg" alt="t6.1s"><span>6.1s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f2.jpg" alt="t21.9s"><span>21.9s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f3.jpg" alt="t37.7s"><span>37.7s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f4.jpg" alt="t53.5s"><span>53.5s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f5.jpg" alt="t69.3s"><span>69.3s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f6.jpg" alt="t85.1s"><span>85.1s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f7.jpg" alt="t100.9s"><span>100.9s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f8.jpg" alt="t116.7s"><span>116.7s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">效果承诺</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="权威背书">权威背书</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span><span class="ptag" data-pattern="数字卖点">数字卖点</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>男人再老夏天都不要穿这三个颜色的裤子</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>或者是钓鱼登山一些户外活动</p></div>
@@ -275,7 +277,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f1.jpg" alt="t3.0s"><span>3.0s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f2.jpg" alt="t10.7s"><span>10.7s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f3.jpg" alt="t18.4s"><span>18.4s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f4.jpg" alt="t26.1s"><span>26.1s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f5.jpg" alt="t33.8s"><span>33.8s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f6.jpg" alt="t41.5s"><span>41.5s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f7.jpg" alt="t49.2s"><span>49.2s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f8.jpg" alt="t56.9s"><span>56.9s</span></div></div>
-      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>屁股越大 穿着越美</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>星星618抢跑福利</p></div>
@@ -293,7 +295,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f1.jpg" alt="t2.4s"><span>2.4s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f2.jpg" alt="t8.7s"><span>8.7s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f3.jpg" alt="t15.0s"><span>15.0s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f4.jpg" alt="t21.2s"><span>21.2s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f5.jpg" alt="t27.5s"><span>27.5s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f6.jpg" alt="t33.7s"><span>33.7s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f7.jpg" alt="t40.0s"><span>40.0s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f8.jpg" alt="t46.3s"><span>46.3s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span><span class="ptag" data-pattern="数字卖点">数字卖点</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>新鲜终于出夏季指捅裤了</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>第一种是不知道直播间买一送一的人</p></div>
@@ -311,7 +313,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f1.jpg" alt="t2.7s"><span>2.7s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f2.jpg" alt="t9.5s"><span>9.5s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f3.jpg" alt="t16.4s"><span>16.4s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f4.jpg" alt="t23.3s"><span>23.3s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f5.jpg" alt="t30.2s"><span>30.2s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f6.jpg" alt="t37.0s"><span>37.0s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f7.jpg" alt="t43.9s"><span>43.9s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f8.jpg" alt="t50.8s"><span>50.8s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>人生建议多穿白裤子</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>第一种是不知道值不兼买一送一的人</p></div>
@@ -359,7 +361,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f1.jpg" alt="t10.2s"><span>10.2s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f2.jpg" alt="t36.5s"><span>36.5s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f3.jpg" alt="t62.7s"><span>62.7s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f4.jpg" alt="t88.9s"><span>88.9s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f5.jpg" alt="t115.2s"><span>115.2s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f6.jpg" alt="t141.4s"><span>141.4s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f7.jpg" alt="t167.7s"><span>167.7s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f8.jpg" alt="t193.9s"><span>193.9s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="权威背书">权威背书</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>我是一个特别爱干净的人</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>拍下随时发火</p></div>
@@ -377,7 +379,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f1.jpg" alt="t10.2s"><span>10.2s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f2.jpg" alt="t36.4s"><span>36.4s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f3.jpg" alt="t62.7s"><span>62.7s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f4.jpg" alt="t88.9s"><span>88.9s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f5.jpg" alt="t115.2s"><span>115.2s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f6.jpg" alt="t141.4s"><span>141.4s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f7.jpg" alt="t167.7s"><span>167.7s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f8.jpg" alt="t193.9s"><span>193.9s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="权威背书">权威背书</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>我是一个特别爱干净的人</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>拍下随时发火</p></div>
@@ -395,7 +397,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f1.jpg" alt="t10.0s"><span>10.0s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f2.jpg" alt="t35.6s"><span>35.6s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f3.jpg" alt="t61.2s"><span>61.2s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f4.jpg" alt="t86.8s"><span>86.8s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f5.jpg" alt="t112.4s"><span>112.4s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f6.jpg" alt="t138.0s"><span>138.0s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f7.jpg" alt="t163.6s"><span>163.6s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f8.jpg" alt="t189.2s"><span>189.2s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>我闺蜜说我有病</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>这次周年庆活动</p></div>
@@ -426,7 +428,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/c9e643815343/f1.jpg" alt="t2.2s"><span>2.2s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f2.jpg" alt="t8.0s"><span>8.0s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f3.jpg" alt="t13.7s"><span>13.7s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f4.jpg" alt="t19.4s"><span>19.4s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f5.jpg" alt="t25.2s"><span>25.2s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f6.jpg" alt="t30.9s"><span>30.9s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f7.jpg" alt="t36.6s"><span>36.6s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f8.jpg" alt="t42.4s"><span>42.4s</span></div></div>
-      <div class="ptags"><span class="ptag">效果承诺</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="效果承诺">效果承诺</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>你们看 德国人家里都在用这个 水龙头上套上它了</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
@@ -444,7 +446,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f1.jpg" alt="t2.7s"><span>2.7s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f2.jpg" alt="t9.7s"><span>9.7s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f3.jpg" alt="t16.6s"><span>16.6s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f4.jpg" alt="t23.6s"><span>23.6s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f5.jpg" alt="t30.5s"><span>30.5s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f6.jpg" alt="t37.5s"><span>37.5s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f7.jpg" alt="t44.4s"><span>44.4s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f8.jpg" alt="t51.4s"><span>51.4s</span></div></div>
-      <div class="ptags"><span class="ptag">效果承诺</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="效果承诺">效果承诺</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>你们看都什么年代了</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
@@ -462,7 +464,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f1.jpg" alt="t7.7s"><span>7.7s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f2.jpg" alt="t27.4s"><span>27.4s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f3.jpg" alt="t47.1s"><span>47.1s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f4.jpg" alt="t66.8s"><span>66.8s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f5.jpg" alt="t86.5s"><span>86.5s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f6.jpg" alt="t106.2s"><span>106.2s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f7.jpg" alt="t125.9s"><span>125.9s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f8.jpg" alt="t145.6s"><span>145.6s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="权威背书">权威背书</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span><span class="ptag" data-pattern="数字卖点">数字卖点</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>很多人都以为大街打包的是砂锅</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>价格也很优惠</p></div>
@@ -493,7 +495,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f1.jpg" alt="t2.4s"><span>2.4s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f2.jpg" alt="t8.5s"><span>8.5s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f3.jpg" alt="t14.6s"><span>14.6s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f4.jpg" alt="t20.7s"><span>20.7s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f5.jpg" alt="t26.8s"><span>26.8s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f6.jpg" alt="t32.9s"><span>32.9s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f7.jpg" alt="t39.0s"><span>39.0s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f8.jpg" alt="t45.1s"><span>45.1s</span></div></div>
-      <div class="ptags"><span class="ptag">效果承诺</span><span class="ptag">数字卖点</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="数字卖点">数字卖点</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>这是一款全新无烟大泡酒</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
@@ -511,7 +513,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f1.jpg" alt="t4.8s"><span>4.8s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f2.jpg" alt="t17.1s"><span>17.1s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f3.jpg" alt="t29.4s"><span>29.4s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f4.jpg" alt="t41.6s"><span>41.6s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f5.jpg" alt="t53.9s"><span>53.9s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f6.jpg" alt="t66.2s"><span>66.2s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f7.jpg" alt="t78.5s"><span>78.5s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f8.jpg" alt="t90.8s"><span>90.8s</span></div></div>
-      <div class="ptags"><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>你寧願變成這樣</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
@@ -529,7 +531,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/5846d5239701/f1.jpg" alt="t2.5s"><span>2.5s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f2.jpg" alt="t8.9s"><span>8.9s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f3.jpg" alt="t15.2s"><span>15.2s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f4.jpg" alt="t21.6s"><span>21.6s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f5.jpg" alt="t28.0s"><span>28.0s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f6.jpg" alt="t34.4s"><span>34.4s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f7.jpg" alt="t40.8s"><span>40.8s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f8.jpg" alt="t47.2s"><span>47.2s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span><span class="ptag" data-pattern="数字卖点">数字卖点</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>只要用这个玄酒仪对着我的肚气炎</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>快来抢够吧</p></div>
@@ -577,7 +579,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f1.jpg" alt="t4.8s"><span>4.8s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f2.jpg" alt="t17.3s"><span>17.3s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f3.jpg" alt="t29.8s"><span>29.8s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f4.jpg" alt="t42.2s"><span>42.2s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f5.jpg" alt="t54.7s"><span>54.7s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f6.jpg" alt="t67.2s"><span>67.2s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f7.jpg" alt="t79.7s"><span>79.7s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f8.jpg" alt="t92.1s"><span>92.1s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>黄旗配白纸</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>所以今天我临时决定了</p></div>
@@ -595,7 +597,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f1.jpg" alt="t6.9s"><span>6.9s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f2.jpg" alt="t24.6s"><span>24.6s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f3.jpg" alt="t42.2s"><span>42.2s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f4.jpg" alt="t59.9s"><span>59.9s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f5.jpg" alt="t77.6s"><span>77.6s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f6.jpg" alt="t95.3s"><span>95.3s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f7.jpg" alt="t113.0s"><span>113.0s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f8.jpg" alt="t130.7s"><span>130.7s</span></div></div>
-      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="权威背书">权威背书</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>来啊 看看</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>就今天刷到这条</p></div>
@@ -613,7 +615,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f1.jpg" alt="t3.4s"><span>3.4s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f2.jpg" alt="t12.0s"><span>12.0s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f3.jpg" alt="t20.6s"><span>20.6s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f4.jpg" alt="t29.2s"><span>29.2s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f5.jpg" alt="t37.8s"><span>37.8s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f6.jpg" alt="t46.4s"><span>46.4s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f7.jpg" alt="t55.0s"><span>55.0s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f8.jpg" alt="t63.7s"><span>63.7s</span></div></div>
-      <div class="ptags"><span class="ptag">效果承诺</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="效果承诺">效果承诺</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>女人不會冰敷是很閒老的</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
@@ -644,7 +646,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f1.jpg" alt="t4.9s"><span>4.9s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f2.jpg" alt="t17.5s"><span>17.5s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f3.jpg" alt="t30.1s"><span>30.1s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f4.jpg" alt="t42.8s"><span>42.8s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f5.jpg" alt="t55.4s"><span>55.4s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f6.jpg" alt="t68.0s"><span>68.0s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f7.jpg" alt="t80.6s"><span>80.6s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f8.jpg" alt="t93.2s"><span>93.2s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="行动号召">行动号召</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>我家客厅从来没有灰尘</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>下单了一瓶</p></div>
@@ -662,7 +664,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f1.jpg" alt="t15.0s"><span>15.0s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f2.jpg" alt="t53.5s"><span>53.5s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f3.jpg" alt="t92.1s"><span>92.1s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f4.jpg" alt="t130.6s"><span>130.6s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f5.jpg" alt="t169.2s"><span>169.2s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f6.jpg" alt="t207.7s"><span>207.7s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f7.jpg" alt="t246.3s"><span>246.3s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f8.jpg" alt="t284.8s"><span>284.8s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>开水倒在肥刀上</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>被网友抢空</p></div>
@@ -680,7 +682,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f1.jpg" alt="t14.9s"><span>14.9s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f2.jpg" alt="t53.3s"><span>53.3s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f3.jpg" alt="t91.7s"><span>91.7s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f4.jpg" alt="t130.0s"><span>130.0s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f5.jpg" alt="t168.4s"><span>168.4s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f6.jpg" alt="t206.8s"><span>206.8s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f7.jpg" alt="t245.2s"><span>245.2s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f8.jpg" alt="t283.5s"><span>283.5s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>你知道怎么分辨女朋友</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>现在下单</p></div>
@@ -711,7 +713,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f1.jpg" alt="t5.4s"><span>5.4s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f2.jpg" alt="t19.2s"><span>19.2s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f3.jpg" alt="t33.1s"><span>33.1s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f4.jpg" alt="t47.0s"><span>47.0s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f5.jpg" alt="t60.8s"><span>60.8s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f6.jpg" alt="t74.7s"><span>74.7s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f7.jpg" alt="t88.5s"><span>88.5s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f8.jpg" alt="t102.4s"><span>102.4s</span></div></div>
-      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>看看有沒有標準白酒公主</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>今天昨天剛刷到過嗎</p></div>
@@ -729,7 +731,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f1.jpg" alt="t5.0s"><span>5.0s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f2.jpg" alt="t17.7s"><span>17.7s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f3.jpg" alt="t30.4s"><span>30.4s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f4.jpg" alt="t43.2s"><span>43.2s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f5.jpg" alt="t55.9s"><span>55.9s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f6.jpg" alt="t68.7s"><span>68.7s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f7.jpg" alt="t81.4s"><span>81.4s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f8.jpg" alt="t94.1s"><span>94.1s</span></div></div>
-      <div class="ptags"><span class="ptag">效果承诺</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="效果承诺">效果承诺</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>這個最髒的</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
@@ -747,7 +749,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f1.jpg" alt="t9.9s"><span>9.9s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f2.jpg" alt="t35.5s"><span>35.5s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f3.jpg" alt="t61.0s"><span>61.0s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f4.jpg" alt="t86.6s"><span>86.6s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f5.jpg" alt="t112.1s"><span>112.1s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f6.jpg" alt="t137.7s"><span>137.7s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f7.jpg" alt="t163.2s"><span>163.2s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f8.jpg" alt="t188.8s"><span>188.8s</span></div></div>
-      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>昨天59你愛大不理</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>我今天給你推薦一個顏色</p></div>
@@ -795,7 +797,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/3674491571d3/f1.jpg" alt="t4.5s"><span>4.5s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f2.jpg" alt="t16.2s"><span>16.2s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f3.jpg" alt="t27.8s"><span>27.8s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f4.jpg" alt="t39.4s"><span>39.4s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f5.jpg" alt="t51.1s"><span>51.1s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f6.jpg" alt="t62.7s"><span>62.7s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f7.jpg" alt="t74.4s"><span>74.4s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f8.jpg" alt="t86.0s"><span>86.0s</span></div></div>
-      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="权威背书">权威背书</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>饿到第五天</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>甚至现在有活动还有酷泉</p></div>
@@ -813,7 +815,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f1.jpg" alt="t5.0s"><span>5.0s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f2.jpg" alt="t18.0s"><span>18.0s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f3.jpg" alt="t30.9s"><span>30.9s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f4.jpg" alt="t43.8s"><span>43.8s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f5.jpg" alt="t56.8s"><span>56.8s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f6.jpg" alt="t69.7s"><span>69.7s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f7.jpg" alt="t82.6s"><span>82.6s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f8.jpg" alt="t95.6s"><span>95.6s</span></div></div>
-      <div class="ptags"><span class="ptag">权威背书</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="权威背书">权威背书</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>姐妹們斷食到第三天</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
@@ -831,7 +833,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f1.jpg" alt="t2.7s"><span>2.7s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f2.jpg" alt="t9.5s"><span>9.5s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f3.jpg" alt="t16.3s"><span>16.3s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f4.jpg" alt="t23.2s"><span>23.2s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f5.jpg" alt="t30.0s"><span>30.0s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f6.jpg" alt="t36.9s"><span>36.9s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f7.jpg" alt="t43.7s"><span>43.7s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f8.jpg" alt="t50.5s"><span>50.5s</span></div></div>
-      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>虎龟蜜被胡冰坑了</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>结果今天胡冰直接宣布</p></div>
@@ -862,7 +864,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f1.jpg" alt="t1.7s"><span>1.7s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f2.jpg" alt="t6.1s"><span>6.1s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f3.jpg" alt="t10.6s"><span>10.6s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f4.jpg" alt="t15.0s"><span>15.0s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f5.jpg" alt="t19.4s"><span>19.4s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f6.jpg" alt="t23.9s"><span>23.9s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f7.jpg" alt="t28.3s"><span>28.3s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f8.jpg" alt="t32.7s"><span>32.7s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">权威背书</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="权威背书">权威背书</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>腐煤Q10为什么要买美国的</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>还有一分钱换购参展活动</p></div>
@@ -880,7 +882,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f1.jpg" alt="t4.1s"><span>4.1s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f2.jpg" alt="t14.6s"><span>14.6s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f3.jpg" alt="t25.0s"><span>25.0s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f4.jpg" alt="t35.5s"><span>35.5s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f5.jpg" alt="t46.0s"><span>46.0s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f6.jpg" alt="t56.5s"><span>56.5s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f7.jpg" alt="t67.0s"><span>67.0s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f8.jpg" alt="t77.5s"><span>77.5s</span></div></div>
-      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span><span class="ptag" data-pattern="数字卖点">数字卖点</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>昨天買的對不起</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>618帶來的成分福利了</p></div>
@@ -898,7 +900,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f1.jpg" alt="t2.1s"><span>2.1s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f2.jpg" alt="t7.5s"><span>7.5s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f3.jpg" alt="t12.8s"><span>12.8s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f4.jpg" alt="t18.2s"><span>18.2s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f5.jpg" alt="t23.6s"><span>23.6s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f6.jpg" alt="t29.0s"><span>29.0s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f7.jpg" alt="t34.4s"><span>34.4s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f8.jpg" alt="t39.7s"><span>39.7s</span></div></div>
-      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="权威背书">权威背书</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>你就东方树也陪着它</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>免费送你三十颗小绿蓝细百</p></div>
@@ -929,7 +931,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f1.jpg" alt="t2.4s"><span>2.4s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f2.jpg" alt="t8.6s"><span>8.6s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f3.jpg" alt="t14.8s"><span>14.8s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f4.jpg" alt="t21.0s"><span>21.0s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f5.jpg" alt="t27.3s"><span>27.3s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f6.jpg" alt="t33.5s"><span>33.5s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f7.jpg" alt="t39.7s"><span>39.7s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f8.jpg" alt="t45.9s"><span>45.9s</span></div></div>
-      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span><span class="ptag" data-pattern="数字卖点">数字卖点</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>一罐一罐再给大家加一罐</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>不是厂家搞活动</p></div>
@@ -947,7 +949,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f1.jpg" alt="t2.9s"><span>2.9s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f2.jpg" alt="t10.3s"><span>10.3s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f3.jpg" alt="t17.7s"><span>17.7s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f4.jpg" alt="t25.1s"><span>25.1s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f5.jpg" alt="t32.5s"><span>32.5s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f6.jpg" alt="t39.9s"><span>39.9s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f7.jpg" alt="t47.3s"><span>47.3s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f8.jpg" alt="t54.8s"><span>54.8s</span></div></div>
-      <div class="ptags"><span class="ptag">权威背书</span><span class="ptag">行动号召</span><span class="ptag">数字卖点</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="权威背书">权威背书</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="数字卖点">数字卖点</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>哪里有那么贵的酒争酒赛俗地方</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>来拍这个新链接</p></div>
@@ -965,7 +967,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="frames"><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f1.jpg" alt="t5.3s"><span>5.3s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f2.jpg" alt="t18.8s"><span>18.8s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f3.jpg" alt="t32.4s"><span>32.4s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f4.jpg" alt="t45.9s"><span>45.9s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f5.jpg" alt="t59.4s"><span>59.4s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f6.jpg" alt="t73.0s"><span>73.0s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f7.jpg" alt="t86.5s"><span>86.5s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f8.jpg" alt="t100.1s"><span>100.1s</span></div></div>
-      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="ptags"><span class="ptag" data-pattern="痛点开场">痛点开场</span><span class="ptag" data-pattern="促销利益">促销利益</span><span class="ptag" data-pattern="权威背书">权威背书</span><span class="ptag" data-pattern="行动号召">行动号召</span><span class="ptag" data-pattern="情感共鸣">情感共鸣</span></div>
       <div class="script">
         <div class="srow"><span class="slab hook">钩子</span><p>宁愿少吃一顿饭</p></div>
         <div class="srow"><span class="slab cta">转化</span><p>这次活动</p></div>
@@ -1006,6 +1008,8 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
     });
     // 高亮选中卡片
     cards.forEach(function(c){c.classList.toggle('active',c.getAttribute('data-pattern')===pat);});
+    // 同步高亮视频卡内的套路标签
+    document.querySelectorAll('.ptag').forEach(function(t){t.classList.toggle('active',pat!=='__all__'&&t.getAttribute('data-pattern')===pat);});
     // 状态栏
     if(pat==='__all__'){
       bar.style.display='none';
@@ -1025,6 +1029,19 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
     });
   });
   clearbtn.addEventListener('click',function(){applyFilter('__all__');});
+
+  // 点击视频卡里的套路标签 -> 按该套路筛选；再次点已选中的标签 -> 复位
+  document.querySelectorAll('.ptag').forEach(function(t){
+    t.addEventListener('click',function(){
+      var pat=t.getAttribute('data-pattern');
+      if(t.classList.contains('active')){pat='__all__';}
+      applyFilter(pat);
+      if(pat!=='__all__'){
+        var fb=document.getElementById('filterbar');
+        if(fb){fb.scrollIntoView({behavior:'smooth',block:'center'});}
+      }
+    });
+  });
 })();
 </script>
 </body></html>
