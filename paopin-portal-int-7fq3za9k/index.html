@@ -412,10 +412,24 @@ function framePlan(p) {
 function colClass(col, value) {
   return `${cls(value)} ${col === '客户简称' ? 'sticky-customer' : ''}`.trim();
 }
+function diagOpen(btn) {
+  var q = btn.getAttribute('data-q') || '';
+  try { if (navigator.clipboard) navigator.clipboard.writeText(decodeURIComponent(q)); } catch (e) {}
+  window.open('https://adata.woa.com/bi/chatbi?q=' + q, '_blank');
+  return false;
+}
 function tableHTML(rows, columns) {
   if (!rows || !rows.length) return '<tbody><tr><td>暂无数据</td></tr></tbody>';
   const cols = columns || Object.keys(rows[0]);
-  return `<thead><tr>${cols.map(c => `<th class="${c === '客户简称' ? 'sticky-customer' : ''}">${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${cols.map(c => `<td class="${colClass(c, r[c])}">${esc(r[c] ?? '')}</td>`).join('')}</tr>`).join('')}</tbody>`;
+  const cell = (r, c) => {
+    const v = esc(r[c] ?? '');
+    if (c === '客户简称' && r[c]) {
+      const q = encodeURIComponent(r[c] + '客户昨日消耗分析');
+      return `<td class="${colClass(c, r[c])}"><span>${v}</span><a class="diag-btn" href="javascript:void(0)" data-q="${q}" title="ChatBI 诊断：${v}客户昨日消耗分析" style="display:inline-block;margin-left:8px;padding:1px 8px;font-size:12px;line-height:18px;color:#1d6fe0;border:1px solid #1d6fe0;border-radius:4px;text-decoration:none;white-space:nowrap;vertical-align:middle;cursor:pointer;" onclick="event.stopPropagation();return diagOpen(this);">诊断入口</a></td>`;
+    }
+    return `<td class="${colClass(c, r[c])}">${v}</td>`;
+  };
+  return `<thead><tr>${cols.map(c => `<th class="${c === '客户简称' ? 'sticky-customer' : ''}">${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${cols.map(c => cell(r, c)).join('')}</tr>`).join('')}</tbody>`;
 }
 
 function renderDateControls() {
