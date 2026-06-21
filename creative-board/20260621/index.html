@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>消费品创意分析看板 · 昨日消耗Top素材</title>
+<meta name="description" content="消费品昨日消耗Top视频素材创意分析：各KPI行业 top类目 top3 视频，含口播文案、脚本结构与8帧画面拆解。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#0e1116;color:#e6e8ec;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px 60px}
+.hero{padding:46px 30px 38px;background:linear-gradient(135deg,#1b2030,#10141d);border-radius:0 0 26px 26px;text-align:center;margin-bottom:26px}
+.hero h1{font-size:30px;letter-spacing:1px;margin-bottom:10px}
+.hero p{color:#9aa3b2;font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:24px 0 8px}
+.kpi{background:#171c26;border:1px solid #232a37;border-radius:14px;padding:18px 12px;text-align:center}
+.kpi b{display:block;font-size:24px;color:#fff}
+.kpi i{font-style:normal;font-size:12px;color:#8b94a3}
+.sec-title{font-size:20px;margin:34px 0 16px;padding-left:12px;border-left:4px solid #5b8def}
+.gp{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gpcard{background:#161b24;border:1px solid #242b39;border-radius:12px;padding:14px}
+.gpcard b{font-size:15px;color:#ffd479}
+.gpcard span{float:right;color:#7f8a99;font-size:12px}
+.gpcard p{font-size:12px;color:#9aa3b2;margin-top:6px}
+.ind{margin-top:40px;border-top:1px solid #222a37;padding-top:22px}
+.indhd{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.indhd h2{font-size:24px;display:flex;align-items:center;gap:10px}
+.dot{width:14px;height:14px;border-radius:50%;background:var(--c);display:inline-block}
+.indm{display:flex;gap:20px}
+.indm div{text-align:center}
+.indm b{display:block;font-size:18px;color:var(--c)}
+.indm i{font-style:normal;font-size:11px;color:#828c9b}
+.indsum{background:#141923;border:1px solid #232a37;border-left:3px solid var(--c);border-radius:10px;padding:14px 18px;margin:16px 0 22px}
+.indsum h4{font-size:14px;color:#cfd6e1;margin-bottom:8px}
+.indsum ul{list-style:none}
+.indsum li{font-size:13px;color:#aab2c0;padding:3px 0}
+.indsum li b{color:var(--c)}
+.indsum li em{font-style:normal;color:#6f7888}
+.cat{background:#12161e;border:1px solid #20262f;border-radius:16px;padding:18px;margin-bottom:18px}
+.cathd h3{font-size:18px;margin-bottom:8px}
+.catm{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:#8b94a3;margin-bottom:8px}
+.catm b{color:#e6e8ec;font-size:13px}
+.catpat{margin-bottom:12px}
+.cp{display:inline-block;background:#1d2430;border-radius:20px;padding:3px 11px;font-size:12px;color:#bcc5d2;margin:0 6px 6px 0}
+.cp em{font-style:normal;color:var(--c,#5b8def)}
+.vlist{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.vcard{background:#0f131a;border:1px solid #1e252f;border-radius:12px;padding:12px}
+.vhead{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.rk{background:#5b8def;color:#fff;font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px}
+.vmetrics{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;flex:1}
+.vmetrics b{font-size:13px;color:#fff;text-align:center}
+.vmetrics i{font-style:normal;font-size:10px;color:#7f8a99;text-align:center;display:block}
+.frames{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:8px}
+.frame{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:9/13;background:#000}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame span{position:absolute;bottom:2px;right:2px;background:rgba(0,0,0,.6);color:#fff;font-size:9px;padding:0 3px;border-radius:3px}
+.ptags{margin:6px 0}
+.ptag{display:inline-block;background:#1a2330;color:#86b3ff;font-size:11px;border-radius:5px;padding:1px 7px;margin:0 4px 4px 0}
+.script{margin:6px 0}
+.srow{display:flex;gap:8px;margin-bottom:6px;font-size:12px}
+.slab{flex-shrink:0;font-size:11px;border-radius:5px;padding:1px 7px;height:fit-content;color:#fff}
+.slab.hook{background:#e0793b}
+.slab.cta{background:#2aa886}
+.srow p{color:#c2cad6}
+.asr{margin-top:6px;border-top:1px dashed #232a37;padding-top:6px}
+.asr summary{font-size:12px;color:#7f8a99;cursor:pointer}
+.asr p{font-size:12px;color:#9aa3b2;margin-top:6px}
+.foot{text-align:center;color:#6a7383;font-size:12px;margin-top:40px}
+@media(max-width:820px){.kpis{grid-template-columns:repeat(2,1fr)}.gp{grid-template-columns:repeat(2,1fr)}.vlist{grid-template-columns:1fr}.indm{width:100%}}
+</style></head>
+<body>
+<div class="hero">
+  <h1>消费品创意分析看板</h1>
+  <p>昨日消耗 Top 视频素材 · 各 KPI 行业 Top 类目 × Top3 视频 · 口播文案 + 8帧画面拆解</p>
+  <p style="margin-top:6px;font-size:12px">生成时间 2026-06-21 18:43 · 数据来源 ADQ 通用分析数据集</p>
+</div>
+<div class="wrap">
+  <div class="kpis">
+    <div class="kpi"><b>36</b><i>精选视频</i></div>
+    <div class="kpi"><b>12</b><i>覆盖类目</i></div>
+    <div class="kpi"><b>4</b><i>KPI行业</i></div>
+    <div class="kpi"><b>228.2万</b><i>合计消耗(元)</i></div>
+    <div class="kpi"><b>2.85%</b><i>整体均CTR</i></div>
+  </div>
+
+  <div class="sec-title">全局创意套路分布</div>
+  <div class="gp"><div class="gpcard"><b>情感共鸣</b><span>27 条</span><p>情感/人群共鸣(家人/姐妹)</p></div><div class="gpcard"><b>促销利益</b><span>25 条</span><p>强促销利益点(限时/补贴/到手价)</p></div><div class="gpcard"><b>效果承诺</b><span>19 条</span><p>强效果承诺(立刻/轻松/告别)</p></div><div class="gpcard"><b>痛点开场</b><span>16 条</span><p>用提问/痛点切入抓注意力</p></div><div class="gpcard"><b>行动号召</b><span>15 条</span><p>明确转化引导(点击/小黄车)</p></div><div class="gpcard"><b>权威背书</b><span>11 条</span><p>权威/专利/源头工厂背书</p></div><div class="gpcard"><b>数字卖点</b><span>9 条</span><p>量化卖点(价格/天数/倍数)</p></div></div>
+
+  
+    <section class="ind" style="--c:#5b8def">
+      <div class="indhd">
+        <h2><span class="dot"></span>服饰</h2>
+        <div class="indm">
+          <div><b>3</b><i>精选类目</i></div>
+          <div><b>9</b><i>视频</i></div>
+          <div><b>27.4万</b><i>消耗(元)</i></div>
+          <div><b>2.11%</b><i>均CTR</i></div>
+          <div><b>36.1%</b><i>均完播</i></div>
+        </div>
+      </div>
+      <div class="indsum">
+        <h4>本行业创意套路 TOP</h4>
+        <ul><li><b>促销利益</b> · 强促销利益点(限时/补贴/到手价) <em>(7条采用)</em></li><li><b>情感共鸣</b> · 情感/人群共鸣(家人/姐妹) <em>(7条采用)</em></li><li><b>痛点开场</b> · 用提问/痛点切入抓注意力 <em>(5条采用)</em></li><li><b>效果承诺</b> · 强效果承诺(立刻/轻松/告别) <em>(4条采用)</em></li><li><b>数字卖点</b> · 量化卖点(价格/天数/倍数) <em>(3条采用)</em></li></ul>
+      </div>
+      
+    <div class="cat">
+      <div class="cathd">
+        <h3>内衣裤袜/睡衣/家居服</h3>
+        <div class="catm">
+          <span>类目日耗 <b>64.9万</b></span>
+          <span>精选 <b>3</b> 条</span>
+          <span>均CTR <b>1.68%</b></span>
+          <span>均完播 <b>37.1%</b></span>
+        </div>
+        <div class="catpat"><span class="cp">促销利益 <em>×3</em></span><span class="cp">情感共鸣 <em>×3</em></span><span class="cp">效果承诺 <em>×2</em></span><span class="cp">痛点开场 <em>×2</em></span></div>
+      </div>
+      <div class="vlist">
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#1</span>
+        <div class="vmetrics">
+          <b>6.1万</b><i>消耗(元)</i>
+          <b>0.71%</b><i>CTR</i>
+          <b>35.6%</b><i>3秒完播</i>
+          <b>57.9s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f1.jpg" alt="t2.9s"><span>2.9s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f2.jpg" alt="t10.3s"><span>10.3s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f3.jpg" alt="t17.8s"><span>17.8s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f4.jpg" alt="t25.2s"><span>25.2s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f5.jpg" alt="t32.7s"><span>32.7s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f6.jpg" alt="t40.1s"><span>40.1s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f7.jpg" alt="t47.6s"><span>47.6s</span></div><div class="frame"><img loading="lazy" src="frames/cbb6862bdb1b/f8.jpg" alt="t55.0s"><span>55.0s</span></div></div>
+      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>过激约会不知道穿什么小心机内裤的姐妹</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>趁现在活动有优惠</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 233字</summary><p>过激约会不知道穿什么小心机内裤的姐妹听我的直接锁死曼妮芬这一条性感蕾丝内裤前面腰头是这种超级轻薄的花牙掌根背后一整片高透的蕾丝网纱你就看它有多透肉它就有多凉快内里还是7A抗军全面抵当肉眼可见的细腻顺滑反复水洗个上百次都还很有保障收到手的每一条啊都是这种密封好的独立包装曼妮芬是大品牌质感在线趁现在活动有优惠闭眼入都不亏穿曼妮芬内裤穿穿穿即使穿可把我舒服坏了面料忍忍滑溜溜的特别舒服裤腿做的是无痕的人类丝不会勒大腿抵当是7A抗军全面的其实效果很好没穿过的姐妹一定要试试</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#2</span>
+        <div class="vmetrics">
+          <b>3.5万</b><i>消耗(元)</i>
+          <b>3.21%</b><i>CTR</i>
+          <b>55.8%</b><i>3秒完播</i>
+          <b>234.8s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f1.jpg" alt="t11.7s"><span>11.7s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f2.jpg" alt="t41.9s"><span>41.9s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f3.jpg" alt="t72.1s"><span>72.1s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f4.jpg" alt="t102.3s"><span>102.3s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f5.jpg" alt="t132.5s"><span>132.5s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f6.jpg" alt="t162.7s"><span>162.7s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f7.jpg" alt="t192.9s"><span>192.9s</span></div><div class="frame"><img loading="lazy" src="frames/e30f7c4d966d/f8.jpg" alt="t223.1s"><span>223.1s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>王总 我衣服后面的拉链好像没有拉好</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>你看我今天没穿粉底也得衣</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 1233字</summary><p>王总 我衣服后面的拉链好像没有拉好要不您帮我拉一下呗老公哎 你来了莉莉来 娜娜 我介绍一下这是我老婆莉莉这是我的新秘书 娜娜你好王总 您和陈总 李总还有一个董事会议要开哦要不我们先走吧好 我们走哎 对了老婆今天晚上有个商务晚宴我想你跟我一块王总 不好意思啊 忘记和您说了因为这次项目重大呢对方把晚宴设在了市中心的酒店我听说那里是专门接待外宾的对服装打扮要求呢 特别高这么正式的场合老板娘这样啊 那没事的老公这么大的项目肯定格外重视今天出门着急给你送饭我就没怎么打扮这显得有点窝窝囊囊的去了肯定给你丢人没事 你去吧签项目要紧行 那我先走了哎 算了 还是回家吧陈总 慢走啊等您的合同了啊哈哈哈王总 时间不早了您该去参加晚宴了您要是不嫌弃的话就坐我的车去吧您看怎么样今天晚上你不来怎么能行呢我还特地给你买了新衣服你穿上一定好看还有这个凡克龙收腹裤他穿在身上既显瘦又好看是我做了很多功课为你选的爱你的老公凡克龙收腹裤没想到他这么爱我赶紧去试试不能给他丢脸女人不穿收腹裤是没有气质的建议你每天早上穿上他就非常的有气质不要懒一定要穿李华穿裙子姐妹就不要再穿内裤了你就穿这种内裤收腹裤安全裤三合一的终于让我找到适合夏天穿的收腹裤了说实话我还是第一次见这么薄收腹效果这么好的我的内裤我一半一两个月就要换一批新的但是我从来都不心疼因为我每次都是大家搞活动的时候去吞世界内裤看中国中国内裤看广东广东内裤还得看我们普宁普宁是世界内裤的制造基地以前你们在市面上很难买到普宁生产的内裤因为我们都是做出口的如果说特别爱运动的那这款内裤一定要去试一试一天不见你会有小白衣儿了穿的不是那种又粒又卡根本穿不住的收腹裤我穿的就是他们家的收腹内裤真的所有的宝妈大凡是有小兔子的姐妹你们就把这条内裤给我焊在身上坐着都没有一层一层的你健身怎么不穿内裤我穿了我穿的是这个健身房人手一条的奶皮内裤你看是不是一点印子都没有还真是不像普通内裤露布编冰真很尴尬我穿白裤子也不会透内裤颜色你看我今天没穿粉底也得衣这就上衣老透了夏天在穿包囤裙也没有裤衩衣而且你穿那种瘦一点的瘀家裤也不会有尴尬衣儿气气热了穿了这种薄一点紧点的裤子那内裤痕迹包在外面的好尴尬了你看我现在都穿这种无痕的竹鲜为内裤我跟你说老了喜欢他们家内裤了我扶了这么多条而且他们每一条都重服力包装的拆开又不能复原的就补货买到原特单那种二手内裤了不是你屁股穿这么好看给谁看那谁能看到我主要自己穿着梳哎就这个天然竹鲜为的小料子妈呀上身就是那种有穿似乎穿的感觉咚咚咚别提多得劲了而且还是这种无衡的呢像我夏天喜欢穿一个那种解身的裤子一点点横迹都没有的小料子你瞅瞅凉凉冰冰环环溜溜的然后弹力还特别大呢人正要把紧天然竹�为的料子包括人家这个抵当都做到了10A级的抗军啥概念水洗300次人家是依旧有效抗军的就是倍儿干涉倍儿透气的那种软软花花的小抵当然后大腿根的腰部的弹力都是特别大的而且背面是这种全包存的设计不卡当也不加屁屁凡克龙他们家的新品竹鲜为内裤独立密封包装干净又微生</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#3</span>
+        <div class="vmetrics">
+          <b>3.0万</b><i>消耗(元)</i>
+          <b>1.12%</b><i>CTR</i>
+          <b>19.9%</b><i>3秒完播</i>
+          <b>158.3s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f1.jpg" alt="t7.9s"><span>7.9s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f2.jpg" alt="t28.3s"><span>28.3s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f3.jpg" alt="t48.6s"><span>48.6s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f4.jpg" alt="t69.0s"><span>69.0s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f5.jpg" alt="t89.3s"><span>89.3s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f6.jpg" alt="t109.7s"><span>109.7s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f7.jpg" alt="t130.0s"><span>130.0s</span></div><div class="frame"><img loading="lazy" src="frames/896f12e200ad/f8.jpg" alt="t150.4s"><span>150.4s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>我的天这不谁看谁迷惑啊</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>今天晚上</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 658字</summary><p>我的天这不谁看谁迷惑啊就这条超级Sexy法师内内现在到手才这个价真不夸张我自己照镜子都犯迷惑而且它是这种软脸色上身也不会扎皮肤弹力大不卡当加屁屁多种颜色可选择满足你的喜好终于找到一条让我心动的内裤了主要每条颜色都不挑人日常约会都可穿夏天看到一眼就心动的每次内裤啊中高腰开叉的板型显得腿又细又长穿什么裙子裤子都不会露出扁面角角雷丝设计软绵绵的面料每一条都是独立包装拒绝二手货弹力大不会露肉抵挡透气不闷汗夏季穿也不用担心现在直播间还有活动介意姐妹们多买几条换着穿小福利看不上中力度无所谓大醋直接得到哈现在来卖一份直播间三条力减20你看看才啥价春夏怕舞怕闷穿它再合适不过了软雷丝摸起来滑滑的上身又轻肤又柔软360度全包图的设计包裹感特别好男朋友问我今天晚上为什么穿得这么性感我哪能告诉他这是我心买的内裤平时穿多了绵制的我耳穿一下雷丝就会发现又肉越多穿雷丝越性感四边还是这种开差的小设计男朋友看到都脸红心跳的肉肉女生放心去试只要雷丝穿得好保功回家就会走整体弱眼弱线的雷丝设计性感中带有一点小甜美大腿跟做的还是这种软雷丝花边背面这一整片都是这种弱眼弱线的雷丝手感特别柔软不会扎皮肤就连我们最在乎这个地方他做的是7A抗军的穿着他透气又舒服还没有这种雷丝内裤的姐妹一定要安排起来姐妹们夏天这么热就别再穿那种厚厚闷闷的内裤了爱自己从穿一条好的内裤开始你看这个架到手几条太划算了面料柔软细腻树感软软糯糯轻盈透气穿上他就像被零朵包裹一样据舒服全包屯板型不卡当不夹屯精致的软雷丝腿口大弹一不勒腿双层免质抵挡透气甘爽不粘溺夏天穿他舒服又透气</p></details>
+    </div></div>
+    </div>
+    <div class="cat">
+      <div class="cathd">
+        <h3>男装</h3>
+        <div class="catm">
+          <span>类目日耗 <b>18.4万</b></span>
+          <span>精选 <b>3</b> 条</span>
+          <span>均CTR <b>2.13%</b></span>
+          <span>均完播 <b>37.9%</b></span>
+        </div>
+        <div class="catpat"><span class="cp">行动号召 <em>×1</em></span><span class="cp">痛点开场 <em>×1</em></span><span class="cp">促销利益 <em>×1</em></span><span class="cp">权威背书 <em>×1</em></span></div>
+      </div>
+      <div class="vlist">
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#1</span>
+        <div class="vmetrics">
+          <b>5.3万</b><i>消耗(元)</i>
+          <b>2.44%</b><i>CTR</i>
+          <b>19.9%</b><i>3秒完播</i>
+          <b>29.4s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/9217a62a4fa7/f1.jpg" alt="t1.5s"><span>1.5s</span></div><div class="frame"><img loading="lazy" src="frames/9217a62a4fa7/f2.jpg" alt="t5.2s"><span>5.2s</span></div><div class="frame"><img loading="lazy" src="frames/9217a62a4fa7/f3.jpg" alt="t9.0s"><span>9.0s</span></div><div class="frame"><img loading="lazy" src="frames/9217a62a4fa7/f4.jpg" alt="t12.8s"><span>12.8s</span></div><div class="frame"><img loading="lazy" src="frames/9217a62a4fa7/f5.jpg" alt="t16.6s"><span>16.6s</span></div><div class="frame"><img loading="lazy" src="frames/9217a62a4fa7/f6.jpg" alt="t20.3s"><span>20.3s</span></div><div class="frame"><img loading="lazy" src="frames/9217a62a4fa7/f7.jpg" alt="t24.1s"><span>24.1s</span></div><div class="frame"><img loading="lazy" src="frames/9217a62a4fa7/f8.jpg" alt="t27.9s"><span>27.9s</span></div></div>
+      <div class="ptags"></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>God help those who stand in our way</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 51字</summary><p>God help those who stand in our wayStand in our way</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#2</span>
+        <div class="vmetrics">
+          <b>2.3万</b><i>消耗(元)</i>
+          <b>1.35%</b><i>CTR</i>
+          <b>28.5%</b><i>3秒完播</i>
+          <b>48.2s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f1.jpg" alt="t2.4s"><span>2.4s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f2.jpg" alt="t8.6s"><span>8.6s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f3.jpg" alt="t14.8s"><span>14.8s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f4.jpg" alt="t21.0s"><span>21.0s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f5.jpg" alt="t27.2s"><span>27.2s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f6.jpg" alt="t33.4s"><span>33.4s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f7.jpg" alt="t39.6s"><span>39.6s</span></div><div class="frame"><img loading="lazy" src="frames/ec93875b7057/f8.jpg" alt="t45.8s"><span>45.8s</span></div></div>
+      <div class="ptags"><span class="ptag">行动号召</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>剪招大露了99.9</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>而且链接里把好看的颜色特别多</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 274字</summary><p>剪招大露了99.9我买一件 送一件再送一件 再送一件我都清单了到时候四件还是真为死他们家的每一个花色都好好看它都是不一样的你们可以任意去挑选而且链接里把好看的颜色特别多男女同款的你看调袍防卫马尚的都在这之前一件都卖的老贵了而且它是那种沉淀淀高克重的就是你随便给它放在哪哎 你低露它是能立起来的不是说软啪啪的上车是挺阔有型的嘴巴这种得享受好多个颜色都好好看中间这个logo都是高温驱马压套的不会说起皮开裂而且T恤你们就穿棉的高枝高蜜 稀罕头肌真的越洗越柔软包括他们家零口做的都是这种包边包条九穿九息你不用担心变形的问题板型宽宽松松大马都能穿到二百多件</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#3</span>
+        <div class="vmetrics">
+          <b>1.4万</b><i>消耗(元)</i>
+          <b>2.59%</b><i>CTR</i>
+          <b>65.3%</b><i>3秒完播</i>
+          <b>122.9s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f1.jpg" alt="t6.1s"><span>6.1s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f2.jpg" alt="t21.9s"><span>21.9s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f3.jpg" alt="t37.7s"><span>37.7s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f4.jpg" alt="t53.5s"><span>53.5s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f5.jpg" alt="t69.3s"><span>69.3s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f6.jpg" alt="t85.1s"><span>85.1s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f7.jpg" alt="t100.9s"><span>100.9s</span></div><div class="frame"><img loading="lazy" src="frames/6fa96911ce61/f8.jpg" alt="t116.7s"><span>116.7s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">效果承诺</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>男人再老夏天都不要穿这三个颜色的裤子</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>或者是钓鱼登山一些户外活动</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 598字</summary><p>男人再老夏天都不要穿这三个颜色的裤子尤其是50岁以上的哥哥一定要注意了一向白色裤子显黑黑色裤子显土卡奇色又显庸俗那最好穿哪些颜色的裤子呢尤其是夏天到了我建议你们一定要试一下今年在巴黎时装周爆火的黄家蓝色总裁裤上身特别时髦阳气给你们看一下我老公车里面必必他也教他开车神器像这种放在线下专卖店598块钱你们舍都舍不得买我们又卖不掉所以我们工厂决定自己做直播这个是我们的新环档次非常高是的你刷遍一万个直播间你想找这个颜色你都找不到我一定找不到为什么找不到因为这个颜色很难染它是蓝中带点灰调我希望所有60后 70后的大叔都能刷到这条视频这个都是上千的品质很适合60后这个年纪穿的是气质跟神韵源头工厂力度很大我开出来的价格我会开到让你们怀疑人生我要颠覆你们对互联网的认知我就喜欢给我老公买这种打折的名牌第一他这个质量好第二他穿出去也有面子男生想要穿的帅气有形试试这款新推出的开车裤休闲裤这款裤子是香港设计师根据亚洲男士身材专门设计他比运动裤正式比吸裤舒服面料柔软舒适做了特殊处理耐磨不起球光帅气显白显高显瘦有没有哪些男生是夏天比较爱出汗的我推荐你一定要穿他穿牛仔裤太闷热穿短裤又有时体面他是自带冰感的效果添加了空调网眼布料非常的透气所以你夏天穿不论您是久坐开车还是日常出行或者是钓鱼登山一些户外活动穿他不仅非常凉快而且没有任何的紧绷感他是弹性的布料因为我们添加了冰丝安卵的成本100斤到220斤你放心去穿他</p></details>
+    </div></div>
+    </div>
+    <div class="cat">
+      <div class="cathd">
+        <h3>女装</h3>
+        <div class="catm">
+          <span>类目日耗 <b>11.6万</b></span>
+          <span>精选 <b>3</b> 条</span>
+          <span>均CTR <b>2.51%</b></span>
+          <span>均完播 <b>33.2%</b></span>
+        </div>
+        <div class="catpat"><span class="cp">促销利益 <em>×3</em></span><span class="cp">情感共鸣 <em>×3</em></span><span class="cp">痛点开场 <em>×2</em></span><span class="cp">行动号召 <em>×1</em></span></div>
+      </div>
+      <div class="vlist">
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#1</span>
+        <div class="vmetrics">
+          <b>3.4万</b><i>消耗(元)</i>
+          <b>2.18%</b><i>CTR</i>
+          <b>23.9%</b><i>3秒完播</i>
+          <b>59.9s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f1.jpg" alt="t3.0s"><span>3.0s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f2.jpg" alt="t10.7s"><span>10.7s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f3.jpg" alt="t18.4s"><span>18.4s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f4.jpg" alt="t26.1s"><span>26.1s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f5.jpg" alt="t33.8s"><span>33.8s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f6.jpg" alt="t41.5s"><span>41.5s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f7.jpg" alt="t49.2s"><span>49.2s</span></div><div class="frame"><img loading="lazy" src="frames/81a60d662ab5/f8.jpg" alt="t56.9s"><span>56.9s</span></div></div>
+      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>屁股越大 穿着越美</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>星星618抢跑福利</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 320字</summary><p>屁股越大 穿着越美大腿越粗 也不会让你输腿粗假跨宽 通通给你修饰掉人生建议多穿白裤子这条能拯救我所有上衣的报恩审裤前天79一条你不买昨天79两条你犹豫现在好了星星618抢跑福利洋密同款 冰感垂垂裤第二条 灵缘送你再送你一件冰皮防晒衣一整套夏日穿搭带回家星星家的直捅裤我真的要跟大家疯狂安离是我衣櫥里面必备的单品真的求求你们2026年的夏天不要再穿又老又丑又暴露身材缺陷的裤子试试这条洋密都爱不失手的新鲜腿感滑滑裤像吴温神裤箭之时穿在身上又凉快又舒服你看现在太阳这么大我穿它不仅不怕晒黑也是不怕热的而且你看它腿感真的很强就伤身不贴腿的新升级的7.0S又时髦又显瘦9厘米的中高腰设计收紧小肚子既不累肉也不卷鞭视觉上直接拉长身形比例时尚百搭选星星</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#2</span>
+        <div class="vmetrics">
+          <b>1.6万</b><i>消耗(元)</i>
+          <b>2.67%</b><i>CTR</i>
+          <b>31.0%</b><i>3秒完播</i>
+          <b>48.7s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f1.jpg" alt="t2.4s"><span>2.4s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f2.jpg" alt="t8.7s"><span>8.7s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f3.jpg" alt="t15.0s"><span>15.0s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f4.jpg" alt="t21.2s"><span>21.2s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f5.jpg" alt="t27.5s"><span>27.5s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f6.jpg" alt="t33.7s"><span>33.7s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f7.jpg" alt="t40.0s"><span>40.0s</span></div><div class="frame"><img loading="lazy" src="frames/b6659ad012c8/f8.jpg" alt="t46.3s"><span>46.3s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>新鲜终于出夏季指捅裤了</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>第一种是不知道直播间买一送一的人</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 284字</summary><p>新鲜终于出夏季指捅裤了比早春的更好穿我又买了两条但是只花了一条的钱新鲜家的指捅裤我真的要跟大家疯狂安定是我衣櫥里面必备的单皮哎真的求求你们2026年的早春就不要再穿又老又丑又暴露身材缺陷的裤子试试这条仰蜜都爱不释手的新鲜垂感花花裤正面也不显胖宽側面背面也不显屁股大而且它是个末代空气层的面料上身软软弄弄又会有垂垂感真的很舒服世界上只有两种不穿新鲜的女人第一种是不知道直播间买一送一的人第二种是还没穿过新鲜垂感花花裤的人你只要穿过一次你第二天出门还是会想穿它我穿过一次之后身体知道答案上收腰下提唇轻轻松松穿出大长腿怎么穿都好看是一年可以穿300天的百搭款时尚百搭选个新鲜</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#3</span>
+        <div class="vmetrics">
+          <b>8815</b><i>消耗(元)</i>
+          <b>2.68%</b><i>CTR</i>
+          <b>44.8%</b><i>3秒完播</i>
+          <b>53.5s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f1.jpg" alt="t2.7s"><span>2.7s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f2.jpg" alt="t9.5s"><span>9.5s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f3.jpg" alt="t16.4s"><span>16.4s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f4.jpg" alt="t23.3s"><span>23.3s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f5.jpg" alt="t30.2s"><span>30.2s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f6.jpg" alt="t37.0s"><span>37.0s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f7.jpg" alt="t43.9s"><span>43.9s</span></div><div class="frame"><img loading="lazy" src="frames/9b732b06b352/f8.jpg" alt="t50.8s"><span>50.8s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>人生建议多穿白裤子</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>第一种是不知道值不兼买一送一的人</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 260字</summary><p>人生建议多穿白裤子新星终于出春夏指捅裤了比秋冬的更好穿我又买了两条但是只花了一条的钱新星家的指捅裤我真的要跟大家疯狂安理是我衣櫥里面必备的单品真的求求你们2026年的早春就不要再穿又老又丑又暴露身材缺陷的裤子试试这条仰蜜都爱不失手的新星垂感滑滑裤正面也不显胖宽侧面背面也不显屁股大而且它是个末代空气层的灭料上身软软弄弄一会儿有垂坠感真的很舒服世界上只有两种不穿新星的女人第一种是不知道值不兼买一送一的人第二种是还没穿过新星垂感滑滑裤的人你只要穿过一次你第二天出门还是会想穿它我穿过一次之后身体知道答案你不买我就想送你穿了</p></details>
+    </div></div>
+    </div>
+    </section>
+    <section class="ind" style="--c:#26c6a6">
+      <div class="indhd">
+        <h2><span class="dot"></span>消电日百</h2>
+        <div class="indm">
+          <div><b>3</b><i>精选类目</i></div>
+          <div><b>9</b><i>视频</i></div>
+          <div><b>29.9万</b><i>消耗(元)</i></div>
+          <div><b>2.01%</b><i>均CTR</i></div>
+          <div><b>47.9%</b><i>均完播</i></div>
+        </div>
+      </div>
+      <div class="indsum">
+        <h4>本行业创意套路 TOP</h4>
+        <ul><li><b>效果承诺</b> · 强效果承诺(立刻/轻松/告别) <em>(8条采用)</em></li><li><b>情感共鸣</b> · 情感/人群共鸣(家人/姐妹) <em>(6条采用)</em></li><li><b>痛点开场</b> · 用提问/痛点切入抓注意力 <em>(5条采用)</em></li><li><b>促销利益</b> · 强促销利益点(限时/补贴/到手价) <em>(5条采用)</em></li><li><b>行动号召</b> · 明确转化引导(点击/小黄车) <em>(5条采用)</em></li></ul>
+      </div>
+      
+    <div class="cat">
+      <div class="cathd">
+        <h3>清洁工具</h3>
+        <div class="catm">
+          <span>类目日耗 <b>18.1万</b></span>
+          <span>精选 <b>3</b> 条</span>
+          <span>均CTR <b>2.84%</b></span>
+          <span>均完播 <b>51.9%</b></span>
+        </div>
+        <div class="catpat"><span class="cp">痛点开场 <em>×3</em></span><span class="cp">促销利益 <em>×3</em></span><span class="cp">效果承诺 <em>×3</em></span><span class="cp">行动号召 <em>×3</em></span></div>
+      </div>
+      <div class="vlist">
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#1</span>
+        <div class="vmetrics">
+          <b>7.8万</b><i>消耗(元)</i>
+          <b>3.16%</b><i>CTR</i>
+          <b>55.5%</b><i>3秒完播</i>
+          <b>204.1s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f1.jpg" alt="t10.2s"><span>10.2s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f2.jpg" alt="t36.5s"><span>36.5s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f3.jpg" alt="t62.7s"><span>62.7s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f4.jpg" alt="t88.9s"><span>88.9s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f5.jpg" alt="t115.2s"><span>115.2s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f6.jpg" alt="t141.4s"><span>141.4s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f7.jpg" alt="t167.7s"><span>167.7s</span></div><div class="frame"><img loading="lazy" src="frames/0b9344ed0a82/f8.jpg" alt="t193.9s"><span>193.9s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>我是一个特别爱干净的人</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>拍下随时发火</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 1068字</summary><p>我是一个特别爱干净的人一年三百六十五天除了工作唯一的爱好就喜欢把家里打扫得干干净净的这样非但没有感到累反而觉得是种乐趣平时打扫卫生我最喜欢用的就是这个欧可棉拖把它可不是胶棉拖它是晒干不会变硬的新型欧可棉拖把它比胶棉拖更灵活拖把头可以弯折边边角角都能贴合轻易各种缝隙都能自由进出棉拖不用泡水你们不会洗完澡还在用手果掉落的头发吧我都是用保家杰的欧可棉拖把用它收拾浴室的泡沫水质收拾马桶边边的卫生死角就是这么方便领抢毛发碎械粘上边用水一冲就会掉这个欧可棉拖把从279降到199你不买又从199降到159你还是不买不买就对了这次中年庆活动大言人杨蜜给你送福利了入手前还觉得没必要用过后我是真的服气这款欧可棉迷你小拖把直接让我家告别了妈补实弹软软淡淡的棉头清洁力抄在线数文设计加持不管是水字残渣还是勤为油污一拖就干净擦灶台擦台面都特别省心长干设计手也不会粘到脏东西和清洁剂清洗更是简单水下一冲轻轻推两下就干干爽爽不容易留意味之前总觉得清洁工具都差不多这款真的刷新我认知它的长久的棉柔性和吸水性一定要靠触摸才能感受到摸着就感觉像气猪蛋糕是的很软的很多朋友的家里比如说马桶旁边其实是很难打理的因为它有下水的地方保家姐就可以完全照顾到很多的角落扎发后面然后床头柜的旁边然后床下面这些死角都可以轻松解决可能是你们太有钱了所以看不上我们这次直降120的活动一开始很多宝宝都是因为颜值买单而且这个保密礼盒真的好惊喜不是平时买不起而是源头工厂更有性价比以前的价格可能确实有点贵现在保家姐直接自建工厂把黑科技欧柯棉的价格打下来了不要279也不要199连159都不要的欧柯棉拖把请您听着您在人的面说来给大家送祝您福利梁比老师太棒了 保家姐棉头不发印的欧柯棉随时打开随时拖不用泡水软化把家里油膩膩的厨房都是毛发泡沫的卫生间都打扫干净而且拖把头升级灵活旋转的关节清洁就没有卫生死角不用搬上搬下脏了只需要在水底下冲洗就干净推拉集水特别干爽用完还能站立收纳每关不占地拍下随时发火千万别错过当初我说要买海棉拖把我老婆非要买欧柯棉拖结果用了以后才发现是真香推保家姐的老粉我真的太激动了回购了N加依次的保障品牌居然请到了阳密代言必须把这份快乐分享给你们这次的保密礼盒我一看到就立马入手了礼盒里的阳密限定款草莓香欧柯棉拖把这款拖把能轻松应对各种复杂的地面情况而且它吸水能力也是超强的不管是地上的水质还是不小心打翻的饮料轻轻一拖就干净了这可真的再多水都不用担心了而是对家里毛发的吸附能力也很强模子也是易冲即进搭配360度全包括是集水设计集水轻松无压力你看还挤得特别干净全程都不用脏手</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#2</span>
+        <div class="vmetrics">
+          <b>2.7万</b><i>消耗(元)</i>
+          <b>3.04%</b><i>CTR</i>
+          <b>44.8%</b><i>3秒完播</i>
+          <b>204.1s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f1.jpg" alt="t10.2s"><span>10.2s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f2.jpg" alt="t36.4s"><span>36.4s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f3.jpg" alt="t62.7s"><span>62.7s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f4.jpg" alt="t88.9s"><span>88.9s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f5.jpg" alt="t115.2s"><span>115.2s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f6.jpg" alt="t141.4s"><span>141.4s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f7.jpg" alt="t167.7s"><span>167.7s</span></div><div class="frame"><img loading="lazy" src="frames/fdd46b16f0d9/f8.jpg" alt="t193.9s"><span>193.9s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>我是一个特别爱干净的人</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>拍下随时发火</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 1067字</summary><p>我是一个特别爱干净的人一年三百六十五天除了工作唯一的爱好就喜欢把家里打扫得干干净净的这样非但没有感到累反而觉得是种乐趣平时打扫卫生我最喜欢用的就是这个欧可棉拖把它可不是胶棉拖它是晒干不会变硬的新型欧可棉拖把它比胶棉拖更灵活拖把头可以弯折边边角角都能贴合轻易各种缝隙都能自由进出棉拖不用泡水你们不会洗完澡还在用手果掉落的头发吧我都是用保家杰的欧可棉拖把用它收拾浴室的泡沫水质收拾马桶边边的卫生死角就是这么方便领抢毛发碎械粘上边用水一冲就会掉这个欧可棉拖把从279降到199你不买又从199降到159你还是不买不买就对了这次中年庆活动大言人杨蜜给你送福利了入手前还觉得没必要用过后我是真的服气这款欧可棉迷你小拖把直接让我家告别了妈补实弹软软淡淡的棉头清洁力抄在线数文设计加持不管是水字残渣还是勤为油污一拖就干净擦造台擦台面都特别省心长干设计手也不会粘到脏东西和清洁剂清洗更是简单水下一冲轻轻推两下就干干爽爽不容易留意味之前总觉得清洁工具都差不多这款真的刷新我认知它的长久的棉柔性和吸水性一定要靠触摸才能感受到摸着就感觉像气猪蛋糕是的很软的很多朋友的家里比如说马桶旁边其实是很难打理的因为它有下水的地方保家姐就可以完全照顾到很多的角落扎发后面然后床头柜的旁边然后床下面这些死角都可以轻松解决可能是你们太有钱了所以看不上我们这次直降120的活动一开始很多宝宝都是因为颜值买单而且这个保密礼盒真的好惊喜不是平时买不起而是源头工厂更有性价比以前的价格可能确实有点贵现在保家姐直接自建工厂把黑科技欧柯棉的价格打下来了不要279也不要199连159都不要的欧柯棉拖把请您听着您在人的面说是每一本都送吗两名老师太棒了保家姐棉头不发印的欧柯棉随时打开随时拖不用泡水软化把家里油膩膩的厨房都是毛发泡沫的卫生间都打扫干净而且拖把头升级灵活旋转的关节清洁就没有卫生死角不用搬上搬下脏了只需要在水底下冲洗就干净推拉集水特别干爽用完还能站立收纳每关不占地拍下随时发火千万别错过当初我说要买海棉拖把我老婆非要买欧柯棉拖结果用了以后才发现是真香所以保家姐的老子我真的太激动了回购了N加依次的保障品牌居然请到了阳密代言必须把这份快乐分享给你们这次的保密礼盒我一看到就立马入手了礼盒里的阳密限定款草莓香欧柯棉拖把这款拖把能轻松应对各种复杂的地面情况而且它吸水能力也是超强的不管是地上的水质还是不小心打翻的饮料轻轻一拖就干净了这可真的再多水都不用担心了而是对家里毛发的吸附能力也很强模子呢也是易冲即进搭配360度全包括是集水设计集水轻松无压力你看还挤得特别干净全程都不用脏手</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#3</span>
+        <div class="vmetrics">
+          <b>2.2万</b><i>消耗(元)</i>
+          <b>2.31%</b><i>CTR</i>
+          <b>55.5%</b><i>3秒完播</i>
+          <b>199.2s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f1.jpg" alt="t10.0s"><span>10.0s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f2.jpg" alt="t35.6s"><span>35.6s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f3.jpg" alt="t61.2s"><span>61.2s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f4.jpg" alt="t86.8s"><span>86.8s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f5.jpg" alt="t112.4s"><span>112.4s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f6.jpg" alt="t138.0s"><span>138.0s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f7.jpg" alt="t163.6s"><span>163.6s</span></div><div class="frame"><img loading="lazy" src="frames/f2212b4de038/f8.jpg" alt="t189.2s"><span>189.2s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>我闺蜜说我有病</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>这次周年庆活动</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 1068字</summary><p>我闺蜜说我有病给我90匹米的小坡房配了一个这么贵的拖把我让她上手试了一下结果她当我面下了一班你们不会洗完澡还在用手果掉落的头发吧我都是用保家杰的欧克棉拖把用它收拾浴室的泡沫水质收拾马桶边边的卫生死脚就是这么方便领抢毛发碎屑粘上边用水一冲就会掉这个欧克棉拖把从279降到199你不买又从199降到159你还是不买不买就对了这次周年庆活动发的是能一件换头的升级款这个价值好几时的小欧克棉拙面拖把说送就送请您盯着您代言人的面说是每一款都送吗男主要是送他到了保家杰他的长久的绵柔性和吸水性一定要靠触摸才能感受到摸着就感觉像气猪蛋糕是的很软的很多朋友的家里比如说马桶旁边其实是很难打理的因为它有下水的地方保家杰就可以完全照顾到很多的角落扎扎后面然后床头柜的旁边然后床下面这些死角都可以轻松解决不是洗地机买不起而是欧和棉拖把更有性价比各种家务搭子都给安排上就算没有一滴水棉头也是软糊糊的用完了很久它不会硬就是很柔软不用充电不用泡水打开就能直接拖由无水字一遍拖劲灰尘毛发直接吸附适用于各个房间适用于卫生间或者适用于厨房拖头能灵活转动横着树着都能拖扎扎后面然后床头柜的旁边然后床下面这些死角都可以轻松解决棉头不缠头发不挂油一冲一起立马干净你用过才知道它的芯片它的舒适然后它的好快来带去养命同款吧作为秘杰粉丝的幸福感也太高了吧每次都能买到带颜的使用单片上次保家杰的保密礼盒更是居家必备了早就听说她家的拖把好药没想到这次的草莓香拖把竟然还是定制的绝美洋红色而且海绵头还自在草莓香这也太绝了这款不仅有颜值还超后用感受一下这个坦坦软软的质地火龙拖把海绵头放走了用用用脆不扣水根本没法用但它是天生柔软不发令的哦这海绵吸水液做别墙什么水啊果汁啊一遍过去这些给吸收到位它的凹袍还能吸服灰唇和头发家里有宠物的有它都不用吸唇器了头部还可以灵活转动边边角角床底下都能钻重点是用完一冲就干净了锅热当水的咱就外壳这么一推一拉是不是瞬间就挤干了不当手会太方便了姐妹们蜜姐就此的在眼也太绝了六大核心城市地标屏都被这么高颜值拖把大屏了随手离拍就是蜜姐同款家务神器这块颜值与实力冰存的好物不重生的很亏不是洗地机买不起而是欧客棉拖把更有性价比晒干也是软软的棉头不会发霉发硬所以打开就能拖不用充电不用泡水软化前一秒刚打翻的下一秒就拖上了大摊的汤汤水水照样给拖完拖过的地方没有水花水印拖灰尘毛发也没压力垃圾都吸附在棉头上清水一冲就干干净净棉手洗的退垃圾水超干爽而且拖头左右还能转动像这些只能侧着身经的窄缝以前的浇棉拖免不了要挪动家具用它一转一拉轻松搞定没有卫生死角而且颜值高收纳也不会占地方</p></details>
+    </div></div>
+    </div>
+    <div class="cat">
+      <div class="cathd">
+        <h3>厨房用具</h3>
+        <div class="catm">
+          <span>类目日耗 <b>17.2万</b></span>
+          <span>精选 <b>3</b> 条</span>
+          <span>均CTR <b>1.60%</b></span>
+          <span>均完播 <b>55.1%</b></span>
+        </div>
+        <div class="catpat"><span class="cp">效果承诺 <em>×3</em></span><span class="cp">痛点开场 <em>×1</em></span><span class="cp">促销利益 <em>×1</em></span><span class="cp">权威背书 <em>×1</em></span></div>
+      </div>
+      <div class="vlist">
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#1</span>
+        <div class="vmetrics">
+          <b>3.5万</b><i>消耗(元)</i>
+          <b>1.76%</b><i>CTR</i>
+          <b>47.1%</b><i>3秒完播</i>
+          <b>44.6s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/c9e643815343/f1.jpg" alt="t2.2s"><span>2.2s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f2.jpg" alt="t8.0s"><span>8.0s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f3.jpg" alt="t13.7s"><span>13.7s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f4.jpg" alt="t19.4s"><span>19.4s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f5.jpg" alt="t25.2s"><span>25.2s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f6.jpg" alt="t30.9s"><span>30.9s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f7.jpg" alt="t36.6s"><span>36.6s</span></div><div class="frame"><img loading="lazy" src="frames/c9e643815343/f8.jpg" alt="t42.4s"><span>42.4s</span></div></div>
+      <div class="ptags"><span class="ptag">效果承诺</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>你们看 德国人家里都在用这个 水龙头上套上它了</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 288字</summary><p>你们看 德国人家里都在用这个 水龙头上套上它了用几天你就知道有多实用了 里面能攒下不少杂质能把水里的泥沙 铁袖 虫卵都滤掉 关键是脏了不用直接扔冲一冲就能接着用 特别省事 平时家里接水用水或者出门在外零食用都很方便简单别看这小东西长得平平无奇现在很多家庭都在水龙头上套上它了用几天你就知道有多实用了 里面能攒下不少杂质能把水里的泥沙 铁袖 虫卵都滤掉关键是脏了不用直接扔 冲一冲就能接着用特别少 平时家里接水用或者出门在外零食用都很方便就这么一套一瞻 水龙头里的泥沙 铁袖 虫卵都能过滤掉自来水的杂质挡的延远实施 脏了直接洗洗就能接着用平时家里接水用或者出门带一个零食用很方便</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#2</span>
+        <div class="vmetrics">
+          <b>3.0万</b><i>消耗(元)</i>
+          <b>1.28%</b><i>CTR</i>
+          <b>62.2%</b><i>3秒完播</i>
+          <b>54.1s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f1.jpg" alt="t2.7s"><span>2.7s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f2.jpg" alt="t9.7s"><span>9.7s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f3.jpg" alt="t16.6s"><span>16.6s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f4.jpg" alt="t23.6s"><span>23.6s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f5.jpg" alt="t30.5s"><span>30.5s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f6.jpg" alt="t37.5s"><span>37.5s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f7.jpg" alt="t44.4s"><span>44.4s</span></div><div class="frame"><img loading="lazy" src="frames/e4a2b58f8232/f8.jpg" alt="t51.4s"><span>51.4s</span></div></div>
+      <div class="ptags"><span class="ptag">效果承诺</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>你们看都什么年代了</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 118字</summary><p>你们看都什么年代了还有人直接用自来水淘米煮饭聪明人都知道套上这个过滤袋用几天你就知道有多实用了里面能攒下不少杂质能把水里的泥沙铁袖重乱都滤掉淘米洗菜更安心关键是脏了不用直接扔冲一冲就能接着用特别省平时家里接水用或者出门在外零食用都很方便</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#3</span>
+        <div class="vmetrics">
+          <b>2.1万</b><i>消耗(元)</i>
+          <b>1.76%</b><i>CTR</i>
+          <b>56.2%</b><i>3秒完播</i>
+          <b>153.3s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f1.jpg" alt="t7.7s"><span>7.7s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f2.jpg" alt="t27.4s"><span>27.4s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f3.jpg" alt="t47.1s"><span>47.1s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f4.jpg" alt="t66.8s"><span>66.8s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f5.jpg" alt="t86.5s"><span>86.5s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f6.jpg" alt="t106.2s"><span>106.2s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f7.jpg" alt="t125.9s"><span>125.9s</span></div><div class="frame"><img loading="lazy" src="frames/7b14cb714b0d/f8.jpg" alt="t145.6s"><span>145.6s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>很多人都以为大街打包的是砂锅</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>价格也很优惠</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 699字</summary><p>很多人都以为大街打包的是砂锅这样想就错了因为这是景德镇干烧不裂的掏瓷砂锅是不是真的干烧不裂刚好我入手了一个现在就去干烧一下我先把砂锅烧了50分钟这时候整口锅非常烫用合金筷子测试一下直接就融化了然后我把纸巾扔到锅里纸巾瞬间就烧起来了接着我直接把冰块倒进去蒸汽一下就冒出来了我拿筷子搅了几下没想到这砂锅到现在还是完好无所为了再侧侧它的质量我又把砂锅扔到水底看看它能不能扛得住砂锅温度就冷却下来了我拿起来仔细丑了丑这砂锅真不错锅里锅外一点裂缝都没有这么好的质量平时用它炒菜都可以景德镇源头工厂的砂锅就是好用干烧不裂大口敬感一家人满满一锅就够了特别方便这是煎炒焖煮一锅搞定的平时炖肉煮粥也非常方便煲汤和各种砂锅包也可以做起来大宽口放一个大鱼头都不是问题现在办下活动喜欢的来直播节老板这里这么多砂锅哪可以炒菜的呢这碗可以炒菜啊那有没有可以煲汤冻肉的呢这碗砂锅包汤炖肉煎一煎蛋保仔饭吃火锅都可以关键是干烧都不裂的那会不会很贵啊不会啊因为我们是景德镇的砂锅工厂我都不好意思卖了它这个又又又降价了你们赶紧来拼个手术来抢我手上这块既可以炒菜又可以包汤的一个浅过口干烧不开裂的这个大砂锅没想到几十块钱入手的砂锅竟然这么好用加大家后还是宽口的可炒可煮拿在手里沉淀淀淡可冷热焦替不破裂用它炖的食物隔外香直接把它端上桌也很美观趁价格比较划算赶紧入很早就想买一个砂锅天气凉了我赶紧就入手了但都用这种炒菜炖汤这简直就是我做饭好吃的靠山为什么说更建议炒菜用砂锅呢首先是砂锅没有涂层天然桃土烧制出的光滑又面汤汁不串味保留食材原始的味道其次是砂锅锅壁很厚更好的把控火候做好的饭菜不易凉现在厂家做活动价格也很优惠现在价格合适赶紧入手一个</p></details>
+    </div></div>
+    </div>
+    <div class="cat">
+      <div class="cathd">
+        <h3>医药非药械类</h3>
+        <div class="catm">
+          <span>类目日耗 <b>15.8万</b></span>
+          <span>精选 <b>3</b> 条</span>
+          <span>均CTR <b>1.60%</b></span>
+          <span>均完播 <b>36.7%</b></span>
+        </div>
+        <div class="catpat"><span class="cp">效果承诺 <em>×2</em></span><span class="cp">数字卖点 <em>×2</em></span><span class="cp">情感共鸣 <em>×2</em></span><span class="cp">痛点开场 <em>×1</em></span></div>
+      </div>
+      <div class="vlist">
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#1</span>
+        <div class="vmetrics">
+          <b>3.5万</b><i>消耗(元)</i>
+          <b>0.97%</b><i>CTR</i>
+          <b>44.4%</b><i>3秒完播</i>
+          <b>47.5s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f1.jpg" alt="t2.4s"><span>2.4s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f2.jpg" alt="t8.5s"><span>8.5s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f3.jpg" alt="t14.6s"><span>14.6s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f4.jpg" alt="t20.7s"><span>20.7s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f5.jpg" alt="t26.8s"><span>26.8s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f6.jpg" alt="t32.9s"><span>32.9s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f7.jpg" alt="t39.0s"><span>39.0s</span></div><div class="frame"><img loading="lazy" src="frames/5c5c1085f0dd/f8.jpg" alt="t45.1s"><span>45.1s</span></div></div>
+      <div class="ptags"><span class="ptag">效果承诺</span><span class="ptag">数字卖点</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>这是一款全新无烟大泡酒</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 179字</summary><p>这是一款全新无烟大泡酒既保留了传统灵活碍酒的功效又能彻底消除碍烟困扰它采用4厘米行业通用规格不仅解决了温度不足的问题实现更宽于温度调节空间还可根据您的使用习惯灵活使用碍柱大小设备内置力值13级家用率星对0.3威米颗粒物过滤效率高达99.95%操作非常简单将碍柱放入机身点燃点透盖上带高力度隔辉网开启电源即可开始无烟碍酒使用过程无需挂挥有了它碍酒真是方便有安全</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#2</span>
+        <div class="vmetrics">
+          <b>3.2万</b><i>消耗(元)</i>
+          <b>1.10%</b><i>CTR</i>
+          <b>24.0%</b><i>3秒完播</i>
+          <b>95.6s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f1.jpg" alt="t4.8s"><span>4.8s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f2.jpg" alt="t17.1s"><span>17.1s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f3.jpg" alt="t29.4s"><span>29.4s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f4.jpg" alt="t41.6s"><span>41.6s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f5.jpg" alt="t53.9s"><span>53.9s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f6.jpg" alt="t66.2s"><span>66.2s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f7.jpg" alt="t78.5s"><span>78.5s</span></div><div class="frame"><img loading="lazy" src="frames/c46c092acccf/f8.jpg" alt="t90.8s"><span>90.8s</span></div></div>
+      <div class="ptags"><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>你寧願變成這樣</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 460字</summary><p>你寧願變成這樣也不願試試草本愛酒貼它平的就是實力你的這裡有嘟嘟用它就有多舒服只要它不停產我就會一直買下去用了一次之後呢直接被它紀念腦袋侯老師再給我拿四盒吧四盒你用得完嗎不是 我想拿回去做麻油就算是你外婆用不了這麼多呀先拿兩盒回去給她試試吧二十歲的你好不在意但三十的你會後悔沒有早點安排上這個愛酒貼都什麼年代了誰還在老老實實各種泡獎又操場的像深夜放肆的這個東西你拿回去用下就知道了一樣東西好不好先看它的沉澈表浮靈 奇愛這些大家都熟悉的天然草本都是對女生很友好的東西除此之外還添加了船牌山五年生這將不平級白竹足足二十六種無貴直碎配方還是老一輩船下人的經典古方濃縮在這一小片高心裡這個一絲一貼一個晚上整個人都輕鬆了四月不貼我理解五月不貼我也理解六月還不貼是不想美美過夏天了嗎本來我也不想買的一想到夏天各種路要穿搭小裙子都想穿悄悄用它經驗一下尤其夏天前是愛酒肉膚的好時間你要是總貪良就用它你要是酒做不動也用它我才用一段時間現在走到拿老公跟到哪兒以前老公還總用熱毛巾給我敷肚子現在有了這個寶貝安心多了朋友來我家都羨慕我有這款愛酒梯</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#3</span>
+        <div class="vmetrics">
+          <b>1.8万</b><i>消耗(元)</i>
+          <b>2.73%</b><i>CTR</i>
+          <b>41.8%</b><i>3秒完播</i>
+          <b>49.6s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/5846d5239701/f1.jpg" alt="t2.5s"><span>2.5s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f2.jpg" alt="t8.9s"><span>8.9s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f3.jpg" alt="t15.2s"><span>15.2s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f4.jpg" alt="t21.6s"><span>21.6s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f5.jpg" alt="t28.0s"><span>28.0s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f6.jpg" alt="t34.4s"><span>34.4s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f7.jpg" alt="t40.8s"><span>40.8s</span></div><div class="frame"><img loading="lazy" src="frames/5846d5239701/f8.jpg" alt="t47.2s"><span>47.2s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>只要用这个玄酒仪对着我的肚气炎</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>快来抢够吧</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 220字</summary><p>只要用这个玄酒仪对着我的肚气炎九上三十分钟肚子一层又一层的尴尬状态真的不要担心了夏天我也可以穿露旗装了这真是我们这群宝妈人群的福音女人结婚生孩子肚子再也回不去了也没有时间去美容院爱酒馆不妨试试这款雷火无烟玄酒仪在家对着皮肤爱酒真的很酸爽就跟做了spot一样具享受内置H13精华绿心能够过滤99个爱烟再也不会被爱烟心倒配合铝合金的落地支架支架是三段式调节全身都能够酒荡在床上沙发趴着躺着能能轻松做爱酒凝火无烟又解放双手今天厂家做活动快来抢够吧</p></details>
+    </div></div>
+    </div>
+    </section>
+    <section class="ind" style="--c:#ff6fa5">
+      <div class="indhd">
+        <h2><span class="dot"></span>美护</h2>
+        <div class="indm">
+          <div><b>3</b><i>精选类目</i></div>
+          <div><b>9</b><i>视频</i></div>
+          <div><b>115.3万</b><i>消耗(元)</i></div>
+          <div><b>3.66%</b><i>均CTR</i></div>
+          <div><b>52.4%</b><i>均完播</i></div>
+        </div>
+      </div>
+      <div class="indsum">
+        <h4>本行业创意套路 TOP</h4>
+        <ul><li><b>效果承诺</b> · 强效果承诺(立刻/轻松/告别) <em>(7条采用)</em></li><li><b>情感共鸣</b> · 情感/人群共鸣(家人/姐妹) <em>(7条采用)</em></li><li><b>促销利益</b> · 强促销利益点(限时/补贴/到手价) <em>(6条采用)</em></li><li><b>痛点开场</b> · 用提问/痛点切入抓注意力 <em>(4条采用)</em></li><li><b>行动号召</b> · 明确转化引导(点击/小黄车) <em>(4条采用)</em></li></ul>
+      </div>
+      
+    <div class="cat">
+      <div class="cathd">
+        <h3>面部洗护</h3>
+        <div class="catm">
+          <span>类目日耗 <b>283.4万</b></span>
+          <span>精选 <b>3</b> 条</span>
+          <span>均CTR <b>2.54%</b></span>
+          <span>均完播 <b>40.2%</b></span>
+        </div>
+        <div class="catpat"><span class="cp">效果承诺 <em>×3</em></span><span class="cp">促销利益 <em>×2</em></span><span class="cp">情感共鸣 <em>×2</em></span><span class="cp">痛点开场 <em>×1</em></span></div>
+      </div>
+      <div class="vlist">
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#1</span>
+        <div class="vmetrics">
+          <b>13.7万</b><i>消耗(元)</i>
+          <b>2.40%</b><i>CTR</i>
+          <b>37.5%</b><i>3秒完播</i>
+          <b>97.0s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f1.jpg" alt="t4.8s"><span>4.8s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f2.jpg" alt="t17.3s"><span>17.3s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f3.jpg" alt="t29.8s"><span>29.8s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f4.jpg" alt="t42.2s"><span>42.2s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f5.jpg" alt="t54.7s"><span>54.7s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f6.jpg" alt="t67.2s"><span>67.2s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f7.jpg" alt="t79.7s"><span>79.7s</span></div><div class="frame"><img loading="lazy" src="frames/be31590a24e5/f8.jpg" alt="t92.1s"><span>92.1s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>黄旗配白纸</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>所以今天我临时决定了</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 484字</summary><p>黄旗配白纸小脸清洁工黄旗白纸浮灵穿凶盐膜成粉加水调膜一周三次好搭配一个月后老公不认识你杨姐这个好用是好用就是用得太快了你一天用几次啊我一天用两次啊早上一次晚上一次我不是跟你说过了吗晚上膜白天不要膜你呀太心急了好用又便宜又好用非常好用脸上搬点多的女人呀千万不要错过她了如果说你的皮肤是黑的皮肤黄的然后脸上这个搬点多的那你们真的可以去试一下这个草本蛋斑膜你就像我一样每天洗完脸之后全脸去保土啊不需要搭配任何手法的很多人都说我这个皮肤吧白还嫩以为我这化了妆是不是你看我这真的没有化妆啊其实就是因为我抹了这个东西知道吧不信啊你可以去他们直播间看看性价比挺高的像我这种宝妈呢也能够用得起姐妹们大家好我是杨洋今天我老公跟我说了一句话真的是瞬间就点醒了我他说既然我们家这个韩梅丽的蛋斑原料这么好用的话为什么不拿出来一些给到那些真正需要他的人去体验一下呢我就说实话整个行业应该没有人敢这么干了吧是不是那你说我老公既然提出来这个要求了我肯定是要满足一下他的因为如果没有你们就没有杨我的今天所以今天我临时决定了只要是刷到这条视频的姐妹们只要你进入我的直播间我都会给大家一盒正装去试用去体验</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#2</span>
+        <div class="vmetrics">
+          <b>10.9万</b><i>消耗(元)</i>
+          <b>3.22%</b><i>CTR</i>
+          <b>59.4%</b><i>3秒完播</i>
+          <b>137.5s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f1.jpg" alt="t6.9s"><span>6.9s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f2.jpg" alt="t24.6s"><span>24.6s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f3.jpg" alt="t42.2s"><span>42.2s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f4.jpg" alt="t59.9s"><span>59.9s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f5.jpg" alt="t77.6s"><span>77.6s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f6.jpg" alt="t95.3s"><span>95.3s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f7.jpg" alt="t113.0s"><span>113.0s</span></div><div class="frame"><img loading="lazy" src="frames/ab9525261cf8/f8.jpg" alt="t130.7s"><span>130.7s</span></div></div>
+      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>来啊 看看</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>就今天刷到这条</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 735字</summary><p>来啊 看看看看 看看好真啊太夸张了脸上的班是不是从这个地方开始往下涨然后这两边也长班我告诉你们啊这叫顺班这种班呢在市面上买很多产品都没有办法淡化掉但是很多人也会这样告诉你们让你们去做项目 做技术但是实际上来讲做过项目 做过技术人大部分的人都会后悔但是今天我给你们说一下有一个产品它是特别特别的好来 就是我手上这个我告诉你们 特别试过你们千万别瞧不起这个便宜的国产品牌已经有很多人偷偷用起来了我刘晓庆对得起自己良心带货怎么了我凭本事挣钱不偷不抢 不坑不骗直播带货也是当下的趋势给大家推荐好东西有什么错而且我自己一直被班点问题困扰吃了好多方法效果都不尽如人意直到我遇见了金氏熔岩蛋班贴真的被她惊艳到了她是单片独立包装的干净卫生不管是在家还是出门在外随时随地都能使用就是这个了不起的国货不用调 不用配按上贴 早上撕口红可以不买但是这个瞒着老公也要买你千万别嫌他便宜他是真有点厉害呀直接就这么一贴走班 晒班 妈妈班哪里有班点 你就贴在哪里好用 又便宜 又好用 非常好用每天晚上睡觉之前来你就把这个直接贴你这个有班点的地方贴上去之后像我这样轻轻按压很快就被吸收了我必须说句掏心窝子的话我刘晓庆这辈子没给任何产品占过台唯独这次破例你们要知道虚假宣传是犯法的所以我一定把好了质量官把好了服务官你们真的可以放心去试试好用 特别好用我北京的朋友都在用这个便宜又好用像是全股掌班一点点的像从皮肤里边透出来梅花状的班点你一定要去找带有危惊的大班贴他不需要什么手法不需要什么仪器只需要晚上睡觉之前把它贴上去哪里有班就贴在哪里第二天早上撕掉千万不要多用晚上用白天不要用你也别嫌它便宜我们是源头工厂自己研发生产的现在全厂一折就今天刷到这条是不是你们的朋友们可以直接享受仓库执发直接从仓库送到您家门口</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#3</span>
+        <div class="vmetrics">
+          <b>10.3万</b><i>消耗(元)</i>
+          <b>1.99%</b><i>CTR</i>
+          <b>23.9%</b><i>3秒完播</i>
+          <b>67.0s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f1.jpg" alt="t3.4s"><span>3.4s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f2.jpg" alt="t12.0s"><span>12.0s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f3.jpg" alt="t20.6s"><span>20.6s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f4.jpg" alt="t29.2s"><span>29.2s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f5.jpg" alt="t37.8s"><span>37.8s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f6.jpg" alt="t46.4s"><span>46.4s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f7.jpg" alt="t55.0s"><span>55.0s</span></div><div class="frame"><img loading="lazy" src="frames/63bc1c0cbd3c/f8.jpg" alt="t63.7s"><span>63.7s</span></div></div>
+      <div class="ptags"><span class="ptag">效果承诺</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>女人不會冰敷是很閒老的</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 346字</summary><p>女人不會冰敷是很閒老的不會冰敷的你就用這個鼓語的流筋動動我不垮臉的你千萬不要用我怕你臉蛋嫩到打滑每天晚上扶她去睡覺第二天早上都有新發現所以不要懶一定要扶我今年36歲臉嫩的秘密真的全靠她這就是我一年沒有去美容院的秘密貼片面膜留給十幾歲的小姑娘用現在還在用貼片面膜的我看你是怕你的臉垮得太慢了她除了貴真的跳不出其他缺點了她很貴但改善松懷很牛她很貴但改善暗沉很牛不過現在不貴了因為禽藍空降把價格打下來了她一發二才二發四趁現在活動還在趕緊多囤點夏天不想層層疊塗去護膚的就選鼓語膠原流筋動膜它是抗咒緊緻體量修護保濕嫩膚多效合一的全能行動膜偏加貴價稀有人身造乾和極光乾草虎破流筋筋動質地一膚緊緻換涼皮膚一整個飽滿有彈性素顏也是滿滿的膠原感如果你35以上了臉上還松懷有皺紋的趁著現在新品上新有活動趕緊來試試</p></details>
+    </div></div>
+    </div>
+    <div class="cat">
+      <div class="cathd">
+        <h3>洗护清洁/除臭剂/纸品</h3>
+        <div class="catm">
+          <span>类目日耗 <b>192.3万</b></span>
+          <span>精选 <b>3</b> 条</span>
+          <span>均CTR <b>4.77%</b></span>
+          <span>均完播 <b>54.5%</b></span>
+        </div>
+        <div class="catpat"><span class="cp">痛点开场 <em>×3</em></span><span class="cp">效果承诺 <em>×3</em></span><span class="cp">行动号召 <em>×3</em></span><span class="cp">促销利益 <em>×2</em></span></div>
+      </div>
+      <div class="vlist">
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#1</span>
+        <div class="vmetrics">
+          <b>15.1万</b><i>消耗(元)</i>
+          <b>3.74%</b><i>CTR</i>
+          <b>58.2%</b><i>3秒完播</i>
+          <b>98.1s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f1.jpg" alt="t4.9s"><span>4.9s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f2.jpg" alt="t17.5s"><span>17.5s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f3.jpg" alt="t30.1s"><span>30.1s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f4.jpg" alt="t42.8s"><span>42.8s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f5.jpg" alt="t55.4s"><span>55.4s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f6.jpg" alt="t68.0s"><span>68.0s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f7.jpg" alt="t80.6s"><span>80.6s</span></div><div class="frame"><img loading="lazy" src="frames/4abfe2dd1da0/f8.jpg" alt="t93.2s"><span>93.2s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>我家客厅从来没有灰尘</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>下单了一瓶</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 578字</summary><p>我家客厅从来没有灰尘厨房也是干干净净的不是我有多勤快而是我有一个好习惯每个月都会定时给锅底做个深度清洁要不然这锅越用越脏很多人不知道造台旁边放一瓶末蒙一年能帮你省一辆车子婆婆说我每个锅都这么干净一看在家就是不做饭的那是因为她没用过这个末蒙锅底清洁这里家里锅底这种烧焦的黑构你给它挤上洗洁精不管你怎么用力的去刷它它也是刷不掉的家里锅底黑成这样的千万别用钢丝球硬刷了因为那天邀请朋友来我家吃饭一进厨房就问了我一句你这锅是没洗过吗我猛了难道他家的锅不是这样的吗你问他我这才知道原来他一直在用这款末蒙锅底清洁这里我立即就要了链接下单了一瓶一到货就迫不及待地想要试试了哇 这效果不得不说我这些年的厨房清洁都算是白做了要像这样才称得上干净明亮吧怪不得朋友会一眼就看到我那烧焦发黄的脏锅看看啊 看看啊我已经强调过很多次了你就抱着退货的心态买回家试一试七天屋里又退货嘛你怕什么你就抹它试一试哇但凡你家有铁锅杀过不朽干锅那你的锅再也不用扔掉了锅底黑构洗不掉你就是这个小东西直接涂在锅底不用铺纸巾也不用包包鲜膜它是清洁养活二和一的整个用起来像敷面膜一样简单家里有锅底黑构的赶紧试试吧我就抱着试一试的心态买两瓶回来用没想到效果这么好我一定把它推荐给我身边的朋友让他们也去试一试我之前啊总觉得这种清洁产品都是智商税没想到用过以后效果这么好从那以后啊我就成了它的忠实粉丝家里常见囤正</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#2</span>
+        <div class="vmetrics">
+          <b>8.0万</b><i>消耗(元)</i>
+          <b>3.11%</b><i>CTR</i>
+          <b>33.7%</b><i>3秒完播</i>
+          <b>299.8s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f1.jpg" alt="t15.0s"><span>15.0s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f2.jpg" alt="t53.5s"><span>53.5s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f3.jpg" alt="t92.1s"><span>92.1s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f4.jpg" alt="t130.6s"><span>130.6s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f5.jpg" alt="t169.2s"><span>169.2s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f6.jpg" alt="t207.7s"><span>207.7s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f7.jpg" alt="t246.3s"><span>246.3s</span></div><div class="frame"><img loading="lazy" src="frames/6cb87d3cdf29/f8.jpg" alt="t284.8s"><span>284.8s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>开水倒在肥刀上</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>被网友抢空</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 1107字</summary><p>开水倒在肥刀上像衣服上的这种老油质洗完了晾干以后它还在像衣服上的这种油质该怎么清洗呢像这种棉质的位移经常会不小心沾上的油质直接用洗衣机清洗油质还是洗不干净给大家示范一下衣服上沾上油质的错误用法直接这样是不对的像这种油你千万不要这样去搓它因为它还有色素这样是洗不彻底的像衣服上的这种老油斑洗完晾干之后呢它还在不懂谁发明的这杆洗剂自己在家也能轻松干洗一看这个是干洗店专用的不论是新油字老油字 重油字真的都可以试试它第一我不是普通的渗透剂我是能挤衣服不费手全程免水洗的渗透剂第二我不是那些乱七八糟的牌子我是正经的老国货第三我不仅能洗吃饭见到油的位移甚至是不小心蹭到粉底液口红印都可以用它我是喷雾设计只需要轻轻一喷轻轻搓洗干干净净深层渗透分解各种屋子用它洗完的衣服还有一股淡淡的香味第四我不是一直都像现在这么有性价比刷到的朋友请珍惜一下喜欢穿博肯鞋的最好不要知道这个不然我怕你不舍得买新鞋但凡你家有博肯鞋得选鞋是也必须的那你的鞋再也不用送去干洗店了熔面皮的鞋子千万不要泡水鞋洗完的鞋子就成这样这样了你就试试这个小东西直接挤在屋子处鞋养户二和一的像这样的鞋子不需要送到洗鞋店再加洗一双鞋的成本只有几分钱透没绵密无需水鞋里面的天然洁净因子和胺基酸表火在深层区屋的同时也不会水伤鞋面附近刷的干净还能改善熔面皮的柔软度刷完就能穿着走不管是小白鞋运动鞋挤皮鞋都能用刷过的地方还不留水印现在我家大人小孩的鞋都这么鞋快来试试啊我们的货居然卖完了我做第一次碰到昨晚李立群直播带火亮妈妈清洁剂由于效果太好价格便宜被网友抢空你就放心坏事老头不会去做任何事前我心中有路我们这个团队卖的东西一定要讲究无美加链像这样的鞋子千万不能泡水洗否则就会这样你家小孩的鞋是不是穿个两三天就黑了就脏了就灰了而且现在中学生好像都很爱穿的那种碳板跑鞋那贵是真的贵穿也是真的好穿好舒服但是怎么办不好洗这款清洁剂你真的可以去试试看不管你是皮面的网面的肉面的它通通都能够使用不仅的刷得干干净净而且还不上鞋面小小一片几乎就能洗你家所有的鞋子了而且它这个清洗的设计也是棉水洗的计刷计刷操作简单鞋子弄脏了马上就可以用它刷得干干净净简直是上班族学生党的好伙伴了专业的喜乎套装不管什么材质都能用都能洗你值得拥有这样妈妈加的清洁剂这已经是我第二次推荐它了它是一个让我愿意反复去推荐的产品你如果信得过老头老妈的清洁剂必须得严格挑选最重要的是它的性价品你别看它便宜就以为它效果够好效果好不好您亲自用了再说用完了之后咱们再来评价我推荐的东西是物美价廉价而且自己都吃过大家都可以去他们家店铺里面看一下它的销量跟评价用过反馈真的是很好它是国货老品牌了完全不输那些杨牌子实力跟品质都是有目共睹的</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#3</span>
+        <div class="vmetrics">
+          <b>5.6万</b><i>消耗(元)</i>
+          <b>7.46%</b><i>CTR</i>
+          <b>71.6%</b><i>3秒完播</i>
+          <b>298.5s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f1.jpg" alt="t14.9s"><span>14.9s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f2.jpg" alt="t53.3s"><span>53.3s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f3.jpg" alt="t91.7s"><span>91.7s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f4.jpg" alt="t130.0s"><span>130.0s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f5.jpg" alt="t168.4s"><span>168.4s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f6.jpg" alt="t206.8s"><span>206.8s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f7.jpg" alt="t245.2s"><span>245.2s</span></div><div class="frame"><img loading="lazy" src="frames/d0acefdfd4a7/f8.jpg" alt="t283.5s"><span>283.5s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">效果承诺</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>你知道怎么分辨女朋友</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>现在下单</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 1574字</summary><p>你知道怎么分辨女朋友是否同居过吗快看好美的日落呀你更美要不今天晚上咱们录影在这儿吧再看一场日出不行我们再用门镜回去玩玩像这样会在关键时刻扫兴的一定是张白纸回想起前女友秦真 好看吗我新买的好看真正常给我看非常有情调不论是身体上还是生活上我们都非常合拍爱惜午餐时间到记得加热三次最重要的是它是真心实意想跟我有个未来采礼的事你跟叔叔阿姨说你们家出多少我们家的双倍返还那要什么要采礼呢我看真的是你这个人铁了信要嫁你的但我突然发现原来我享受的一切都只剩二十五原来都是别人调教过的那是因为我以为当时我们会结婚所以我才行了 你别恶心我了真是不自爱啊跟别人同居那么久说不定你肚子里你说什么呢我还没嫌她脏怪不得连采礼都不要分手吧现在回想起跟她的每次亲密接触都让我觉得恶心我可以不是第一次但我未来的老不可不幸还好我遇到了现在这个她干干净净没对别的男人污染过不好意思我母太单身还没谈过恋爱呢真好遇到你说我的信任喂 我好想啊可是我们不是说好结婚以后再做吗好终于让我找到了像白纸一样的女孩即使她有些矫情我也愿意容忍这什么呀义务校主义啊我皮疯敏感我放她衣服细菌交叉感染的话我会洗准子的你闻闻确实挺好闻的怪不得女神上有丹丹的果香臭汗的臭衣服用它可太好用了那我来洗你玩去吧好啊那你不能拿臭袜子跟我的衣服一起洗放心吧现在就开始陷进我的袜子了这要是结婚还得了看在你没有同居误典的份上这次就先悄悄整治你这才几个月就求婚了不在学学了都出了十几个了好不容易找到一个纯的没有那个罐你懂的牛啊 参科姐都饱了我之前就跟你说他到处办话前面有女生你还不愿意相信你看现在跟你求婚就是因为你没跟人同居过真是可笑同不同居是每个人自由选择的权利凭什么被他审判上了我并不在意他对同居的看法这是恶心他双标的作用你能不知道我前面有多脏和别人同居过都不告诉我还把我很狠狠的一把还好我发现了错谁想你不参好了哎 来了自己都是这样报纸却还惦记找白纸果然真正的好女孩都不会穿那件太过暴露的衣服不像我前女友那样不值钱点那是你干净在一起的时候享受别人的情调分手了又嫌对方穿的暴露终性谁给你剥夺女孩穿一自由的圈子还没到手呢你不会就是这种的才带性啊还提一次早晚说这种把女孩的第一次当成战利品的人我永远不会给她上场的资格不把我的画放在眼里又如何把我的人放在心里给你机会你不珍惜那就只能白白了有毒的男人就跟这戏军一样必须得用滴露五个酒狠狠消灭才安心毕竟男生带军不带病女生沾军就是病衣物混戏都得加滴露这款衣物消毒液才放心五个酒的杀军率洗完的衣服干净无军还有清新的白桃香而且现在618大厨一点都不贵囤一箱都够我用一年了这就是白色念珠军长到脸上了暂反你家有人出现这个动作那你家的那一袜子可能已经成为白色念珠军的有乐场了不及时处理的话只会变得更加严重衣物消毒液到的洗衣服干净五个酒的杀军率还能针对白色念珠军果真不是一家人衣服混戏的你不要用它不怕混戏交叉感染的你不要用它不是洗完衣服有味道穿着养样的你也不要用它世界上只有两种人不给衣服消毒一种是不在乎健康的还有一种就是不知道这个滴露消毒液的五个酒的杀军率不管是引起内裤发黄的白色念珠军引起角色的金黄色葡萄球军还是让衣服有股味道的大肠感军用它都能纱面而且只要你用过一次这个你就会知道它有多好闻它 它香了我打开了一瞬间我以为它是什么洗衣液或者是什么香薰之类的餐厅看完就没有这种传统消毒液的刺鼻味道还有一股毫不得滚味清香我用它洗完衣服你闻着就像太阳爆晒了一整天之后那种特别自然清新的感觉然后你闻着就特别的干净安心而且它还能够做到48小时长效流香有了它 我跟你说你想再臭那都费劲衣服混戏也不怕了要不说还是滴露现在来滴露衣服消毒液直播前给你一瓶一千毫升够不够养瓶够不够还不够再给你一瓶一瓶大补贴还一发这么多用一擦就几毛钱不管你是多顽固的器军都被你杀得干干净净喜欢还有一副好玩的果茶香现在下单这些这些都是你的</p></details>
+    </div></div>
+    </div>
+    <div class="cat">
+      <div class="cathd">
+        <h3>头发洗护/造型</h3>
+        <div class="catm">
+          <span>类目日耗 <b>103.3万</b></span>
+          <span>精选 <b>3</b> 条</span>
+          <span>均CTR <b>3.68%</b></span>
+          <span>均完播 <b>62.4%</b></span>
+        </div>
+        <div class="catpat"><span class="cp">情感共鸣 <em>×3</em></span><span class="cp">促销利益 <em>×2</em></span><span class="cp">效果承诺 <em>×1</em></span></div>
+      </div>
+      <div class="vlist">
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#1</span>
+        <div class="vmetrics">
+          <b>34.9万</b><i>消耗(元)</i>
+          <b>5.12%</b><i>CTR</i>
+          <b>60.0%</b><i>3秒完播</i>
+          <b>107.8s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f1.jpg" alt="t5.4s"><span>5.4s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f2.jpg" alt="t19.2s"><span>19.2s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f3.jpg" alt="t33.1s"><span>33.1s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f4.jpg" alt="t47.0s"><span>47.0s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f5.jpg" alt="t60.8s"><span>60.8s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f6.jpg" alt="t74.7s"><span>74.7s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f7.jpg" alt="t88.5s"><span>88.5s</span></div><div class="frame"><img loading="lazy" src="frames/7071c4a7ea61/f8.jpg" alt="t102.4s"><span>102.4s</span></div></div>
+      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>看看有沒有標準白酒公主</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>今天昨天剛刷到過嗎</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 377字</summary><p>看看有沒有標準白酒公主剛出攤就有小粉絲家長趙孝明寶寶這一寫還是誰幫你寫你幫我寫吧好好會自己寫可以還寫看看有沒有標準白酒公主還寫不下我老闆拜拜白血公主 拜拜怎麼這麼好像我們天天在外面曬著什麼的我們都可以寫得亮亮的這樣子寫其實臉還是很光亮的知道吧就是有一點點斑斑點點而已平時拿什麼寫的臉臉難你覺得體面還怎麼樣不要玩以前不寫得很白的現在寫得很像一層一層東西不知道怎麼回事越黑啊新娘來寄的小寶寶聞著香味就要來找奶奶和洗臉罩莫睹一切的阿姨要挑戰直洗一支歌吧第一個是嗎對第一個就是我們直播間今天昨天剛刷到過嗎可以是不是啊真的好東西阿姨你看這麼多年沒洗菜都洗掉了阿公 看一下看看阿婆白白哦 完了阿公上臉了臉上皮膚皮膚暗沉 皮膚辣黃半半點點多的都可以用了小寶寶伸出來你都沒有寫過我的嗎你感覺怎麼樣洗完洗完好舒服啊這個味道呢味道香啊路過的水泥大哥直接被吸引入了太喜真是白了</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#2</span>
+        <div class="vmetrics">
+          <b>10.0万</b><i>消耗(元)</i>
+          <b>3.42%</b><i>CTR</i>
+          <b>68.2%</b><i>3秒完播</i>
+          <b>99.1s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f1.jpg" alt="t5.0s"><span>5.0s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f2.jpg" alt="t17.7s"><span>17.7s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f3.jpg" alt="t30.4s"><span>30.4s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f4.jpg" alt="t43.2s"><span>43.2s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f5.jpg" alt="t55.9s"><span>55.9s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f6.jpg" alt="t68.7s"><span>68.7s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f7.jpg" alt="t81.4s"><span>81.4s</span></div><div class="frame"><img loading="lazy" src="frames/318bd2e61ed6/f8.jpg" alt="t94.1s"><span>94.1s</span></div></div>
+      <div class="ptags"><span class="ptag">效果承诺</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>這個最髒的</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 357字</summary><p>這個最髒的大姐的也髒得髒為什麼這麼髒挑戰擺攤一天幫一百位大爺大媽搞顏色剛開攤就由體育老師來挑戰只洗一隻手喝給十年洗頭起身你讓我幫你洗怕公平的可以先洗一下手試一下害羞吃有一點點體諒的吃到不膩我真的都看到了吃其他叔叔都加入戰鬥了大哥還是不信邪開始體驗洗臉天生黑被太陽曬黑臉還有幫媽點點都可以洗了洗得白嗎可以洗白怎麼那麼髒怎麼那麼髒不愧是外賣小哥當東西太多了那麼合得出來嗎農活大媽也精準入職這個最髒的大姐的也髒得一眼看看你這個肚頭髮洗出來都這麼髒對啊你看看這麼髒我的臉太髒了好評不斷體驗的人數也跟著蹭蹭上漲他說他從不洗臉要是能把他肚皮和臉洗白了他直接端合Ready go白白的肚皮擱淨效果簡直就是活廣告我的小攤直接被包圍了家人們我玩的就是真實家人們我現在已經百攤一年多了如果說你也想買這個七次白金銘藻的話你直接來我直播間</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#3</span>
+        <div class="vmetrics">
+          <b>6.7万</b><i>消耗(元)</i>
+          <b>2.51%</b><i>CTR</i>
+          <b>59.0%</b><i>3秒完播</i>
+          <b>198.7s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f1.jpg" alt="t9.9s"><span>9.9s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f2.jpg" alt="t35.5s"><span>35.5s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f3.jpg" alt="t61.0s"><span>61.0s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f4.jpg" alt="t86.6s"><span>86.6s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f5.jpg" alt="t112.1s"><span>112.1s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f6.jpg" alt="t137.7s"><span>137.7s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f7.jpg" alt="t163.2s"><span>163.2s</span></div><div class="frame"><img loading="lazy" src="frames/77bcf3cc1ad7/f8.jpg" alt="t188.8s"><span>188.8s</span></div></div>
+      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>昨天59你愛大不理</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>我今天給你推薦一個顏色</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 959字</summary><p>昨天59你愛大不理今天618撞上端午節現在我聯合我的品牌方給大家送福利了半價直接半價了為了感恩回饋一直支持我的粉絲朋友這次618我拿出一萬單半價名額給大家一年就這麼一次錯過可就沒有了以前呢就是帶著帽子出門後來刷到魚鎮這是現在今年不流行染頭髮了現在都用這種遮白髮神器在家洗洗頭就能蓋白髮就從這個夏天開始再讓你爸媽去理髮店不染白髮了因為從今天開始不用戴手套不用戴耳罩自己在家洗洗頭就能染髮的水晶染終於航空出事了你們看一下我們怎麼洗的啊這裡面如果是已經收到貨的不會用的節目們等一下你們可以跟著我們操作一遍就好了頭髮現在就洗好了再給大家看一下我們剛剛洗完了這個頭髮的一個情況就從這個新年開始歡迎讓你老公一起體驗這款染髮新品因為從今天開始不用戴手套不用戴耳罩洗洗頭就能夠染髮的親夫染航空出事了是誰跟你說不能一周染一次頭髮補一次根的那是因為你們用過這款這是專門為頻繁染髮的粉們設計的染膏美女你們兩個這頭髮真好看在哪兒燙的呀我們倆這我們倆這不是燙的呀我現在出門都會用一下這個遮白髮神器就省得每個月都要去補染頭髮了你在幹嘛我在染頭髮它這個黑不黑頭皮呀頭皮不黑耳朵不黑臉不黑手不黑你快笑我看質量看品質千萬不要用黑色去蓋你的白頭髮你記住了如果你今年已經四五十歲五六十歲有了大量白頭髮怎麼辦千萬不要用黑色我今天給你推薦一個顏色不要再去頻繁的去染髮了染髮的新技術帶了人染髮都用這個全新升級的第三代染髮膏這款染髮膏不用調不用對也不用你一根一根的去塗抹關鍵是價格還不貴人人都能用了錢我是基本上半個月就要染一次頭髮的主要是併角這個兩邊太快我以前用過很多染髮膏但是都沒有這個好雖然它有點小貴但貴在健康就是這個寶貝不用調不用配就這樣擠出來和洗頭一樣柔搓均勻再用清水洗掉顏色自然又亮麗這樣的染髮膏你用過嗎成手工製的高鐵不用調也不用對用法非常簡單咱們就這樣給它擠出來之後我們直接乾髮上頭去的柔搓就可以了就這樣給它柔一柔搓一搓乾髮去柔乾髮去搓再加咱們會洗頭就會染髮了而且你看它這種透明包裝是沒有安飾沒有上揚水的真正做到了不沾頭皮不上化質那咱們等一會兒用清水給它洗掉黑茶色染好了咱們來看頭皮是不是還是這樣白白的而且這個顏色染出來你看都是這樣自然亮麗顯白有氣質的關鍵是這個味道聞起來也是香香的咱們又白髮你看也全部都給你遮蓋住了想換髮色想這個白髮的哥姐嫁千萬別湊光</p></details>
+    </div></div>
+    </div>
+    </section>
+    <section class="ind" style="--c:#ff9f43">
+      <div class="indhd">
+        <h2><span class="dot"></span>食品饮料</h2>
+        <div class="indm">
+          <div><b>3</b><i>精选类目</i></div>
+          <div><b>9</b><i>视频</i></div>
+          <div><b>55.6万</b><i>消耗(元)</i></div>
+          <div><b>3.64%</b><i>均CTR</i></div>
+          <div><b>50.5%</b><i>均完播</i></div>
+        </div>
+      </div>
+      <div class="indsum">
+        <h4>本行业创意套路 TOP</h4>
+        <ul><li><b>促销利益</b> · 强促销利益点(限时/补贴/到手价) <em>(7条采用)</em></li><li><b>情感共鸣</b> · 情感/人群共鸣(家人/姐妹) <em>(7条采用)</em></li><li><b>权威背书</b> · 权威/专利/源头工厂背书 <em>(6条采用)</em></li><li><b>行动号召</b> · 明确转化引导(点击/小黄车) <em>(4条采用)</em></li><li><b>数字卖点</b> · 量化卖点(价格/天数/倍数) <em>(3条采用)</em></li></ul>
+      </div>
+      
+    <div class="cat">
+      <div class="cathd">
+        <h3>饮料冲调</h3>
+        <div class="catm">
+          <span>类目日耗 <b>90.3万</b></span>
+          <span>精选 <b>3</b> 条</span>
+          <span>均CTR <b>3.33%</b></span>
+          <span>均完播 <b>44.6%</b></span>
+        </div>
+        <div class="catpat"><span class="cp">情感共鸣 <em>×3</em></span><span class="cp">促销利益 <em>×2</em></span><span class="cp">权威背书 <em>×2</em></span></div>
+      </div>
+      <div class="vlist">
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#1</span>
+        <div class="vmetrics">
+          <b>23.1万</b><i>消耗(元)</i>
+          <b>2.71%</b><i>CTR</i>
+          <b>49.9%</b><i>3秒完播</i>
+          <b>90.5s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/3674491571d3/f1.jpg" alt="t4.5s"><span>4.5s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f2.jpg" alt="t16.2s"><span>16.2s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f3.jpg" alt="t27.8s"><span>27.8s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f4.jpg" alt="t39.4s"><span>39.4s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f5.jpg" alt="t51.1s"><span>51.1s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f6.jpg" alt="t62.7s"><span>62.7s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f7.jpg" alt="t74.4s"><span>74.4s</span></div><div class="frame"><img loading="lazy" src="frames/3674491571d3/f8.jpg" alt="t86.0s"><span>86.0s</span></div></div>
+      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>饿到第五天</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>甚至现在有活动还有酷泉</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 473字</summary><p>饿到第五天你的肉都开始缩减了饶到第二十天你的腿呀 腰啊 后背呀都开始变薄了摇摇牙坚持到第三十天姐妹走路都变得清明了我就是用的这个超模明星都在用的方法尝试一周期科学的福尔碧谷这个期间我们是不吃主食的只补充营养和善事夏天想充次一波的跟着超模福兵打卡一个周期把一日三餐换成这个多燕瘦的碧谷套餐这个产品我自己复购了多次了我自己不吃的产品我是不会推荐给大家我每天三餐会吃这个多燕瘦家的七日善事套餐周一我会先吃这个百合福林杏仁粉里面添加了福林杏仁 银耳 白云豆等等珍贵食材周二我就吃这个黑米苟起桑盛粉里面添加了黑桑盛 黑苟起 黑芝麻黑加伦等多种黑色营养食材周三开始吃这个紫薯玉米山药粉里面有甄叶 樱桃 紫秋葵 巴西梅等等接下来就是红枣玫瑰甜菜粉抹茶石螺 弯豆粉 黄瓜干菊小米粉合可党生乔麦粉今日善事套餐采用超微破壁 保留食材 高佛性每一餐都是精心配比 精选调配多燕瘦品牌直播间十一周年专场大放送这是多燕瘦携手冰糕给大家带来的重等专场之前要99亿盒的七日善事套餐现在它一单你会收到整整六盒正装的七日善事套餐还给你顺一个太阳花杯子甚至现在有活动还有酷泉赶紧去冲吧</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#2</span>
+        <div class="vmetrics">
+          <b>6.2万</b><i>消耗(元)</i>
+          <b>3.66%</b><i>CTR</i>
+          <b>49.8%</b><i>3秒完播</i>
+          <b>100.6s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f1.jpg" alt="t5.0s"><span>5.0s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f2.jpg" alt="t18.0s"><span>18.0s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f3.jpg" alt="t30.9s"><span>30.9s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f4.jpg" alt="t43.8s"><span>43.8s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f5.jpg" alt="t56.8s"><span>56.8s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f6.jpg" alt="t69.7s"><span>69.7s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f7.jpg" alt="t82.6s"><span>82.6s</span></div><div class="frame"><img loading="lazy" src="frames/01b85cad9d7a/f8.jpg" alt="t95.6s"><span>95.6s</span></div></div>
+      <div class="ptags"><span class="ptag">权威背书</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>姐妹們斷食到第三天</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>—</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 535字</summary><p>姐妹們斷食到第三天我差點被自己暈暈過去了但是我知道這算我做對了就是不管你是三天七天二十一天有的人像是那個發酵的酒灶味有的人像是熬葫蘿的中藥味甚至有的來自於大草原的姐妹身上有那種羊傷味這就是你幾十年堆積的那些終於找到了一個出口我就是用的這個超魔明星都在用的方法嘗試一週期科學的腐耳臂骨這個期間我們是不吃主食的只補充營養和膳食夏天想衝刺一波的跟著超魔胡冰打卡一個週期把一日三餐換成這個多燕瘦的壁骨套餐這個產品我自己付夠了多次了我自己不吃的產品我是不會推薦給大家它是由五十五種珍貴食材搭配製作七天七種口味百合伏林 杏仁粉黑米苟綺 桑聖粉紫薯山藥 玉米粉童早玫瑰甜菜粉抹茶十羅灣豆粉南瓜乾菊 小米粉可可黨生 喬麥粉美餐打開一包加入兩百克溫水就可以替代一餐週一就跟著冰哥吃這個白色包裝的裡面添加了伏林 杏仁 銀耳 木屋 白雲豆等等珍貴食材週二就跟著冰哥吃這個黑色包裝的裡面添加了黑桑聖 黑苟綺 黑芝麻 黑加倫很多種黑色營養食材週三就跟著冰哥吃這個紫色包裝的裡面添加了甄葉櫻桃果粉 紫秋葵粉阿西莓粉等等七日膳食套餐採用超微破壁保留食材高活性每一餐都是科學配比精選調配海原來貴到我都手的嘛現在胡冰帶來六號八題錢購活動期間拍一發六盒膳食套餐還送花花杯一旦到手這麼多現在來直播間搶真的不虧</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#3</span>
+        <div class="vmetrics">
+          <b>4.0万</b><i>消耗(元)</i>
+          <b>3.63%</b><i>CTR</i>
+          <b>33.9%</b><i>3秒完播</i>
+          <b>53.2s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f1.jpg" alt="t2.7s"><span>2.7s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f2.jpg" alt="t9.5s"><span>9.5s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f3.jpg" alt="t16.3s"><span>16.3s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f4.jpg" alt="t23.2s"><span>23.2s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f5.jpg" alt="t30.0s"><span>30.0s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f6.jpg" alt="t36.9s"><span>36.9s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f7.jpg" alt="t43.7s"><span>43.7s</span></div><div class="frame"><img loading="lazy" src="frames/21e466b5325f/f8.jpg" alt="t50.5s"><span>50.5s</span></div></div>
+      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>虎龟蜜被胡冰坑了</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>结果今天胡冰直接宣布</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 280字</summary><p>虎龟蜜被胡冰坑了刚在它店里买了七日膳食套餐前天还是拍一发四结果今天胡冰直接宣布多页数618提前购拍一发六再送这个好看的胖胖杯下次再买就不是这个价了99亿盒你不买也降了79亿盒你又不买也又降了昨天69亿盒你还不买我再降了现在胡冰发出最后通牒直播间全场一折拍一发六盒到手只要三位数不可能真的亏大我把自己真实在用的方法分享给大家我每天吃的就是这个多页数的七日膳食套餐是按着清调养的节奏进行的一盒里面有九种白色食材八种黑色食材八种紫色食材七种红色食材八种青色食材八种黄色食材七种棕色食材一共55种都是高鲜高蛋白的草本膳食都是按照科学配比搭配而成每餐你就跟着冰哥一起体验</p></details>
+    </div></div>
+    </div>
+    <div class="cat">
+      <div class="cathd">
+        <h3>普通膳食营养食品</h3>
+        <div class="catm">
+          <span>类目日耗 <b>58.1万</b></span>
+          <span>精选 <b>3</b> 条</span>
+          <span>均CTR <b>2.47%</b></span>
+          <span>均完播 <b>39.1%</b></span>
+        </div>
+        <div class="catpat"><span class="cp">促销利益 <em>×3</em></span><span class="cp">权威背书 <em>×2</em></span><span class="cp">情感共鸣 <em>×2</em></span><span class="cp">痛点开场 <em>×1</em></span></div>
+      </div>
+      <div class="vlist">
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#1</span>
+        <div class="vmetrics">
+          <b>5.2万</b><i>消耗(元)</i>
+          <b>3.53%</b><i>CTR</i>
+          <b>42.9%</b><i>3秒完播</i>
+          <b>34.4s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f1.jpg" alt="t1.7s"><span>1.7s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f2.jpg" alt="t6.1s"><span>6.1s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f3.jpg" alt="t10.6s"><span>10.6s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f4.jpg" alt="t15.0s"><span>15.0s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f5.jpg" alt="t19.4s"><span>19.4s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f6.jpg" alt="t23.9s"><span>23.9s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f7.jpg" alt="t28.3s"><span>28.3s</span></div><div class="frame"><img loading="lazy" src="frames/a7ab54393774/f8.jpg" alt="t32.7s"><span>32.7s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">权威背书</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>腐煤Q10为什么要买美国的</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>还有一分钱换购参展活动</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 199字</summary><p>腐煤Q10为什么要买美国的最近评论区里很多人在问这个问题其实原因很简单因为这个腐煤Q10就是获得了美国FDA和GMP双重认证的产品从它的成分技术到含量无不彰显品牌实力它可不是普通的腐煤Q10它是高含量的还原型腐煤Q10采用微生物发酵技术每一粒腐煤Q10含量都高达150毫克别看这小小一瓶可是足足两个月的用量不用再去托关系找代购了现在Folk品牌专属补贴还有一分钱换购参展活动多吞几瓶更划算千万别错误</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#2</span>
+        <div class="vmetrics">
+          <b>3.3万</b><i>消耗(元)</i>
+          <b>2.15%</b><i>CTR</i>
+          <b>39.9%</b><i>3秒完播</i>
+          <b>81.5s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f1.jpg" alt="t4.1s"><span>4.1s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f2.jpg" alt="t14.6s"><span>14.6s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f3.jpg" alt="t25.0s"><span>25.0s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f4.jpg" alt="t35.5s"><span>35.5s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f5.jpg" alt="t46.0s"><span>46.0s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f6.jpg" alt="t56.5s"><span>56.5s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f7.jpg" alt="t67.0s"><span>67.0s</span></div><div class="frame"><img loading="lazy" src="frames/74149505b1ca/f8.jpg" alt="t77.5s"><span>77.5s</span></div></div>
+      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>昨天買的對不起</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>618帶來的成分福利了</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 404字</summary><p>昨天買的對不起前天買的更對不起因為這618大促心福利又有折扣了這兩盒一模一樣的小藍瓶我再送你兩盒一模一樣的巴西莓果粉四盒一模一樣的小藍瓶我再送你兩盒一樣的巴西莓果粉還不夠這下我直接給你升級為大胖筒包裝了這到手180瓶的如果你這一年就只買這一次益勝軍那一定要趁這次送巴西莓果粉的時候買美食真的太讓人滿足了今天飽餐了一頓咱們每天必備的口福也別落下不翻後來個小藍瓶就這麼一掰一絲一刀補充好的益勝軍對我來說真的非常重要我們全家都在吃平時孩子愛辛辣攤涼對腸道傷害可不小萬一來配料表也很乾淨吃著也放心萬一來小藍瓶益勝軍裡面有400億超火能量軍從原本的6株升級到了10株超級軍株都是帶身份編號的好軍這個豐富度是我們嘗到非常喜歡的加料還不佳價裡頭的專利品賬軍Goldgat M520還被收錄進了中科院微生物研究所獨立鎖鮮艙包裝出門攜帶很方便一盒送家人一盒送朋友一盒送自己錯過傷心又錯過傷身這次不願意錯過618帶來的成分福利了</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#3</span>
+        <div class="vmetrics">
+          <b>2.8万</b><i>消耗(元)</i>
+          <b>1.72%</b><i>CTR</i>
+          <b>34.6%</b><i>3秒完播</i>
+          <b>41.8s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f1.jpg" alt="t2.1s"><span>2.1s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f2.jpg" alt="t7.5s"><span>7.5s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f3.jpg" alt="t12.8s"><span>12.8s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f4.jpg" alt="t18.2s"><span>18.2s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f5.jpg" alt="t23.6s"><span>23.6s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f6.jpg" alt="t29.0s"><span>29.0s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f7.jpg" alt="t34.4s"><span>34.4s</span></div><div class="frame"><img loading="lazy" src="frames/d4df1c37758a/f8.jpg" alt="t39.7s"><span>39.7s</span></div></div>
+      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>你就东方树也陪着它</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>免费送你三十颗小绿蓝细百</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 230字</summary><p>你就东方树也陪着它姐妹们就三天多一天的职业都不需要我要让你知道什么叫做真正的经验你好 一共八百不是九百你听我说嘛一千能给我就太划算了好吧 给你 给你你刚想说什么来着我想说万一蓝直播间重粉浮力拍下到手三十颗小蓝瓶免费送你三十颗小绿蓝细百用外浮贴三十条备素饮合两袋医生圆软糖快来直播间看看吧小蓝把利得要成粉浮力来喽百三十颗小蓝再给你三十颗小币搭配吃我还给你们争取到三盒备素饮和两袋医生圆软糖拍一单到手这么多吃过了就会选择卖一蓝口碑好还能卖出七亿瓶这款医生均很有实力</p></details>
+    </div></div>
+    </div>
+    <div class="cat">
+      <div class="cathd">
+        <h3>传统滋补品</h3>
+        <div class="catm">
+          <span>类目日耗 <b>36.1万</b></span>
+          <span>精选 <b>3</b> 条</span>
+          <span>均CTR <b>5.11%</b></span>
+          <span>均完播 <b>67.9%</b></span>
+        </div>
+        <div class="catpat"><span class="cp">行动号召 <em>×3</em></span><span class="cp">促销利益 <em>×2</em></span><span class="cp">情感共鸣 <em>×2</em></span><span class="cp">数字卖点 <em>×2</em></span></div>
+      </div>
+      <div class="vlist">
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#1</span>
+        <div class="vmetrics">
+          <b>5.7万</b><i>消耗(元)</i>
+          <b>3.68%</b><i>CTR</i>
+          <b>49.3%</b><i>3秒完播</i>
+          <b>48.3s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f1.jpg" alt="t2.4s"><span>2.4s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f2.jpg" alt="t8.6s"><span>8.6s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f3.jpg" alt="t14.8s"><span>14.8s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f4.jpg" alt="t21.0s"><span>21.0s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f5.jpg" alt="t27.3s"><span>27.3s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f6.jpg" alt="t33.5s"><span>33.5s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f7.jpg" alt="t39.7s"><span>39.7s</span></div><div class="frame"><img loading="lazy" src="frames/cdb0f806f4a2/f8.jpg" alt="t45.9s"><span>45.9s</span></div></div>
+      <div class="ptags"><span class="ptag">促销利益</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span><span class="ptag">数字卖点</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>一罐一罐再给大家加一罐</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>不是厂家搞活动</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 253字</summary><p>一罐一罐再给大家加一罐你要下个月再买这个老班长家的隔根粉那都划不来了正常你买一斤的价格今天厂家直播间大促都能带走五斤了老班长家的隔根粉今天拍一发五到手足足五大斤现在活动已经结束了很多家人入路续续都已经收到货了反馈相当的好都说特别的好吃还有的家人说没抢到想让我再上点库存我这又死皮赖脸好说歹说像厂家要来了这次你要再抢不到我也真的没办法了今天比之前的活动加量不加价到手是整整五大斤的就这个价格不是厂家搞活动你去外面连个一盒也买不来吧你要是30岁了40岁了那你一定要安排上跟着我的方法充泡满满的草本清香真的很满足</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#2</span>
+        <div class="vmetrics">
+          <b>2.9万</b><i>消耗(元)</i>
+          <b>2.69%</b><i>CTR</i>
+          <b>78.3%</b><i>3秒完播</i>
+          <b>57.6s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f1.jpg" alt="t2.9s"><span>2.9s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f2.jpg" alt="t10.3s"><span>10.3s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f3.jpg" alt="t17.7s"><span>17.7s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f4.jpg" alt="t25.1s"><span>25.1s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f5.jpg" alt="t32.5s"><span>32.5s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f6.jpg" alt="t39.9s"><span>39.9s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f7.jpg" alt="t47.3s"><span>47.3s</span></div><div class="frame"><img loading="lazy" src="frames/5a5126647cb1/f8.jpg" alt="t54.8s"><span>54.8s</span></div></div>
+      <div class="ptags"><span class="ptag">权威背书</span><span class="ptag">行动号召</span><span class="ptag">数字卖点</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>哪里有那么贵的酒争酒赛俗地方</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>来拍这个新链接</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 253字</summary><p>哪里有那么贵的酒争酒赛俗地方我就不明白了我们正品都是这样获争加实29.9元就发足足一袋500克你不买跑去网红中间商直播间买39.9元才发一袋500克的价格太高很不划算在哪买都是买价格亲民质量过关品质更有保障收到或支持适合满意了再留下你们之前买贵了的赶紧去退了来拍这个新链接同样的数量更低的价格29.9元足足给你们发一袋500克还给你们包邮送到家最后还要提醒大家市面上低于这个价格的千万别买酒争酒赛俗地方的成本怎么可能那么便宜何况还要加工包装作为厂家的我们甚至成本都不够你们买错了还得亏运费呢可一定要查量眼睛</p></details>
+    </div>
+    <div class="vcard">
+      <div class="vhead">
+        <span class="rk">#3</span>
+        <div class="vmetrics">
+          <b>2.5万</b><i>消耗(元)</i>
+          <b>8.97%</b><i>CTR</i>
+          <b>76.0%</b><i>3秒完播</i>
+          <b>105.3s</b><i>时长</i>
+        </div>
+      </div>
+      <div class="frames"><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f1.jpg" alt="t5.3s"><span>5.3s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f2.jpg" alt="t18.8s"><span>18.8s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f3.jpg" alt="t32.4s"><span>32.4s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f4.jpg" alt="t45.9s"><span>45.9s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f5.jpg" alt="t59.4s"><span>59.4s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f6.jpg" alt="t73.0s"><span>73.0s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f7.jpg" alt="t86.5s"><span>86.5s</span></div><div class="frame"><img loading="lazy" src="frames/d4b36afafd5f/f8.jpg" alt="t100.1s"><span>100.1s</span></div></div>
+      <div class="ptags"><span class="ptag">痛点开场</span><span class="ptag">促销利益</span><span class="ptag">权威背书</span><span class="ptag">行动号召</span><span class="ptag">情感共鸣</span></div>
+      <div class="script">
+        <div class="srow"><span class="slab hook">钩子</span><p>宁愿少吃一顿饭</p></div>
+        <div class="srow"><span class="slab cta">转化</span><p>这次活动</p></div>
+      </div>
+      <details class="asr"><summary>口播全文 · 575字</summary><p>宁愿少吃一顿饭也要买这个两位数拍一罐发三罐红构起原来都是要卖到199的今天199不要99不要就连79都不要了多少钱你自己点开看价格一定会惊讶到你手慢福利价格就没了告诉大家一个不好的消息源头价拍一发三罐的宁夏吊干构起今天可能要结束了啊这玩意太便宜了卖给你们我都在心疼着呢让你们新鲜艳念的吊干构起终于下来了你看这是精选的头一批的吊干果子这个构起比你买的普通构起好吃太多了因为它是在树上自然风干自然吊干的没有用任何的硫黄和盐的我自己家中的去年吃过的都知道它的口感很好吃而且营养价值也很高你要是等下个月再买这个吊干构起啊那都划不来了正常你买这么一罐的价格今天厂家活动都能让你带走三罐了姐妹们宁夏吊干构起买一罐送两罐到手足足三罐的活动快要到尾声了很多家人陆陆续续都已经收到货了反馈相当的好都说特别的好吃还有的家人说没抢到想让我在上点库存我这有好说歹说向厂家要来了这次你抓紧拼手速今天还是之前的活动拍一发三的活动就这个价格真的太划算了买一次够全家吃上好几个月宁夏吊干构起营养价值非常高如果有条件我建议中老年朋友每天坚持吃构起今天我们宁夏源头厂家持销没有中间商没有套路你买的就是正宗宁夏横夺起给您包游到家快一点还没下单的朋友们要抓紧时间了现在已经进入尾声了货我们都打包好装好了工人们也在佳节发货争取第一十年送到您手中这次活动你再想找到这么实惠的组合真的太少了太难了</p></details>
+    </div></div>
+    </div>
+    </section>
+
+  <div class="foot">本看板仅做创意脚本结构归纳，画面为视频关键帧抽样 · 口播由 ASR 自动转写</div>
+</div>
+</body></html>
