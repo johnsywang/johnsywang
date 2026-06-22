@@ -414,9 +414,25 @@ function colClass(col, value) {
 }
 function diagOpen(btn) {
   var q = btn.getAttribute('data-q') || '';
-  try { if (navigator.clipboard) navigator.clipboard.writeText(decodeURIComponent(q)); } catch (e) {}
+  var text = '';
+  try { text = decodeURIComponent(q); } catch (e) { text = q; }
+  try { if (navigator.clipboard) navigator.clipboard.writeText(text); } catch (e) {}
+  diagToast('已复制「' + text + '」，到 ChatBI 输入框按 Ctrl+V 粘贴即可');
   window.open('https://adata.woa.com/bi/chatbi?q=' + q + '&question=' + q + '&query=' + q, '_blank');
   return false;
+}
+function diagToast(msg) {
+  var t = document.getElementById('diagToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'diagToast';
+    t.style.cssText = 'position:fixed;left:50%;bottom:40px;transform:translateX(-50%);max-width:86%;background:rgba(29,111,224,.97);color:#fff;padding:12px 20px;border-radius:8px;font-size:14px;line-height:1.5;box-shadow:0 6px 24px rgba(0,0,0,.22);z-index:99999;text-align:center;opacity:0;transition:opacity .25s;pointer-events:none;';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  clearTimeout(t._diagTimer);
+  t._diagTimer = setTimeout(function(){ t.style.opacity = '0'; }, 4000);
 }
 function tableHTML(rows, columns) {
   if (!rows || !rows.length) return '<tbody><tr><td>暂无数据</td></tr></tbody>';
