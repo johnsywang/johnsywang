@@ -219,6 +219,71 @@
     .dev-row input { border: 1px solid var(--line); border-radius: 12px; padding: 10px; font: inherit; }
     .dev-row button, .dev-card button { border: 0; border-radius: 12px; padding: 10px 12px; font: inherit; cursor: pointer; background: rgba(23,32,51,.08); }
 
+    /* ===== tech-dark-theme v1 科技深色风覆盖层 ===== */
+    :root{
+      --paper:#070b16; --ink:#e8f1ff; --muted:#8da3c0;
+      --line:rgba(120,170,255,.14); --blue:#4d8dff; --green:#34e7a6;
+      --red:#ff6b81; --gold:#f5c451; --card:rgba(17,26,46,.66);
+      --shadow:0 18px 50px rgba(0,0,0,.5);
+      --serif:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif;
+    }
+    body{ color:var(--ink);
+      background:
+        radial-gradient(circle at 14% -2%, rgba(34,211,238,.16), transparent 30rem),
+        radial-gradient(circle at 88% 6%, rgba(77,141,255,.16), transparent 32rem),
+        linear-gradient(160deg,#070b16 0%, #0a1122 48%, #070d1a 100%); }
+    body::before{ opacity:.5;
+      background-image:linear-gradient(rgba(120,180,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(120,180,255,.05) 1px,transparent 1px); }
+    .sidebar{ background:rgba(11,18,34,.72); border-right:1px solid var(--line); }
+    .topbar{ background:rgba(15,23,42,.66); border:1px solid var(--line); box-shadow:0 0 0 1px rgba(77,141,255,.06),var(--shadow); }
+    .card{ border:1px solid rgba(90,150,255,.16); background:var(--card); box-shadow:0 0 0 1px rgba(34,211,238,.05),0 18px 44px rgba(0,0,0,.45); }
+    .pill,.date-select,.category-tabs button{ background:rgba(20,30,52,.7); color:var(--muted); border:1px solid var(--line); }
+    .date-select{ color:var(--ink); }
+    .nav a:hover,.nav a.active{ background:rgba(77,141,255,.14); color:#fff; box-shadow:inset 0 0 0 1px rgba(77,141,255,.3); }
+    .side-note{ background:rgba(15,23,42,.6); }
+    .brand-title{ color:var(--ink); }
+    .mark{ background:linear-gradient(135deg,#22d3ee,#4d8dff); color:#04101e; box-shadow:0 0 24px rgba(34,211,238,.45); }
+    .primary-btn,.category-tabs button.active,.auth-button{ background:linear-gradient(135deg,#22d3ee,#4d8dff); color:#04101e; border-color:transparent; }
+    .eyebrow,.report-link-title{ color:#22d3ee; }
+    .section h2,.client-name,.modal-side h3,.auth-title{ color:#fff; }
+    .metric-value,.report-metric-value{ color:#fff; text-shadow:0 0 22px rgba(34,211,238,.35); }
+    .mini-kpi,.product-meta div,.mini-kpi span{ background:transparent; }
+    .mini-kpi,.product-meta div{ background:rgba(34,211,238,.07); }
+    .link-badge{ background:#4d8dff; } .link-badge.shop{ background:#1bb6c1; }
+    .table-wrap,.md-table-wrap,.trend-chart{ background:rgba(12,20,38,.55); border:1px solid var(--line); }
+    th,td{ background:rgba(18,28,50,.7); border-bottom:1px solid rgba(120,170,255,.1); color:var(--ink); }
+    th{ background:rgba(34,211,238,.1); color:#bcd6ff; }
+    th.sticky-customer{ background:#0e1830; } td.sticky-customer{ background:#0b1426; color:#fff; }
+    .segment{ background:rgba(120,170,255,.1); }
+    .segment button.active,.ghost-btn:hover{ background:rgba(77,141,255,.22); color:#fff; }
+    .treemap{ background:#0a1122; border:1px solid var(--line); }
+    .cover,.cover-fallback{ background:linear-gradient(135deg,#0e1830,#10233f); }
+    .cover-fallback{ color:rgba(200,220,255,.82); }
+    .rank{ background:rgba(8,16,30,.86); color:#cfe2ff; }
+    .play-dot{ background:rgba(34,211,238,.85); color:#04101e; }
+    .product-name{ color:var(--ink); }
+    .risk{ background:rgba(255,107,129,.14); color:#ff8fa3; }
+    .report-chart-card,.report-card{ background:rgba(15,23,42,.6); border:1px solid var(--line); box-shadow:none; }
+    .report-card-title{ color:var(--ink); }
+    .report-card-title::after{ background:linear-gradient(to right,rgba(120,170,255,.25),transparent); }
+    .report-metric-block{ background:rgba(34,211,238,.05); border:1px solid var(--line); }
+    .report-link-title{ border-bottom:2px solid rgba(34,211,238,.4); }
+    .report-product-table td{ color:var(--ink)!important; }
+    .md-body{ color:#c6d6ee; }
+    .md-body blockquote{ background:rgba(34,211,238,.06); border-left:3px solid #22d3ee; color:#aebfd8; }
+    details.raw-details{ background:rgba(15,23,42,.55); }
+    details.raw-details>summary{ color:var(--ink); }
+    .modal-panel,.dev-card{ background:#0b1224; border:1px solid var(--line); color:var(--ink); box-shadow:0 40px 120px rgba(0,0,0,.7); }
+    .modal-close,.secondary-btn,.dev-row button,.dev-card button{ background:rgba(120,170,255,.14); color:var(--ink); }
+    .insight-box,.fake-filter{ background:rgba(34,211,238,.06); border:1px solid var(--line); }
+    .frame-btn{ background:rgba(20,30,52,.7); border:1px solid var(--line); color:var(--ink); }
+    .frame-btn span{ color:var(--muted); }
+    .auth-shell{ background:radial-gradient(circle at 28% 18%,rgba(34,211,238,.14),transparent 28rem),rgba(7,11,22,.82); }
+    .auth-card{ background:rgba(13,20,36,.94); border:1px solid var(--line); box-shadow:0 34px 90px rgba(0,0,0,.6); }
+    .auth-tabs{ background:rgba(120,170,255,.1); }
+    .auth-tab.active{ background:rgba(77,141,255,.22); color:#fff; }
+    .auth-field input,.auth-field select,.dev-row input{ background:rgba(10,17,32,.9); color:var(--ink); border:1px solid var(--line); }
+    .up{ color:#34e7a6; } .down{ color:#ff7d92; }
   </style>
 </head>
 <body class="auth-locked">
