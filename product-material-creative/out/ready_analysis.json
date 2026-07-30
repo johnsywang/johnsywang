@@ -1,0 +1,478 @@
+[
+  {
+    "cat": "饮料冲调",
+    "rank": "1",
+    "cost": 1603445.5,
+    "ctr": "3.3435",
+    "stem": "饮料冲调_01_8a03fdad",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\饮料冲调\\饮料冲调_01_8a03fdad\\f1_t5.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\饮料冲调\\饮料冲调_01_8a03fdad\\f3_t38.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\饮料冲调\\饮料冲调_01_8a03fdad\\f6_t88.5s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\饮料冲调\\饮料冲调_01_8a03fdad\\f8_t121.8s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "饮料冲调",
+    "rank": "2",
+    "cost": 1295635.47,
+    "ctr": "3.8963",
+    "stem": "饮料冲调_02_1b0449ba",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\饮料冲调\\饮料冲调_02_1b0449ba\\f1_t4.7s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\饮料冲调\\饮料冲调_02_1b0449ba\\f3_t35.2s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\饮料冲调\\饮料冲调_02_1b0449ba\\f6_t81.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\饮料冲调\\饮料冲调_02_1b0449ba\\f8_t111.6s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "面部洗护",
+    "rank": "1",
+    "cost": 1012626.85,
+    "ctr": "3.8115",
+    "stem": "面部洗护_01_2a5859e7",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\面部洗护\\面部洗护_01_2a5859e7\\f1_t2.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\面部洗护\\面部洗护_01_2a5859e7\\f3_t17.8s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\面部洗护\\面部洗护_01_2a5859e7\\f6_t41.0s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\面部洗护\\面部洗护_01_2a5859e7\\f8_t56.5s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "洗护清洁/除臭剂/纸品",
+    "rank": "1",
+    "cost": 869703.76,
+    "ctr": "2.4959",
+    "stem": "洗护清洁_除臭剂_纸品_01_9f3bdf37",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\洗护清洁_除臭剂_纸品\\洗护清洁_除臭剂_纸品_01_9f3bdf37\\f1_t6.0s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\洗护清洁_除臭剂_纸品\\洗护清洁_除臭剂_纸品_01_9f3bdf37\\f3_t45.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\洗护清洁_除臭剂_纸品\\洗护清洁_除臭剂_纸品_01_9f3bdf37\\f6_t104.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\洗护清洁_除臭剂_纸品\\洗护清洁_除臭剂_纸品_01_9f3bdf37\\f8_t143.8s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "面部洗护",
+    "rank": "2",
+    "cost": 814646.39,
+    "ctr": "2.1178",
+    "stem": "面部洗护_02_71ad4636",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\面部洗护\\面部洗护_02_71ad4636\\f1_t3.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\面部洗护\\面部洗护_02_71ad4636\\f3_t23.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\面部洗护\\面部洗护_02_71ad4636\\f6_t53.8s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\面部洗护\\面部洗护_02_71ad4636\\f8_t74.0s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "洗护清洁/除臭剂/纸品",
+    "rank": "2",
+    "cost": 717543.39,
+    "ctr": "1.9077",
+    "stem": "洗护清洁_除臭剂_纸品_02_04b06276",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\洗护清洁_除臭剂_纸品\\洗护清洁_除臭剂_纸品_02_04b06276\\f1_t3.8s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\洗护清洁_除臭剂_纸品\\洗护清洁_除臭剂_纸品_02_04b06276\\f3_t28.7s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\洗护清洁_除臭剂_纸品\\洗护清洁_除臭剂_纸品_02_04b06276\\f6_t66.0s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\洗护清洁_除臭剂_纸品\\洗护清洁_除臭剂_纸品_02_04b06276\\f8_t90.9s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "休闲食品",
+    "rank": "1",
+    "cost": 664831.19,
+    "ctr": "3.8261",
+    "stem": "休闲食品_01_4a237b6c",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\休闲食品\\休闲食品_01_4a237b6c\\f1_t5.0s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\休闲食品\\休闲食品_01_4a237b6c\\f3_t37.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\休闲食品\\休闲食品_01_4a237b6c\\f6_t86.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\休闲食品\\休闲食品_01_4a237b6c\\f8_t119.0s.jpg"
+    ],
+    "asr_ready": true
+  },
+  {
+    "cat": "医药非药械类",
+    "rank": "1",
+    "cost": 543583.21,
+    "ctr": "2.858",
+    "stem": "医药非药械类_01_79e821e3",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\医药非药械类\\医药非药械类_01_79e821e3\\f1_t2.5s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\医药非药械类\\医药非药械类_01_79e821e3\\f3_t19.2s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\医药非药械类\\医药非药械类_01_79e821e3\\f6_t44.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\医药非药械类\\医药非药械类_01_79e821e3\\f8_t60.7s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "保健滋补",
+    "rank": "1",
+    "cost": 494709.59,
+    "ctr": "7.754",
+    "stem": "保健滋补_01_99089b61",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\保健滋补\\保健滋补_01_99089b61\\f1_t7.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\保健滋补\\保健滋补_01_99089b61\\f3_t53.9s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\保健滋补\\保健滋补_01_99089b61\\f6_t124.0s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\保健滋补\\保健滋补_01_99089b61\\f8_t170.8s.jpg"
+    ],
+    "asr_ready": true
+  },
+  {
+    "cat": "头发洗护/造型",
+    "rank": "1",
+    "cost": 461540.71,
+    "ctr": "2.9997",
+    "stem": "头发洗护_造型_01_d8c7afe6",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\头发洗护_造型\\头发洗护_造型_01_d8c7afe6\\f1_t8.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\头发洗护_造型\\头发洗护_造型_01_d8c7afe6\\f3_t64.8s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\头发洗护_造型\\头发洗护_造型_01_d8c7afe6\\f6_t149.2s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\头发洗护_造型\\头发洗护_造型_01_d8c7afe6\\f8_t205.4s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "口腔洗护",
+    "rank": "1",
+    "cost": 458869.94,
+    "ctr": "1.7106",
+    "stem": "口腔洗护_01_433af2d2",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\口腔洗护\\口腔洗护_01_433af2d2\\f1_t2.7s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\口腔洗护\\口腔洗护_01_433af2d2\\f3_t20.3s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\口腔洗护\\口腔洗护_01_433af2d2\\f6_t46.7s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\口腔洗护\\口腔洗护_01_433af2d2\\f8_t64.3s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "保健滋补",
+    "rank": "2",
+    "cost": 437205.7,
+    "ctr": "2.4672",
+    "stem": "保健滋补_02_e056545d",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\保健滋补\\保健滋补_02_e056545d\\f1_t5.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\保健滋补\\保健滋补_02_e056545d\\f3_t42.5s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\保健滋补\\保健滋补_02_e056545d\\f6_t97.8s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\保健滋补\\保健滋补_02_e056545d\\f8_t134.6s.jpg"
+    ],
+    "asr_ready": true
+  },
+  {
+    "cat": "医药非药械类",
+    "rank": "2",
+    "cost": 406950.98,
+    "ctr": "2.9213",
+    "stem": "医药非药械类_02_320a9a2f",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\医药非药械类\\医药非药械类_02_320a9a2f\\f1_t2.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\医药非药械类\\医药非药械类_02_320a9a2f\\f3_t19.9s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\医药非药械类\\医药非药械类_02_320a9a2f\\f6_t45.9s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\医药非药械类\\医药非药械类_02_320a9a2f\\f8_t63.2s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "彩妆",
+    "rank": "1",
+    "cost": 404217.91,
+    "ctr": "2.2247",
+    "stem": "彩妆_01_162b5c00",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\彩妆\\彩妆_01_162b5c00\\f1_t2.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\彩妆\\彩妆_01_162b5c00\\f3_t18.0s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\彩妆\\彩妆_01_162b5c00\\f6_t41.5s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\彩妆\\彩妆_01_162b5c00\\f8_t57.2s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "头发洗护/造型",
+    "rank": "2",
+    "cost": 402175.49,
+    "ctr": "1.0869",
+    "stem": "头发洗护_造型_02_95f41460",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\头发洗护_造型\\头发洗护_造型_02_95f41460\\f1_t10.2s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\头发洗护_造型\\头发洗护_造型_02_95f41460\\f3_t77.2s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\头发洗护_造型\\头发洗护_造型_02_95f41460\\f6_t177.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\头发洗护_造型\\头发洗护_造型_02_95f41460\\f8_t244.5s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "茗茶",
+    "rank": "1",
+    "cost": 384488.41,
+    "ctr": "1.5871",
+    "stem": "茗茶_01_ec2c7d0c",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\茗茶\\茗茶_01_ec2c7d0c\\f1_t1.5s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\茗茶\\茗茶_01_ec2c7d0c\\f3_t11.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\茗茶\\茗茶_01_ec2c7d0c\\f6_t25.5s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\茗茶\\茗茶_01_ec2c7d0c\\f8_t35.1s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "内衣裤袜/睡衣/家居服",
+    "rank": "1",
+    "cost": 377177.42,
+    "ctr": "1.4616",
+    "stem": "内衣裤袜_睡衣_家居服_01_2328bd3f",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\内衣裤袜_睡衣_家居服\\内衣裤袜_睡衣_家居服_01_2328bd3f\\f1_t1.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\内衣裤袜_睡衣_家居服\\内衣裤袜_睡衣_家居服_01_2328bd3f\\f3_t10.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\内衣裤袜_睡衣_家居服\\内衣裤袜_睡衣_家居服_01_2328bd3f\\f6_t23.9s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\内衣裤袜_睡衣_家居服\\内衣裤袜_睡衣_家居服_01_2328bd3f\\f8_t32.9s.jpg"
+    ],
+    "asr_ready": true
+  },
+  {
+    "cat": "传统滋补品",
+    "rank": "1",
+    "cost": 376442.65,
+    "ctr": "6.0064",
+    "stem": "传统滋补品_01_12cefd30",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\传统滋补品\\传统滋补品_01_12cefd30\\f1_t5.2s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\传统滋补品\\传统滋补品_01_12cefd30\\f3_t39.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\传统滋补品\\传统滋补品_01_12cefd30\\f6_t90.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\传统滋补品\\传统滋补品_01_12cefd30\\f8_t124.8s.jpg"
+    ],
+    "asr_ready": true
+  },
+  {
+    "cat": "厨房用具",
+    "rank": "1",
+    "cost": 372288.16,
+    "ctr": "4.4664",
+    "stem": "厨房用具_01_27fbf938",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\厨房用具\\厨房用具_01_27fbf938\\f1_t7.2s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\厨房用具\\厨房用具_01_27fbf938\\f3_t54.9s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\厨房用具\\厨房用具_01_27fbf938\\f6_t126.3s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\厨房用具\\厨房用具_01_27fbf938\\f8_t173.9s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "普通膳食营养食品",
+    "rank": "1",
+    "cost": 371694.55,
+    "ctr": "3.327",
+    "stem": "普通膳食营养食品_01_aa1d7da9",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\普通膳食营养食品\\普通膳食营养食品_01_aa1d7da9\\f1_t3.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\普通膳食营养食品\\普通膳食营养食品_01_aa1d7da9\\f3_t27.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\普通膳食营养食品\\普通膳食营养食品_01_aa1d7da9\\f6_t62.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\普通膳食营养食品\\普通膳食营养食品_01_aa1d7da9\\f8_t86.0s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "彩妆",
+    "rank": "2",
+    "cost": 363935.81,
+    "ctr": "3.0257",
+    "stem": "彩妆_02_dce933f8",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\彩妆\\彩妆_02_dce933f8\\f1_t8.5s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\彩妆\\彩妆_02_dce933f8\\f3_t64.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\彩妆\\彩妆_02_dce933f8\\f6_t148.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\彩妆\\彩妆_02_dce933f8\\f8_t204.0s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "传统滋补品",
+    "rank": "2",
+    "cost": 356482.33,
+    "ctr": "5.6754",
+    "stem": "传统滋补品_02_84d2d58c",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\传统滋补品\\传统滋补品_02_84d2d58c\\f1_t4.8s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\传统滋补品\\传统滋补品_02_84d2d58c\\f3_t36.3s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\传统滋补品\\传统滋补品_02_84d2d58c\\f6_t83.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\传统滋补品\\传统滋补品_02_84d2d58c\\f8_t115.1s.jpg"
+    ],
+    "asr_ready": true
+  },
+  {
+    "cat": "清洁工具",
+    "rank": "1",
+    "cost": 352842.73,
+    "ctr": "4.2212",
+    "stem": "清洁工具_01_0b9344ed",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\清洁工具\\清洁工具_01_0b9344ed\\f1_t8.2s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\清洁工具\\清洁工具_01_0b9344ed\\f3_t61.8s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\清洁工具\\清洁工具_01_0b9344ed\\f6_t142.3s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\清洁工具\\清洁工具_01_0b9344ed\\f8_t196.0s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "生肉/肉制品",
+    "rank": "1",
+    "cost": 348517.08,
+    "ctr": "2.519",
+    "stem": "生肉_肉制品_01_c36b9e42",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\生肉_肉制品\\生肉_肉制品_01_c36b9e42\\f1_t6.0s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\生肉_肉制品\\生肉_肉制品_01_c36b9e42\\f3_t45.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\生肉_肉制品\\生肉_肉制品_01_c36b9e42\\f6_t103.9s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\生肉_肉制品\\生肉_肉制品_01_c36b9e42\\f8_t143.0s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "生活电器",
+    "rank": "1",
+    "cost": 337785.72,
+    "ctr": "2.7146",
+    "stem": "生活电器_01_1d720c6a",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\生活电器\\生活电器_01_1d720c6a\\f1_t3.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\生活电器\\生活电器_01_1d720c6a\\f3_t27.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\生活电器\\生活电器_01_1d720c6a\\f6_t63.0s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\生活电器\\生活电器_01_1d720c6a\\f8_t86.7s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "家居饰品",
+    "rank": "1",
+    "cost": 332023.67,
+    "ctr": "1.6974",
+    "stem": "家居饰品_01_d88a7170",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\家居饰品\\家居饰品_01_d88a7170\\f1_t2.7s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\家居饰品\\家居饰品_01_d88a7170\\f3_t20.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\家居饰品\\家居饰品_01_d88a7170\\f6_t47.3s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\家居饰品\\家居饰品_01_d88a7170\\f8_t65.2s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "生肉/肉制品",
+    "rank": "2",
+    "cost": 320421.05,
+    "ctr": "2.5703",
+    "stem": "生肉_肉制品_02_28d71b20",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\生肉_肉制品\\生肉_肉制品_02_28d71b20\\f1_t5.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\生肉_肉制品\\生肉_肉制品_02_28d71b20\\f3_t38.8s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\生肉_肉制品\\生肉_肉制品_02_28d71b20\\f6_t89.2s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\生肉_肉制品\\生肉_肉制品_02_28d71b20\\f8_t122.8s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "内衣裤袜/睡衣/家居服",
+    "rank": "2",
+    "cost": 319898.18,
+    "ctr": "1.1411",
+    "stem": "内衣裤袜_睡衣_家居服_02_df203097",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\内衣裤袜_睡衣_家居服\\内衣裤袜_睡衣_家居服_02_df203097\\f1_t2.5s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\内衣裤袜_睡衣_家居服\\内衣裤袜_睡衣_家居服_02_df203097\\f3_t19.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\内衣裤袜_睡衣_家居服\\内衣裤袜_睡衣_家居服_02_df203097\\f6_t44.0s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\内衣裤袜_睡衣_家居服\\内衣裤袜_睡衣_家居服_02_df203097\\f8_t60.6s.jpg"
+    ],
+    "asr_ready": true
+  },
+  {
+    "cat": "调味品/果酱/沙拉",
+    "rank": "1",
+    "cost": 311376.42,
+    "ctr": "2.5762",
+    "stem": "调味品_果酱_沙拉_01_7591c69a",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\调味品_果酱_沙拉\\调味品_果酱_沙拉_01_7591c69a\\f1_t11.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\调味品_果酱_沙拉\\调味品_果酱_沙拉_01_7591c69a\\f2_t47.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\调味品_果酱_沙拉\\调味品_果酱_沙拉_01_7591c69a\\f3_t84.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\调味品_果酱_沙拉\\调味品_果酱_沙拉_01_7591c69a\\f4_t120.6s.jpg"
+    ],
+    "asr_ready": false
+  },
+  {
+    "cat": "休闲食品",
+    "rank": "2",
+    "cost": 300525.23,
+    "ctr": "2.3751",
+    "stem": "休闲食品_02_10809823",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\休闲食品\\休闲食品_02_10809823\\f1_t9.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\休闲食品\\休闲食品_02_10809823\\f2_t44.8s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\休闲食品\\休闲食品_02_10809823\\f4_t115.2s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\休闲食品\\休闲食品_02_10809823\\f5_t150.4s.jpg"
+    ],
+    "asr_ready": true
+  },
+  {
+    "cat": "个护健康",
+    "rank": "1",
+    "cost": 200443.08,
+    "ctr": "1.7383",
+    "stem": "个护健康_01_12621ef3",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\个护健康\\个护健康_01_12621ef3\\f1_t4.2s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\个护健康\\个护健康_01_12621ef3\\f2_t19.3s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\个护健康\\个护健康_01_12621ef3\\f4_t49.7s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\个护健康\\个护健康_01_12621ef3\\f5_t64.9s.jpg"
+    ],
+    "asr_ready": true
+  },
+  {
+    "cat": "中小型健身器材",
+    "rank": "1",
+    "cost": 157026.49,
+    "ctr": "1.3638",
+    "stem": "中小型健身器材_01_9b816f35",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\中小型健身器材\\中小型健身器材_01_9b816f35\\f1_t6.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\中小型健身器材\\中小型健身器材_01_9b816f35\\f2_t29.9s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\中小型健身器材\\中小型健身器材_01_9b816f35\\f4_t76.9s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\中小型健身器材\\中小型健身器材_01_9b816f35\\f5_t100.4s.jpg"
+    ],
+    "asr_ready": true
+  },
+  {
+    "cat": "3C数码配件",
+    "rank": "1",
+    "cost": 95607.32,
+    "ctr": "2.1293",
+    "stem": "3C数码配件_01_e10d6d43",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\3C数码配件\\3C数码配件_01_e10d6d43\\f1_t1.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\3C数码配件\\3C数码配件_01_e10d6d43\\f2_t7.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\3C数码配件\\3C数码配件_01_e10d6d43\\f4_t19.6s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\3C数码配件\\3C数码配件_01_e10d6d43\\f5_t25.6s.jpg"
+    ],
+    "asr_ready": true
+  },
+  {
+    "cat": "人文社科",
+    "rank": "1",
+    "cost": 94700.86,
+    "ctr": "2.7081",
+    "stem": "人文社科_01_7f18fdaf",
+    "pick_frames": [
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\人文社科\\人文社科_01_7f18fdaf\\f1_t8.4s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\人文社科\\人文社科_01_7f18fdaf\\f2_t39.1s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\人文社科\\人文社科_01_7f18fdaf\\f4_t100.5s.jpg",
+      "C:\\Users\\johnsywang\\Downloads\\商品素材_analysis\\frames\\人文社科\\人文社科_01_7f18fdaf\\f5_t131.1s.jpg"
+    ],
+    "asr_ready": true
+  }
+]
