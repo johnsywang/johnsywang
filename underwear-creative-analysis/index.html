@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>内衣三品类创意黄金公式分析报告</title>
+<meta name="description" content="基于 300 条去重后高消耗素材的内衣广告创意结构分析，含 19 条黄金公式与可落地脚本">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#0d0f14;color:#e8eaf0;line-height:1.7;font-size:15px}
+a{color:inherit;text-decoration:none}
+.nav{position:sticky;top:0;z-index:99;background:rgba(13,15,20,.96);backdrop-filter:blur(12px);border-bottom:1px solid #232734;padding:0 28px;display:flex;align-items:center;gap:4px;height:56px;overflow-x:auto}
+.nav .brand{font-weight:700;font-size:15px;color:#fff;margin-right:22px;white-space:nowrap}
+.nav .brand span{color:#ff5c8a}
+.nav a{padding:7px 16px;border-radius:8px;font-size:14px;color:#8b93a7;white-space:nowrap;transition:.15s}
+.nav a:hover{background:#1a1e29;color:#e8eaf0}
+.nav a.on{background:#ff5c8a;color:#fff;font-weight:600}
+.wrap{max-width:1240px;margin:0 auto;padding:34px 28px 90px}
+.hero{padding:38px 0 26px;border-bottom:1px solid #232734;margin-bottom:32px}
+.hero h1{font-size:34px;font-weight:800;letter-spacing:-.5px;margin-bottom:12px}
+.hero h1 em{font-style:normal;color:#ff5c8a}
+.hero p{color:#8b93a7;font-size:15px;max-width:900px}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px;margin:24px 0 8px}
+.kpi div{background:#151925;border:1px solid #232734;border-radius:12px;padding:16px 18px}
+.kpi .v{font-size:25px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.kpi .l{font-size:12px;color:#7b84989;color:#7b8498;margin-top:3px}
+.kpi .s{font-size:11px;color:#5b6478;margin-top:2px}
+h2{font-size:22px;font-weight:800;margin:44px 0 8px;display:flex;align-items:center;gap:10px}
+h2:before{content:'';width:4px;height:20px;background:#ff5c8a;border-radius:2px}
+.sub{color:#8b93a7;font-size:14px;margin-bottom:20px}
+.card{background:#151925;border:1px solid #232734;border-radius:14px;padding:22px 24px;margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;padding:10px 12px;color:#8b93a7;font-weight:600;border-bottom:1px solid #2a2f3d;font-size:12.5px;white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid #1c2029}
+tr:hover td{background:#191d29}
+.idx{display:inline-block;min-width:44px;text-align:center;padding:2px 7px;border-radius:5px;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.up{background:rgba(52,199,123,.16);color:#34c77b}
+.dn{background:rgba(255,92,92,.14);color:#ff6b6b}
+.mid{background:#22273300;color:#7b8498}
+.bar{height:5px;background:#232734;border-radius:3px;overflow:hidden;min-width:52px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#ff5c8a,#ff8fb0);border-radius:3px}
+.fm{background:#151925;border:1px solid #232734;border-radius:16px;margin-bottom:26px;overflow:hidden}
+.fm-h{padding:22px 26px 18px;background:linear-gradient(135deg,rgba(255,92,138,.10),rgba(255,92,138,0));border-bottom:1px solid #232734}
+.fm-tt{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.fm-id{background:#ff5c8a;color:#fff;font-size:12px;font-weight:800;padding:3px 10px;border-radius:6px;letter-spacing:.5px}
+.fm-n{font-size:21px;font-weight:800}
+.fm-role{font-size:12px;padding:3px 10px;border-radius:6px;background:rgba(94,163,255,.16);color:#5ea3ff;font-weight:700}
+.fm-tag{color:#ffb0c7;font-size:14.5px;margin-top:9px;font-weight:500}
+.fm-rd{color:#8b93a7;font-size:13px;margin-top:6px}
+.fm-b{padding:22px 26px}
+.fm-why{color:#c3cadb;font-size:14px;background:#11141d;border-left:3px solid #ff5c8a;padding:13px 17px;border-radius:0 9px 9px 0;margin-bottom:20px}
+.mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:9px;margin-bottom:20px}
+.mini div{background:#11141d;border:1px solid #232734;border-radius:9px;padding:10px 13px}
+.mini .v{font-size:18px;font-weight:800}
+.mini .l{font-size:11px;color:#7b8498;margin-top:1px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+.blk-t{font-size:13px;font-weight:800;color:#ff5c8a;letter-spacing:.5px;margin-bottom:11px;text-transform:uppercase}
+.tl{list-style:none}
+.tl li{display:flex;gap:12px;padding:8px 0;border-bottom:1px dashed #232734;font-size:13.5px}
+.tl li:last-child{border:0}
+.tl b{color:#5ea3ff;min-width:52px;font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:1px}
+.tk{list-style:none}
+.tk li{position:relative;padding:7px 0 7px 20px;font-size:13.5px;color:#c3cadb;border-bottom:1px dashed #232734}
+.tk li:last-child{border:0}
+.tk li:before{content:'';position:absolute;left:2px;top:15px;width:6px;height:6px;background:#34c77b;border-radius:50%}
+.mat{margin-top:22px}
+.mat-h{font-size:13px;font-weight:800;color:#ff5c8a;margin-bottom:12px;letter-spacing:.5px}
+.m{display:flex;gap:14px;background:#11141d;border:1px solid #232734;border-radius:11px;padding:12px;margin-bottom:10px;transition:.15s}
+.m:hover{border-color:#ff5c8a;background:#161a26}
+.m img{width:300px;height:auto;border-radius:7px;flex-shrink:0;object-fit:cover;align-self:flex-start}
+.m-b{flex:1;min-width:0}
+.m-t{font-size:13.5px;font-weight:600;margin-bottom:7px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.m-m{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.m-m span{font-size:11.5px;color:#7b8498}
+.m-m b{display:block;font-size:16px;color:#fff;font-weight:800;font-variant-numeric:tabular-nums}
+.m-m b.g{color:#34c77b}
+.m-a{font-size:12.5px;color:#8b93a7;background:#0d0f14;border-radius:6px;padding:7px 10px;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.m-tg{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
+.m-tg i{font-style:normal;font-size:11px;background:#1e2331;color:#9aa3b8;padding:2px 8px;border-radius:5px}
+.play{display:inline-flex;align-items:center;gap:6px;background:#ff5c8a;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:7px;transition:.15s}
+.play:hover{background:#ff3d74}
+.warn{background:rgba(255,170,60,.08);border:1px solid rgba(255,170,60,.28);border-radius:12px;padding:16px 20px;margin-bottom:14px}
+.warn b{color:#ffaa3c}
+.av{display:flex;gap:14px;padding:12px 0;border-bottom:1px dashed #232734;align-items:flex-start}
+.av:last-child{border:0}
+.av .n{font-weight:700;font-size:14px;min-width:220px;color:#ff8fb0}
+.av .d{font-size:12.5px;color:#ff6b6b;min-width:250px;font-weight:600}
+.av .r{font-size:13px;color:#8b93a7;flex:1}
+.tax{background:#151925;border:1px solid #232734;border-radius:14px;overflow:hidden;margin-bottom:16px}
+.tax-h{padding:15px 22px;background:linear-gradient(90deg,rgba(255,92,138,.12),transparent);font-size:16px;font-weight:800;border-bottom:1px solid #232734;display:flex;align-items:center;gap:10px}
+.tax-h em{font-style:normal;font-size:11px;background:#ff5c8a;color:#fff;padding:2px 8px;border-radius:5px}
+.tax-b{padding:6px 22px 16px}
+.tax-r{padding:14px 0;border-bottom:1px dashed #232734}
+.tax-r:last-child{border:0}
+.tax-n{font-size:14.5px;font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.tax-n em{font-style:normal;font-size:11px;color:#5ea3ff;background:rgba(94,163,255,.14);padding:2px 8px;border-radius:5px;font-weight:700}
+.tax-d{font-size:12.5px;color:#7b8498;margin-bottom:8px}
+.tax-v{display:flex;gap:6px;flex-wrap:wrap}
+.tax-v i{font-style:normal;font-size:12px;background:#1e2331;color:#c3cadb;padding:3px 10px;border-radius:6px}
+.tax-v i.hot{background:rgba(52,199,123,.16);color:#34c77b;font-weight:600}
+.tax-v i.cold{background:rgba(255,92,92,.12);color:#ff6b6b}
+.note{font-size:12.5px;color:#5b6478;margin-top:26px;padding-top:18px;border-top:1px solid #232734;line-height:1.9}
+.lg{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:#7b8498;margin-bottom:14px}
+.lg span{display:flex;align-items:center;gap:5px}
+.dot{width:9px;height:9px;border-radius:3px;display:inline-block}
+
+.pc{display:flex;align-items:center;gap:22px;background:#151925;border:1px solid #232734;
+border-radius:16px;padding:24px 26px;margin-bottom:14px;transition:.18s}
+.pc:hover{border-color:#ff5c8a;background:#191d2a;transform:translateX(4px)}
+.pc-n{font-size:34px;font-weight:800;color:#2a2f3d;font-variant-numeric:tabular-nums}
+.pc-b{flex:1;min-width:0}
+.pc-t{font-size:21px;font-weight:800;margin-bottom:4px}
+.pc-d{font-size:13.5px;color:#8b93a7;margin-bottom:12px}
+.pc-m{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:11px}
+.pc-m span{font-size:12px;color:#7b8498}
+.pc-m b{color:#fff;font-size:14.5px;font-weight:800}
+.pc-tg{display:flex;gap:6px;flex-wrap:wrap}
+.pc-tg i{font-style:normal;font-size:11.5px;background:#1e2331;color:#9aa3b8;padding:3px 10px;border-radius:6px}
+.pc-a{font-size:22px;color:#3b4152}
+.pc:hover .pc-a{color:#ff5c8a}
+.st{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:26px 0}
+.st div{background:#151925;border:1px solid #232734;border-radius:12px;padding:18px 20px}
+.st .v{font-size:26px;font-weight:800;color:#fff}
+.st .l{font-size:12px;color:#7b8498;margin-top:3px}
+.fl{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.fl div{flex:1;min-width:220px;background:#11141d;border:1px solid #232734;border-radius:11px;padding:15px 18px}
+.fl b{display:block;font-size:13.5px;color:#ff8fb0;margin-bottom:5px}
+.fl p{font-size:12.5px;color:#8b93a7;line-height:1.75}
+</style></head><body>
+<div class="wrap" style="max-width:1000px">
+<div class="hero" style="border:0;padding-top:52px">
+<h1>内衣三品类<em>创意黄金公式</em>分析报告</h1>
+<p style="margin-top:14px">对美肤衣、保暖背心、保暖裤/打底裤三个品类的高消耗广告素材做逐帧视觉解析与口播转写，
+经两层去重后归纳出 19 条可复制的创意结构，每条配分镜脚本、剪辑要点与可播放的代表素材。</p>
+<div class="st">
+<div><div class="v">3</div><div class="l">分析品类</div></div>
+<div><div class="v">300</div><div class="l">去重后深度分析素材</div></div>
+<div><div class="v">235</div><div class="l">独立创意套路簇</div></div>
+<div><div class="v">¥3119万</div><div class="l">覆盖消耗</div></div>
+<div><div class="v">19</div><div class="l">黄金公式</div></div>
+<div><div class="v">5×12</div><div class="l">标签体系（110 枚举值）</div></div>
+</div></div>
+
+<h2>分品类报告</h2>
+<div class="sub">点击进入，每页含完整公式、分镜脚本与代表素材（可直接播放原视频）</div>
+<a class="pc" href="01-meifuyi.html">
+<div class="pc-n">01</div>
+<div class="pc-b">
+<div class="pc-t">美肤衣</div>
+<div class="pc-d">玻尿酸养肤 · 极致轻薄 · 秋衣外露痛点</div>
+<div class="pc-m">
+<span><b>6</b> 条公式</span>
+<span><b>100</b> 条素材</span>
+<span><b>¥848万</b> 消耗</span>
+<span>CTR <b>3.09%</b></span>
+</div>
+<div class="pc-tg"><i>退单促销局</i><i>打假正版局</i><i>长尾创新局</i></div>
+</div>
+<div class="pc-a">→</div></a><a class="pc" href="02-beixin.html">
+<div class="pc-n">02</div>
+<div class="pc-b">
+<div class="pc-t">保暖背心</div>
+<div class="pc-d">免穿文胸 · 形体管理 · AI 情感短剧</div>
+<div class="pc-m">
+<span><b>6</b> 条公式</span>
+<span><b>100</b> 条素材</span>
+<span><b>¥745万</b> 消耗</span>
+<span>CTR <b>2.99%</b></span>
+</div>
+<div class="pc-tg"><i>变装反差短剧局</i><i>AI情感短剧局</i><i>胸型焦虑局</i></div>
+</div>
+<div class="pc-a">→</div></a><a class="pc" href="03-kuzhuang.html">
+<div class="pc-n">03</div>
+<div class="pc-b">
+<div class="pc-t">保暖裤 / 打底裤</div>
+<div class="pc-d">真假光腿 · 男士秋裤 · 德绒厚实</div>
+<div class="pc-m">
+<span><b>7</b> 条公式</span>
+<span><b>100</b> 条素材</span>
+<span><b>¥1527万</b> 消耗</span>
+<span>CTR <b>3.55%</b></span>
+</div>
+<div class="pc-tg"><i>入冬紧迫感局</i><i>街头自证反质疑局</i><i>真假光腿双人对峙局</i></div>
+</div>
+<div class="pc-a">→</div></a>
+
+<a class="pc" href="04-taxonomy.html" style="border-color:#2f3648">
+<div class="pc-n">04</div>
+<div class="pc-b">
+<div class="pc-t">整合标签体系与跨类目结论</div>
+<div class="pc-d">5 大维度 × 12 个二级标签 · 8 条跨类目核心结论 · 落地执行配比建议</div>
+<div class="pc-m"><span><b>12</b> 个标签维度</span><span><b>110</b> 个枚举值</span>
+<span><b>8</b> 条核心结论</span></div>
+</div><div class="pc-a">→</div></a>
+
+<h2>方法说明</h2>
+<div class="fl">
+<div><b>① 两层去重</b><p>先按前 15 秒关键帧感知哈希（dHash）比对，剔除同一素材的重复投放 URL；
+再按口播话术相似度聚类，识别出真实的独立创意变体。每类目最终保留消耗 TOP100。</p></div>
+<div><b>② 内容解析</b><p>faster-whisper 转写口播、RapidOCR 提取屏幕字幕、OpenCV 计算画面统计特征。
+剧情类长素材额外拉长到 40 秒重新解析，因为 15 秒窗口无法识别其真实结构。</p></div>
+<div><b>③ 唯一归属</b><p>每条素材只归属一个公式，不跨公式重复出现。代表素材每个套路簇只取 1 条，
+严格匹配不足 5 条时如实少列，不强行凑数。</p></div>
+</div>
+
+<div class="note">
+指标口径：CTR、3 秒完播率、平均播放时长均为素材 URL 全周期数据；
+指数 = 该公式均值 ÷ 类目均值 × 100，≥110 为跑赢、≤90 为跑输。<br>
+口播文本由 ASR 自动转写并按行业语义人工校正专业术语，仍可能存在个别识别误差，以视频原片为准。<br>
+本报告仅用于创意方法研究，素材版权归各品牌方所有。生成日期：2026-09-04
+</div></div></body></html>

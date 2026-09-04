@@ -1,0 +1,464 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>整合标签体系与跨类目结论 | 内衣素材分析</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#0d0f14;color:#e8eaf0;line-height:1.7;font-size:15px}
+a{color:inherit;text-decoration:none}
+.nav{position:sticky;top:0;z-index:99;background:rgba(13,15,20,.96);backdrop-filter:blur(12px);border-bottom:1px solid #232734;padding:0 28px;display:flex;align-items:center;gap:4px;height:56px;overflow-x:auto}
+.nav .brand{font-weight:700;font-size:15px;color:#fff;margin-right:22px;white-space:nowrap}
+.nav .brand span{color:#ff5c8a}
+.nav a{padding:7px 16px;border-radius:8px;font-size:14px;color:#8b93a7;white-space:nowrap;transition:.15s}
+.nav a:hover{background:#1a1e29;color:#e8eaf0}
+.nav a.on{background:#ff5c8a;color:#fff;font-weight:600}
+.wrap{max-width:1240px;margin:0 auto;padding:34px 28px 90px}
+.hero{padding:38px 0 26px;border-bottom:1px solid #232734;margin-bottom:32px}
+.hero h1{font-size:34px;font-weight:800;letter-spacing:-.5px;margin-bottom:12px}
+.hero h1 em{font-style:normal;color:#ff5c8a}
+.hero p{color:#8b93a7;font-size:15px;max-width:900px}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px;margin:24px 0 8px}
+.kpi div{background:#151925;border:1px solid #232734;border-radius:12px;padding:16px 18px}
+.kpi .v{font-size:25px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.kpi .l{font-size:12px;color:#7b84989;color:#7b8498;margin-top:3px}
+.kpi .s{font-size:11px;color:#5b6478;margin-top:2px}
+h2{font-size:22px;font-weight:800;margin:44px 0 8px;display:flex;align-items:center;gap:10px}
+h2:before{content:'';width:4px;height:20px;background:#ff5c8a;border-radius:2px}
+.sub{color:#8b93a7;font-size:14px;margin-bottom:20px}
+.card{background:#151925;border:1px solid #232734;border-radius:14px;padding:22px 24px;margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;padding:10px 12px;color:#8b93a7;font-weight:600;border-bottom:1px solid #2a2f3d;font-size:12.5px;white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid #1c2029}
+tr:hover td{background:#191d29}
+.idx{display:inline-block;min-width:44px;text-align:center;padding:2px 7px;border-radius:5px;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.up{background:rgba(52,199,123,.16);color:#34c77b}
+.dn{background:rgba(255,92,92,.14);color:#ff6b6b}
+.mid{background:#22273300;color:#7b8498}
+.bar{height:5px;background:#232734;border-radius:3px;overflow:hidden;min-width:52px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#ff5c8a,#ff8fb0);border-radius:3px}
+.fm{background:#151925;border:1px solid #232734;border-radius:16px;margin-bottom:26px;overflow:hidden}
+.fm-h{padding:22px 26px 18px;background:linear-gradient(135deg,rgba(255,92,138,.10),rgba(255,92,138,0));border-bottom:1px solid #232734}
+.fm-tt{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.fm-id{background:#ff5c8a;color:#fff;font-size:12px;font-weight:800;padding:3px 10px;border-radius:6px;letter-spacing:.5px}
+.fm-n{font-size:21px;font-weight:800}
+.fm-role{font-size:12px;padding:3px 10px;border-radius:6px;background:rgba(94,163,255,.16);color:#5ea3ff;font-weight:700}
+.fm-tag{color:#ffb0c7;font-size:14.5px;margin-top:9px;font-weight:500}
+.fm-rd{color:#8b93a7;font-size:13px;margin-top:6px}
+.fm-b{padding:22px 26px}
+.fm-why{color:#c3cadb;font-size:14px;background:#11141d;border-left:3px solid #ff5c8a;padding:13px 17px;border-radius:0 9px 9px 0;margin-bottom:20px}
+.mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:9px;margin-bottom:20px}
+.mini div{background:#11141d;border:1px solid #232734;border-radius:9px;padding:10px 13px}
+.mini .v{font-size:18px;font-weight:800}
+.mini .l{font-size:11px;color:#7b8498;margin-top:1px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+.blk-t{font-size:13px;font-weight:800;color:#ff5c8a;letter-spacing:.5px;margin-bottom:11px;text-transform:uppercase}
+.tl{list-style:none}
+.tl li{display:flex;gap:12px;padding:8px 0;border-bottom:1px dashed #232734;font-size:13.5px}
+.tl li:last-child{border:0}
+.tl b{color:#5ea3ff;min-width:52px;font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:1px}
+.tk{list-style:none}
+.tk li{position:relative;padding:7px 0 7px 20px;font-size:13.5px;color:#c3cadb;border-bottom:1px dashed #232734}
+.tk li:last-child{border:0}
+.tk li:before{content:'';position:absolute;left:2px;top:15px;width:6px;height:6px;background:#34c77b;border-radius:50%}
+.mat{margin-top:22px}
+.mat-h{font-size:13px;font-weight:800;color:#ff5c8a;margin-bottom:12px;letter-spacing:.5px}
+.m{display:flex;gap:14px;background:#11141d;border:1px solid #232734;border-radius:11px;padding:12px;margin-bottom:10px;transition:.15s}
+.m:hover{border-color:#ff5c8a;background:#161a26}
+.m img{width:300px;height:auto;border-radius:7px;flex-shrink:0;object-fit:cover;align-self:flex-start}
+.m-b{flex:1;min-width:0}
+.m-t{font-size:13.5px;font-weight:600;margin-bottom:7px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.m-m{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.m-m span{font-size:11.5px;color:#7b8498}
+.m-m b{display:block;font-size:16px;color:#fff;font-weight:800;font-variant-numeric:tabular-nums}
+.m-m b.g{color:#34c77b}
+.m-a{font-size:12.5px;color:#8b93a7;background:#0d0f14;border-radius:6px;padding:7px 10px;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.m-tg{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
+.m-tg i{font-style:normal;font-size:11px;background:#1e2331;color:#9aa3b8;padding:2px 8px;border-radius:5px}
+.play{display:inline-flex;align-items:center;gap:6px;background:#ff5c8a;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:7px;transition:.15s}
+.play:hover{background:#ff3d74}
+.warn{background:rgba(255,170,60,.08);border:1px solid rgba(255,170,60,.28);border-radius:12px;padding:16px 20px;margin-bottom:14px}
+.warn b{color:#ffaa3c}
+.av{display:flex;gap:14px;padding:12px 0;border-bottom:1px dashed #232734;align-items:flex-start}
+.av:last-child{border:0}
+.av .n{font-weight:700;font-size:14px;min-width:220px;color:#ff8fb0}
+.av .d{font-size:12.5px;color:#ff6b6b;min-width:250px;font-weight:600}
+.av .r{font-size:13px;color:#8b93a7;flex:1}
+.tax{background:#151925;border:1px solid #232734;border-radius:14px;overflow:hidden;margin-bottom:16px}
+.tax-h{padding:15px 22px;background:linear-gradient(90deg,rgba(255,92,138,.12),transparent);font-size:16px;font-weight:800;border-bottom:1px solid #232734;display:flex;align-items:center;gap:10px}
+.tax-h em{font-style:normal;font-size:11px;background:#ff5c8a;color:#fff;padding:2px 8px;border-radius:5px}
+.tax-b{padding:6px 22px 16px}
+.tax-r{padding:14px 0;border-bottom:1px dashed #232734}
+.tax-r:last-child{border:0}
+.tax-n{font-size:14.5px;font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.tax-n em{font-style:normal;font-size:11px;color:#5ea3ff;background:rgba(94,163,255,.14);padding:2px 8px;border-radius:5px;font-weight:700}
+.tax-d{font-size:12.5px;color:#7b8498;margin-bottom:8px}
+.tax-v{display:flex;gap:6px;flex-wrap:wrap}
+.tax-v i{font-style:normal;font-size:12px;background:#1e2331;color:#c3cadb;padding:3px 10px;border-radius:6px}
+.tax-v i.hot{background:rgba(52,199,123,.16);color:#34c77b;font-weight:600}
+.tax-v i.cold{background:rgba(255,92,92,.12);color:#ff6b6b}
+.note{font-size:12.5px;color:#5b6478;margin-top:26px;padding-top:18px;border-top:1px solid #232734;line-height:1.9}
+.lg{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:#7b8498;margin-bottom:14px}
+.lg span{display:flex;align-items:center;gap:5px}
+.dot{width:9px;height:9px;border-radius:3px;display:inline-block}
+</style></head><body>
+<div class="nav"><div class="brand">内衣创意 <span>黄金公式</span> 分析报告</div><a href="01-meifuyi.html" class="">美肤衣</a><a href="02-beixin.html" class="">保暖背心</a><a href="03-kuzhuang.html" class="">保暖裤/打底裤</a><a href="04-taxonomy.html" class="on">整合标签体系</a></div>
+<div class="wrap">
+<div class="hero"><h1>整合<em>标签体系</em>与跨类目结论</h1>
+<p>在服饰通用 5×15 框架基础上，结合内衣行业特性精简与特化，形成 5 大一级维度 × 12 个二级标签的内衣专用体系。
+所有枚举值均经三个类目 300 条真实高消耗素材验证，并标注实际效果表现。</p>
+<div class="kpi">
+<div><div class="v">3</div><div class="l">分析类目</div><div class="s">美肤衣 / 背心 / 裤装</div></div>
+<div><div class="v">300</div><div class="l">去重后深度分析素材</div><div class="s">660 条候选去重而来</div></div>
+<div><div class="v">235</div><div class="l">独立套路簇</div><div class="s">按话术相似度聚类</div></div>
+<div><div class="v">¥3119万</div><div class="l">覆盖消耗</div><div class="s">三类目 TOP100 合计</div></div>
+<div><div class="v">19</div><div class="l">黄金公式</div><div class="s">素材唯一归属不重复</div></div>
+<div><div class="v">5 × 12</div><div class="l">标签体系</div><div class="s">110 个枚举值</div></div></div></div>
+
+<h2>一、七条跨类目核心结论</h2>
+<div class="sub">这七条是本次分析中跨越三个类目成立、且与常识存在差异的发现，建议作为创意评审的检查清单。</div>
+<div class="card" style="margin-bottom:12px">
+<div style="font-size:16px;font-weight:800;margin-bottom:8px;color:#fff">
+<span style="color:#ff5c8a">01</span>　长内容剧情素材必须用 40 秒窗口分析，15 秒会完全误判</div>
+<div style="color:#c3cadb;font-size:14px">保暖背心的「AI 情感短剧局」在 40 秒内产品完全不出现，用 15 秒窗口分析只能看到&quot;两个人在说话&quot;，无法识别其真实结构。拉长后可以确认这是彻底的&quot;内容前置、转化后置&quot;打法，并归纳出四种稳定的剧情母题：街头求婚考验、婆媳关系试探、婚姻觉察失落、离婚净身逆袭，全部围绕「女性在家庭关系中被轻视 → 反转 → 被重新看见」这一条主线。这一组平均播放 56.4 秒（指数 606）、3s 完播 67.4%（指数 178）、CTR 指数 149，三项全场最高。</div></div><div class="card" style="margin-bottom:12px">
+<div style="font-size:16px;font-weight:800;margin-bottom:8px;color:#fff">
+<span style="color:#ff5c8a">02</span>　剧情＋变装＋产品植入的三段式，是本次发现的最完整结构</div>
+<div style="color:#c3cadb;font-size:14px">「变装反差短剧局」把剧情和产品缝合成一条完整链路：前 25 秒丈夫嫌妻子穿着邋遢不肯带她赴宴（矛盾）→ 25-28 秒转场并插入产品人台展示（植入）→ 31 秒变装惊艳（反转兑现）→ 37 秒产品实拍收口。CTR 5.73%、3s 完播 76.3%、平均播放 45.4 秒，三项均为顶尖。相比纯情感剧，它解决了&quot;看完不知道卖什么&quot;的转化断层，是最值得优先复制的结构。</div></div><div class="card" style="margin-bottom:12px">
+<div style="font-size:16px;font-weight:800;margin-bottom:8px;color:#fff">
+<span style="color:#ff5c8a">03</span>　痛点决定天花板，卖点只决定及格线</div>
+<div style="color:#c3cadb;font-size:14px">三个类目的最强分化维度都是「痛点切入」而非「功能卖点」。美肤衣的「秋衣外露不好看」覆盖 73% 素材、93% 消耗；背心的形体焦虑组 CTR 指数 115，而单纯讲免穿文胸功能的组只有 93；裤类&quot;回应质疑自证真实&quot;的 CTR 指数 156，远高于常规产品讲解的 99。保暖在内衣行业已是品类基础分，无法构成差异化购买理由。</div></div><div class="card" style="margin-bottom:12px">
+<div style="font-size:16px;font-weight:800;margin-bottom:8px;color:#fff">
+<span style="color:#ff5c8a">04</span>　促销钩子的效果在类目间完全反转，不可跨品类照抄</div>
+<div style="color:#c3cadb;font-size:14px">美肤衣「退单促销局」CTR 指数 164，单条最高 9.88%；而保暖裤「德绒囤货低价局」CTR 指数只有 100。原因是保暖裤已被&quot;买一送一&quot;彻底常态化，价格信息失去稀缺性；而美肤衣用「刚买了还没发货的赶紧去退」制造损失厌恶，把促销包装成&quot;替你省钱的提醒&quot;，仍然新鲜。同样地，保暖裤真正高效的是「入冬紧迫感局」（CTR 指数 157），卖的是先见之明而不是低价。</div></div><div class="card" style="margin-bottom:12px">
+<div style="font-size:16px;font-weight:800;margin-bottom:8px;color:#fff">
+<span style="color:#ff5c8a">05</span>　同一句开场白被十几个套路簇同时使用，是 CTR 走低的直接原因</div>
+<div style="color:#c3cadb;font-size:14px">美肤衣「超薄反差局」17 个套路簇都在讲「见过这么薄的保暖内衣吗」，CTR 指数 88；裤类「男士秋裤妻女局」15 个簇都在讲「老爷们不爱穿秋裤」，CTR 指数 86。反观各组内表现最好的素材，都是在通用结构上做了微创新——把&quot;直接吐槽&quot;改成&quot;误会—揭晓&quot;（CTR 高出约 50%）、把&quot;老爷们不爱穿&quot;改成品牌调侃（「雪中飞也玩这套了？就是那个卖羽绒服的」，CTR 4.11%）。</div></div><div class="card" style="margin-bottom:12px">
+<div style="font-size:16px;font-weight:800;margin-bottom:8px;color:#fff">
+<span style="color:#ff5c8a">06</span>　母亲视角给孩子买内衣，是全报告最明确的负向选题</div>
+<div style="color:#c3cadb;font-size:14px">保暖背心「发育期母亲局」占 21.3% 消耗，但 CTR 指数 74、3s 完播指数 83、平均播放指数 57，三项全面跑输，平均播放仅 5.3 秒。十几个套路簇都在讲&quot;降温了，女儿该换内衣了&quot;，观众 1 秒识别为广告。组内唯一表现较好的用的是母女对话而非母亲独白。建议压缩该方向预算至 10% 以内。</div></div><div class="card" style="margin-bottom:12px">
+<div style="font-size:16px;font-weight:800;margin-bottom:8px;color:#fff">
+<span style="color:#ff5c8a">07</span>　点击与留存需要不同的公式，账户要做组合投放</div>
+<div style="color:#c3cadb;font-size:14px">数据显示两者常常背离：美肤衣 MF4 CTR 指数 164 但播放指数 86；MF6 CTR 指数 93 但播放指数 123。裤类 KZ3 CTR 指数 156 但播放指数 75；KZ4 CTR 指数 86 但播放指数 137。建议账户内按 5:3:2 配置——5 成跑量盘 + 3 成效率型（CTR 指数 &gt;115）+ 2 成留存型（播放指数 &gt;120），前者控成本、中者拉量、后者做人群蓄水与相似拓展。</div></div><div class="card" style="margin-bottom:12px">
+<div style="font-size:16px;font-weight:800;margin-bottom:8px;color:#fff">
+<span style="color:#ff5c8a">08</span>　两层去重是看清创意结构的前提</div>
+<div style="color:#c3cadb;font-size:14px">本次三个类目 660 条候选素材经前 15 秒视觉指纹比对，发现美肤衣有 31% 的 URL 是同一素材的重复投放。进一步按口播话术聚类后，每类目 100 条素材实际只对应 74-83 个独立创意变体。不做这两层去重直接看 TOP 榜单，会把&quot;投放策略&quot;误判为&quot;创意策略&quot;，也会让同一条素材反复出现在多个结论里。本次分析已确保每条素材只归属一个公式。</div></div>
+
+<h2>二、内衣创意标签体系（5 × 12）</h2>
+<div class="sub">
+<span class="lg">
+<span><i class="dot" style="background:#34c77b"></i>绿色 = 效果显著跑赢（综合指数 ≥115）</span>
+<span><i class="dot" style="background:#ff6b6b"></i>红色 = 效果跑输（≤88）</span>
+<span><i class="dot" style="background:#1e2331"></i>灰色 = 持平或样本不足（n&lt;4）</span>
+</span>
+效果标注取三个类目中的最佳表现，综合指数 = CTR指数×0.5 + 3s完播指数×0.3 + 播放指数×0.2。
+</div>
+<div class="tax"><div class="tax-h">内容形式<em>1 个二级标签</em></div>
+<div class="tax-b"><div class="tax-r"><div class="tax-n">制作类型<em>P0</em>
+<span style="font-size:11.5px;color:#5b6478;font-weight:400">8 个枚举值</span></div>
+<div class="tax-d">素材创意体裁，效果归因第一切分维度　·　判定依据：有无真人正对镜头说话 / 是否双人对白 / 是否直播浮层 / 画面是否以手部产品为主</div>
+<div class="tax-v"><i>真人口播</i><i>素人试穿展示</i><i>多人剧情</i><i class="hot">沉浸式产品展示</i><i>直播切片</i><i>AI数字人口播</i><i>对比测评</i><i>图文快剪</i></div></div></div></div><div class="tax"><div class="tax-h">画面客观要素<em>3 个二级标签</em></div>
+<div class="tax-b"><div class="tax-r"><div class="tax-n">拍摄场景<em>P0</em>
+<span style="font-size:11.5px;color:#5b6478;font-weight:400">10 个枚举值</span></div>
+<div class="tax-d">拍摄背景环境，决定真实感与制作成本　·　判定依据：画面物理拍摄地直接识别，内衣类目 84-86% 集中在家居实景</div>
+<div class="tax-v"><i>家居卧室</i><i>客厅日常</i><i>户外街景</i><i>商场门店</i><i>直播间</i><i>工厂仓库</i><i class="hot">纯色影棚</i><i>浴室试衣间</i><i>办公通勤</i><i>其他</i></div></div><div class="tax-r"><div class="tax-n">出镜角色<em>P0</em>
+<span style="font-size:11.5px;color:#5b6478;font-weight:400">9 个枚举值</span></div>
+<div class="tax-d">人货匹配的核心，决定人群感知与代入　·　判定依据：人物数量 / 性别 / 年龄 / 体型 / 关系；仅手或产品记为无人出镜</div>
+<div class="tax-v"><i>年轻女模特</i><i>熟龄女性</i><i>中老年女性</i><i class="hot">微胖大码女性</i><i class="hot">男性出镜</i><i>母女婆媳</i><i>主播</i><i>素人多人</i><i class="hot">无人出镜</i></div></div><div class="tax-r"><div class="tax-n">身体呈现方式<em>P0</em>
+<span style="font-size:11.5px;color:#5b6478;font-weight:400">8 个枚举值</span></div>
+<div class="tax-d">内衣类目专属维度，替代通用框架的「景别」　·　判定依据：镜头聚焦的身体部位与展示手法，是内衣区别于外衣品类的关键差异</div>
+<div class="tax-v"><i>全身试穿走秀</i><i>上半身特写</i><i>腰腹特写</i><i>腿部特写</i><i>背部特写</i><i>面料拉扯特写</i><i class="hot">产品平铺展示</i><i>穿前穿后对比</i></div></div></div></div><div class="tax"><div class="tax-h">商品属性<em>2 个二级标签</em></div>
+<div class="tax-b"><div class="tax-r"><div class="tax-n">核心功能卖点<em>P0</em>
+<span style="font-size:11.5px;color:#5b6478;font-weight:400">12 个枚举值</span></div>
+<div class="tax-d">商品主打功能，购买理由的直接来源　·　判定依据：口播 / 字幕功能词为主 + 画面实测动作确认，最多取 2 个主卖点</div>
+<div class="tax-v"><i>保暖发热</i><i class="hot">显瘦塑形</i><i>收腹提臀</i><i>无痕隐形</i><i>亲肤不痒</i><i>高弹不勒</i><i class="hot">抑菌抗静电</i><i>保湿养肤</i><i class="hot">轻薄不臃肿</i><i>防走光</i><i class="hot">加绒加厚</i><i class="hot">一体无缝</i></div></div><div class="tax-r"><div class="tax-n">材质表达<em>P1</em>
+<span style="font-size:11.5px;color:#5b6478;font-weight:400">11 个枚举值</span></div>
+<div class="tax-d">被强调的材质信息，常作为溢价支撑　·　判定依据：画面材质特写 + 口播字幕材质词，无强调则记为「未强调材质」</div>
+<div class="tax-v"><i class="hot">德绒</i><i>玻尿酸精油</i><i>石墨烯</i><i>纯棉</i><i class="cold">莫代尔</i><i>冰丝</i><i>羊毛羊绒</i><i class="cold">蕾丝网纱</i><i class="hot">加绒摇粒绒</i><i>氨纶高弹</i><i class="hot">未强调材质</i></div></div></div></div><div class="tax"><div class="tax-h">卖点表达<em>4 个二级标签</em></div>
+<div class="tax-b"><div class="tax-r"><div class="tax-n">功能实测<em>P1</em>
+<span style="font-size:11.5px;color:#5b6478;font-weight:400">10 个枚举值</span></div>
+<div class="tax-d">把抽象卖点变成可验证画面的手段　·　判定依据：有明确测试动作（拉扯 / 透光 / 称重 / 水洗）才计入，纯口播记为无实测</div>
+<div class="tax-v"><i>拉伸弹力实测</i><i>泼水防水实测</i><i>发热升温实测</i><i>显瘦前后对比</i><i>无痕透视实测</i><i>撕扯耐用实测</i><i>温度计热成像</i><i>手撑塑形实测</i><i class="hot">起球水洗实测</i><i>无实测</i></div></div><div class="tax-r"><div class="tax-n">痛点切入<em>P0</em>
+<span style="font-size:11.5px;color:#5b6478;font-weight:400">10 个枚举值</span></div>
+<div class="tax-d">决定共鸣强度，内衣类目最强的效果分化维度　·　判定依据：口播与字幕中的痛点描述，是本次分析中效果差异最大的维度</div>
+<div class="tax-v"><i>冬天怕冷</i><i>穿多显臃肿</i><i>小肚腩腰粗</i><i class="cold">大腿粗胯宽</i><i class="hot">皮肤干痒静电</i><i class="hot">内衣勒痕不适</i><i>走光尴尬</i><i>秋衣外露不好看</i><i>中老年保暖</i><i class="hot">无明确痛点</i></div></div><div class="tax-r"><div class="tax-n">信任背书<em>P1</em>
+<span style="font-size:11.5px;color:#5b6478;font-weight:400">7 个枚举值</span></div>
+<div class="tax-d">影响高客单转化，与 CTR 关系较弱　·　判定依据：字幕口播中的认证 / 明星 / 工厂 / 销量信息</div>
+<div class="tax-v"><i class="cold">明星达人推荐</i><i>检测报告认证</i><i>工厂溯源直发</i><i>销量榜单背书</i><i>品牌历史</i><i>老顾客回购</i><i>无背书</i></div></div><div class="tax-r"><div class="tax-n">价格促销<em>P0</em>
+<span style="font-size:11.5px;color:#5b6478;font-weight:400">7 个枚举值</span></div>
+<div class="tax-d">与转化强相关，但对 CTR 的影响随类目反转　·　判定依据：字幕角标价格 + 口播促销词</div>
+<div class="tax-v"><i>买一送一</i><i class="cold">多件套装价</i><i>限时秒杀</i><i>大牌平替对比价</i><i>工厂直销价</i><i>满减包邮</i><i class="hot">无价格露出</i></div></div></div></div><div class="tax"><div class="tax-h">情绪与营销<em>2 个二级标签</em></div>
+<div class="tax-b"><div class="tax-r"><div class="tax-n">开场钩子<em>P0</em>
+<span style="font-size:11.5px;color:#5b6478;font-weight:400">10 个枚举值</span></div>
+<div class="tax-d">决定 3 秒完播与点击，最高优先级维度　·　判定依据：仅取前 3 秒的 ASR 口播 + 首帧字幕判定，最多取 2 个</div>
+<div class="tax-v"><i>痛点提问</i><i>身材焦虑反转</i><i>前后对比冲击</i><i>价格暴击</i><i>实测猎奇</i><i>颜值吸睛</i><i class="cold">权威科普口吻</i><i>剧情冲突</i><i>直接展示产品</i><i class="hot">促销紧迫感</i></div></div><div class="tax-r"><div class="tax-n">目标人群场景<em>P0</em>
+<span style="font-size:11.5px;color:#5b6478;font-weight:400">8 个枚举值</span></div>
+<div class="tax-d">支撑人群定向与素材分发　·　判定依据：场景背景 + 口播用途 + 商品标题人群词</div>
+<div class="tax-v"><i>年轻女生日常</i><i class="hot">职场通勤</i><i>中老年保暖</i><i class="hot">微胖显瘦</i><i>户外御寒</i><i>居家睡眠</i><i>送礼孝心</i><i>学生党</i></div></div></div></div>
+
+<h2>三、同一标签在三类目的效果对比</h2>
+<div class="sub">同一个标签在不同类目的表现差异极大，这是"不能跨品类照抄脚本"最直接的数据证据。</div>
+<div class="card"><div class="blk-t" style="margin-bottom:12px">开场钩子</div>
+<table><thead><tr><th style="min-width:110px">标签值</th>
+<th>美肤衣</th><th>保暖背心</th><th>保暖裤/打底裤</th></tr></thead>
+<tbody><tr><td><b>颜值吸睛</b></td><td><span style="color:#7b8498;font-size:11.5px">46.0%素材</span><br><span class="idx mid">95</span> <span class="idx mid">92</span> <span class="idx dn">83</span></td><td><span style="color:#7b8498;font-size:11.5px">57.0%素材</span><br><span class="idx mid">101</span> <span class="idx mid">97</span> <span class="idx dn">86</span></td><td><span style="color:#7b8498;font-size:11.5px">51.0%素材</span><br><span class="idx mid">98</span> <span class="idx mid">101</span> <span class="idx up">110</span></td></tr><tr><td><b>痛点提问</b></td><td><span style="color:#7b8498;font-size:11.5px">27.0%素材</span><br><span class="idx dn">79</span> <span class="idx mid">99</span> <span class="idx mid">99</span></td><td><span style="color:#7b8498;font-size:11.5px">13.0%素材</span><br><span class="idx mid">104</span> <span class="idx mid">102</span> <span class="idx dn">71</span></td><td><span style="color:#7b8498;font-size:11.5px">12.0%素材</span><br><span class="idx up">123</span> <span class="idx mid">108</span> <span class="idx mid">92</span></td></tr><tr><td><b>剧情冲突</b></td><td><span style="color:#7b8498;font-size:11.5px">16.0%素材</span><br><span class="idx mid">96</span> <span class="idx up">111</span> <span class="idx mid">96</span></td><td><span style="color:#7b8498;font-size:11.5px">13.0%素材</span><br><span class="idx mid">94</span> <span class="idx up">110</span> <span class="idx up">170</span></td><td><span style="color:#7b8498;font-size:11.5px">20.0%素材</span><br><span class="idx mid">95</span> <span class="idx mid">99</span> <span class="idx mid">92</span></td></tr><tr><td><b>促销紧迫感</b></td><td><span style="color:#7b8498;font-size:11.5px">11.0%素材</span><br><span class="idx up">153</span> <span class="idx mid">102</span> <span class="idx dn">89</span></td><td><span style="color:#7b8498;font-size:11.5px">1.0%素材</span><br><span class="idx up">164</span> <span class="idx up">111</span> <span class="idx up">159</span></td><td><span style="color:#7b8498;font-size:11.5px">8.0%素材</span><br><span class="idx dn">88</span> <span class="idx dn">89</span> <span class="idx dn">87</span></td></tr><tr><td><b>直接展示产品</b></td><td style="color:#3b4152">—</td><td><span style="color:#7b8498;font-size:11.5px">4.0%素材</span><br><span class="idx dn">72</span> <span class="idx mid">102</span> <span class="idx up">219</span></td><td><span style="color:#7b8498;font-size:11.5px">3.0%素材</span><br><span class="idx up">113</span> <span class="idx mid">93</span> <span class="idx dn">66</span></td></tr><tr><td><b>身材焦虑反转</b></td><td style="color:#3b4152">—</td><td><span style="color:#7b8498;font-size:11.5px">8.0%素材</span><br><span class="idx up">120</span> <span class="idx up">110</span> <span class="idx mid">95</span></td><td><span style="color:#7b8498;font-size:11.5px">2.0%素材</span><br><span class="idx mid">93</span> <span class="idx up">112</span> <span class="idx dn">76</span></td></tr></tbody></table>
+<div style="font-size:11.5px;color:#5b6478;margin-top:9px">三个指数依次为：CTR 指数 / 3s完播指数 / 平均播放指数（基准=各类目均值 100）</div></div><div class="card"><div class="blk-t" style="margin-bottom:12px">痛点切入</div>
+<table><thead><tr><th style="min-width:110px">标签值</th>
+<th>美肤衣</th><th>保暖背心</th><th>保暖裤/打底裤</th></tr></thead>
+<tbody><tr><td><b>秋衣外露不好看</b></td><td><span style="color:#7b8498;font-size:11.5px">73.0%素材</span><br><span class="idx mid">95</span> <span class="idx mid">100</span> <span class="idx dn">88</span></td><td><span style="color:#7b8498;font-size:11.5px">3.0%素材</span><br><span class="idx dn">58</span> <span class="idx dn">76</span> <span class="idx dn">45</span></td><td><span style="color:#7b8498;font-size:11.5px">59.0%素材</span><br><span class="idx mid">99</span> <span class="idx mid">106</span> <span class="idx up">111</span></td></tr><tr><td><b>冬天怕冷</b></td><td><span style="color:#7b8498;font-size:11.5px">28.0%素材</span><br><span class="idx dn">79</span> <span class="idx mid">94</span> <span class="idx dn">78</span></td><td><span style="color:#7b8498;font-size:11.5px">33.0%素材</span><br><span class="idx dn">89</span> <span class="idx mid">95</span> <span class="idx dn">69</span></td><td><span style="color:#7b8498;font-size:11.5px">37.0%素材</span><br><span class="idx mid">98</span> <span class="idx mid">102</span> <span class="idx up">112</span></td></tr><tr><td><b>走光尴尬</b></td><td><span style="color:#7b8498;font-size:11.5px">9.0%素材</span><br><span class="idx mid">99</span> <span class="idx mid">91</span> <span class="idx mid">93</span></td><td><span style="color:#7b8498;font-size:11.5px">22.0%素材</span><br><span class="idx dn">82</span> <span class="idx dn">89</span> <span class="idx dn">81</span></td><td><span style="color:#7b8498;font-size:11.5px">6.0%素材</span><br><span class="idx up">126</span> <span class="idx dn">84</span> <span class="idx dn">90</span></td></tr><tr><td><b>无明确痛点</b></td><td><span style="color:#7b8498;font-size:11.5px">14.0%素材</span><br><span class="idx up">125</span> <span class="idx mid">107</span> <span class="idx up">164</span></td><td><span style="color:#7b8498;font-size:11.5px">23.0%素材</span><br><span class="idx up">115</span> <span class="idx up">110</span> <span class="idx up">152</span></td><td><span style="color:#7b8498;font-size:11.5px">10.0%素材</span><br><span class="idx up">110</span> <span class="idx mid">94</span> <span class="idx dn">86</span></td></tr><tr><td><b>内衣勒痕不适</b></td><td><span style="color:#7b8498;font-size:11.5px">2.0%素材</span><br><span class="idx up">113</span> <span class="idx mid">95</span> <span class="idx dn">86</span></td><td><span style="color:#7b8498;font-size:11.5px">21.0%素材</span><br><span class="idx up">113</span> <span class="idx mid">101</span> <span class="idx mid">91</span></td><td><span style="color:#7b8498;font-size:11.5px">13.0%素材</span><br><span class="idx dn">85</span> <span class="idx up">128</span> <span class="idx up">175</span></td></tr><tr><td><b>中老年保暖</b></td><td><span style="color:#7b8498;font-size:11.5px">1.0%素材</span><br><span class="idx up">119</span> <span class="idx dn">74</span> <span class="idx dn">68</span></td><td><span style="color:#7b8498;font-size:11.5px">16.0%素材</span><br><span class="idx mid">98</span> <span class="idx mid">104</span> <span class="idx mid">106</span></td><td><span style="color:#7b8498;font-size:11.5px">8.0%素材</span><br><span class="idx up">120</span> <span class="idx dn">81</span> <span class="idx dn">69</span></td></tr></tbody></table>
+<div style="font-size:11.5px;color:#5b6478;margin-top:9px">三个指数依次为：CTR 指数 / 3s完播指数 / 平均播放指数（基准=各类目均值 100）</div></div><div class="card"><div class="blk-t" style="margin-bottom:12px">核心功能卖点</div>
+<table><thead><tr><th style="min-width:110px">标签值</th>
+<th>美肤衣</th><th>保暖背心</th><th>保暖裤/打底裤</th></tr></thead>
+<tbody><tr><td><b>保暖发热</b></td><td><span style="color:#7b8498;font-size:11.5px">76.0%素材</span><br><span class="idx mid">93</span> <span class="idx mid">96</span> <span class="idx dn">86</span></td><td><span style="color:#7b8498;font-size:11.5px">69.0%素材</span><br><span class="idx mid">107</span> <span class="idx mid">102</span> <span class="idx mid">108</span></td><td><span style="color:#7b8498;font-size:11.5px">72.0%素材</span><br><span class="idx mid">101</span> <span class="idx mid">99</span> <span class="idx mid">103</span></td></tr><tr><td><b>加绒加厚</b></td><td style="color:#3b4152">—</td><td><span style="color:#7b8498;font-size:11.5px">12.0%素材</span><br><span class="idx up">125</span> <span class="idx up">111</span> <span class="idx mid">108</span></td><td><span style="color:#7b8498;font-size:11.5px">59.0%素材</span><br><span class="idx mid">102</span> <span class="idx mid">108</span> <span class="idx mid">108</span></td></tr><tr><td><b>保湿养肤</b></td><td><span style="color:#7b8498;font-size:11.5px">46.0%素材</span><br><span class="idx dn">71</span> <span class="idx dn">87</span> <span class="idx dn">76</span></td><td><span style="color:#7b8498;font-size:11.5px">6.0%素材</span><br><span class="idx dn">88</span> <span class="idx mid">98</span> <span class="idx dn">85</span></td><td style="color:#3b4152">—</td></tr><tr><td><b>显瘦塑形</b></td><td><span style="color:#7b8498;font-size:11.5px">2.0%素材</span><br><span class="idx mid">107</span> <span class="idx mid">101</span> <span class="idx mid">92</span></td><td><span style="color:#7b8498;font-size:11.5px">7.0%素材</span><br><span class="idx up">152</span> <span class="idx up">116</span> <span class="idx up">148</span></td><td><span style="color:#7b8498;font-size:11.5px">18.0%素材</span><br><span class="idx mid">100</span> <span class="idx dn">89</span> <span class="idx dn">86</span></td></tr><tr><td><b>收腹提臀</b></td><td style="color:#3b4152">—</td><td><span style="color:#7b8498;font-size:11.5px">11.0%素材</span><br><span class="idx dn">72</span> <span class="idx dn">74</span> <span class="idx dn">54</span></td><td><span style="color:#7b8498;font-size:11.5px">24.0%素材</span><br><span class="idx mid">108</span> <span class="idx mid">94</span> <span class="idx mid">91</span></td></tr><tr><td><b>轻薄不臃肿</b></td><td><span style="color:#7b8498;font-size:11.5px">36.0%素材</span><br><span class="idx up">133</span> <span class="idx up">117</span> <span class="idx up">138</span></td><td><span style="color:#7b8498;font-size:11.5px">20.0%素材</span><br><span class="idx dn">80</span> <span class="idx dn">89</span> <span class="idx dn">83</span></td><td><span style="color:#7b8498;font-size:11.5px">9.0%素材</span><br><span class="idx mid">93</span> <span class="idx dn">85</span> <span class="idx dn">60</span></td></tr></tbody></table>
+<div style="font-size:11.5px;color:#5b6478;margin-top:9px">三个指数依次为：CTR 指数 / 3s完播指数 / 平均播放指数（基准=各类目均值 100）</div></div><div class="card"><div class="blk-t" style="margin-bottom:12px">出镜角色</div>
+<table><thead><tr><th style="min-width:110px">标签值</th>
+<th>美肤衣</th><th>保暖背心</th><th>保暖裤/打底裤</th></tr></thead>
+<tbody><tr><td><b>年轻女模特</b></td><td><span style="color:#7b8498;font-size:11.5px">73.0%素材</span><br><span class="idx dn">89</span> <span class="idx mid">91</span> <span class="idx dn">79</span></td><td><span style="color:#7b8498;font-size:11.5px">70.0%素材</span><br><span class="idx mid">99</span> <span class="idx mid">96</span> <span class="idx dn">81</span></td><td><span style="color:#7b8498;font-size:11.5px">49.0%素材</span><br><span class="idx mid">100</span> <span class="idx mid">98</span> <span class="idx mid">101</span></td></tr><tr><td><b>男性出镜</b></td><td><span style="color:#7b8498;font-size:11.5px">22.0%素材</span><br><span class="idx up">128</span> <span class="idx up">128</span> <span class="idx up">118</span></td><td><span style="color:#7b8498;font-size:11.5px">9.0%素材</span><br><span class="idx mid">96</span> <span class="idx mid">109</span> <span class="idx dn">75</span></td><td><span style="color:#7b8498;font-size:11.5px">46.0%素材</span><br><span class="idx mid">99</span> <span class="idx mid">101</span> <span class="idx mid">101</span></td></tr><tr><td><b>母女婆媳</b></td><td><span style="color:#7b8498;font-size:11.5px">1.0%素材</span><br><span class="idx up">119</span> <span class="idx dn">74</span> <span class="idx dn">68</span></td><td><span style="color:#7b8498;font-size:11.5px">27.0%素材</span><br><span class="idx dn">78</span> <span class="idx dn">81</span> <span class="idx dn">59</span></td><td><span style="color:#7b8498;font-size:11.5px">9.0%素材</span><br><span class="idx up">115</span> <span class="idx mid">98</span> <span class="idx up">118</span></td></tr><tr><td><b>无人出镜</b></td><td><span style="color:#7b8498;font-size:11.5px">2.0%素材</span><br><span class="idx up">132</span> <span class="idx up">145</span> <span class="idx up">637</span></td><td><span style="color:#7b8498;font-size:11.5px">4.0%素材</span><br><span class="idx up">117</span> <span class="idx up">164</span> <span class="idx up">487</span></td><td><span style="color:#7b8498;font-size:11.5px">4.0%素材</span><br><span class="idx up">122</span> <span class="idx mid">109</span> <span class="idx dn">81</span></td></tr><tr><td><b>微胖大码女性</b></td><td><span style="color:#7b8498;font-size:11.5px">4.0%素材</span><br><span class="idx up">118</span> <span class="idx up">129</span> <span class="idx up">148</span></td><td><span style="color:#7b8498;font-size:11.5px">8.0%素材</span><br><span class="idx up">128</span> <span class="idx up">118</span> <span class="idx up">153</span></td><td><span style="color:#7b8498;font-size:11.5px">9.0%素材</span><br><span class="idx dn">81</span> <span class="idx dn">87</span> <span class="idx dn">77</span></td></tr></tbody></table>
+<div style="font-size:11.5px;color:#5b6478;margin-top:9px">三个指数依次为：CTR 指数 / 3s完播指数 / 平均播放指数（基准=各类目均值 100）</div></div><div class="card"><div class="blk-t" style="margin-bottom:12px">制作类型</div>
+<table><thead><tr><th style="min-width:110px">标签值</th>
+<th>美肤衣</th><th>保暖背心</th><th>保暖裤/打底裤</th></tr></thead>
+<tbody><tr><td><b>真人口播</b></td><td><span style="color:#7b8498;font-size:11.5px">74.0%素材</span><br><span class="idx mid">101</span> <span class="idx mid">102</span> <span class="idx mid">91</span></td><td><span style="color:#7b8498;font-size:11.5px">92.0%素材</span><br><span class="idx mid">98</span> <span class="idx mid">98</span> <span class="idx dn">84</span></td><td><span style="color:#7b8498;font-size:11.5px">78.0%素材</span><br><span class="idx mid">96</span> <span class="idx mid">99</span> <span class="idx mid">100</span></td></tr><tr><td><b>直播切片</b></td><td><span style="color:#7b8498;font-size:11.5px">3.0%素材</span><br><span class="idx up">121</span> <span class="idx mid">96</span> <span class="idx dn">73</span></td><td><span style="color:#7b8498;font-size:11.5px">1.0%素材</span><br><span class="idx up">240</span> <span class="idx up">145</span> <span class="idx up">165</span></td><td><span style="color:#7b8498;font-size:11.5px">7.0%素材</span><br><span class="idx mid">99</span> <span class="idx mid">104</span> <span class="idx up">122</span></td></tr><tr><td><b>素人试穿展示</b></td><td><span style="color:#7b8498;font-size:11.5px">7.0%素材</span><br><span class="idx dn">82</span> <span class="idx mid">100</span> <span class="idx mid">96</span></td><td><span style="color:#7b8498;font-size:11.5px">2.0%素材</span><br><span class="idx mid">102</span> <span class="idx dn">80</span> <span class="idx dn">66</span></td><td><span style="color:#7b8498;font-size:11.5px">8.0%素材</span><br><span class="idx up">111</span> <span class="idx mid">103</span> <span class="idx mid">95</span></td></tr><tr><td><b>沉浸式产品展示</b></td><td><span style="color:#7b8498;font-size:11.5px">3.0%素材</span><br><span class="idx up">126</span> <span class="idx up">129</span> <span class="idx up">453</span></td><td><span style="color:#7b8498;font-size:11.5px">5.0%素材</span><br><span class="idx mid">105</span> <span class="idx up">140</span> <span class="idx up">396</span></td><td><span style="color:#7b8498;font-size:11.5px">3.0%素材</span><br><span class="idx up">126</span> <span class="idx mid">109</span> <span class="idx dn">87</span></td></tr><tr><td><b>对比测评</b></td><td><span style="color:#7b8498;font-size:11.5px">12.0%素材</span><br><span class="idx mid">101</span> <span class="idx dn">84</span> <span class="idx dn">81</span></td><td style="color:#3b4152">—</td><td><span style="color:#7b8498;font-size:11.5px">2.0%素材</span><br><span class="idx up">167</span> <span class="idx mid">97</span> <span class="idx dn">75</span></td></tr><tr><td><b>多人剧情</b></td><td><span style="color:#7b8498;font-size:11.5px">1.0%素材</span><br><span class="idx dn">21</span> <span class="idx mid">104</span> <span class="idx dn">63</span></td><td style="color:#3b4152">—</td><td><span style="color:#7b8498;font-size:11.5px">2.0%素材</span><br><span class="idx up">129</span> <span class="idx mid">107</span> <span class="idx mid">96</span></td></tr></tbody></table>
+<div style="font-size:11.5px;color:#5b6478;margin-top:9px">三个指数依次为：CTR 指数 / 3s完播指数 / 平均播放指数（基准=各类目均值 100）</div></div><div class="card"><div class="blk-t" style="margin-bottom:12px">价格促销</div>
+<table><thead><tr><th style="min-width:110px">标签值</th>
+<th>美肤衣</th><th>保暖背心</th><th>保暖裤/打底裤</th></tr></thead>
+<tbody><tr><td><b>买一送一</b></td><td><span style="color:#7b8498;font-size:11.5px">2.0%素材</span><br><span class="idx up">150</span> <span class="idx up">111</span> <span class="idx mid">95</span></td><td><span style="color:#7b8498;font-size:11.5px">35.0%素材</span><br><span class="idx dn">90</span> <span class="idx mid">98</span> <span class="idx dn">82</span></td><td><span style="color:#7b8498;font-size:11.5px">45.0%素材</span><br><span class="idx mid">96</span> <span class="idx mid">109</span> <span class="idx up">112</span></td></tr><tr><td><b>无价格露出</b></td><td><span style="color:#7b8498;font-size:11.5px">40.0%素材</span><br><span class="idx up">124</span> <span class="idx up">112</span> <span class="idx up">121</span></td><td><span style="color:#7b8498;font-size:11.5px">50.0%素材</span><br><span class="idx mid">108</span> <span class="idx mid">104</span> <span class="idx up">122</span></td><td><span style="color:#7b8498;font-size:11.5px">37.0%素材</span><br><span class="idx mid">106</span> <span class="idx mid">93</span> <span class="idx dn">89</span></td></tr><tr><td><b>多件套装价</b></td><td><span style="color:#7b8498;font-size:11.5px">50.0%素材</span><br><span class="idx dn">77</span> <span class="idx dn">90</span> <span class="idx dn">79</span></td><td><span style="color:#7b8498;font-size:11.5px">7.0%素材</span><br><span class="idx dn">84</span> <span class="idx mid">91</span> <span class="idx dn">68</span></td><td><span style="color:#7b8498;font-size:11.5px">1.0%素材</span><br><span class="idx up">179</span> <span class="idx mid">92</span> <span class="idx mid">101</span></td></tr><tr><td><b>限时秒杀</b></td><td><span style="color:#7b8498;font-size:11.5px">11.0%素材</span><br><span class="idx up">118</span> <span class="idx mid">103</span> <span class="idx up">119</span></td><td><span style="color:#7b8498;font-size:11.5px">13.0%素材</span><br><span class="idx mid">107</span> <span class="idx mid">98</span> <span class="idx dn">84</span></td><td><span style="color:#7b8498;font-size:11.5px">30.0%素材</span><br><span class="idx mid">91</span> <span class="idx mid">98</span> <span class="idx mid">101</span></td></tr><tr><td><b>大牌平替对比价</b></td><td style="color:#3b4152">—</td><td style="color:#3b4152">—</td><td><span style="color:#7b8498;font-size:11.5px">2.0%素材</span><br><span class="idx dn">77</span> <span class="idx mid">107</span> <span class="idx dn">82</span></td></tr></tbody></table>
+<div style="font-size:11.5px;color:#5b6478;margin-top:9px">三个指数依次为：CTR 指数 / 3s完播指数 / 平均播放指数（基准=各类目均值 100）</div></div><div class="card"><div class="blk-t" style="margin-bottom:12px">目标人群场景</div>
+<table><thead><tr><th style="min-width:110px">标签值</th>
+<th>美肤衣</th><th>保暖背心</th><th>保暖裤/打底裤</th></tr></thead>
+<tbody><tr><td><b>送礼孝心</b></td><td><span style="color:#7b8498;font-size:11.5px">4.0%素材</span><br><span class="idx up">123</span> <span class="idx up">112</span> <span class="idx mid">94</span></td><td><span style="color:#7b8498;font-size:11.5px">29.0%素材</span><br><span class="idx dn">87</span> <span class="idx mid">96</span> <span class="idx dn">89</span></td><td><span style="color:#7b8498;font-size:11.5px">34.0%素材</span><br><span class="idx mid">100</span> <span class="idx mid">107</span> <span class="idx mid">106</span></td></tr><tr><td><b>户外御寒</b></td><td><span style="color:#7b8498;font-size:11.5px">49.0%素材</span><br><span class="idx mid">98</span> <span class="idx mid">103</span> <span class="idx mid">93</span></td><td><span style="color:#7b8498;font-size:11.5px">28.0%素材</span><br><span class="idx mid">96</span> <span class="idx mid">102</span> <span class="idx dn">80</span></td><td><span style="color:#7b8498;font-size:11.5px">21.0%素材</span><br><span class="idx dn">88</span> <span class="idx mid">93</span> <span class="idx mid">97</span></td></tr><tr><td><b>年轻女生日常</b></td><td><span style="color:#7b8498;font-size:11.5px">46.0%素材</span><br><span class="idx mid">100</span> <span class="idx mid">94</span> <span class="idx mid">104</span></td><td><span style="color:#7b8498;font-size:11.5px">35.0%素材</span><br><span class="idx mid">105</span> <span class="idx mid">95</span> <span class="idx dn">86</span></td><td><span style="color:#7b8498;font-size:11.5px">42.0%素材</span><br><span class="idx mid">107</span> <span class="idx mid">100</span> <span class="idx mid">101</span></td></tr><tr><td><b>微胖显瘦</b></td><td><span style="color:#7b8498;font-size:11.5px">9.0%素材</span><br><span class="idx up">113</span> <span class="idx up">118</span> <span class="idx up">118</span></td><td><span style="color:#7b8498;font-size:11.5px">11.0%素材</span><br><span class="idx up">134</span> <span class="idx up">137</span> <span class="idx up">284</span></td><td><span style="color:#7b8498;font-size:11.5px">12.0%素材</span><br><span class="idx mid">93</span> <span class="idx mid">93</span> <span class="idx dn">82</span></td></tr><tr><td><b>学生党</b></td><td style="color:#3b4152">—</td><td><span style="color:#7b8498;font-size:11.5px">22.0%素材</span><br><span class="idx dn">80</span> <span class="idx dn">84</span> <span class="idx dn">58</span></td><td><span style="color:#7b8498;font-size:11.5px">7.0%素材</span><br><span class="idx up">122</span> <span class="idx mid">94</span> <span class="idx up">114</span></td></tr><tr><td><b>中老年保暖</b></td><td><span style="color:#7b8498;font-size:11.5px">1.0%素材</span><br><span class="idx up">119</span> <span class="idx dn">74</span> <span class="idx dn">68</span></td><td><span style="color:#7b8498;font-size:11.5px">12.0%素材</span><br><span class="idx mid">105</span> <span class="idx mid">104</span> <span class="idx up">119</span></td><td><span style="color:#7b8498;font-size:11.5px">8.0%素材</span><br><span class="idx dn">85</span> <span class="idx mid">105</span> <span class="idx up">124</span></td></tr></tbody></table>
+<div style="font-size:11.5px;color:#5b6478;margin-top:9px">三个指数依次为：CTR 指数 / 3s完播指数 / 平均播放指数（基准=各类目均值 100）</div></div><div class="card"><div class="blk-t" style="margin-bottom:12px">材质表达</div>
+<table><thead><tr><th style="min-width:110px">标签值</th>
+<th>美肤衣</th><th>保暖背心</th><th>保暖裤/打底裤</th></tr></thead>
+<tbody><tr><td><b>未强调材质</b></td><td><span style="color:#7b8498;font-size:11.5px">5.0%素材</span><br><span class="idx up">128</span> <span class="idx up">113</span> <span class="idx mid">101</span></td><td><span style="color:#7b8498;font-size:11.5px">47.0%素材</span><br><span class="idx mid">104</span> <span class="idx mid">107</span> <span class="idx up">128</span></td><td><span style="color:#7b8498;font-size:11.5px">37.0%素材</span><br><span class="idx mid">96</span> <span class="idx mid">102</span> <span class="idx mid">103</span></td></tr><tr><td><b>玻尿酸精油</b></td><td><span style="color:#7b8498;font-size:11.5px">95.0%素材</span><br><span class="idx mid">99</span> <span class="idx mid">99</span> <span class="idx mid">100</span></td><td><span style="color:#7b8498;font-size:11.5px">30.0%素材</span><br><span class="idx mid">101</span> <span class="idx mid">97</span> <span class="idx dn">80</span></td><td style="color:#3b4152">—</td></tr><tr><td><b>羊毛羊绒</b></td><td style="color:#3b4152">—</td><td><span style="color:#7b8498;font-size:11.5px">18.0%素材</span><br><span class="idx mid">96</span> <span class="idx dn">88</span> <span class="idx dn">67</span></td><td><span style="color:#7b8498;font-size:11.5px">40.0%素材</span><br><span class="idx up">110</span> <span class="idx mid">95</span> <span class="idx mid">92</span></td></tr><tr><td><b>加绒摇粒绒</b></td><td style="color:#3b4152">—</td><td><span style="color:#7b8498;font-size:11.5px">3.0%素材</span><br><span class="idx up">148</span> <span class="idx up">125</span> <span class="idx up">148</span></td><td><span style="color:#7b8498;font-size:11.5px">11.0%素材</span><br><span class="idx dn">89</span> <span class="idx up">128</span> <span class="idx up">164</span></td></tr><tr><td><b>德绒</b></td><td style="color:#3b4152">—</td><td><span style="color:#7b8498;font-size:11.5px">9.0%素材</span><br><span class="idx mid">109</span> <span class="idx mid">101</span> <span class="idx mid">92</span></td><td><span style="color:#7b8498;font-size:11.5px">5.0%素材</span><br><span class="idx dn">83</span> <span class="idx up">130</span> <span class="idx up">179</span></td></tr><tr><td><b>莫代尔</b></td><td style="color:#3b4152">—</td><td style="color:#3b4152">—</td><td><span style="color:#7b8498;font-size:11.5px">10.0%素材</span><br><span class="idx mid">92</span> <span class="idx dn">81</span> <span class="idx dn">58</span></td></tr></tbody></table>
+<div style="font-size:11.5px;color:#5b6478;margin-top:9px">三个指数依次为：CTR 指数 / 3s完播指数 / 平均播放指数（基准=各类目均值 100）</div></div>
+
+<h2>四、19 条黄金公式总览</h2>
+<div class="sub">按类目汇总，点击「查看」跳转到对应类目页的完整脚本与代表素材。</div>
+<div class="card"><table><thead><tr>
+<th>类目</th><th>公式</th><th>素材 / 套路簇</th><th>消耗</th>
+<th>CTR / 指数</th><th>3s完播 / 指数</th><th>平均播放 / 指数</th><th></th>
+</tr></thead><tbody><tr><td style="color:#7b8498;font-size:12px">美肤衣</td>
+<td><span class="fm-id" style="font-size:11px">MF1</span> <b>超薄反差局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">认知教育盘</span></div></td>
+<td>27<span style="font-size:11px;color:#7b8498"> / 17簇</span></td>
+<td>¥129万<span style="font-size:11px;color:#7b8498"> (15.2%)</span></td>
+<td>3.16% <span class="idx dn">88</span></td>
+<td>43.0% <span class="idx mid">95</span></td>
+<td>8.2s <span class="idx dn">86</span></td>
+<td><a href="01-meifuyi.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">美肤衣</td>
+<td><span class="fm-id" style="font-size:11px">MF2</span> <b>土秋衣羞辱局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">消耗基本盘</span></div></td>
+<td>12<span style="font-size:11px;color:#7b8498"> / 9簇</span></td>
+<td>¥221万<span style="font-size:11px;color:#7b8498"> (26.0%)</span></td>
+<td>3.2% <span class="idx dn">89</span></td>
+<td>48.2% <span class="idx mid">106</span></td>
+<td>8.7s <span class="idx mid">92</span></td>
+<td><a href="01-meifuyi.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">美肤衣</td>
+<td><span class="fm-id" style="font-size:11px">MF3</span> <b>隐形内搭局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">穿搭种草盘</span></div></td>
+<td>6<span style="font-size:11px;color:#7b8498"> / 5簇</span></td>
+<td>¥165万<span style="font-size:11px;color:#7b8498"> (19.5%)</span></td>
+<td>3.32% <span class="idx mid">92</span></td>
+<td>53.3% <span class="idx up">118</span></td>
+<td>9.6s <span class="idx mid">101</span></td>
+<td><a href="01-meifuyi.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">美肤衣</td>
+<td><span class="fm-id" style="font-size:11px">MF4</span> <b>退单促销局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">点击王 · 规模有限</span></div></td>
+<td>12<span style="font-size:11px;color:#7b8498"> / 6簇</span></td>
+<td>¥23万<span style="font-size:11px;color:#7b8498"> (2.7%)</span></td>
+<td>5.87% <span class="idx up">164</span></td>
+<td>41.7% <span class="idx mid">92</span></td>
+<td>8.2s <span class="idx dn">86</span></td>
+<td><a href="01-meifuyi.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">美肤衣</td>
+<td><span class="fm-id" style="font-size:11px">MF5</span> <b>打假正版局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">高客单说服 · 留存偏弱</span></div></td>
+<td>7<span style="font-size:11px;color:#7b8498"> / 4簇</span></td>
+<td>¥114万<span style="font-size:11px;color:#7b8498"> (13.4%)</span></td>
+<td>3.57% <span class="idx mid">99</span></td>
+<td>35.9% <span class="idx dn">79</span></td>
+<td>6.7s <span class="idx dn">71</span></td>
+<td><a href="01-meifuyi.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">美肤衣</td>
+<td><span class="fm-id" style="font-size:11px">MF6</span> <b>长尾创新局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">留存王 · 创新试验田</span></div></td>
+<td>36<span style="font-size:11px;color:#7b8498"> / 33簇</span></td>
+<td>¥196万<span style="font-size:11px;color:#7b8498"> (23.1%)</span></td>
+<td>3.34% <span class="idx mid">93</span></td>
+<td>47.9% <span class="idx mid">106</span></td>
+<td>11.7s <span class="idx up">123</span></td>
+<td><a href="01-meifuyi.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖背心</td>
+<td><span class="fm-id" style="font-size:11px">BX1</span> <b>AI情感短剧局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">留存王 · 独立赛道</span></div></td>
+<td>4<span style="font-size:11px;color:#7b8498"> / 4簇</span></td>
+<td>¥52万<span style="font-size:11px;color:#7b8498"> (7.0%)</span></td>
+<td>4.17% <span class="idx up">149</span></td>
+<td>67.4% <span class="idx up">178</span></td>
+<td>56.4s <span class="idx up">606</span></td>
+<td><a href="02-beixin.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖背心</td>
+<td><span class="fm-id" style="font-size:11px">BX2</span> <b>变装反差短剧局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">效率王 · 结构最完整</span></div></td>
+<td>1<span style="font-size:11px;color:#7b8498"> / 1簇</span><span style="font-size:11px;color:#ffaa3c"> 样本少</span></td>
+<td>¥2万<span style="font-size:11px;color:#7b8498"> (0.3%)</span></td>
+<td>5.73% <span class="idx up">205</span></td>
+<td>76.3% <span class="idx up">201</span></td>
+<td>45.4s <span class="idx up">488</span></td>
+<td><a href="02-beixin.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖背心</td>
+<td><span class="fm-id" style="font-size:11px">BX3</span> <b>胸型焦虑局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">点击型 · 消耗主力</span></div></td>
+<td>16<span style="font-size:11px;color:#7b8498"> / 9簇</span></td>
+<td>¥176万<span style="font-size:11px;color:#7b8498"> (23.7%)</span></td>
+<td>3.21% <span class="idx up">115</span></td>
+<td>37.5% <span class="idx mid">99</span></td>
+<td>7.6s <span class="idx dn">82</span></td>
+<td><a href="02-beixin.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖背心</td>
+<td><span class="fm-id" style="font-size:11px">BX4</span> <b>免穿文胸局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">产品差异点 · 表现平淡</span></div></td>
+<td>9<span style="font-size:11px;color:#7b8498"> / 7簇</span></td>
+<td>¥57万<span style="font-size:11px;color:#7b8498"> (7.6%)</span></td>
+<td>2.59% <span class="idx mid">93</span></td>
+<td>34.2% <span class="idx dn">90</span></td>
+<td>7.2s <span class="idx dn">77</span></td>
+<td><a href="02-beixin.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖背心</td>
+<td><span class="fm-id" style="font-size:11px">BX5</span> <b>发育期母亲局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="background:rgba(255,170,60,.16);color:#ffaa3c">避坑区 · 全面跑输</span></div></td>
+<td>21<span style="font-size:11px;color:#7b8498"> / 18簇</span></td>
+<td>¥159万<span style="font-size:11px;color:#7b8498"> (21.3%)</span></td>
+<td>2.06% <span class="idx dn">74</span></td>
+<td>31.5% <span class="idx dn">83</span></td>
+<td>5.3s <span class="idx dn">57</span></td>
+<td><a href="02-beixin.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖背心</td>
+<td><span class="fm-id" style="font-size:11px">BX6</span> <b>暖身舒适局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">规模盘 · 表现中性</span></div></td>
+<td>49<span style="font-size:11px;color:#7b8498"> / 44簇</span></td>
+<td>¥299万<span style="font-size:11px;color:#7b8498"> (40.2%)</span></td>
+<td>2.82% <span class="idx mid">101</span></td>
+<td>38.2% <span class="idx mid">101</span></td>
+<td>7.4s <span class="idx dn">80</span></td>
+<td><a href="02-beixin.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖裤 / 打底裤</td>
+<td><span class="fm-id" style="font-size:11px">KZ1</span> <b>真假光腿双人对峙局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">真假对峙 · 单条大盘</span></div></td>
+<td>1<span style="font-size:11px;color:#7b8498"> / 1簇</span><span style="font-size:11px;color:#ffaa3c"> 样本少</span></td>
+<td>¥85万<span style="font-size:11px;color:#7b8498"> (5.6%)</span></td>
+<td>3.87% <span class="idx up">115</span></td>
+<td>44.2% <span class="idx mid">104</span></td>
+<td>10.4s <span class="idx mid">98</span></td>
+<td><a href="03-kuzhuang.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖裤 / 打底裤</td>
+<td><span class="fm-id" style="font-size:11px">KZ2</span> <b>腿部特写「这不是丝袜」局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="background:rgba(255,170,60,.16);color:#ffaa3c">穿搭展示型</span></div></td>
+<td>6<span style="font-size:11px;color:#7b8498"> / 4簇</span></td>
+<td>¥130万<span style="font-size:11px;color:#7b8498"> (8.5%)</span></td>
+<td>3.12% <span class="idx mid">93</span></td>
+<td>42.5% <span class="idx mid">100</span></td>
+<td>7.4s <span class="idx dn">70</span></td>
+<td><a href="03-kuzhuang.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖裤 / 打底裤</td>
+<td><span class="fm-id" style="font-size:11px">KZ3</span> <b>街头自证反质疑局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">效率王 · 反质疑打法</span></div></td>
+<td>2<span style="font-size:11px;color:#7b8498"> / 2簇</span><span style="font-size:11px;color:#ffaa3c"> 样本少</span></td>
+<td>¥104万<span style="font-size:11px;color:#7b8498"> (6.8%)</span></td>
+<td>5.27% <span class="idx up">156</span></td>
+<td>45.1% <span class="idx mid">106</span></td>
+<td>7.9s <span class="idx dn">75</span></td>
+<td><a href="03-kuzhuang.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖裤 / 打底裤</td>
+<td><span class="fm-id" style="font-size:11px">KZ4</span> <b>男士秋裤妻女局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">留存王 · 男性人群</span></div></td>
+<td>20<span style="font-size:11px;color:#7b8498"> / 15簇</span></td>
+<td>¥292万<span style="font-size:11px;color:#7b8498"> (19.1%)</span></td>
+<td>2.9% <span class="idx dn">86</span></td>
+<td>51.7% <span class="idx up">121</span></td>
+<td>14.5s <span class="idx up">137</span></td>
+<td><a href="03-kuzhuang.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖裤 / 打底裤</td>
+<td><span class="fm-id" style="font-size:11px">KZ5</span> <b>德绒囤货低价局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">囤货驱动 · 留存尚可</span></div></td>
+<td>13<span style="font-size:11px;color:#7b8498"> / 8簇</span></td>
+<td>¥184万<span style="font-size:11px;color:#7b8498"> (12.1%)</span></td>
+<td>3.38% <span class="idx mid">100</span></td>
+<td>44.6% <span class="idx mid">104</span></td>
+<td>12.6s <span class="idx up">119</span></td>
+<td><a href="03-kuzhuang.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖裤 / 打底裤</td>
+<td><span class="fm-id" style="font-size:11px">KZ6</span> <b>入冬紧迫感局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">效率型 · 季节卡位</span></div></td>
+<td>5<span style="font-size:11px;color:#7b8498"> / 3簇</span></td>
+<td>¥21万<span style="font-size:11px;color:#7b8498"> (1.4%)</span></td>
+<td>5.28% <span class="idx up">157</span></td>
+<td>43.1% <span class="idx mid">101</span></td>
+<td>10.9s <span class="idx mid">103</span></td>
+<td><a href="03-kuzhuang.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr><tr><td style="color:#7b8498;font-size:12px">保暖裤 / 打底裤</td>
+<td><span class="fm-id" style="font-size:11px">KZ7</span> <b>产品讲解种草局</b>
+<div style="font-size:11.5px;margin-top:3px"><span class="fm-role" style="">规模盘 · 表现中性</span></div></td>
+<td>53<span style="font-size:11px;color:#7b8498"> / 45簇</span></td>
+<td>¥710万<span style="font-size:11px;color:#7b8498"> (46.5%)</span></td>
+<td>3.32% <span class="idx mid">99</span></td>
+<td>38.7% <span class="idx mid">91</span></td>
+<td>9.2s <span class="idx dn">87</span></td>
+<td><a href="03-kuzhuang.html"
+style="color:#ff5c8a;font-size:12px">查看 →</a></td></tr></tbody></table>
+<div style="font-size:12px;color:#5b6478;margin-top:10px">
+每条素材只归属一个公式，三个类目 300 条素材在 19 条公式间无重复分配。
+「套路簇」= 按口播话术相似度聚类后的独立创意变体，代表素材每簇只取 1 条。
+标注「样本少」的公式严格匹配素材不足 3 条，为避免强行错配未凑满 5 条举例。</div></div>
+
+<h2>五、落地执行建议</h2>
+<div class="card">
+<div class="blk-t" style="margin-bottom:12px">素材生产配比建议（单账户 / 单周期）</div>
+<table><thead><tr><th>类型</th><th>占比</th><th>选择标准</th><th>作用</th><th>对应公式</th></tr></thead><tbody>
+<tr><td><b>跑量基本盘</b></td><td>50%</td><td>消耗占比高、模板成熟、审核安全</td>
+<td>稳定成本，保证基础量级</td><td>MF2 土秋衣 / BX6 暖身舒适 / KZ7 产品讲解</td></tr>
+<tr><td><b>效率突破型</b></td><td>30%</td><td>CTR 指数 &gt;115</td>
+<td>拉高整体点击效率，降低 CPC</td><td>MF4 退单促销 / BX2 变装反差 / BX3 胸型焦虑 / KZ3 街头自证 / KZ6 入冬紧迫</td></tr>
+<tr><td><b>留存蓄水型</b></td><td>20%</td><td>平均播放指数 &gt;120</td>
+<td>沉淀高意向人群，支撑相似人群拓展</td><td>BX1 AI情感短剧 / MF6 长尾创新 / KZ4 男士秋裤</td></tr>
+<tr style="background:rgba(255,170,60,.06)"><td><b style="color:#ffaa3c">建议压缩</b></td>
+<td style="color:#ffaa3c">≤10%</td><td>三项指标全面跑输</td>
+<td>当前占用 21.3% / 8.5% 消耗但产出低</td>
+<td style="color:#ffaa3c">BX5 发育期母亲 / KZ2 腿部特写</td></tr>
+</tbody></table></div>
+
+<div class="card">
+<div class="blk-t" style="margin-bottom:12px">长内容剧情素材的制作要点（40 秒结构）</div>
+<table><thead><tr><th>时间段</th><th>纯情感短剧（BX1）</th><th>变装反差短剧（BX2 · 推荐）</th></tr></thead><tbody>
+<tr><td><b>0-3s</b></td><td>强冲突台词 + 红黄大字标题</td><td>羞辱型矛盾：「你就穿成这样去？」</td></tr>
+<tr><td><b>3-10s</b></td><td>交代人物关系与矛盾，不提产品</td><td>矛盾升级，铺垫改变动机</td></tr>
+<tr><td><b>10-25s</b></td><td>矛盾升级到最尖锐处</td><td>情绪积累到转折点</td></tr>
+<tr><td><b>25-30s</b></td><td>反转发生，女主形象自然带出</td><td><b style="color:#34c77b">转场 + 产品人台展示（关键缝合点）</b></td></tr>
+<tr><td><b>30-40s</b></td><td>剧情收尾后才植入产品</td><td>变装惊艳亮相 + 产品实拍 + 人群召唤</td></tr>
+<tr><td><b>效果</b></td><td>播放指数 606，但转化链路较长</td><td><b style="color:#34c77b">CTR 指数 205、播放指数 488，结构最完整</b></td></tr>
+</tbody></table></div>
+
+<div class="card">
+<div class="blk-t" style="margin-bottom:12px">创意评审 8 问（新素材上线前逐条自检）</div>
+<ul class="tk">
+<li>前 3 秒有没有明确的<b>痛点</b>或<b>冲突</b>？（而不是从产品介绍开始）</li>
+<li>痛点是不是这个类目验证过的高效痛点？（美肤衣=秋衣外露 / 背心=勒痕与形体 / 裤=走光与显瘦）</li>
+<li>有没有<b>视觉可验证</b>的证据镜头？（透光、同框对比、翻内里、拉伸回弹）</li>
+<li>对比类镜头是否<b>同框同景别同光线</b>？不同框的对比不可信。</li>
+<li>价格钩子放对位置了吗？（美肤衣放开场，保暖裤放 10 秒后）</li>
+<li>出镜人物的<b>体型与目标人群一致</b>吗？（大码货用瘦模是最大翻车点）</li>
+<li>15 秒内有没有出现<b>穿在外套里的效果</b>？内衣的本质诉求是"外面看不出"。</li>
+<li>合规角标齐全吗？（弹性测试说明、效果因人而异、检测报告依据）</li>
+</ul></div>
+
+<div class="note">
+分析方法：三个类目原始素材明细共 93,505 行 → 按素材 URL 聚合去重（消耗加权合并指标）→
+每类目取消耗 TOP220 候选 → 流式解码每条素材前 15 秒并抽取 12 帧关键帧 →
+对每帧计算 dHash 感知哈希，跨素材两两比对（汉明距离 ≤10 且匹配帧占比 ≥70% 判为同一素材），
+仅保留消耗最高的 URL 作为代表 → 每类目取 TOP100 进入深度分析（共 300 条）。<br>
+内容解析：faster-whisper 转写前 15 秒口播；RapidOCR 提取 8 个关键帧的屏幕字幕（含位置与字号）；
+OpenCV 计算逐帧肤色占比与帧间差分表征人物出镜与剪辑节奏；
+规则引擎结合商品标题完成 12 维打标；人工视觉复核 20 条高消耗代表素材校准判定逻辑。<br>
+效果口径：CTR、3 秒完播率、平均播放时长均为素材 URL 全周期数据；指数以各类目 TOP100 简单平均为基准 100。<br>
+生成日期：2026-09-04
+</div></div></body></html>
