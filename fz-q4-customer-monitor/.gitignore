@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+~$*
+.DS_Store
+
+# 待补充的分客户消耗原始数据（含业务敏感数据，不入库）
+input/*
+!input/.gitkeep

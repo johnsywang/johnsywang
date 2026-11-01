@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>服饰行业 Q4 客户监控看板</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--line:#e6e9f0;--txt:#1f2937;--sub:#6b7280;--pri:#2f6bff;--pri2:#e8efff;
+--up:#16a34a;--down:#dc2626;--warn:#f59e0b;--season:#f97316;--season-bg:#fff4ea;--reg:#2563eb;--reg-bg:#eaf1ff;
+--t1:#dc2626;--t2:#9333ea;--t3:#f59e0b;--t4:#16a34a;--t5:#9ca3af}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.5 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:1680px;margin:0 auto;padding:0 20px 60px}
+header.hero{background:linear-gradient(120deg,#1e3a8a,#2f6bff 60%,#5b8cff);color:#fff;padding:26px 20px 22px}
+header.hero .wrap{padding-bottom:0}
+.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.5px}
+.hero .meta{opacity:.9;font-size:13px;display:flex;flex-wrap:wrap;gap:6px 18px}
+.hero .meta b{font-weight:600}
+.bar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.bar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:10px 20px}
+.bar .lbl{color:var(--sub);font-size:13px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:18px;padding:4px 12px;cursor:pointer;user-select:none;background:#fff;font-size:13px;transition:.15s}
+.chip input{margin:0;accent-color:var(--pri)}
+.chip.on{border-color:var(--pri);background:var(--pri2);color:var(--pri);font-weight:600}
+.chip .n{color:var(--sub);font-weight:400;font-size:12px}
+.btn{border:1px solid var(--line);background:#fff;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:12px;color:var(--sub)}
+.btn:hover{color:var(--pri);border-color:var(--pri)}
+.search{border:1px solid var(--line);border-radius:6px;padding:5px 10px;font-size:13px;width:180px}
+.nav{margin-left:auto;display:flex;gap:4px}
+.nav a{color:var(--sub);text-decoration:none;font-size:13px;padding:4px 8px;border-radius:6px}
+.nav a:hover{background:var(--pri2);color:var(--pri)}
+section.card{background:var(--card);border-radius:12px;margin-top:20px;padding:20px 22px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.sec-h{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.sec-h h2{margin:0;font-size:19px}
+.sec-h h2 .no{display:inline-block;background:var(--pri);color:#fff;border-radius:6px;padding:0 8px;margin-right:8px;font-size:15px}
+.sec-h .desc{color:var(--sub);font-size:12.5px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-bottom:16px}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fbfcff}
+.kpi .k{color:var(--sub);font-size:12.5px}
+.kpi .v{font-size:22px;font-weight:700;margin-top:2px}
+.kpi .v small{font-size:12px;font-weight:400;color:var(--sub);margin-left:4px}
+.kpi .s{font-size:12px;margin-top:2px}
+.kpi.click{cursor:pointer}
+.kpi.click.on{outline:2px solid var(--pri);background:var(--pri2)}
+.tbl-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px;max-height:78vh}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;white-space:nowrap}
+thead th{position:sticky;top:0;background:#f1f4fa;z-index:2;font-weight:600;color:#374151;cursor:pointer}
+thead tr.g th{top:0;text-align:center;background:#e7ecf7;cursor:default}
+thead tr.g + tr th{top:35px}
+thead th.nosort{cursor:default}
+thead th .arr{color:var(--pri);font-size:11px}
+tbody tr:hover td{background:#f8faff}
+td.num,th.num{text-align:right}
+td.wr{white-space:normal;min-width:180px;max-width:300px}
+td.sticky,th.sticky{position:sticky;left:0;background:#fff;z-index:1}
+thead th.sticky{z-index:3;background:#f1f4fa}
+tr.total td{background:#f6f8ff;font-weight:700}
+.up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--sub)}
+.raw{display:block;color:#9ca3af;font-size:11.5px;white-space:normal;max-width:220px}
+.pend{color:#b0b6c3;font-style:italic}
+.tag{display:inline-block;border-radius:4px;padding:1px 7px;font-size:12px;line-height:18px;white-space:nowrap}
+.tag.red{background:#fde8e8;color:var(--down)}.tag.green{background:#e5f6ec;color:var(--up)}
+.tag.gray{background:#eef0f4;color:var(--sub)}.tag.orange{background:#fff1e0;color:#c2570c}.tag.blue{background:var(--reg-bg);color:var(--reg)}
+.ct{display:inline-block;border-radius:12px;padding:1px 10px;font-size:12px;font-weight:600;color:#fff}
+.ct-全平台下跌{background:var(--t1)}.ct-被豆子挤压{background:var(--t2)}.ct-仅视频号下跌{background:var(--t3)}.ct-视频号生意增长{background:var(--t4)}.ct-待确认{background:var(--t5)}
+.ctr{display:block;color:var(--sub);font-size:11.5px;white-space:normal;max-width:220px;margin-top:2px}
+.dist{display:flex;height:10px;border-radius:5px;overflow:hidden;margin-top:8px;background:#eee}
+.dist i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;color:var(--sub);margin-top:6px}
+.legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;background:var(--c)}
+.prog{width:140px}
+.prog .b{height:8px;background:#eef0f4;border-radius:4px;overflow:hidden;margin-top:3px}
+.prog .b i{display:block;height:100%;border-radius:4px}
+.dou{display:flex;height:8px;width:120px;border-radius:4px;overflow:hidden;margin-top:3px}
+.dou i:first-child{background:#a855f7}.dou i:last-child{background:var(--pri)}
+.gm{display:flex;flex-direction:column;gap:4px;min-width:170px;white-space:normal}
+.gm .row{display:flex;flex-wrap:wrap;gap:3px;align-items:center}
+.gm .row b{font-size:11px;color:#fff;border-radius:3px;padding:0 4px;margin-right:2px}
+.gm .s b{background:var(--season)}.gm .r b{background:var(--reg)}
+.it{font-size:12px;border-radius:4px;padding:0 6px;line-height:20px;position:relative}
+.s .it{background:var(--season-bg);color:#9a3412}.r .it{background:var(--reg-bg);color:#1e40af}
+.it.new::after{content:"新";position:absolute;top:-7px;right:-5px;background:var(--down);color:#fff;font-size:9px;line-height:12px;padding:0 2px;border-radius:3px}
+.maps{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:14px;margin-bottom:18px}
+.map{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fafbfd}
+.map h4{margin:0;padding:8px 12px;font-size:14px;border-bottom:1px solid var(--line);background:#fff}
+.map img{display:block;width:100%;cursor:zoom-in}
+.map .none{padding:40px;text-align:center;color:var(--sub)}
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px;font-size:13px;color:var(--sub)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{border:0;background:#fff;padding:4px 12px;cursor:pointer;font-size:12.5px;color:var(--sub)}
+.seg button.on{background:var(--pri);color:#fff}
+.note{background:#fffbea;border:1px solid #fde68a;color:#92400e;border-radius:8px;padding:8px 12px;font-size:12.5px;margin-bottom:12px}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;z-index:99;overflow:auto;cursor:zoom-out}
+.lb img{display:block;max-width:none;margin:20px auto}
+details summary{cursor:pointer;font-weight:600}
+.empty{padding:30px;text-align:center;color:var(--sub)}
+.foot{color:var(--sub);font-size:12px;margin-top:24px;text-align:center}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <h1>服饰行业 Q4 客户监控看板</h1>
+  <div class="meta" id="meta"></div>
+</div></header>
+
+<div class="bar"><div class="wrap">
+  <span class="lbl">勾选行业：</span>
+  <span id="indChips"></span>
+  <button class="btn" id="selAll">全选</button><button class="btn" id="selNone">清空</button>
+  <input class="search" id="q" placeholder="搜索客户 / 销售">
+  <nav class="nav"><a href="#s0">数据总览</a><a href="#s1">生意&人力</a><a href="#s2">双十一</a><a href="#s3">商品储备</a><a href="#s9">数据质量</a></nav>
+</div></div>
+
+<div class="wrap">
+  <section class="card" id="s0">
+    <div class="sec-h"><h2><span class="no">总</span>数据总览</h2><span class="desc">分类目 + 全部客户；环比 = 加总当前值 ÷ 加总对比期值 − 1；不受上方行业勾选影响</span></div>
+    <div class="kpis" id="ovKpis"></div>
+    <div class="tbl-wrap"><table id="ovTbl"></table></div>
+  </section>
+
+  <section class="card" id="s1">
+    <div class="sec-h"><h2><span class="no">一</span>客户生意情况及人力盘点</h2><span class="desc" id="s1desc"></span></div>
+    <div class="kpis" id="s1Kpis"></div>
+    <div class="tbl-wrap"><table id="s1Tbl"></table></div>
+  </section>
+
+  <section class="card" id="s2">
+    <div class="sec-h"><h2><span class="no">二</span>双十一目标及准备情况</h2><span class="desc" id="s2desc"></span></div>
+    <div class="kpis" id="s2Kpis"></div>
+    <div class="tbl-wrap"><table id="s2Tbl"></table></div>
+  </section>
+
+  <section class="card" id="s3">
+    <div class="sec-h"><h2><span class="no">三</span>商品储备</h2><span class="desc">全年分月重点品类地图 + 分客户 10–12 月上新节奏（<span class="tag orange">季</span> 季节品 / <span class="tag blue">常</span> 常规品，右上角「新」= 当月新出现）</span></div>
+    <h3 style="margin:4px 0 10px;font-size:15px">① 全年分月重点品类地图</h3>
+    <div class="maps" id="maps"></div>
+    <h3 style="margin:4px 0 10px;font-size:15px">② 分客户 Q4 商品上新节奏</h3>
+    <div class="kpis" id="s3Kpis"></div>
+    <div class="toolbar">显示：<span class="seg" id="gmSeg"><button data-v="all" class="on">全部</button><button data-v="s">仅季节品</button><button data-v="r">仅常规品</button></span></div>
+    <div class="tbl-wrap"><table id="s3Tbl"></table></div>
+  </section>
+
+  <section class="card" id="s9">
+    <details>
+      <summary>数据质量清单（清洗过程留痕）<span class="desc" id="dqSum" style="font-weight:400;color:var(--sub);margin-left:8px"></span></summary>
+      <div class="toolbar" style="margin-top:10px">级别：<span class="seg" id="dqSeg"><button data-v="warn" class="on">需确认</button><button data-v="info">已自动解析</button><button data-v="all">全部</button></span></div>
+      <div class="tbl-wrap"><table id="dqTbl"></table></div>
+    </details>
+  </section>
+  <div class="foot" id="foot"></div>
+</div>
+<div class="lb" id="lb"><img id="lbImg" alt=""></div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const M = DATA.meta;
+const CTYPES = M.ctypes;
+const CT_COLOR = {"全平台下跌":"var(--t1)","被豆子挤压":"var(--t2)","仅视频号下跌":"var(--t3)","视频号生意增长":"var(--t4)","待确认":"var(--t5)"};
+const ALL = [];
+DATA.industries.forEach(ind => ind.customers.forEach(c => { c.industry = ind.name; ALL.push(c); }));
+const state = { inds: new Set(DATA.industries.map(i => i.name)), q: "", ctype: null, gm: "all", dq: "warn" };
+
+// ---------------- 工具
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const isNum = v => typeof v === "number" && isFinite(v);
+const PEND = '<span class="pend">待补充</span>';
+function fmt(v, d = 1) { if (!isNum(v)) return "—"; return v.toLocaleString("zh-CN", {minimumFractionDigits: 0, maximumFractionDigits: d}); }
+function fmtPct(v, d = 0) { return isNum(v) ? (v * 100).toFixed(d) + "%" : "—"; }
+function yoyCell(o) {
+  if (!o || o.val === null || o.val === undefined) return o && o.raw ? `<span class="flat">—</span><span class="raw">${esc(o.raw)}</span>` : "—";
+  const inf = o.val === "inf", v = inf ? Infinity : o.val;
+  const cls = v > 0 ? "up" : v < 0 ? "down" : "flat";
+  const showRaw = o.raw && !/^[-+]?\d+(\.\d+)?$/.test(o.raw) && o.raw !== "+∞" && o.raw !== "持平";
+  return `<span class="${cls}">${esc(o.label)}</span>${showRaw ? `<span class="raw">${esc(o.raw)}</span>` : ""}`;
+}
+const yoySort = o => !o || o.val === null || o.val === undefined ? -1e18 : o.val === "inf" ? 1e18 : o.val;
+function amtCell(o) {
+  if (!o) return "—";
+  const showRaw = o.raw && !/^[-+]?\d+(\.\d+)?$/.test(o.raw);
+  if (!isNum(o.val)) return o.raw ? `<span class="flat">—</span><span class="raw">${esc(o.raw)}</span>` : "—";
+  return fmt(o.val, 2) + (o.note ? ` <span class="tag gray">${esc(o.note)}</span>` : "") + (showRaw ? `<span class="raw">${esc(o.raw)}</span>` : "");
+}
+function ringCell(cur, prev) {
+  if (!isNum(cur) || !isNum(prev)) return PEND;
+  if (prev === 0) return cur > 0 ? '<span class="up">+∞</span>' : '<span class="flat">—</span>';
+  const r = cur / prev - 1, cls = r > 0.0005 ? "up" : r < -0.0005 ? "down" : "flat";
+  return `<span class="${cls}">${r >= 0 ? "+" : ""}${(r * 100).toFixed(1)}%</span>`;
+}
+const ring = (cur, prev) => isNum(cur) && isNum(prev) && prev !== 0 ? cur / prev - 1 : null;
+const ctBadge = c => `<span class="ct ct-${c.ctype}">${c.ctype}</span><span class="ctr">${esc(c.ctype_reason)}</span>`;
+function sum(arr, f) { let s = 0, has = false; arr.forEach(x => { const v = f(x); if (isNum(v)) { s += v; has = true; } }); return has ? s : null; }
+
+// 表格：通用渲染 + 点击表头排序（按 data-v）
+function renderTable(el, groups, cols, rows, opts = {}) {
+  let h = "<thead>";
+  if (groups) h += '<tr class="g">' + groups.map(g => `<th colspan="${g[1]}" class="nosort">${g[0]}</th>`).join("") + "</tr>";
+  h += "<tr>" + cols.map((c, i) => `<th data-i="${i}" class="${c.cls || ""} ${c.sort === false ? "nosort" : ""}">${c.t}</th>`).join("") + "</tr></thead><tbody>";
+  if (!rows.length) h += `<tr><td colspan="${cols.length}" class="empty">当前筛选下无客户</td></tr>`;
+  rows.forEach(r => {
+    h += `<tr class="${opts.rowCls ? opts.rowCls(r) : ""}">` + cols.map(c => {
+      const v = c.v ? c.v(r) : "";
+      return `<td class="${c.cls || ""}" data-v="${esc(v ?? "")}">${c.f(r)}</td>`;
+    }).join("") + "</tr>";
+  });
+  el.innerHTML = h + "</tbody>";
+  el.querySelectorAll("thead tr:last-child th:not(.nosort)").forEach(th => th.onclick = () => {
+    const i = +th.dataset.i, asc = th.dataset.dir !== "asc";
+    el.querySelectorAll("thead th").forEach(x => { delete x.dataset.dir; x.querySelector(".arr")?.remove(); });
+    th.dataset.dir = asc ? "asc" : "desc"; th.insertAdjacentHTML("beforeend", `<span class="arr"> ${asc ? "▲" : "▼"}</span>`);
+    const tb = el.tBodies[0], trs = [...tb.rows].filter(tr => !tr.classList.contains("total"));
+    trs.sort((a, b) => {
+      const x = a.cells[i].dataset.v, y = b.cells[i].dataset.v, nx = parseFloat(x), ny = parseFloat(y);
+      const r = !isNaN(nx) && !isNaN(ny) ? nx - ny : x.localeCompare(y, "zh");
+      return asc ? r : -r;
+    });
+    trs.forEach(tr => tb.appendChild(tr));
+  });
+}
+
+// ---------------- 顶部
+function renderMeta() {
+  $("#meta").innerHTML = [
+    `源表：<b>${esc(M.source)}</b>（${esc(M.source_mtime)}）`,
+    `数据日期（昨日）：<b>${M.data_date}</b>`,
+    `双十一周期：<b>${M.d11_start} ~ ${M.d11_end}</b>（共 ${M.d11_total} 天，已过 <b>${M.d11_elapsed}</b> 天，时间进度 ${fmtPct(M.d11_elapsed / M.d11_total, 1)}）`,
+    `生成时间：${esc(M.built_at)}`,
+  ].map(x => `<span>${x}</span>`).join("");
+  $("#foot").textContent = `数据源：${M.source} ｜ 清洗：clean.py ｜ 看板：build.py ｜ ${M.built_at}`;
+  $("#indChips").innerHTML = DATA.industries.map(i =>
+    `<label class="chip on" data-ind="${esc(i.name)}"><input type="checkbox" checked value="${esc(i.name)}">${esc(i.name)}<span class="n">${i.customers.length}</span></label>`).join(" ");
+  $("#indChips").querySelectorAll("input").forEach(cb => cb.onchange = () => {
+    cb.checked ? state.inds.add(cb.value) : state.inds.delete(cb.value);
+    cb.parentElement.classList.toggle("on", cb.checked); renderAll();
+  });
+  $("#selAll").onclick = () => setInds(true); $("#selNone").onclick = () => setInds(false);
+  $("#q").oninput = e => { state.q = e.target.value.trim().toLowerCase(); renderAll(); };
+}
+function setInds(on) {
+  document.querySelectorAll("#indChips input").forEach(cb => { cb.checked = on; cb.parentElement.classList.toggle("on", on); on ? state.inds.add(cb.value) : state.inds.delete(cb.value); });
+  renderAll();
+}
+const sel = () => ALL.filter(c => state.inds.has(c.industry) && (!state.q || (c.name + c.aliases.join("") + c.sales).toLowerCase().includes(state.q)));
+
+// ---------------- 指标计算（客户级 -> 汇总）
+const days = M.d11_elapsed, U = M.cost_div;
+function agg(cs) {
+  const P = k => sum(cs, c => c.perf ? c.perf[k] : null);
+  const o = {
+    n: cs.length, types: Object.fromEntries(CTYPES.map(t => [t, cs.filter(c => c.ctype === t).length])),
+    y_cost: P("y_cost"), y_cost_prev: P("y_cost_prev"), y_ads: P("y_ads"), y_ads_prev: P("y_ads_prev"),
+    y_cre: P("y_cre"), y_cre_prev: P("y_cre_prev"),
+    d_cost: P("d_cost"), d_cost_prev: P("d_cost_prev"), d_ads: P("d_ads"), d_ads_prev: P("d_ads_prev"),
+    d_cre: P("d_cre"), d_cre_prev: P("d_cre_prev"),
+  };
+  // 序时完成度：仅统计「有目标且有消耗数据」的客户，Σ累计消耗 ÷ Σ(日均目标 × 已过天数)
+  const withT = cs.filter(c => isNum(c.d11.cost_target) && c.perf && isNum(c.perf.d_cost));
+  o.t_cover = cs.filter(c => isNum(c.d11.cost_target)).length;
+  o.seq = withT.length && days ? sum(withT, c => c.perf.d_cost / U) / sum(withT, c => c.d11.cost_target * days) : null;
+  return o;
+}
+const dAvg = v => isNum(v) && days ? v / days : null;
+
+// ---------------- 总览
+function renderOverview() {
+  const rows = [{name: "全部", ...agg(ALL), total: true}].concat(DATA.industries.map(i => ({name: i.name, ...agg(i.customers)})));
+  const a = rows[0];
+  $("#ovKpis").innerHTML = `
+    <div class="kpi"><div class="k">总客户数</div><div class="v">${a.n}<small>家</small></div>
+      <div class="dist">${CTYPES.map(t => `<i style="width:${a.types[t] / a.n * 100}%;background:${CT_COLOR[t]}" title="${t} ${a.types[t]}"></i>`).join("")}</div>
+      <div class="legend">${CTYPES.map(t => `<span style="--c:${CT_COLOR[t]}">${t} ${a.types[t]}</span>`).join("")}</div></div>
+    ${kpi("昨日消耗", isNum(a.y_cost) ? fmt(a.y_cost / U, 1) : null, "万", ringCell(a.y_cost, a.y_cost_prev))}
+    ${kpi("昨日广告数", fmt0(a.y_ads), "个", ringCell(a.y_ads, a.y_ads_prev))}
+    ${kpi("昨日全新创意唯一性id数", fmt0(a.y_cre), "个", ringCell(a.y_cre, a.y_cre_prev))}
+    ${kpi("双十一期间日耗", isNum(a.d_cost) ? fmt(dAvg(a.d_cost) / U, 1) : null, "万/天", ringCell(a.d_cost, a.d_cost_prev))}
+    ${kpi("双十一日均全新创意数", isNum(a.d_cre) ? fmt(dAvg(a.d_cre), 0) : null, "个/天", ringCell(a.d_cre, a.d_cre_prev))}
+    ${kpi("双十一有消耗广告数", fmt0(a.d_ads), "个", ringCell(a.d_ads, a.d_ads_prev))}
+    ${kpi("双十一消耗序时完成度", isNum(a.seq) ? fmtPct(a.seq, 1) : null, "", `${a.t_cover}/${a.n} 家有消耗目标`)}`;
+  const G = [["行业", 1], ["客户数", 1 + CTYPES.length], ["昨日", 6], [`双十一期间（${M.d11_start.slice(5)} ~ 昨日）`, 7]];
+  const cols = [
+    {t: "行业", cls: "sticky", f: r => `<b>${r.name}</b>`, v: r => r.total ? "" : r.name},
+    {t: "总客户数", cls: "num", f: r => r.n, v: r => r.n},
+    ...CTYPES.map(t => ({t, cls: "num", f: r => r.types[t] || '<span class="flat">0</span>', v: r => r.types[t]})),
+    {t: "消耗(万)", cls: "num", f: r => isNum(r.y_cost) ? fmt(r.y_cost / U, 2) : PEND, v: r => r.y_cost},
+    {t: "环比", cls: "num", f: r => ringCell(r.y_cost, r.y_cost_prev), v: r => ring(r.y_cost, r.y_cost_prev)},
+    {t: "广告数", cls: "num", f: r => isNum(r.y_ads) ? fmt0(r.y_ads) : PEND, v: r => r.y_ads},
+    {t: "环比", cls: "num", f: r => ringCell(r.y_ads, r.y_ads_prev), v: r => ring(r.y_ads, r.y_ads_prev)},
+    {t: "全新创意唯一性id数", cls: "num", f: r => isNum(r.y_cre) ? fmt0(r.y_cre) : PEND, v: r => r.y_cre},
+    {t: "环比", cls: "num", f: r => ringCell(r.y_cre, r.y_cre_prev), v: r => ring(r.y_cre, r.y_cre_prev)},
+    {t: "日耗(万/天)", cls: "num", f: r => isNum(r.d_cost) ? fmt(dAvg(r.d_cost) / U, 2) : PEND, v: r => r.d_cost},
+    {t: "环比", cls: "num", f: r => ringCell(r.d_cost, r.d_cost_prev), v: r => ring(r.d_cost, r.d_cost_prev)},
+    {t: "日均全新创意数", cls: "num", f: r => isNum(r.d_cre) ? fmt(dAvg(r.d_cre), 0) : PEND, v: r => r.d_cre},
+    {t: "环比", cls: "num", f: r => ringCell(r.d_cre, r.d_cre_prev), v: r => ring(r.d_cre, r.d_cre_prev)},
+    {t: "有消耗广告数", cls: "num", f: r => isNum(r.d_ads) ? fmt0(r.d_ads) : PEND, v: r => r.d_ads},
+    {t: "环比", cls: "num", f: r => ringCell(r.d_ads, r.d_ads_prev), v: r => ring(r.d_ads, r.d_ads_prev)},
+    {t: "消耗序时完成度", cls: "num", f: r => (isNum(r.seq) ? seqTag(r.seq) : PEND) + `<span class="raw">${r.t_cover}/${r.n} 家有目标</span>`, v: r => r.seq},
+  ];
+  renderTable($("#ovTbl"), G, cols, rows, {rowCls: r => r.total ? "total" : ""});
+}
+const fmt0 = v => isNum(v) ? Math.round(v).toLocaleString("zh-CN") : null;
+function kpi(k, v, unit, sub) {
+  return `<div class="kpi"><div class="k">${k}</div><div class="v">${v === null || v === undefined ? PEND : v + (unit ? `<small>${unit}</small>` : "")}</div><div class="s">${v === null || v === undefined ? '<span class="flat">待提供数据</span>' : sub || ""}</div></div>`;
+}
+function seqTag(r) { const cls = r >= 1 ? "green" : r >= 0.8 ? "orange" : "red"; return `<span class="tag ${cls}">${fmtPct(r, 1)}</span>`; }
+
+// ---------------- 第一部分
+function renderS1() {
+  const cs0 = sel(), cs = state.ctype ? cs0.filter(c => c.ctype === state.ctype) : cs0;
+  const ft = sum(cs0, c => c.staff.adq_fulltime) || 0, hasDou = cs0.filter(c => isNum(c.staff.dou_pct));
+  $("#s1desc").textContent = `客户生意口径：10.1-10.21；分类规则：视频号年同比>0 → 视频号生意增长；视频号<0 且全平台≤0 → 全平台下跌；视频号<0 且全平台>0：微信豆>adq → 被豆子挤压，微信豆<adq → 仅视频号下跌；其余 → 待确认`;
+  $("#s1Kpis").innerHTML = CTYPES.map(t => {
+    const n = cs0.filter(c => c.ctype === t).length;
+    return `<div class="kpi click ${state.ctype === t ? "on" : ""}" data-t="${t}"><div class="k"><span class="ct ct-${t}">${t}</span></div><div class="v">${n}<small>家 · ${fmtPct(cs0.length ? n / cs0.length : null)}</small></div></div>`;
+  }).join("") + `<div class="kpi"><div class="k">adq 专职投手合计</div><div class="v">${fmt(ft, 1)}<small>人</small></div><div class="s">${cs0.filter(c => c.staff.adq_fulltime > 0).length} 家有专职投手</div></div>
+  <div class="kpi"><div class="k">平均微信豆份额</div><div class="v">${hasDou.length ? fmt(sum(hasDou, c => c.staff.dou_pct) / hasDou.length, 0) + "%" : "—"}</div><div class="s">${hasDou.length}/${cs0.length} 家可计算</div></div>`;
+  $("#s1Kpis").querySelectorAll(".kpi.click").forEach(k => k.onclick = () => { state.ctype = state.ctype === k.dataset.t ? null : k.dataset.t; renderS1(); });
+  const G = [["客户", 4], ["客户生意情况（10.1-10.21）", 8], ["客户人力盘点", 3]];
+  const b = (c, k) => c.biz[k];
+  const cols = [
+    {t: "客户", cls: "sticky", f: c => `<b>${esc(c.name)}</b>`, v: c => c.name},
+    {t: "行业", f: c => c.industry, v: c => c.industry},
+    {t: "销售", f: c => esc(c.sales) || "—", v: c => c.sales},
+    {t: "客户分类", f: ctBadge, v: c => CTYPES.indexOf(c.ctype)},
+    {t: "全平台日均GMV(万)", cls: "num", f: c => amtCell(b(c, "gmv_all")), v: c => b(c, "gmv_all").val},
+    {t: "年同比", cls: "num", f: c => yoyCell(b(c, "gmv_all_yoy")), v: c => yoySort(b(c, "gmv_all_yoy"))},
+    {t: "视频号日均GMV(万)", cls: "num", f: c => amtCell(b(c, "gmv_vx")), v: c => b(c, "gmv_vx").val},
+    {t: "年同比", cls: "num", f: c => yoyCell(b(c, "gmv_vx_yoy")), v: c => yoySort(b(c, "gmv_vx_yoy"))},
+    {t: "视频号占比", cls: "num", f: c => ratioCell(b(c, "vx_share")), v: c => b(c, "vx_share").val},
+    {t: "视频号TR", cls: "num", f: c => ratioCell(b(c, "vx_tr")), v: c => b(c, "vx_tr").val},
+    {t: "AMS日耗(万)", cls: "num", f: c => amtCell(b(c, "ams")), v: c => b(c, "ams").val},
+    {t: "年同比", cls: "num", f: c => yoyCell(b(c, "ams_yoy")), v: c => yoySort(b(c, "ams_yoy"))},
+    {t: "adq投手情况盘点", cls: "wr", f: c => esc(c.staff.adq_desc) || "—", v: c => c.staff.adq_desc},
+    {t: "adq专职投手数量", cls: "num", f: c => `<b>${c.staff.adq_fulltime}</b>` + (c.staff.adq_fulltime_note ? `<span class="raw">${esc(c.staff.adq_fulltime_note)}</span>` : ""), v: c => c.staff.adq_fulltime},
+    {t: "微信豆投放摸底", cls: "wr", f: douCell, v: c => c.staff.dou_pct ?? -1},
+  ];
+  renderTable($("#s1Tbl"), G, cols, cs);
+}
+function ratioCell(o) {
+  if (isNum(o.val)) return fmtPct(o.val, o.val < 0.1 ? 1 : 0);
+  return o.raw ? `<span class="flat">—</span><span class="raw">${esc(o.raw)}</span>` : "—";
+}
+function douCell(c) {
+  const s = c.staff;
+  if (!s.dou_text) return (s.dou_msg ? `<span class="tag gray">${esc(s.dou_msg)}</span>` : "—") + (s.dou_raw ? `<span class="raw">原文：${esc(s.dou_raw)}</span>` : "") + (s.roi_note ? `<span class="raw">${esc(s.roi_note)}</span>` : "");
+  return `<b>${esc(s.dou_text)}</b><div class="dou" title="紫=微信豆 蓝=adq"><i style="width:${s.dou_pct}%"></i><i style="width:${s.adq_pct}%"></i></div>` + (s.roi_note ? `<span class="raw">${esc(s.roi_note)}</span>` : "");
+}
+
+// ---------------- 第二部分
+function renderS2() {
+  const cs = sel();
+  $("#s2desc").textContent = `周期 ${M.d11_start} ~ ${M.d11_end}；序时完成度 = 10.12至昨日累计消耗 ÷ (日均消耗目标 × 已过天数 ${days})；目标为区间的按最大值计`;
+  const cnt = f => cs.filter(f).length;
+  const signs = ["报名全资补贴", "报名混资补贴", "未报名", "未填写"];
+  const withT = cs.filter(c => isNum(c.d11.cost_target)), agg2 = agg(cs);
+  $("#s2Kpis").innerHTML =
+    `<div class="kpi"><div class="k">时间进度</div><div class="v">${days}/${M.d11_total}<small>天 · ${fmtPct(days / M.d11_total, 1)}</small></div></div>` +
+    signs.map(s => `<div class="kpi"><div class="k">${s}</div><div class="v">${cnt(c => c.d11.signup === s)}<small>家</small></div></div>`).join("") +
+    `<div class="kpi"><div class="k">库存不足 / 未填写</div><div class="v"><span class="down">${cnt(c => c.d11.stock === "不足")}</span> / ${cnt(c => c.d11.stock === "未填写")}<small>家</small></div></div>
+     <div class="kpi"><div class="k">缺少消耗目标</div><div class="v down">${cs.length - withT.length}<small>家</small></div><div class="s">日均目标合计 ${fmt(sum(withT, c => c.d11.cost_target), 1)} 万/天</div></div>
+     ${kpi("整体序时完成度", isNum(agg2.seq) ? fmtPct(agg2.seq, 1) : null, "", `${agg2.t_cover} 家有目标`)}`;
+  const G = [["客户", 2], ["视频号双十一目标及准备情况（10月12日-11月15日）", 5], ["消耗进度（10.12 ~ 昨日）", 3]];
+  const cols = [
+    {t: "客户", cls: "sticky", f: c => `<b>${esc(c.name)}</b>`, v: c => c.name},
+    {t: "行业", f: c => c.industry, v: c => c.industry},
+    {t: "双十一小店活动报名", f: c => signTag(c.d11.signup), v: c => c.d11.signup},
+    {t: "大场规划日期（单场GMV>50万）", cls: "wr", f: c => c.d11.big_dates === "未填写" ? '<span class="flat">未填写</span>' : esc(c.d11.big_dates), v: c => c.d11.big_dates},
+    {t: "现货库存", f: c => `<span class="tag ${c.d11.stock === "充足" ? "green" : c.d11.stock === "不足" ? "red" : "gray"}">${c.d11.stock}</span>`, v: c => c.d11.stock},
+    {t: "日均消耗目标(万)", cls: "num", f: c => isNum(c.d11.cost_target) ? `<b>${fmt(c.d11.cost_target, 2)}</b>` + (c.d11.cost_target_raw && c.d11.cost_target_raw != c.d11.cost_target ? `<span class="raw">原文：${esc(c.d11.cost_target_raw)}</span>` : "") : '<span class="tag red">缺少目标</span>', v: c => c.d11.cost_target},
+    {t: "日均GMV目标(万)", cls: "num", f: c => isNum(c.d11.gmv_target) ? fmt(c.d11.gmv_target, 1) + (c.d11.gmv_target_raw && c.d11.gmv_target_raw != c.d11.gmv_target ? `<span class="raw">原文：${esc(c.d11.gmv_target_raw)}</span>` : "") : '<span class="flat">—</span>', v: c => c.d11.gmv_target},
+    {t: "累计消耗(万)", cls: "num", f: c => c.perf && isNum(c.perf.d_cost) ? fmt(c.perf.d_cost / U, 2) : PEND, v: c => c.perf?.d_cost},
+    {t: "实际日均(万)", cls: "num", f: c => c.perf && isNum(c.perf.d_cost) ? fmt(dAvg(c.perf.d_cost) / U, 2) : PEND, v: c => c.perf?.d_cost},
+    {t: "消耗序时完成度", f: seqCell, v: c => custSeq(c) ?? -1, sort: true},
+  ];
+  renderTable($("#s2Tbl"), G, cols, cs);
+}
+function signTag(s) { const m = {"报名全资补贴": "green", "报名混资补贴": "blue", "未报名": "red"}; return `<span class="tag ${m[s] || "gray"}">${esc(s)}</span>`; }
+function custSeq(c) { return isNum(c.d11.cost_target) && c.perf && isNum(c.perf.d_cost) && days ? (c.perf.d_cost / U) / (c.d11.cost_target * days) : null; }
+function seqCell(c) {
+  if (!isNum(c.d11.cost_target)) return '<span class="tag red">缺少目标</span>';
+  const r = custSeq(c);
+  if (r === null) return PEND;
+  const col = r >= 1 ? "var(--up)" : r >= 0.8 ? "var(--warn)" : "var(--down)";
+  return `<div class="prog"><b style="color:${col}">${fmtPct(r, 1)}</b><div class="b"><i style="width:${Math.min(r, 1) * 100}%;background:${col}"></i></div></div>`;
+}
+
+// ---------------- 第三部分
+function renderS3() {
+  const inds = DATA.industries.filter(i => state.inds.has(i.name));
+  $("#maps").innerHTML = inds.length ? inds.map(i => `<div class="map"><h4>${esc(i.name)} · 全年分月重点品类地图</h4>${i.maps.length ? i.maps.map(src => `<img src="${src}" alt="${esc(i.name)}品类地图" loading="lazy">`).join("") : '<div class="none">源表该行业暂无品类地图</div>'}</div>`).join("") : '<div class="empty">请勾选行业</div>';
+  $("#maps").querySelectorAll("img").forEach(im => im.onclick = () => { $("#lbImg").src = im.src; $("#lb").style.display = "block"; });
+  const cs = sel();
+  const noS = cs.filter(c => c.q4_season === 0).length;
+  $("#s3Kpis").innerHTML = `
+    <div class="kpi"><div class="k">Q4 季节品合计</div><div class="v" style="color:var(--season)">${sum(cs, c => c.q4_season) || 0}<small>个</small></div><div class="s">户均 ${cs.length ? fmt(sum(cs, c => c.q4_season) / cs.length, 1) : "—"}</div></div>
+    <div class="kpi"><div class="k">Q4 常规品合计</div><div class="v" style="color:var(--reg)">${sum(cs, c => c.q4_regular) || 0}<small>个</small></div><div class="s">户均 ${cs.length ? fmt(sum(cs, c => c.q4_regular) / cs.length, 1) : "—"}</div></div>
+    <div class="kpi"><div class="k">无季节品储备客户</div><div class="v down">${noS}<small>家 · ${fmtPct(cs.length ? noS / cs.length : null)}</small></div></div>
+    <div class="kpi"><div class="k">商品完全未填写</div><div class="v">${cs.filter(c => c.q4_season + c.q4_regular === 0).length}<small>家</small></div></div>`;
+  const cols = [
+    {t: "客户", cls: "sticky", f: c => `<b>${esc(c.name)}</b>`, v: c => c.name},
+    {t: "行业", f: c => c.industry, v: c => c.industry},
+    ...["10月", "11月", "12月"].map((m, i, arr) => ({t: m, sort: false, f: c => goodsCell(c, m, i ? arr[i - 1] : null)})),
+    {t: "Q4季节品数", cls: "num", f: c => c.q4_season ? `<b style="color:var(--season)">${c.q4_season}</b>` : '<span class="tag red">0</span>', v: c => c.q4_season},
+    {t: "Q4常规品数", cls: "num", f: c => c.q4_regular ? `<b style="color:var(--reg)">${c.q4_regular}</b>` : '<span class="flat">0</span>', v: c => c.q4_regular},
+  ];
+  renderTable($("#s3Tbl"), null, cols, cs);
+}
+function goodsCell(c, m, prev) {
+  const rows = [];
+  [["季节品", "s", "季"], ["常规品", "r", "常"]].forEach(([tp, k, lb]) => {
+    if (state.gm !== "all" && state.gm !== k) return;
+    const items = c.goods[m][tp], pv = prev ? new Set(c.goods[prev][tp].map(x => x.name)) : null;
+    if (!items.length) return;
+    rows.push(`<div class="row ${k}"><b>${lb}</b>${items.map(it => `<span class="it ${pv && !pv.has(it.name) ? "new" : ""}">${esc(it.name)}</span>`).join("")}</div>`);
+  });
+  return `<div class="gm">${rows.join("") || '<span class="flat">—</span>'}</div>`;
+}
+
+// ---------------- 数据质量
+function renderDQ() {
+  const all = DATA.issues, w = all.filter(i => i.level === "warn").length;
+  $("#dqSum").textContent = `需确认 ${w} 条 · 已自动解析 ${all.length - w} 条`;
+  const rows = all.filter(i => state.dq === "all" || i.level === state.dq);
+  renderTable($("#dqTbl"), null, [
+    {t: "级别", f: i => i.level === "warn" ? '<span class="tag orange">需确认</span>' : '<span class="tag gray">已解析</span>', v: i => i.level},
+    {t: "行业", f: i => esc(i.industry), v: i => i.industry},
+    {t: "客户", f: i => esc(i.customer), v: i => i.customer},
+    {t: "字段", f: i => esc(i.field), v: i => i.field},
+    {t: "原值", cls: "wr", f: i => esc(i.raw), v: i => i.raw},
+    {t: "处理说明", cls: "wr", f: i => esc(i.msg), v: i => i.msg},
+  ], rows);
+}
+
+function bindSeg(id, key, fn) {
+  document.querySelectorAll(`#${id} button`).forEach(b => b.onclick = () => {
+    state[key] = b.dataset.v; document.querySelectorAll(`#${id} button`).forEach(x => x.classList.toggle("on", x === b)); fn();
+  });
+}
+function renderAll() { renderS1(); renderS2(); renderS3(); }
+$("#lb").onclick = () => $("#lb").style.display = "none";
+renderMeta(); renderOverview(); renderAll(); renderDQ();
+bindSeg("gmSeg", "gm", renderS3); bindSeg("dqSeg", "dq", renderDQ);
+</script>
+</body>
+</html>
