@@ -101,8 +101,19 @@ def main():
 
     yfile = load_perf(C.YDAY_FILE_GLOB, C.YDAY_COLS, data, "昨日")
     dfile = load_perf(C.D11_FILE_GLOB, C.D11_COLS, data, "双十一期间")
+    qfile = load_perf(C.QTD_FILE_GLOB, C.QTD_COLS, data, "QTD")
 
     elapsed = max(0, min((ddate - C.D11_START).days + 1, C.D11_TOTAL_DAYS))
+    q_days = max(0, (ddate - C.Q_START).days + 1)
+    # QTD 日耗：优先用直接提供的日耗，否则 累计消耗 ÷ QTD天数；去年同期按相同天数换算
+    for ind in data["industries"]:
+        for c in ind["customers"]:
+            p = c.get("perf")
+            if not p or not q_days:
+                continue
+            for day_k, cost_k in (("q_day", "q_cost"), ("q_day_ly", "q_cost_ly")):
+                if day_k not in p and cost_k in p:
+                    p[day_k] = p[cost_k] / q_days
     used = {c["ctype"] for i in data["industries"] for c in i["customers"]}
     # 「未标注」默认不展示，仅在确有客户未填写客户类型时才出现，避免这些客户在分类汇总中被漏掉
     ctypes = [t for t in C.CTYPES if t != C.CTYPE_EMPTY] + sorted(used - set(C.CTYPES))
@@ -112,7 +123,8 @@ def main():
         "source": data["source"], "source_mtime": data["source_mtime"],
         "built_at": dt.datetime.now().strftime("%Y-%m-%d %H:%M"),
         "data_date": ddate.isoformat(), "d11_start": C.D11_START.isoformat(), "d11_end": C.D11_END.isoformat(),
-        "d11_total": C.D11_TOTAL_DAYS, "d11_elapsed": elapsed, "cost_div": C.COST_UNIT_DIVISOR,
+        "d11_total": C.D11_TOTAL_DAYS, "d11_elapsed": elapsed,
+        "q_start": C.Q_START.isoformat(), "q_days": q_days, "qtd_file": qfile, "cost_div": C.COST_UNIT_DIVISOR,
         "ctypes": ctypes, "yday_file": yfile, "d11_file": dfile,
     }
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
@@ -123,7 +135,7 @@ def main():
 
     n = sum(len(i["customers"]) for i in data["industries"])
     print(f"源表: {src.name} | 客户 {n} 家 | 数据日期 {ddate} | 双十一已过 {elapsed}/{C.D11_TOTAL_DAYS} 天")
-    print(f"昨日数据: {yfile or '未提供'} | 双十一数据: {dfile or '未提供'}")
+    print(f"昨日数据: {yfile or '未提供'} | 双十一数据: {dfile or '未提供'} | QTD数据: {qfile or '未提供（或已含在昨日文件中）'}")
     print(f"看板: {out}  ({out.stat().st_size / 1024:.0f} KB)")
     print(f"清洗结果: {C.OUTPUT_DIR / '清洗结果.xlsx'}")
 

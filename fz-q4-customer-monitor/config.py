@@ -13,6 +13,9 @@ INPUT_DIR = ROOT / "input"        # 后续补充的消耗类数据放这里
 OUTPUT_DIR = ROOT / "output"      # 看板 HTML + 清洗结果 Excel
 TEMPLATE = ROOT / "template.html"
 
+# QTD 起始日（Q4），QTD 天数 = 数据日期 − Q_START + 1
+Q_START = dt.date(2026, 10, 1)
+
 # 双十一周期
 D11_START = dt.date(2026, 10, 12)
 D11_END = dt.date(2026, 11, 15)
@@ -41,6 +44,18 @@ YDAY_COLS = {
     "y_cre": ["昨日全新创意唯一性id数", "全新创意唯一性id数"],
     "y_cre_prev": ["对比期全新创意唯一性id数", "前日全新创意唯一性id数"],
 }
+# QTD 分客户（10.1-昨日）：可直接给日耗，也可给累计消耗（÷QTD天数换算日耗）；去年同期同理
+# 既可单独成文件「QTD分客户*」，也可作为列放进「昨日分客户*」文件（两处不要重复提供同一客户）
+QTD_FILE_GLOB = "QTD分客户*"
+QTD_COLS = {
+    "name": ["客户简称", "主计客户简称", "客户"],
+    "q_day": ["QTD日耗", "QTD日均消耗"],
+    "q_day_ly": ["去年同期QTD日耗", "QTD日耗去年同期", "去年同期日耗"],
+    "q_cost": ["QTD消耗", "QTD累计消耗", "Q4累计消耗"],
+    "q_cost_ly": ["去年同期QTD消耗", "QTD消耗去年同期", "去年同期累计消耗"],
+}
+YDAY_COLS.update({k: v for k, v in QTD_COLS.items() if k != "name"})
+
 # 双十一期间分客户（10.12-昨日）：累计消耗、有消耗广告数、全新创意唯一性id数 + 对比期
 D11_FILE_GLOB = "双十一分客户*"
 D11_COLS = {
