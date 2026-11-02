@@ -48,6 +48,12 @@ th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;verti
 thead th{position:sticky;top:0;background:#f1f4fa;z-index:2;font-weight:600;color:#374151;cursor:pointer}
 thead tr.g th{top:0;text-align:center;background:#e7ecf7;cursor:default}
 thead tr.g + tr th{top:35px}
+thead tr.g th{font-size:13.5px;font-weight:700;box-shadow:inset 0 -2px 0 currentColor}
+thead tr.g th.gc1{background:#dbe7ff;color:#1d4ed8}thead tr:not(.g) th.gc1{background:#eef4ff}
+thead tr.g th.gc2{background:#ffe9d6;color:#c2410c}thead tr:not(.g) th.gc2{background:#fff6ee}
+thead tr.g th.gc3{background:#dcf5e6;color:#15803d}thead tr:not(.g) th.gc3{background:#f0fbf4}
+thead tr.g th.gc0{color:#374151}
+th.gs,td.gs{border-left:2px solid #c3cbe0}
 thead th.nosort{cursor:default}
 thead th .arr{color:var(--pri);font-size:11px}
 tbody tr:hover td{background:#f8faff}
@@ -195,14 +201,18 @@ function sum(arr, f) { let s = 0, has = false; arr.forEach(x => { const v = f(x)
 
 // 表格：通用渲染 + 点击表头排序（按 data-v）
 function renderTable(el, groups, cols, rows, opts = {}) {
+  // 分组：每列记录所属组号（用于表头底色）与是否为组首列（加竖向分隔线）
+  const gi = [], gs = [];
+  if (groups) groups.forEach((g, k) => { for (let j = 0; j < g[1]; j++) { gi.push(k); gs.push(j === 0 && k > 0); } });
+  const gc = i => groups ? ` gc${gi[i] % 4}${gs[i] ? " gs" : ""}` : "";
   let h = "<thead>";
-  if (groups) h += '<tr class="g">' + groups.map(g => `<th colspan="${g[1]}" class="nosort">${g[0]}</th>`).join("") + "</tr>";
-  h += "<tr>" + cols.map((c, i) => `<th data-i="${i}" class="${c.cls || ""} ${c.sort === false ? "nosort" : ""}">${c.t}</th>`).join("") + "</tr></thead><tbody>";
+  if (groups) h += '<tr class="g">' + groups.map((g, k) => `<th colspan="${g[1]}" class="nosort gc${k % 4}${k ? " gs" : ""}">${g[0]}</th>`).join("") + "</tr>";
+  h += "<tr>" + cols.map((c, i) => `<th data-i="${i}" class="${c.cls || ""} ${c.sort === false ? "nosort" : ""}${gc(i)}">${c.t}</th>`).join("") + "</tr></thead><tbody>";
   if (!rows.length) h += `<tr><td colspan="${cols.length}" class="empty">当前筛选下无客户</td></tr>`;
   rows.forEach(r => {
-    h += `<tr class="${opts.rowCls ? opts.rowCls(r) : ""}">` + cols.map(c => {
+    h += `<tr class="${opts.rowCls ? opts.rowCls(r) : ""}">` + cols.map((c, i) => {
       const v = c.v ? c.v(r) : "";
-      return `<td class="${c.cls || ""}" data-v="${esc(v ?? "")}">${c.f(r)}</td>`;
+      return `<td class="${c.cls || ""}${groups && gs[i] ? " gs" : ""}" data-v="${esc(v ?? "")}">${c.f(r)}</td>`;
     }).join("") + "</tr>";
   });
   el.innerHTML = h + "</tbody>";
@@ -281,7 +291,8 @@ function renderOverview() {
     ${kpi("双十一日均全新创意数", isNum(a.d_cre) ? fmt(dAvg(a.d_cre), 0) : null, "个/天", ringCell(a.d_cre, a.d_cre_prev))}
     ${kpi("双十一有消耗广告数", fmt0(a.d_ads), "个", ringCell(a.d_ads, a.d_ads_prev))}
     ${kpi("双十一消耗序时完成度", isNum(a.seq) ? fmtPct(a.seq, 1) : null, "", `${a.t_cover}/${a.n} 家有消耗目标`)}`;
-  const G = [["行业", 1], [`QTD（${M.q_start.slice(5)} ~ 昨日，${M.q_days} 天）`, 2], ["昨日", 6], [`双十一期间（${M.d11_start.slice(5)} ~ 昨日）`, 7]];
+  const md = s => s.slice(5).replace("-", "."), dd = md(M.data_date);
+  const G = [["行业", 1], [`QTD（${md(M.q_start)} ~ ${dd}，共 ${M.q_days} 天）`, 2], [`昨日（${dd}）`, 6], [`双十一期间（${md(M.d11_start)} ~ ${dd}，已过 ${M.d11_elapsed} 天）`, 7]];
   const cols = [
     {t: "行业", cls: "sticky", f: r => `<b>${r.name}</b>`, v: r => r.total ? "" : r.name},
     {t: "QTD日耗(万/天)", cls: "num", f: r => isNum(r.q_day) ? fmt(r.q_day / U, 2) : PEND, v: r => r.q_day},
