@@ -103,7 +103,11 @@ def main():
     dfile = load_perf(C.D11_FILE_GLOB, C.D11_COLS, data, "双十一期间")
 
     elapsed = max(0, min((ddate - C.D11_START).days + 1, C.D11_TOTAL_DAYS))
-    ctypes = C.CTYPES[:-1] + sorted({c["ctype"] for i in data["industries"] for c in i["customers"]} - set(C.CTYPES)) + C.CTYPES[-1:]
+    used = {c["ctype"] for i in data["industries"] for c in i["customers"]}
+    # 「未标注」默认不展示，仅在确有客户未填写客户类型时才出现，避免这些客户在分类汇总中被漏掉
+    ctypes = [t for t in C.CTYPES if t != C.CTYPE_EMPTY] + sorted(used - set(C.CTYPES))
+    if C.CTYPE_EMPTY in used:
+        ctypes.append(C.CTYPE_EMPTY)
     data["meta"] = {
         "source": data["source"], "source_mtime": data["source_mtime"],
         "built_at": dt.datetime.now().strftime("%Y-%m-%d %H:%M"),
