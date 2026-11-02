@@ -280,11 +280,9 @@ function renderOverview() {
     ${kpi("双十一日均全新创意数", isNum(a.d_cre) ? fmt(dAvg(a.d_cre), 0) : null, "个/天", ringCell(a.d_cre, a.d_cre_prev))}
     ${kpi("双十一有消耗广告数", fmt0(a.d_ads), "个", ringCell(a.d_ads, a.d_ads_prev))}
     ${kpi("双十一消耗序时完成度", isNum(a.seq) ? fmtPct(a.seq, 1) : null, "", `${a.t_cover}/${a.n} 家有消耗目标`)}`;
-  const G = [["行业", 1], ["客户数", 1 + CTYPES.length], [`QTD（${M.q_start.slice(5)} ~ 昨日，${M.q_days} 天）`, 2], ["昨日", 6], [`双十一期间（${M.d11_start.slice(5)} ~ 昨日）`, 7]];
+  const G = [["行业", 1], [`QTD（${M.q_start.slice(5)} ~ 昨日，${M.q_days} 天）`, 2], ["昨日", 6], [`双十一期间（${M.d11_start.slice(5)} ~ 昨日）`, 7]];
   const cols = [
     {t: "行业", cls: "sticky", f: r => `<b>${r.name}</b>`, v: r => r.total ? "" : r.name},
-    {t: "总客户数", cls: "num", f: r => r.n, v: r => r.n},
-    ...CTYPES.map(t => ({t, cls: "num", f: r => r.types[t] || '<span class="flat">0</span>', v: r => r.types[t]})),
     {t: "QTD日耗(万/天)", cls: "num", f: r => isNum(r.q_day) ? fmt(r.q_day / U, 2) : PEND, v: r => r.q_day},
     {t: "QTD日耗年同比", cls: "num", f: r => ringCell(r.q_day, r.q_day_ly), v: r => ring(r.q_day, r.q_day_ly)},
     {t: "消耗(万)", cls: "num", f: r => isNum(r.y_cost) ? fmt(r.y_cost / U, 2) : PEND, v: r => r.y_cost},
