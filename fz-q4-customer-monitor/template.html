@@ -225,6 +225,7 @@ function renderMeta() {
   $("#meta").innerHTML = [
     `源表：<b>${esc(M.source)}</b>（${esc(M.source_mtime)}）`,
     `数据日期（昨日）：<b>${M.data_date}</b>`,
+    `消耗数据：<b>${esc(M.perf_src || "未提供")}</b>`,
     `双十一周期：<b>${M.d11_start} ~ ${M.d11_end}</b>（共 ${M.d11_total} 天，已过 <b>${M.d11_elapsed}</b> 天，时间进度 ${fmtPct(M.d11_elapsed / M.d11_total, 1)}）`,
     `生成时间：${esc(M.built_at)}`,
   ].map(x => `<span>${x}</span>`).join("");
