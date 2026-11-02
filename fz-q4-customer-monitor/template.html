@@ -42,9 +42,49 @@ section.card{background:var(--card);border-radius:12px;margin-top:20px;padding:2
 .kpi .s{font-size:12px;margin-top:2px}
 .kpi.click{cursor:pointer}
 /* 数据总览开篇：客户盘子 + 3 个时间维度面板（与总览表分组同色） */
-.ov{display:grid;grid-template-columns:minmax(230px,.85fr) repeat(3,minmax(270px,1fr));gap:14px;margin-bottom:18px}
-@media (max-width:1280px){.ov{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:700px){.ov{grid-template-columns:1fr}}
+.ov{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:18px}
+@media (max-width:1100px){.ov{grid-template-columns:1fr}}
+/* 作战思路地图 */
+.bm{border-radius:14px;overflow:hidden;margin-bottom:16px;border:1px solid #dfe5f2;background:#fff}
+.bm-top{background:linear-gradient(115deg,#0f1f4d,#1e3a8a 55%,#2f5fd8);color:#fff;padding:16px 22px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.bm-top .ttl{font-size:19px;font-weight:700;letter-spacing:1px}
+.bm-top .ttl small{display:block;font-size:12px;font-weight:400;opacity:.75;letter-spacing:0;margin-top:2px}
+.bm-top .st{margin-left:auto;display:flex;gap:26px}
+.bm-top .st div{text-align:right;white-space:nowrap}
+.bm-top .st span{display:block;font-size:11.5px;opacity:.75}
+.bm-top .st b{font-size:22px;font-variant-numeric:tabular-nums}
+.bm-top .st b small{font-size:12px;font-weight:400;opacity:.8;margin-left:3px}
+.bm-top .st .yo{display:inline-block;font-size:13px;font-weight:700;padding:1px 8px;border-radius:10px;background:rgba(255,255,255,.16);margin-left:6px;vertical-align:3px;opacity:1}
+.bm-top .st .yo.dn{background:#fecaca;color:#991b1b}.bm-top .st .yo.upc{background:#bbf7d0;color:#14532d}
+.bm-mix{display:flex;height:6px}
+.bm-mix i{display:block;height:100%}
+.bm-g{display:grid;grid-template-columns:minmax(330px,1.15fr) 34px minmax(0,1fr) 34px minmax(0,1.1fr);padding:6px 18px 14px;background:#f7f9fd}
+.bm-h{font-size:12px;color:#64748b;font-weight:700;letter-spacing:2px;padding:10px 4px 6px}
+.bm-lane{display:contents}
+.bm-c{background:#fff;border:1px solid #e4e9f3;border-radius:12px;margin:6px 0;padding:12px 16px;display:flex;flex-direction:column;justify-content:center;min-height:104px}
+.bm-ty{border-left:6px solid var(--c)}
+.bm-ty .nm{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bm-ty .nm b{font-size:15.5px;color:#111827}
+.bm-ty .nm .tg{font-size:11.5px;font-weight:700;color:var(--c);background:color-mix(in srgb,var(--c) 12%,#fff);border-radius:10px;padding:1px 9px}
+.bm-ty .kv{display:grid;grid-template-columns:.8fr 1.2fr 1fr;gap:8px;margin-top:10px}
+.bm-ty .kv span{display:block;font-size:11.5px;color:#6b7280}
+.bm-ty .kv b{font-size:19px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bm-ty .kv b small{font-size:11.5px;font-weight:400;color:#6b7280;margin-left:2px}
+.bm-ty .kv .pill{font-size:14px;padding:2px 9px;display:inline-block;margin-top:2px}
+.bm-ty .shr{height:5px;border-radius:3px;background:#eef1f6;margin-top:10px;overflow:hidden}
+.bm-ty .shr i{display:block;height:100%;background:var(--c);opacity:.85}
+.bm-ar{display:flex;align-items:center;justify-content:center;color:var(--c)}
+.bm-ar::after{content:"";width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:12px solid currentColor;opacity:.55}
+.bm-pb{background:#fffaf5;border-color:#f6e3cf}
+.bm-pb .bm-lb,.bm-ac .bm-lb{font-size:11.5px;font-weight:700;letter-spacing:1px;margin-bottom:6px;display:none}
+.bm-pb .bm-lb{color:#b45309}
+.bm-pb p{margin:0;font-size:13.5px;line-height:1.65;color:#374151}
+.bm-ac{background:color-mix(in srgb,var(--c) 6%,#fff);border-color:color-mix(in srgb,var(--c) 22%,#fff)}
+.bm-ac .bm-lb{color:var(--c)}
+.bm-ac ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.bm-ac li{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;line-height:1.5;color:#1f2937}
+.bm-ac li em{flex:none;font-style:normal;width:20px;height:20px;border-radius:50%;background:var(--c);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+@media (max-width:1100px){.bm-g{grid-template-columns:1fr}.bm-ar,.bm-h{display:none}.bm-lane .bm-ty{margin-top:18px}.bm-c{min-height:0}.bm-pb .bm-lb,.bm-ac .bm-lb{display:block}}
 .op{--c:#475569;--pb:#f8fafc;border:1px solid var(--line);border-top:4px solid var(--c);border-radius:12px;background:#fff;display:flex;flex-direction:column;overflow:hidden}
 .op.p1{--c:#1d4ed8;--pb:#eef4ff}.op.p2{--c:#c2410c;--pb:#fff6ee}.op.p3{--c:#15803d;--pb:#f0fbf4}
 .op-h{background:var(--pb);padding:10px 16px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;min-height:46px}
@@ -152,6 +192,7 @@ details summary{cursor:pointer;font-weight:600}
 <div class="wrap">
   <section class="card" id="s0">
     <div class="sec-h"><h2><span class="no">总</span>数据总览</h2><span class="desc">全部客户 + 分行业；同比/环比 = Σ本期 ÷ Σ对比期 − 1（先加总再计算）；不受上方行业勾选影响</span></div>
+    <div class="bm" id="ovMap"></div>
     <div class="ov" id="ovKpis"></div>
     <div class="tbl-wrap"><table id="ovTbl"></table></div>
   </section>
@@ -327,12 +368,32 @@ function renderOverview() {
   const tp = days / M.d11_total, done = isNum(a.seq) ? a.seq * tp : null;
   const seqCol = !isNum(a.seq) ? null : a.seq >= 1 ? "var(--up)" : a.seq >= 0.8 ? "var(--warn)" : "var(--down)";
   const yr = isNum(a.y_cost) && isNum(a.q_day) && a.q_day ? a.y_cost / a.q_day : null;
+  // 作战思路地图：客户类型 → 当前问题 → 推进方向（各类 QTD 消耗与年同比均为 Σ本期 ÷ Σ去年同期 − 1）
+  const PB = M.playbook || {};
+  const mapTypes = CTYPES.filter(t => a.types[t]);
+  const tAgg = Object.fromEntries(mapTypes.map(t => [t, agg(ALL.filter(c => c.ctype === t))]));
+  const qAll = sum(mapTypes, t => tAgg[t].q_cost);
+  const lane = t => {
+    const g = tAgg[t], p = PB[t] || {}, sh = isNum(g.q_cost) && qAll ? g.q_cost / qAll : null;
+    return `<div class="bm-lane" style="--c:${CT_COLOR[t]}">
+      <div class="bm-c bm-ty"><div class="nm"><b>${esc(t)}</b>${p.tag ? `<span class="tg">${esc(p.tag)}</span>` : ""}</div>
+        <div class="kv"><div><span>客户数</span><b>${g.n}<small>家 · ${fmtPct(g.n / a.n, 0)}</small></b></div>
+          <div><span>QTD消耗</span><b>${isNum(g.q_cost) ? fmt(g.q_cost / U, 1) : "—"}<small>万${isNum(sh) ? " · 占 " + fmtPct(sh, 0) : ""}</small></b></div>
+          <div><span>年同比</span>${pill(g.q_cost, g.q_cost_ly)}</div></div>
+        <div class="shr"><i style="width:${(sh || 0) * 100}%"></i></div></div>
+      <div class="bm-ar"></div>
+      <div class="bm-c bm-pb"><div class="bm-lb">当前问题</div><p>${esc(p.problem || "待补充")}</p></div>
+      <div class="bm-ar"></div>
+      <div class="bm-c bm-ac"><div class="bm-lb">推进方向</div><ol>${(p.actions || ["待补充"]).map((x, i) => `<li><em>${i + 1}</em><span>${esc(x)}</span></li>`).join("")}</ol></div>
+    </div>`;
+  };
+  $("#ovMap").innerHTML = `<div class="bm-top"><div class="ttl">Q4 作战思路地图<small>${a.n} 家重点客户 · 按客户类型分层施策 · QTD ${md(M.q_start)} ~ ${dd}</small></div>
+      <div class="st"><div><span>重点客户</span><b>${a.n}<small>家</small></b></div>
+        <div><span>QTD消耗</span><b>${isNum(a.q_cost) ? fmt(a.q_cost / U, 1) : "—"}<small>万</small></b>${isNum(a.q_cost) && isNum(a.q_cost_ly) && a.q_cost_ly ? `<span class="yo ${a.q_cost >= a.q_cost_ly ? "upc" : "dn"}">年同比 ${a.q_cost >= a.q_cost_ly ? "+" : ""}${((a.q_cost / a.q_cost_ly - 1) * 100).toFixed(1)}%</span>` : ""}</div></div></div>
+    <div class="bm-mix">${mapTypes.map(t => `<i style="width:${a.types[t] / a.n * 100}%;background:${CT_COLOR[t]}" title="${esc(t)} ${a.types[t]} 家"></i>`).join("")}</div>
+    <div class="bm-g"><div class="bm-h">客户分层 · 规模</div><div></div><div class="bm-h">当前问题</div><div></div><div class="bm-h">推进方向</div>
+      ${mapTypes.map(lane).join("")}</div>`;
   $("#ovKpis").innerHTML =
-    panel("", "客户盘子", "全部客户", "按客户类型",
-      `<div class="big" style="margin-top:8px">${a.n}<small>家</small></div>
-       <div class="dist" style="margin:6px 0 4px">${CTYPES.map(t => `<i style="width:${a.types[t] / a.n * 100}%;background:${CT_COLOR[t]}" title="${t} ${a.types[t]}"></i>`).join("")}</div>
-       ${CTYPES.map(t => `<div class="ctr-row"><i style="background:${CT_COLOR[t]}"></i><span>${t}</span><span class="c">${a.types[t]}</span><span class="p">${fmtPct(a.types[t] / a.n, 0)}</span></div>`).join("")}`,
-      foot("有双十一消耗目标", `${a.t_cover}/${a.n} 家`, a.t_cover / a.n, "#475569", null, `缺少目标 ${a.n - a.t_cover} 家`)) +
     panel("p1", "QTD", `${md(M.q_start)} ~ ${dd} · ${M.q_days} 天`, "对比 去年同期",
       mrow("日耗", W(a.q_day), "万/天", pill(a.q_day, a.q_day_ly)) +
       mrow("累计消耗", W(a.q_cost), "万", pill(a.q_cost, a.q_cost_ly)) +

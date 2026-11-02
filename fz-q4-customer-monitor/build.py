@@ -236,7 +236,7 @@ def main():
         "data_date": ddate.isoformat(), "d11_start": C.D11_START.isoformat(), "d11_end": C.D11_END.isoformat(),
         "d11_total": C.D11_TOTAL_DAYS, "d11_elapsed": elapsed,
         "q_start": C.Q_START.isoformat(), "q_days": q_days, "qtd_file": qfile, "cost_div": C.COST_UNIT_DIVISOR,
-        "ctypes": ctypes, "yday_file": yfile, "d11_file": dfile, "perf_src": perf_src,
+        "ctypes": ctypes, "yday_file": yfile, "d11_file": dfile, "perf_src": perf_src, "playbook": C.CT_PLAYBOOK,
     }
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     html = C.TEMPLATE.read_text(encoding="utf-8").replace("/*__DATA__*/null", payload)
