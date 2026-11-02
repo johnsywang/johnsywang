@@ -41,6 +41,38 @@ section.card{background:var(--card);border-radius:12px;margin-top:20px;padding:2
 .kpi .v small{font-size:12px;font-weight:400;color:var(--sub);margin-left:4px}
 .kpi .s{font-size:12px;margin-top:2px}
 .kpi.click{cursor:pointer}
+/* 数据总览开篇：客户盘子 + 3 个时间维度面板（与总览表分组同色） */
+.ov{display:grid;grid-template-columns:minmax(230px,.85fr) repeat(3,minmax(270px,1fr));gap:14px;margin-bottom:18px}
+@media (max-width:1280px){.ov{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.ov{grid-template-columns:1fr}}
+.op{--c:#475569;--pb:#f8fafc;border:1px solid var(--line);border-top:4px solid var(--c);border-radius:12px;background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.op.p1{--c:#1d4ed8;--pb:#eef4ff}.op.p2{--c:#c2410c;--pb:#fff6ee}.op.p3{--c:#15803d;--pb:#f0fbf4}
+.op-h{background:var(--pb);padding:10px 16px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;min-height:46px}
+.op-h b{color:var(--c);font-size:16px}
+.op-h .rg{color:#4b5563;font-size:12.5px}
+.op-h .cmp{margin-left:auto;font-size:11.5px;color:var(--c);border:1px solid currentColor;border-radius:10px;padding:0 8px;opacity:.85}
+.op-b{padding:4px 16px;flex:1}
+.mr{display:grid;grid-template-columns:1fr auto 72px;align-items:center;gap:10px;height:54px;border-bottom:1px dashed var(--line)}
+.mr:last-child{border-bottom:0}
+.mr .l{color:var(--sub);font-size:13px}
+.mr .val{font-size:22px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mr .val small{font-size:12px;font-weight:400;color:var(--sub);margin-left:3px}
+.mr .val.sm{font-size:16px;font-weight:600;color:#4b5563}
+.pill{justify-self:end;font-size:12.5px;font-weight:600;border-radius:10px;padding:1px 8px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill.up{background:#e5f6ec}.pill.down{background:#fde8e8}.pill.flat{background:#eef0f4}
+.op-f{border-top:1px solid var(--line);background:#fafbfd;padding:10px 16px 12px;min-height:76px}
+.op-f .t{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub)}
+.op-f .t b{font-size:14px;color:var(--txt);font-variant-numeric:tabular-nums}
+.op-f .bar{position:relative;height:8px;background:#e9edf3;border-radius:4px;margin-top:7px}
+.op-f .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px}
+.op-f .bar em{position:absolute;top:-3px;bottom:-3px;width:2px;background:#374151;border-radius:1px}
+.op-f .n{font-size:11.5px;color:var(--sub);margin-top:4px}
+.op .big{font-size:30px;font-weight:700;line-height:1.2}
+.op .big small{font-size:13px;font-weight:400;color:var(--sub);margin-left:4px}
+.ctr-row{display:grid;grid-template-columns:10px 1fr auto 44px;align-items:center;gap:8px;height:30px;font-size:12.5px}
+.ctr-row i{width:10px;height:10px;border-radius:3px}
+.ctr-row .c{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.ctr-row .p{color:var(--sub);text-align:right;font-variant-numeric:tabular-nums}
 .kpi.click.on{outline:2px solid var(--pri);background:var(--pri2)}
 .tbl-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px;max-height:78vh}
 table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
@@ -119,8 +151,8 @@ details summary{cursor:pointer;font-weight:600}
 
 <div class="wrap">
   <section class="card" id="s0">
-    <div class="sec-h"><h2><span class="no">总</span>数据总览</h2><span class="desc">分类目 + 全部客户；环比 = 加总当前值 ÷ 加总对比期值 − 1；不受上方行业勾选影响</span></div>
-    <div class="kpis" id="ovKpis"></div>
+    <div class="sec-h"><h2><span class="no">总</span>数据总览</h2><span class="desc">全部客户 + 分行业；同比/环比 = Σ本期 ÷ Σ对比期 − 1（先加总再计算）；不受上方行业勾选影响</span></div>
+    <div class="ov" id="ovKpis"></div>
     <div class="tbl-wrap"><table id="ovTbl"></table></div>
   </section>
 
@@ -261,7 +293,7 @@ function agg(cs) {
   const P = k => sum(cs, c => c.perf ? c.perf[k] : null);
   const o = {
     n: cs.length, types: Object.fromEntries(CTYPES.map(t => [t, cs.filter(c => c.ctype === t).length])),
-    q_day: P("q_day"), q_day_ly: P("q_day_ly"),
+    q_day: P("q_day"), q_day_ly: P("q_day_ly"), q_cost: P("q_cost"), q_cost_ly: P("q_cost_ly"),
     y_cost: P("y_cost"), y_cost_prev: P("y_cost_prev"), y_ads: P("y_ads"), y_ads_prev: P("y_ads_prev"),
     y_cre: P("y_cre"), y_cre_prev: P("y_cre_prev"),
     d_cost: P("d_cost"), d_cost_prev: P("d_cost_prev"), d_ads: P("d_ads"), d_ads_prev: P("d_ads_prev"),
@@ -279,19 +311,44 @@ const dAvg = v => isNum(v) && days ? v / days : null;
 function renderOverview() {
   const rows = [{name: "全部", ...agg(ALL), total: true}].concat(DATA.industries.map(i => ({name: i.name, ...agg(i.customers)})));
   const a = rows[0];
-  $("#ovKpis").innerHTML = `
-    <div class="kpi"><div class="k">总客户数</div><div class="v">${a.n}<small>家</small></div>
-      <div class="dist">${CTYPES.map(t => `<i style="width:${a.types[t] / a.n * 100}%;background:${CT_COLOR[t]}" title="${t} ${a.types[t]}"></i>`).join("")}</div>
-      <div class="legend">${CTYPES.map(t => `<span style="--c:${CT_COLOR[t]}">${t} ${a.types[t]}</span>`).join("")}</div></div>
-    ${kpi("QTD日耗", isNum(a.q_day) ? fmt(a.q_day / U, 1) : null, "万/天", "年同比 " + ringCell(a.q_day, a.q_day_ly))}
-    ${kpi("昨日消耗", isNum(a.y_cost) ? fmt(a.y_cost / U, 1) : null, "万", ringCell(a.y_cost, a.y_cost_prev))}
-    ${kpi("昨日广告数", fmt0(a.y_ads), "个", ringCell(a.y_ads, a.y_ads_prev))}
-    ${kpi("昨日全新创意唯一性id数", fmt0(a.y_cre), "个", ringCell(a.y_cre, a.y_cre_prev))}
-    ${kpi("双十一期间日耗", isNum(a.d_cost) ? fmt(dAvg(a.d_cost) / U, 1) : null, "万/天", ringCell(a.d_cost, a.d_cost_prev))}
-    ${kpi("双十一日均全新创意数", isNum(a.d_cre) ? fmt(dAvg(a.d_cre), 0) : null, "个/天", ringCell(a.d_cre, a.d_cre_prev))}
-    ${kpi("双十一有消耗广告数", fmt0(a.d_ads), "个", ringCell(a.d_ads, a.d_ads_prev))}
-    ${kpi("双十一消耗序时完成度", isNum(a.seq) ? fmtPct(a.seq, 1) : null, "", `${a.t_cover}/${a.n} 家有消耗目标`)}`;
   const md = s => s.slice(5).replace("-", "."), dd = md(M.data_date);
+  const y0 = +M.q_start.slice(0, 4), qTotal = Math.round((Date.UTC(y0, 11, 31) - Date.UTC(y0, 9, 1)) / 864e5) + 1;
+  const W = v => isNum(v) ? fmt(v / U, 1) : null;
+  const mrow = (l, v, unit, pill, sm) => `<div class="mr"><span class="l">${l}</span><span class="val${sm ? " sm" : ""}">${v === null || v === undefined ? PEND : v + `<small>${unit}</small>`}</span>${pill}</div>`;
+  const pill = (c, p) => {
+    if (!isNum(c) || !isNum(p)) return '<span class="pill flat">—</span>';
+    if (p === 0) return `<span class="pill ${c > 0 ? "up" : "flat"}">${c > 0 ? "+∞" : "—"}</span>`;
+    const r = c / p - 1, cls = r > 0.0005 ? "up" : r < -0.0005 ? "down" : "flat";
+    return `<span class="pill ${cls}">${r >= 0 ? "+" : ""}${(r * 100).toFixed(1)}%</span>`;
+  };
+  const foot = (label, val, fill, color, mark, note) => `<div class="op-f"><div class="t"><span>${label}</span><b style="color:${color || "inherit"}">${val}</b></div>
+      <div class="bar"><i style="width:${Math.max(0, Math.min(fill, 1)) * 100}%;background:${color || "var(--c)"}"></i>${isNum(mark) ? `<em style="left:calc(${Math.min(mark, 1) * 100}% - 1px)"></em>` : ""}</div><div class="n">${note}</div></div>`;
+  const panel = (cls, title, range, cmp, body, f) => `<div class="op ${cls}"><div class="op-h"><b>${title}</b><span class="rg">${range}</span>${cmp ? `<span class="cmp">${cmp}</span>` : ""}</div><div class="op-b">${body}</div>${f}</div>`;
+  const tp = days / M.d11_total, done = isNum(a.seq) ? a.seq * tp : null;
+  const seqCol = !isNum(a.seq) ? null : a.seq >= 1 ? "var(--up)" : a.seq >= 0.8 ? "var(--warn)" : "var(--down)";
+  const yr = isNum(a.y_cost) && isNum(a.q_day) && a.q_day ? a.y_cost / a.q_day : null;
+  $("#ovKpis").innerHTML =
+    panel("", "客户盘子", "全部客户", "按客户类型",
+      `<div class="big" style="margin-top:8px">${a.n}<small>家</small></div>
+       <div class="dist" style="margin:6px 0 4px">${CTYPES.map(t => `<i style="width:${a.types[t] / a.n * 100}%;background:${CT_COLOR[t]}" title="${t} ${a.types[t]}"></i>`).join("")}</div>
+       ${CTYPES.map(t => `<div class="ctr-row"><i style="background:${CT_COLOR[t]}"></i><span>${t}</span><span class="c">${a.types[t]}</span><span class="p">${fmtPct(a.types[t] / a.n, 0)}</span></div>`).join("")}`,
+      foot("有双十一消耗目标", `${a.t_cover}/${a.n} 家`, a.t_cover / a.n, "#475569", null, `缺少目标 ${a.n - a.t_cover} 家`)) +
+    panel("p1", "QTD", `${md(M.q_start)} ~ ${dd} · ${M.q_days} 天`, "对比 去年同期",
+      mrow("日耗", W(a.q_day), "万/天", pill(a.q_day, a.q_day_ly)) +
+      mrow("累计消耗", W(a.q_cost), "万", pill(a.q_cost, a.q_cost_ly)) +
+      mrow("去年同期日耗", W(a.q_day_ly), "万/天", '<span class="pill flat">参照</span>', true),
+      foot("Q4 时间进度", fmtPct(M.q_days / qTotal, 1), M.q_days / qTotal, null, null, `${M.q_days}/${qTotal} 天（${md(M.q_start)} ~ 12.31）`)) +
+    panel("p2", "昨日", dd, "对比 前一日",
+      mrow("消耗", W(a.y_cost), "万", pill(a.y_cost, a.y_cost_prev)) +
+      mrow("有消耗广告数", fmt0(a.y_ads), "个", pill(a.y_ads, a.y_ads_prev)) +
+      mrow("全新创意唯一性id数", fmt0(a.y_cre), "个", pill(a.y_cre, a.y_cre_prev)),
+      foot("昨日消耗 ÷ QTD日耗", isNum(yr) ? fmtPct(yr, 1) : "—", isNum(yr) ? yr / 2 : 0, null, 0.5, "竖线 = QTD 日均水平（100%）")) +
+    panel("p3", "双十一期间", `${md(M.d11_start)} ~ ${dd} · 已过 ${days}/${M.d11_total} 天`, "对比 环比期",
+      mrow("日耗", isNum(a.d_cost) ? fmt(dAvg(a.d_cost) / U, 1) : null, "万/天", pill(a.d_cost, a.d_cost_prev)) +
+      mrow("有消耗广告数", fmt0(a.d_ads), "个", pill(a.d_ads, a.d_ads_prev)) +
+      mrow("日均全新创意数", isNum(a.d_cre) ? fmt(dAvg(a.d_cre), 0) : null, "个/天", pill(a.d_cre, a.d_cre_prev)),
+      foot("消耗序时完成度", isNum(a.seq) ? fmtPct(a.seq, 1) : "—", isNum(done) ? done : 0, seqCol, tp,
+        `已完成总目标 ${isNum(done) ? fmtPct(done, 1) : "—"} ｜ 竖线 = 时间进度 ${fmtPct(tp, 1)}`));
   const G = [["行业", 1], [`QTD（${md(M.q_start)} ~ ${dd}，共 ${M.q_days} 天）`, 2], [`昨日（${dd}）`, 6], [`双十一期间（${md(M.d11_start)} ~ ${dd}，已过 ${M.d11_elapsed} 天）`, 7]];
   const cols = [
     {t: "行业", cls: "sticky", f: r => `<b>${r.name}</b>`, v: r => r.total ? "" : r.name},
@@ -299,16 +356,16 @@ function renderOverview() {
     {t: "QTD日耗年同比", cls: "num", f: r => ringCell(r.q_day, r.q_day_ly), v: r => ring(r.q_day, r.q_day_ly)},
     {t: "消耗(万)", cls: "num", f: r => isNum(r.y_cost) ? fmt(r.y_cost / U, 2) : PEND, v: r => r.y_cost},
     {t: "环比", cls: "num", f: r => ringCell(r.y_cost, r.y_cost_prev), v: r => ring(r.y_cost, r.y_cost_prev)},
-    {t: "广告数", cls: "num", f: r => isNum(r.y_ads) ? fmt0(r.y_ads) : PEND, v: r => r.y_ads},
+    {t: "有消耗广告数", cls: "num", f: r => isNum(r.y_ads) ? fmt0(r.y_ads) : PEND, v: r => r.y_ads},
     {t: "环比", cls: "num", f: r => ringCell(r.y_ads, r.y_ads_prev), v: r => ring(r.y_ads, r.y_ads_prev)},
     {t: "全新创意唯一性id数", cls: "num", f: r => isNum(r.y_cre) ? fmt0(r.y_cre) : PEND, v: r => r.y_cre},
     {t: "环比", cls: "num", f: r => ringCell(r.y_cre, r.y_cre_prev), v: r => ring(r.y_cre, r.y_cre_prev)},
     {t: "日耗(万/天)", cls: "num", f: r => isNum(r.d_cost) ? fmt(dAvg(r.d_cost) / U, 2) : PEND, v: r => r.d_cost},
     {t: "环比", cls: "num", f: r => ringCell(r.d_cost, r.d_cost_prev), v: r => ring(r.d_cost, r.d_cost_prev)},
-    {t: "日均全新创意数", cls: "num", f: r => isNum(r.d_cre) ? fmt(dAvg(r.d_cre), 0) : PEND, v: r => r.d_cre},
-    {t: "环比", cls: "num", f: r => ringCell(r.d_cre, r.d_cre_prev), v: r => ring(r.d_cre, r.d_cre_prev)},
     {t: "有消耗广告数", cls: "num", f: r => isNum(r.d_ads) ? fmt0(r.d_ads) : PEND, v: r => r.d_ads},
     {t: "环比", cls: "num", f: r => ringCell(r.d_ads, r.d_ads_prev), v: r => ring(r.d_ads, r.d_ads_prev)},
+    {t: "日均全新创意数", cls: "num", f: r => isNum(r.d_cre) ? fmt(dAvg(r.d_cre), 0) : PEND, v: r => r.d_cre},
+    {t: "环比", cls: "num", f: r => ringCell(r.d_cre, r.d_cre_prev), v: r => ring(r.d_cre, r.d_cre_prev)},
     {t: "消耗序时完成度", cls: "num", f: r => (isNum(r.seq) ? seqTag(r.seq) : PEND) + `<span class="raw">${r.t_cover}/${r.n} 家有目标</span>`, v: r => r.seq},
   ];
   renderTable($("#ovTbl"), G, cols, rows, {rowCls: r => r.total ? "total" : ""});
