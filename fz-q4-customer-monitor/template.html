@@ -372,14 +372,14 @@ function renderOverview() {
   const PB = M.playbook || {};
   const mapTypes = CTYPES.filter(t => a.types[t]);
   const tAgg = Object.fromEntries(mapTypes.map(t => [t, agg(ALL.filter(c => c.ctype === t))]));
-  const qAll = sum(mapTypes, t => tAgg[t].q_cost);
+  const qAll = sum(mapTypes, t => tAgg[t].q_day);
   const lane = t => {
-    const g = tAgg[t], p = PB[t] || {}, sh = isNum(g.q_cost) && qAll ? g.q_cost / qAll : null;
+    const g = tAgg[t], p = PB[t] || {}, sh = isNum(g.q_day) && qAll ? g.q_day / qAll : null;
     return `<div class="bm-lane" style="--c:${CT_COLOR[t]}">
       <div class="bm-c bm-ty"><div class="nm"><b>${esc(t)}</b>${p.tag ? `<span class="tg">${esc(p.tag)}</span>` : ""}</div>
         <div class="kv"><div><span>客户数</span><b>${g.n}<small>家 · ${fmtPct(g.n / a.n, 0)}</small></b></div>
-          <div><span>QTD消耗</span><b>${isNum(g.q_cost) ? fmt(g.q_cost / U, 1) : "—"}<small>万${isNum(sh) ? " · 占 " + fmtPct(sh, 0) : ""}</small></b></div>
-          <div><span>年同比</span>${pill(g.q_cost, g.q_cost_ly)}</div></div>
+          <div><span>QTD日均消耗</span><b>${isNum(g.q_day) ? fmt(g.q_day / U, 1) : "—"}<small>万/天${isNum(sh) ? " · 占 " + fmtPct(sh, 0) : ""}</small></b></div>
+          <div><span>年同比</span>${pill(g.q_day, g.q_day_ly)}</div></div>
         <div class="shr"><i style="width:${(sh || 0) * 100}%"></i></div></div>
       <div class="bm-ar"></div>
       <div class="bm-c bm-pb"><div class="bm-lb">当前问题</div><p>${esc(p.problem || "待补充")}</p></div>
@@ -389,7 +389,7 @@ function renderOverview() {
   };
   $("#ovMap").innerHTML = `<div class="bm-top"><div class="ttl">Q4 作战思路地图<small>${a.n} 家重点客户 · 按客户类型分层施策 · QTD ${md(M.q_start)} ~ ${dd}</small></div>
       <div class="st"><div><span>重点客户</span><b>${a.n}<small>家</small></b></div>
-        <div><span>QTD消耗</span><b>${isNum(a.q_cost) ? fmt(a.q_cost / U, 1) : "—"}<small>万</small></b>${isNum(a.q_cost) && isNum(a.q_cost_ly) && a.q_cost_ly ? `<span class="yo ${a.q_cost >= a.q_cost_ly ? "upc" : "dn"}">年同比 ${a.q_cost >= a.q_cost_ly ? "+" : ""}${((a.q_cost / a.q_cost_ly - 1) * 100).toFixed(1)}%</span>` : ""}</div></div></div>
+        <div><span>QTD日均消耗</span><b>${isNum(a.q_day) ? fmt(a.q_day / U, 1) : "—"}<small>万/天</small></b>${isNum(a.q_day) && isNum(a.q_day_ly) && a.q_day_ly ? `<span class="yo ${a.q_day >= a.q_day_ly ? "upc" : "dn"}">年同比 ${a.q_day >= a.q_day_ly ? "+" : ""}${((a.q_day / a.q_day_ly - 1) * 100).toFixed(1)}%</span>` : ""}</div></div></div>
     <div class="bm-mix">${mapTypes.map(t => `<i style="width:${a.types[t] / a.n * 100}%;background:${CT_COLOR[t]}" title="${esc(t)} ${a.types[t]} 家"></i>`).join("")}</div>
     <div class="bm-g"><div class="bm-h">客户分层 · 规模</div><div></div><div class="bm-h">当前问题</div><div></div><div class="bm-h">推进方向</div>
       ${mapTypes.map(lane).join("")}</div>`;
