@@ -103,12 +103,13 @@ def main():
     dfile = load_perf(C.D11_FILE_GLOB, C.D11_COLS, data, "双十一期间")
 
     elapsed = max(0, min((ddate - C.D11_START).days + 1, C.D11_TOTAL_DAYS))
+    ctypes = C.CTYPES[:-1] + sorted({c["ctype"] for i in data["industries"] for c in i["customers"]} - set(C.CTYPES)) + C.CTYPES[-1:]
     data["meta"] = {
         "source": data["source"], "source_mtime": data["source_mtime"],
         "built_at": dt.datetime.now().strftime("%Y-%m-%d %H:%M"),
         "data_date": ddate.isoformat(), "d11_start": C.D11_START.isoformat(), "d11_end": C.D11_END.isoformat(),
         "d11_total": C.D11_TOTAL_DAYS, "d11_elapsed": elapsed, "cost_div": C.COST_UNIT_DIVISOR,
-        "ctypes": C.CTYPES, "yday_file": yfile, "d11_file": dfile,
+        "ctypes": ctypes, "yday_file": yfile, "d11_file": dfile,
     }
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     html = C.TEMPLATE.read_text(encoding="utf-8").replace("/*__DATA__*/null", payload)

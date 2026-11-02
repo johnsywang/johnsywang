@@ -204,25 +204,25 @@ def split_items(v):
 
 
 # ---------------------------------------------------------------- 客户分类
-def classify(all_yoy, vx_yoy, dou, adq):
-    """返回 (类型, 判定依据)。规则顺序即优先级，后续调整只改这里。"""
-    if vx_yoy is not None and vx_yoy > 0:
-        return "视频号生意增长", "视频号GMV年同比 > 0"
-    if vx_yoy is not None and vx_yoy < 0:
-        if all_yoy is None:
-            return "待确认", "视频号下跌，但缺少全平台GMV年同比"
-        if all_yoy <= 0:
-            return "全平台下跌", "全平台年同比 ≤ 0 且视频号年同比 < 0"
-        if dou is None:
-            return "待确认", "全平台增长、视频号下跌，但缺少微信豆/ADQ份额"
-        if dou > adq:
-            return "被豆子挤压", f"全平台增长、视频号下跌，微信豆{dou}% > adq{adq}%"
-        if dou < adq:
-            return "仅视频号下跌", f"全平台增长、视频号下跌，微信豆{dou}% < adq{adq}%"
-        return "待确认", "全平台增长、视频号下跌，微信豆与adq份额相等"
-    if vx_yoy is None:
-        return "待确认", "缺少视频号GMV年同比"
-    return "待确认", "视频号GMV年同比持平"
+def norm_ctype(v):
+    """直接使用源表「客户类型」列，只做写法归一。返回 (标准类型, 原文说明, 是否识别)。
+    标准类型见 config.CTYPES；空值 -> 未标注；无法归入 4 类的保留原文。"""
+    raw = s(v)
+    t = re.sub(r"^\s*\d+\s*[、.．]\s*", "", raw).replace(" ", "")
+    if not t:
+        return C.CTYPE_EMPTY, "", True
+    tl = t.lower()
+    if "挤压" in tl:
+        std = "adq被豆子挤压"
+    elif "均下跌" in tl or ("微信豆" in tl and "adq" in tl and "下跌" in tl):
+        std = "视频号微信豆和adq均下跌"
+    elif "全平台" in tl and ("下跌" in tl or "下滑" in tl):
+        std = "全平台生意下跌"
+    elif "视频号" in tl and "增长" in tl:
+        std = "视频号生意增长"
+    else:
+        return raw, f"原文：{raw}", False
+    return std, ("" if t == std else f"原文：{raw}"), True
 
 
 # ---------------------------------------------------------------- 读表
@@ -246,6 +246,8 @@ def build_colmap(rows, h):
             continue
         if not name:
             continue
+        if name.startswith("客户类型"):
+            name = "客户类型"  # 表头内含 1~4 类说明的多行文字，只取前缀
         key = f"{prev}_年同比" if name == "年同比" else name
         cmap[key] = j
         if name != "年同比":
@@ -265,6 +267,7 @@ COLS = {
     "vx_tr": "视频号TR",
     "ams": "ams日耗（万元）",
     "ams_yoy": "ams日耗（万元）_年同比",
+    "ctype": "客户类型",
     "adq_desc": "adq投手情况盘点",
     "dou": "微信豆投放摸底",
     "signup": "双十一小店活动报名情况",
@@ -330,7 +333,22 @@ def to_jpeg_b64(data, max_w=2000):
     return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
 
 
-def clean_customer(ind, r, cmap):
+YOY_KEYS = ("gmv_all_yoy", "gmv_vx_yoy", "ams_yoy")
+
+
+def yoy_scales(rows, h, cmap):
+    """按 sheet 判断各年同比列的数值口径：列内数值的绝对值中位数 > 5 视为百分数（-89.59 = -89.59%），需 ÷100；
+    否则为小数口径（1.082 = +108.2%）。源表不同 sheet 口径可能不一致（如内衣 ams 年同比为百分数）。"""
+    out = {}
+    for k in YOY_KEYS:
+        j = cmap.get(COLS[k])
+        vals = sorted(abs(r[j]) for r in rows[h + 3:] if j is not None and j < len(r) and is_num(r[j]) and r[j] != 0)
+        out[k] = 100 if vals and vals[len(vals) // 2] > 5 else 1
+    return out
+
+
+def clean_customer(ind, r, cmap, scales=None):
+    scales = scales or {}
     g = lambda k: r[cmap[COLS[k]]] if COLS[k] in cmap and cmap[COLS[k]] < len(r) else ""
     name = s(r[0])
     aliases = [a.strip() for a in re.split(r"[\n、/，,]", name) if a.strip()]
@@ -345,10 +363,14 @@ def clean_customer(ind, r, cmap):
             note(ind, c["name"], COLS[k], raw, "无法解析为数值")
         elif s(raw) and not is_num(raw):
             note(ind, c["name"], COLS[k], raw, f"文本已解析为 {val:g} 万元（区间/多值取最大）", "info")
-    for k in ("gmv_all_yoy", "gmv_vx_yoy", "ams_yoy"):
+    for k in YOY_KEYS:
         raw = g(k)
         val = parse_yoy(raw)
+        if is_num(raw) and scales.get(k, 1) != 1:
+            val = raw / scales[k]
         biz[k] = {"raw": s(raw), "val": None if val is None else ("inf" if val == INF else val), "label": yoy_label(val)}
+        if is_num(val) and val != INF and abs(val) > 50:
+            note(ind, c["name"], COLS[k], raw, f"年同比 {yoy_label(val)} 异常偏大，请核对源表口径（小数/百分数）")
         if s(raw) and val is None:
             note(ind, c["name"], COLS[k], raw, "年同比无法解析")
         elif s(raw) and not is_num(raw) and s(raw).strip() not in ("+∞", "持平"):
@@ -374,9 +396,14 @@ def clean_customer(ind, r, cmap):
                   "dou_raw": s(g("dou")), "dou_text": dtxt, "dou_pct": dp, "adq_pct": ap,
                   "roi_note": roi, "dou_msg": dmsg}
 
-    ay = parse_yoy(g("gmv_all_yoy"))
-    vy = parse_yoy(g("gmv_vx_yoy"))
-    c["ctype"], c["ctype_reason"] = classify(ay, vy, dp, ap)
+    ctype, creason, known = norm_ctype(g("ctype"))
+    c["ctype"], c["ctype_reason"] = ctype, creason
+    if not known:
+        note(ind, c["name"], "客户类型", g("ctype"), "无法归入 4 类标准类型，已按原文单独成类")
+    elif ctype == C.CTYPE_EMPTY:
+        note(ind, c["name"], "客户类型", "", "客户类型未填写")
+    elif creason:
+        note(ind, c["name"], "客户类型", g("ctype"), f"写法已归一为「{ctype}」", "info")
 
     ct_raw, gt_raw = g("cost_target"), g("gmv_target")
     c["d11"] = {
@@ -417,7 +444,7 @@ def merge_dup(a, b):
             return f"{x}；{y}"
         return x
     out = m(a, b)
-    src = a if a["ctype"] != "待确认" or b["ctype"] == "待确认" else b
+    src = a if a["ctype"] != C.CTYPE_EMPTY or b["ctype"] == C.CTYPE_EMPTY else b
     out["ctype"], out["ctype_reason"] = src["ctype"], src["ctype_reason"]
     for k in ("dou_pct", "adq_pct", "adq_fulltime"):
         out["staff"][k] = a["staff"][k] if a["staff"][k] not in (None, 0) else b["staff"][k]
@@ -448,6 +475,10 @@ def run(src: Path):
         miss = [v for v in COLS.values() if v not in cmap]
         for v in miss:
             note(ind, "", v, "", "表头未找到该列")
+        scales = yoy_scales(rows, h, cmap)
+        for k, sc in scales.items():
+            if sc != 1:
+                note(ind, "（整列）", COLS[k], "", "该列数值为百分数口径（如 -89.59 表示 -89.59%），已统一 ÷100 换算为小数", "info")
         custs = {}
         for i in range(h + 3, len(rows)):
             r = rows[i]
@@ -456,7 +487,7 @@ def run(src: Path):
             if not s(r[0]):
                 note(ind, f"第{i + 1}行", "主计客户简称", "", "客户名为空，整行已跳过")
                 continue
-            c = clean_customer(ind, r, cmap)
+            c = clean_customer(ind, r, cmap, scales)
             if c["name"] in custs:
                 note(ind, c["name"], "主计客户简称", c["name"], f"同名客户重复（第{i + 1}行），已合并为一行")
                 custs[c["name"]] = merge_dup(custs[c["name"]], c)
@@ -487,7 +518,7 @@ def export_excel(data, path):
         for c in ind["customers"]:
             b, st, d = c["biz"], c["staff"], c["d11"]
             rows.append({
-                "行业": ind["name"], "客户": c["name"], "销售": c["sales"], "客户分类": c["ctype"], "分类依据": c["ctype_reason"],
+                "行业": ind["name"], "客户": c["name"], "销售": c["sales"], "客户类型": c["ctype"], "客户类型备注": c["ctype_reason"],
                 "全平台日均GMV(万)": b["gmv_all"]["val"], "全平台年同比": b["gmv_all_yoy"]["label"],
                 "视频号日均GMV(万)": b["gmv_vx"]["val"], "视频号年同比": b["gmv_vx_yoy"]["label"],
                 "视频号占比": b["vx_share"]["val"], "视频号TR": b["vx_tr"]["val"],
