@@ -46,24 +46,78 @@ def to_num(v):
         return None
 
 
+def nkey(s):
+    """客户名匹配键：去空白、不区分大小写（SIINSIIN = siinsiin）。"""
+    return re.sub(r"\s", "", str(s or "")).lower()
+
+
 def alias_index(data):
     idx = {}
     for ind in data["industries"]:
         for c in ind["customers"]:
-            for a in dict.fromkeys(x.strip() for x in c["aliases"] + [c["name"]]):
+            for a in dict.fromkeys(nkey(x) for x in c["aliases"] + [c["name"]]):
                 if c not in idx.setdefault(a, []):
                     idx[a].append(c)
     return idx
 
 
+def _blank_customer(name, industry, ctype):
+    """盘点表中没有的手动补充客户：盘点类字段全部按「未填写」处理，结构与 clean.py 输出一致。"""
+    E = lambda: {"raw": "", "val": None}
+    Y = lambda: {"raw": "", "val": None, "label": None}
+    return {
+        "industry": industry, "name": name, "aliases": [name], "sales": "",
+        "biz": {"gmv_all": E(), "gmv_vx": E(), "ams": E(), "gmv_all_yoy": Y(), "gmv_vx_yoy": Y(), "ams_yoy": Y(), "vx_share": E(), "vx_tr": E()},
+        "staff": {"adq_desc": "", "adq_fulltime": 0, "adq_fulltime_note": "", "dou_raw": "", "dou_text": "", "dou_pct": None, "adq_pct": None, "roi_note": "", "dou_msg": "未填写"},
+        "ctype": ctype, "ctype_reason": "",
+        "d11": {"signup": "未填写", "big_dates": "未填写", "stock": "未填写", "cost_target_raw": "", "cost_target": None, "gmv_target_raw": "", "gmv_target": None},
+        "goods": {m: {"季节品": [], "常规品": []} for m in ("10月", "11月", "12月")},
+        "q4_season": 0, "q4_regular": 0, "q4_season_items": [], "q4_regular_items": [],
+        "manual": True,
+    }
+
+
+def apply_scope(data):
+    """按 config.KEEP_CUSTOMERS 收窄客户范围，并补充 EXTRA_CUSTOMERS（盘点表中没有的客户）。"""
+    inds = {i["name"]: i for i in data["industries"]}
+    for e in C.EXTRA_CUSTOMERS:
+        if nkey(e["name"]) in alias_index(data):
+            continue
+        ind = inds.get(e["industry"])
+        if ind is None:
+            ind = inds[e["industry"]] = {"name": e["industry"], "maps": [], "customers": []}
+            data["industries"].append(ind)
+        ind["customers"].append(_blank_customer(e["name"], e["industry"], e.get("ctype") or C.CTYPE_EMPTY))
+        data["issues"].append({"industry": e["industry"], "customer": e["name"], "field": "客户范围", "raw": "config.EXTRA_CUSTOMERS",
+                               "msg": f"盘点表中无该客户，按配置手动新增（客户类型：{e.get('ctype') or C.CTYPE_EMPTY}）；盘点类信息待补充", "level": "info"})
+    if C.KEEP_CUSTOMERS is None:
+        return
+    keep = {nkey(x): x for x in C.KEEP_CUSTOMERS}
+    hit = set()
+    for ind in data["industries"]:
+        kept = []
+        for c in ind["customers"]:
+            ks = {nkey(x) for x in c["aliases"] + [c["name"]]} & keep.keys()
+            if ks:
+                kept.append(c)
+                hit |= ks
+        ind["customers"] = kept
+    data["industries"] = [i for i in data["industries"] if i["customers"]]
+    names = {nkey(c["name"]) for i in data["industries"] for c in i["customers"]}
+    data["issues"] = [x for x in data["issues"] if not x.get("customer") or nkey(x["customer"]) in names]
+    for k in keep.keys() - hit:
+        data["issues"].append({"industry": "", "customer": keep[k], "field": "客户范围", "raw": "config.KEEP_CUSTOMERS",
+                               "msg": "保留名单中的客户在盘点表中找不到，也未在 EXTRA_CUSTOMERS 中配置，未展示", "level": "warn"})
+
+
 def find_book(arg):
+    """客户数据：--perf 指定 > input/ 与桌面中文件名日期最新的一份（同日期取修改时间最新）。"""
     if arg:
         return Path(arg)
-    for d in (C.INPUT_DIR, C.DESKTOP):
-        fs = [p for p in d.glob(C.PERF_BOOK_GLOB) if not p.name.startswith("~$")] if d.exists() else []
-        if fs:
-            return max(fs, key=lambda p: p.stat().st_mtime)
-    return None
+    fs = [p for d in (C.INPUT_DIR, C.DESKTOP) if d.exists() for p in d.glob(C.PERF_BOOK_GLOB) if not p.name.startswith("~$")]
+    if not fs:
+        return None
+    return max(fs, key=lambda p: (book_date(p) or dt.date.min, p.stat().st_mtime))
 
 
 def book_date(p: Path):
@@ -114,9 +168,11 @@ def load_book(p: Path, data):
                     cols[ck] = j
                     if j + 1 < len(hdr) and "对比值" in hdr[j + 1]:
                         cols[pk] = j + 1
-        miss = [pre for pre, (ck, pk) in metrics.items() if ck not in cols or pk not in cols]
-        if miss:
-            raise ValueError(f"{p.name}/{sn} 缺少指标列或对比值列：{miss}；表头：{rows[0]}")
+        if not cols:
+            raise ValueError(f"{p.name}/{sn} 未找到任何指标列（{list(metrics)}）；表头：{rows[0]}")
+        for pre, (ck, pk) in metrics.items():
+            if ck in cols and pk not in cols:
+                data["issues"].append({"industry": "", "customer": "", "field": f"{tag}数据/{ck}", "raw": f"{p.name}/{sn}", "msg": f"「{pre}」后没有对比值列，同环比显示待补充", "level": "warn"})
         total, sums, unmatched = None, {k: 0.0 for k in cols}, []
         for r in rows[1:]:
             nm = str(r[name_col] if name_col < len(r) else "").strip()
@@ -126,7 +182,7 @@ def load_book(p: Path, data):
             if nm == C.PERF_BOOK_TOTAL_ROW:
                 total = vals
                 continue
-            targets = idx.get(nm)
+            targets = idx.get(nkey(nm))
             if not targets:
                 unmatched.append(nm)
                 continue
@@ -140,17 +196,24 @@ def load_book(p: Path, data):
             for c in targets:
                 seen.add((tag, id(c)))
         for nm in unmatched:
-            data["issues"].append({"industry": "", "customer": nm, "field": f"{tag}数据", "raw": f"{p.name}/{sn}", "msg": "客户数据中的客户未在盘点表中找到，未计入", "level": "warn"})
+            data["issues"].append({"industry": "", "customer": nm, "field": f"{tag}数据", "raw": f"{p.name}/{sn}", "msg": "客户数据中的客户不在看板客户范围内，未计入", "level": "warn"})
+        n_all = sum(len(i["customers"]) for i in data["industries"])
+        n_hit = sum(1 for (t, _) in seen if t == tag)
         if total:
             for k, t in total.items():
                 if t is not None and abs(sums[k] - t) > max(1.0, abs(t) * 1e-4):
-                    why = ("客户数据全部已匹配，差异来自 BI 整体汇总行的去重统计口径；看板按客户加总" if not unmatched
-                           else "已匹配客户加总与 BI 整体汇总行不一致（有客户未匹配）")
-                    data["issues"].append({"industry": "", "customer": "", "field": f"{tag}数据/{k}", "raw": f"客户加总 {sums[k]:,.2f} vs 整体 {t:,.2f}", "msg": why, "level": "info" if not unmatched else "warn"})
-        tags.append(f"{sn}(匹配{sum(1 for (t, _) in seen if t == tag)}家)")
+                    if unmatched:
+                        why, lv = "已匹配客户加总与 BI 整体汇总行不一致（有客户未匹配）", "warn"
+                    elif n_hit < n_all and abs(sums[k] - t) > abs(t) * 0.01:
+                        why, lv = f"该 sheet 只列出 {n_hit}/{n_all} 家客户，整体汇总行含未列出客户；看板按已列出客户加总，未列出客户显示待补充", "warn"
+                    else:
+                        why, lv = "客户全部已匹配，差异来自 BI 整体汇总行的去重统计口径；看板按客户加总", "info"
+                    data["issues"].append({"industry": "", "customer": "", "field": f"{tag}数据/{k}", "raw": f"客户加总 {sums[k]:,.2f} vs 整体 {t:,.2f}", "msg": why, "level": lv})
+        tags.append(f"{sn}(匹配{n_hit}/{n_all}家)")
+    present = {v[0] for k, v in C.PERF_BOOK_SHEETS.items() if any(k.lower() in sn.lower() for sn in wb.sheet_names)}
     for ind in data["industries"]:
         for c in ind["customers"]:
-            lost = [t for t in {v[0] for v in C.PERF_BOOK_SHEETS.values()} if (t, id(c)) not in seen]
+            lost = [t for t in present if (t, id(c)) not in seen]
             if lost:
                 data["issues"].append({"industry": c.get("industry", ""), "customer": c["name"], "field": "客户数据", "raw": p.name, "msg": f"客户数据中没有该客户的 {'/'.join(sorted(lost))} 数据，看板显示待补充", "level": "warn"})
     return f"{p.name}：" + "、".join(tags)
@@ -173,7 +236,7 @@ def load_perf(pattern, colmap, data, tag):
     unmatched = set()
     for _, r in df.iterrows():
         nm = str(r[cols["name"]]).strip()
-        targets = idx.get(nm)
+        targets = idx.get(nkey(nm))
         if not targets:
             unmatched.add(nm)
             continue
@@ -202,6 +265,7 @@ def main():
     ddate = dt.date.fromisoformat(a.date) if a.date else (book and book_date(book)) or C.default_data_date()
 
     data = clean.run(src)
+    apply_scope(data)
     C.DATA_DIR.mkdir(exist_ok=True)
     C.OUTPUT_DIR.mkdir(exist_ok=True)
     (C.DATA_DIR / "clean.json").write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -216,7 +280,7 @@ def main():
 
     elapsed = max(0, min((ddate - C.D11_START).days + 1, C.D11_TOTAL_DAYS))
     q_days = max(0, (ddate - C.Q_START).days + 1)
-    # QTD 日耗：优先用直接提供的日耗，否则 累计消耗 ÷ QTD天数；去年同期按相同天数换算
+    # QTD：日耗与累计消耗互推（日耗 = 累计 ÷ QTD天数；累计 = 日耗 × QTD天数），去年同期按相同天数换算
     for ind in data["industries"]:
         for c in ind["customers"]:
             p = c.get("perf")
@@ -225,6 +289,8 @@ def main():
             for day_k, cost_k in (("q_day", "q_cost"), ("q_day_ly", "q_cost_ly")):
                 if day_k not in p and cost_k in p:
                     p[day_k] = p[cost_k] / q_days
+                elif cost_k not in p and day_k in p:
+                    p[cost_k] = p[day_k] * q_days
     used = {c["ctype"] for i in data["industries"] for c in i["customers"]}
     # 「未标注」默认不展示，仅在确有客户未填写客户类型时才出现，避免这些客户在分类汇总中被漏掉
     ctypes = [t for t in C.CTYPES if t != C.CTYPE_EMPTY] + sorted(used - set(C.CTYPES))
