@@ -384,6 +384,8 @@ function agg(cs) {
   // 序时完成度：仅统计「有目标且有消耗数据」的客户，Σ累计消耗 ÷ Σ(日均目标 × 已过天数)
   const withT = cs.filter(c => isNum(c.d11.cost_target) && c.perf && isNum(c.perf.d_cost));
   o.t_cover = cs.filter(c => isNum(c.d11.cost_target)).length;
+  o.d_target = sum(cs, c => c.d11.cost_target);  // 盘点表「双11期间日均消耗目标」合计（万/天）
+  o.d_cover = cs.filter(c => c.perf && isNum(c.perf.d_cost)).length;  // 有双十一实际消耗数据的客户数
   o.seq = withT.length && days ? sum(withT, c => c.perf.d_cost / U) / sum(withT, c => c.d11.cost_target * days) : null;
   return o;
 }
@@ -450,8 +452,9 @@ function renderOverview() {
       mrow("有消耗广告数", fmt0(a.d_ads), "个", pill(a.d_ads, a.d_ads_prev)) +
       mrow("日均全新创意数", isNum(a.d_cre) ? fmt(dAvg(a.d_cre), 0) : null, "个/天", pill(a.d_cre, a.d_cre_prev)),
       foot("消耗序时完成度", isNum(a.seq) ? fmtPct(a.seq, 1) : "—", isNum(done) ? done : 0, seqCol, tp,
-        `已完成总目标 ${isNum(done) ? fmtPct(done, 1) : "—"} ｜ 竖线 = 时间进度 ${fmtPct(tp, 1)}`));
-  const G = [["行业", 1], [`QTD（${md(M.q_start)} ~ ${dd}，共 ${M.q_days} 天）`, 2], [`昨日（${dd}）`, 6], [`双十一期间（${md(M.d11_start)} ~ ${dd}，已过 ${M.d11_elapsed} 天）`, 7]];
+        `已完成总目标 ${isNum(done) ? fmtPct(done, 1) : "—"} ｜ 竖线 = 时间进度 ${fmtPct(tp, 1)}` +
+        (a.d_cover < a.n ? `<br><span style="color:#b45309">日耗目标合计 ${fmt(a.d_target, 1)} 万/天 ｜ 实际消耗仅覆盖 ${a.d_cover}/${a.n} 家，待补数</span>` : "")));
+  const G = [["行业", 1], [`QTD（${md(M.q_start)} ~ ${dd}，共 ${M.q_days} 天）`, 2], [`昨日（${dd}）`, 6], [`双十一期间（${md(M.d11_start)} ~ ${dd}，已过 ${M.d11_elapsed} 天）${a.d_cover < a.n ? `<span style="font-weight:400;font-size:13px;margin-left:8px;color:#b45309">实际消耗仅覆盖 ${a.d_cover}/${a.n} 家，待补数</span>` : ""}`, 8]];
   const cols = [
     {t: "行业", cls: "sticky", f: r => `<b>${r.name}</b>`, v: r => r.total ? "" : r.name},
     {t: "QTD日耗(万/天)", cls: "num", f: r => isNum(r.q_day) ? fmt(r.q_day / U, 2) : PEND, v: r => r.q_day},
@@ -462,7 +465,8 @@ function renderOverview() {
     {t: "环比", cls: "num", f: r => ringCell(r.y_ads, r.y_ads_prev), v: r => ring(r.y_ads, r.y_ads_prev)},
     {t: "全新创意唯一性id数", cls: "num", f: r => isNum(r.y_cre) ? fmt0(r.y_cre) : PEND, v: r => r.y_cre},
     {t: "环比", cls: "num", f: r => ringCell(r.y_cre, r.y_cre_prev), v: r => ring(r.y_cre, r.y_cre_prev)},
-    {t: "日耗(万/天)", cls: "num", f: r => isNum(r.d_cost) ? fmt(dAvg(r.d_cost) / U, 2) : PEND, v: r => r.d_cost},
+    {t: "日耗目标(万/天)", cls: "num", f: r => isNum(r.d_target) ? `<b>${fmt(r.d_target, 1)}</b><span class="raw">${r.t_cover}/${r.n} 家有目标</span>` : PEND, v: r => r.d_target},
+    {t: "日耗(万/天)", cls: "num", f: r => isNum(r.d_cost) ? fmt(dAvg(r.d_cost) / U, 2) + (r.d_cover < r.n ? `<span class="raw">仅 ${r.d_cover}/${r.n} 家</span>` : "") : PEND, v: r => r.d_cost},
     {t: "环比", cls: "num", f: r => ringCell(r.d_cost, r.d_cost_prev), v: r => ring(r.d_cost, r.d_cost_prev)},
     {t: "有消耗广告数", cls: "num", f: r => isNum(r.d_ads) ? fmt0(r.d_ads) : PEND, v: r => r.d_ads},
     {t: "环比", cls: "num", f: r => ringCell(r.d_ads, r.d_ads_prev), v: r => ring(r.d_ads, r.d_ads_prev)},
