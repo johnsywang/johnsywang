@@ -182,6 +182,10 @@ body{font-size:15.5px}
 table{font-size:14.5px}
 thead tr.g th{font-size:15px}
 thead tr.g + tr th{top:39px}
+.ov-sub{margin:22px 0 10px;font-size:18px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.ov-sub .desc{font-size:13px;font-weight:400;color:var(--sub)}
+#ovCustTbl td.sticky{white-space:nowrap}
+#ovCustTbl td.sticky .raw{display:inline;margin-left:6px;white-space:nowrap}
 .raw,.ctr{font-size:12.5px}.tag,.ct{font-size:13px}
 .op-h b{font-size:18px}.op-h .rg{font-size:14px}.op-h .cmp{font-size:13px}
 .mr{height:60px}.mr .l{font-size:14.5px}.mr .val{font-size:25px}.mr .val small{font-size:13.5px}.mr .val.sm{font-size:18px}
@@ -232,10 +236,12 @@ thead tr.g + tr th{top:39px}
 
 <div class="wrap">
   <section class="card" id="s0">
-    <div class="sec-h"><h2><span class="no">总</span>数据总览</h2><span class="desc">全部客户 + 分行业；同比/环比 = Σ本期 ÷ Σ对比期 − 1（先加总再计算）；不受上方行业勾选影响</span></div>
+    <div class="sec-h"><h2><span class="no">总</span>数据总览</h2><span class="desc">全部客户 + 分行业；同比/环比 = Σ本期 ÷ Σ对比期 − 1（先加总再计算）；行业汇总不受上方行业勾选影响，分客户明细随勾选 / 搜索筛选</span></div>
     <div class="bm" id="ovMap"></div>
     <div class="ov" id="ovKpis"></div>
     <div class="tbl-wrap"><table id="ovTbl"></table></div>
+    <h3 class="ov-sub">分客户明细<span class="desc" id="ovCustDesc"></span></h3>
+    <div class="tbl-wrap"><table id="ovCustTbl"></table></div>
   </section>
 
   <section class="card" id="s1">
@@ -465,16 +471,38 @@ function renderOverview() {
     {t: "环比", cls: "num", f: r => ringCell(r.y_ads, r.y_ads_prev), v: r => ring(r.y_ads, r.y_ads_prev)},
     {t: "全新创意唯一性id数", cls: "num", f: r => isNum(r.y_cre) ? fmt0(r.y_cre) : PEND, v: r => r.y_cre},
     {t: "环比", cls: "num", f: r => ringCell(r.y_cre, r.y_cre_prev), v: r => ring(r.y_cre, r.y_cre_prev)},
-    {t: "日耗目标(万/天)", cls: "num", f: r => isNum(r.d_target) ? `<b>${fmt(r.d_target, 1)}</b><span class="raw">${r.t_cover}/${r.n} 家有目标</span>` : PEND, v: r => r.d_target},
-    {t: "日耗(万/天)", cls: "num", f: r => isNum(r.d_cost) ? fmt(dAvg(r.d_cost) / U, 2) + (r.d_cover < r.n ? `<span class="raw">仅 ${r.d_cover}/${r.n} 家</span>` : "") : PEND, v: r => r.d_cost},
+    {t: "日耗目标(万/天)", cls: "num", f: r => r.cust ? (isNum(r.d_target) ? `<b>${fmt(r.d_target, 2)}</b>` : '<span class="tag red">缺少目标</span>') : isNum(r.d_target) ? `<b>${fmt(r.d_target, 1)}</b><span class="raw">${r.t_cover}/${r.n} 家有目标</span>` : PEND, v: r => r.d_target},
+    {t: "日耗(万/天)", cls: "num", f: r => isNum(r.d_cost) ? fmt(dAvg(r.d_cost) / U, 2) + (!r.cust && r.d_cover < r.n ? `<span class="raw">仅 ${r.d_cover}/${r.n} 家</span>` : "") : PEND, v: r => r.d_cost},
     {t: "环比", cls: "num", f: r => ringCell(r.d_cost, r.d_cost_prev), v: r => ring(r.d_cost, r.d_cost_prev)},
     {t: "有消耗广告数", cls: "num", f: r => isNum(r.d_ads) ? fmt0(r.d_ads) : PEND, v: r => r.d_ads},
     {t: "环比", cls: "num", f: r => ringCell(r.d_ads, r.d_ads_prev), v: r => ring(r.d_ads, r.d_ads_prev)},
     {t: "日均全新创意数", cls: "num", f: r => isNum(r.d_cre) ? fmt(dAvg(r.d_cre), 0) : PEND, v: r => r.d_cre},
     {t: "环比", cls: "num", f: r => ringCell(r.d_cre, r.d_cre_prev), v: r => ring(r.d_cre, r.d_cre_prev)},
-    {t: "消耗序时完成度", cls: "num", f: r => (isNum(r.seq) ? seqTag(r.seq) : PEND) + `<span class="raw">${r.t_cover}/${r.n} 家有目标</span>`, v: r => r.seq},
+    {t: "消耗序时完成度", cls: "num", f: r => r.cust ? (isNum(r.seq) ? seqTag(r.seq) : isNum(r.d_target) ? PEND : "—") : (isNum(r.seq) ? seqTag(r.seq) : PEND) + `<span class="raw">${r.t_cover}/${r.n} 家有目标</span>`, v: r => r.seq},
   ];
   renderTable($("#ovTbl"), G, cols, rows, {rowCls: r => r.total ? "total" : ""});
+  // 分客户明细：与上表共用指标列，仅首列换成客户（随上方行业勾选 / 搜索筛选）
+  OV = {G: [["客户", 1], ...G.slice(1)], cols: [
+    {t: "客户", cls: "sticky", f: r => `<b>${esc(r.name)}</b><span class="raw">${esc(r.industry)}</span>`, v: r => r.name},
+    ...cols.slice(1)]};
+}
+let OV = null;
+function renderOvCust() {
+  const order = Object.fromEntries(DATA.industries.map((i, k) => [i.name, k]));
+  const rows = sel().map(c => ({name: c.name, industry: c.industry, cust: true, ...agg([c])}))
+    .sort((x, y) => order[x.industry] - order[y.industry] || (y.q_day ?? -1) - (x.q_day ?? -1));
+  const pend = rows.filter(r => !isNum(r.q_day) && !isNum(r.y_cost) && !isNum(r.d_cost)).map(r => r.name);
+  $("#ovCustDesc").textContent = `共 ${rows.length} 家，按行业、QTD日耗降序；随上方行业勾选 / 搜索筛选，点击表头可排序` + (pend.length ? `；客户数据中暂无：${pend.join("、")}` : "");
+  renderTable($("#ovCustTbl"), OV.G, OV.cols, rows);
+  syncOvCols();
+}
+// 两张总览表逐列取较宽者统一列宽，保证上下指标列对齐
+function syncOvCols() {
+  const ths = t => [...$(t).querySelectorAll("thead tr:last-child th")];
+  const a = ths("#ovTbl"), b = ths("#ovCustTbl");
+  [...a, ...b].forEach(th => { th.style.width = th.style.minWidth = ""; });
+  const w = a.map((th, i) => Math.ceil(Math.max(th.getBoundingClientRect().width, b[i] ? b[i].getBoundingClientRect().width : 0)));
+  [a, b].forEach(r => r.forEach((th, i) => { th.style.boxSizing = "border-box"; th.style.width = th.style.minWidth = w[i] + "px"; }));
 }
 const fmt0 = v => isNum(v) ? Math.round(v).toLocaleString("zh-CN") : null;
 function kpi(k, v, unit, sub) {
@@ -614,7 +642,7 @@ function bindSeg(id, key, fn) {
     state[key] = b.dataset.v; document.querySelectorAll(`#${id} button`).forEach(x => x.classList.toggle("on", x === b)); fn();
   });
 }
-function renderAll() { renderS1(); renderS2(); renderS3(); }
+function renderAll() { renderOvCust(); renderS1(); renderS2(); renderS3(); }
 $("#lb").onclick = () => $("#lb").style.display = "none";
 renderMeta(); renderOverview(); renderAll(); renderDQ();
 bindSeg("gmSeg", "gm", renderS3); bindSeg("dqSeg", "dq", renderDQ);
