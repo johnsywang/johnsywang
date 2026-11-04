@@ -307,6 +307,16 @@ def main():
                     p[day_k] = p[cost_k] / q_days
                 elif cost_k not in p and day_k in p:
                     p[cost_k] = p[day_k] * q_days
+    # 双十一期间：BI 给日均（日均消耗 / 日均全新创意数）时，按已过天数换算成累计，看板统一用累计 ÷ 已过天数展示日均
+    for ind in data["industries"]:
+        for c in ind["customers"]:
+            p = c.get("perf")
+            if not p or not elapsed:
+                continue
+            for day_k, cum_k in (("d_day", "d_cost"), ("d_day_prev", "d_cost_prev"),
+                                 ("d_cre_day", "d_cre"), ("d_cre_day_prev", "d_cre_prev")):
+                if cum_k not in p and day_k in p:
+                    p[cum_k] = p[day_k] * elapsed
     used = {c["ctype"] for i in data["industries"] for c in i["customers"]}
     # 「未标注」默认不展示，仅在确有客户未填写客户类型时才出现，避免这些客户在分类汇总中被漏掉
     ctypes = [t for t in C.CTYPES if t != C.CTYPE_EMPTY] + sorted(used - set(C.CTYPES))

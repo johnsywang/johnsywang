@@ -123,8 +123,9 @@ PERF_BOOK_TOTAL_ROW = "整体对比汇总"   # BI 汇总行：不计入客户，
 PERF_BOOK_SHEETS = {
     "昨日": ("昨日", {"消耗": ("y_cost", "y_cost_prev"), "有消耗广告数": ("y_ads", "y_ads_prev"),
                       "全新创意唯一性id数": ("y_cre", "y_cre_prev")}),
-    "双十一": ("双十一期间", {"消耗": ("d_cost", "d_cost_prev"), "有消耗广告数": ("d_ads", "d_ads_prev"),
-                            "全新创意唯一性id数": ("d_cre", "d_cre_prev")}),
+    "双十一": ("双十一期间", {"消耗": ("d_cost", "d_cost_prev"), "日均消耗": ("d_day", "d_day_prev"),
+                            "有消耗广告数": ("d_ads", "d_ads_prev"),
+                            "全新创意唯一性id数": ("d_cre", "d_cre_prev"), "日均全新创意唯一性id数": ("d_cre_day", "d_cre_day_prev")}),
     "qtd": ("QTD", {"日均消耗": ("q_day", "q_day_ly"), "消耗": ("q_cost", "q_cost_ly")}),
 }
 # 每个 sheet 内的指标为「可选」：至少命中一个即可（如 11.3 版 qtd 只给日均消耗）；缺失的指标看板显示待补充
