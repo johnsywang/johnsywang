@@ -1,7 +1,7 @@
 {
  "source": "服饰Q4客户&商品盘点 (3).xlsx",
  "source_mtime": "2026-11-03 01:13",
- "cleaned_at": "2026-11-04 13:02",
+ "cleaned_at": "2026-11-04 13:04",
  "industries": [
   {
    "name": "内衣",
@@ -3417,8 +3417,8 @@
       "roi_note": "",
       "dou_msg": ""
      },
-     "ctype": "adq被豆子挤压",
-     "ctype_reason": "",
+     "ctype": "视频号微信豆和adq均下跌",
+     "ctype_reason": "手动指定（源表：adq被豆子挤压）",
      "d11": {
       "signup": "报名混资补贴",
       "big_dates": "未填写",
@@ -3808,6 +3808,14 @@
    "field": "客户范围",
    "raw": "config.EXTRA_CUSTOMERS",
    "msg": "盘点表中无该客户，按配置手动新增（客户类型：视频号微信豆和adq均下跌）；盘点类信息待补充",
+   "level": "info"
+  },
+  {
+   "industry": "珠宝配饰",
+   "customer": "广州树语商贸有限公司",
+   "field": "客户类型",
+   "raw": "adq被豆子挤压",
+   "msg": "按 config.CTYPE_OVERRIDE 改为「视频号微信豆和adq均下跌」",
    "level": "info"
   }
  ]

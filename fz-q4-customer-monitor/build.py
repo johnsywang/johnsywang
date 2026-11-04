@@ -90,6 +90,15 @@ def apply_scope(data):
         ind["customers"].append(_blank_customer(e["name"], e["industry"], e.get("ctype") or C.CTYPE_EMPTY))
         data["issues"].append({"industry": e["industry"], "customer": e["name"], "field": "客户范围", "raw": "config.EXTRA_CUSTOMERS",
                                "msg": f"盘点表中无该客户，按配置手动新增（客户类型：{e.get('ctype') or C.CTYPE_EMPTY}）；盘点类信息待补充", "level": "info"})
+    ov = {nkey(k): v for k, v in C.CTYPE_OVERRIDE.items()}
+    for ind in data["industries"]:
+        for c in ind["customers"]:
+            k = next((nkey(x) for x in c["aliases"] + [c["name"]] if nkey(x) in ov), None)
+            if k and c["ctype"] != ov[k]:
+                old = c["ctype"]
+                c["ctype"], c["ctype_reason"] = ov[k], f"手动指定（源表：{old}）"
+                data["issues"].append({"industry": ind["name"], "customer": c["name"], "field": "客户类型", "raw": old,
+                                       "msg": f"按 config.CTYPE_OVERRIDE 改为「{ov[k]}」", "level": "info"})
     if C.KEEP_CUSTOMERS is None:
         return
     keep = {nkey(x): x for x in C.KEEP_CUSTOMERS}
