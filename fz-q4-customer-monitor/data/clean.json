@@ -1,7 +1,7 @@
 {
  "source": "服饰Q4客户&商品盘点 (3).xlsx",
  "source_mtime": "2026-11-03 01:13",
- "cleaned_at": "2026-11-05 00:24",
+ "cleaned_at": "2026-11-05 00:36",
  "industries": [
   {
    "name": "内衣",
@@ -2009,39 +2009,39 @@
      "sales": "",
      "biz": {
       "gmv_all": {
-       "raw": "",
-       "val": null
+       "raw": "55",
+       "val": 55.0
       },
       "gmv_vx": {
-       "raw": "",
-       "val": null
+       "raw": "2",
+       "val": 2.0
       },
       "ams": {
-       "raw": "",
-       "val": null
+       "raw": "0.2",
+       "val": 0.2
       },
       "gmv_all_yoy": {
-       "raw": "",
-       "val": null,
-       "label": null
+       "raw": "-0.1",
+       "val": -0.1,
+       "label": "-10%"
       },
       "gmv_vx_yoy": {
-       "raw": "",
-       "val": null,
-       "label": null
+       "raw": "0.8",
+       "val": 0.8,
+       "label": "+80%"
       },
       "ams_yoy": {
-       "raw": "",
-       "val": null,
-       "label": null
+       "raw": "-0.83",
+       "val": -0.83,
+       "label": "-83%"
       },
       "vx_share": {
-       "raw": "",
-       "val": null
+       "raw": "0.03",
+       "val": 0.03
       },
       "vx_tr": {
-       "raw": "",
-       "val": null
+       "raw": "0.25",
+       "val": 0.25
       }
      },
      "staff": {
@@ -2055,7 +2055,7 @@
       "roi_note": "",
       "dou_msg": "未填写"
      },
-     "ctype": "视频号微信豆和adq均下跌",
+     "ctype": "全平台生意下跌",
      "ctype_reason": "",
      "d11": {
       "signup": "未填写",
@@ -3807,7 +3807,7 @@
    "customer": "广州凯本恩贸易有限公司",
    "field": "客户范围",
    "raw": "config.EXTRA_CUSTOMERS",
-   "msg": "盘点表中无该客户，按配置手动新增（客户类型：视频号微信豆和adq均下跌）；盘点类信息待补充",
+   "msg": "盘点表中无该客户，按配置手动新增（客户类型：全平台生意下跌，已补充客户生意情况）；其余盘点信息待补充",
    "level": "info"
   },
   {

@@ -61,13 +61,20 @@ def alias_index(data):
     return idx
 
 
-def _blank_customer(name, industry, ctype):
-    """盘点表中没有的手动补充客户：盘点类字段全部按「未填写」处理，结构与 clean.py 输出一致。"""
+def _blank_customer(name, industry, ctype, biz=None):
+    """盘点表中没有的手动补充客户：未提供的盘点类字段按「未填写」处理，结构与 clean.py 输出一致。"""
     E = lambda: {"raw": "", "val": None}
     Y = lambda: {"raw": "", "val": None, "label": None}
+    b = {"gmv_all": E(), "gmv_vx": E(), "ams": E(), "gmv_all_yoy": Y(), "gmv_vx_yoy": Y(), "ams_yoy": Y(), "vx_share": E(), "vx_tr": E()}
+    for k, v in (biz or {}).items():
+        if k not in b or v is None:
+            continue
+        b[k] = {"raw": f"{v:g}", "val": float(v)}
+        if k in clean.YOY_KEYS:
+            b[k]["label"] = clean.yoy_label(float(v))
     return {
         "industry": industry, "name": name, "aliases": [name], "sales": "",
-        "biz": {"gmv_all": E(), "gmv_vx": E(), "ams": E(), "gmv_all_yoy": Y(), "gmv_vx_yoy": Y(), "ams_yoy": Y(), "vx_share": E(), "vx_tr": E()},
+        "biz": b,
         "staff": {"adq_desc": "", "adq_fulltime": 0, "adq_fulltime_note": "", "dou_raw": "", "dou_text": "", "dou_pct": None, "adq_pct": None, "roi_note": "", "dou_msg": "未填写"},
         "ctype": ctype, "ctype_reason": "",
         "d11": {"signup": "未填写", "big_dates": "未填写", "stock": "未填写", "cost_target_raw": "", "cost_target": None, "gmv_target_raw": "", "gmv_target": None},
@@ -87,9 +94,9 @@ def apply_scope(data):
         if ind is None:
             ind = inds[e["industry"]] = {"name": e["industry"], "maps": [], "customers": []}
             data["industries"].append(ind)
-        ind["customers"].append(_blank_customer(e["name"], e["industry"], e.get("ctype") or C.CTYPE_EMPTY))
+        ind["customers"].append(_blank_customer(e["name"], e["industry"], e.get("ctype") or C.CTYPE_EMPTY, e.get("biz")))
         data["issues"].append({"industry": e["industry"], "customer": e["name"], "field": "客户范围", "raw": "config.EXTRA_CUSTOMERS",
-                               "msg": f"盘点表中无该客户，按配置手动新增（客户类型：{e.get('ctype') or C.CTYPE_EMPTY}）；盘点类信息待补充", "level": "info"})
+                               "msg": f"盘点表中无该客户，按配置手动新增（客户类型：{e.get('ctype') or C.CTYPE_EMPTY}{'，已补充客户生意情况' if e.get('biz') else ''}）；其余盘点信息待补充", "level": "info"})
     ov = {nkey(k): v for k, v in C.CTYPE_OVERRIDE.items()}
     for ind in data["industries"]:
         for c in ind["customers"]:
