@@ -1,7 +1,7 @@
 {
- "source": "服饰Q4客户&商品盘点 (3).xlsx",
- "source_mtime": "2026-11-03 01:13",
- "cleaned_at": "2026-11-05 03:52",
+ "source": "服饰Q4客户&商品盘点 (11.8更新).xlsx",
+ "source_mtime": "2026-11-08 20:50",
+ "cleaned_at": "2026-11-08 20:56",
  "industries": [
   {
    "name": "内衣",
@@ -54,7 +54,7 @@
       }
      },
      "staff": {
-      "adq_desc": "合并团队负责抖音+视频号投放",
+      "adq_desc": "合并团队负责抖音+视频号投放，微信豆和adq共用6个投手",
       "adq_fulltime": 0,
       "adq_fulltime_note": "",
       "dou_raw": "近7日，ADQ与微信豆消耗占比：50%，50%",
@@ -173,9 +173,9 @@
       }
      },
      "staff": {
-      "adq_desc": "独立团队负责视频号ADQ投放",
-      "adq_fulltime": 1,
-      "adq_fulltime_note": "独立团队未注明人数，暂按 1 计",
+      "adq_desc": "adq和豆子共用投手4人",
+      "adq_fulltime": 0,
+      "adq_fulltime_note": "",
       "dou_raw": "近7日，ADQ与微信豆消耗占比：50%，50%",
       "dou_text": "微信豆50%，adq50%",
       "dou_pct": 50,
@@ -282,9 +282,9 @@
       }
      },
      "staff": {
-      "adq_desc": "2组投手，1组独立团队负责视频号投放",
-      "adq_fulltime": 1,
-      "adq_fulltime_note": "按独立组数计",
+      "adq_desc": "adq专职投手2人",
+      "adq_fulltime": 2,
+      "adq_fulltime_note": "",
       "dou_raw": "近7日，ADQ与微信豆消耗占比：40%，60%",
       "dou_text": "微信豆60%，adq40%",
       "dou_pct": 60,
@@ -453,9 +453,9 @@
       }
      },
      "staff": {
-      "adq_desc": "独立团队，10人团队，项目制划分",
-      "adq_fulltime": 10,
-      "adq_fulltime_note": "按团队人数计",
+      "adq_desc": "adq和豆子共用投手4人",
+      "adq_fulltime": 0,
+      "adq_fulltime_note": "",
       "dou_raw": "近7日，ADQ与微信豆消耗占比：50%，50%",
       "dou_text": "微信豆50%，adq50%",
       "dou_pct": 50,
@@ -572,9 +572,9 @@
       }
      },
      "staff": {
-      "adq_desc": "合并团队，4个项目组其中1个组是独立做视频号",
-      "adq_fulltime": 1,
-      "adq_fulltime_note": "按独立组数计",
+      "adq_desc": "微信豆和adq共用4个投手",
+      "adq_fulltime": 0,
+      "adq_fulltime_note": "",
       "dou_raw": "近7日，ADQ与微信豆消耗占比：50%，50%",
       "dou_text": "微信豆50%，adq50%",
       "dou_pct": 50,
@@ -744,7 +744,7 @@
       }
      },
      "staff": {
-      "adq_desc": "合并团队，3个adq投手",
+      "adq_desc": "合并团队，adq和豆子共同投手3人",
       "adq_fulltime": 0,
       "adq_fulltime_note": "",
       "dou_raw": "近7日，ADQ与微信豆消耗占比：50%，50%",
@@ -872,8 +872,8 @@
       }
      },
      "staff": {
-      "adq_desc": "独立团队，2个专职adq投手",
-      "adq_fulltime": 2,
+      "adq_desc": "独立团队，2个微信豆和adq共用投手",
+      "adq_fulltime": 0,
       "adq_fulltime_note": "",
       "dou_raw": "近7日，ADQ与微信豆消耗占比：50%，50%",
       "dou_text": "微信豆50%，adq50%",
@@ -1017,8 +1017,8 @@
       }
      },
      "staff": {
-      "adq_desc": "TTL30人 ADQ20人 微信豆10人 独立分开团队",
-      "adq_fulltime": 20,
+      "adq_desc": "TTL30人 ADQ20人 微信豆10人 独立分开团队，4个adq专职投手",
+      "adq_fulltime": 4,
       "adq_fulltime_note": "",
       "dou_raw": "● 微信豆消耗20w，ROI 2.5\n● ADQ消耗7-8w，ROI 2.1",
       "dou_text": "微信豆71%，adq29%",
@@ -1155,8 +1155,8 @@
       }
      },
      "staff": {
-      "adq_desc": "TTL6人 ADQ6人 微信豆2人（这两也投放adq）",
-      "adq_fulltime": 0,
+      "adq_desc": "6个adq+豆子共用投手，4个专职adq投手",
+      "adq_fulltime": 4,
       "adq_fulltime_note": "",
       "dou_raw": "● 微信豆消耗10w，ROI 3.1\n● ADQ消耗5-6，ROI 2.7",
       "dou_text": "微信豆62%，adq38%",
@@ -1168,7 +1168,7 @@
      "ctype": "视频号生意增长",
      "ctype_reason": "",
      "d11": {
-      "signup": "报名全资补贴",
+      "signup": "报名混资补贴",
       "big_dates": "未填写",
       "stock": "充足",
       "cost_target_raw": "10-15w/d",
@@ -1288,8 +1288,8 @@
       }
      },
      "staff": {
-      "adq_desc": "TTL6人，adq6人，微信豆混着投",
-      "adq_fulltime": 0,
+      "adq_desc": "3个adq专职投手",
+      "adq_fulltime": 3,
       "adq_fulltime_note": "",
       "dou_raw": "● 微信豆消耗10w，ROI 2.8\n● ADQ消耗6w，ROI 2.7",
       "dou_text": "微信豆62%，adq38%",
@@ -1420,8 +1420,8 @@
       }
      },
      "staff": {
-      "adq_desc": "adq投手4人",
-      "adq_fulltime": 0,
+      "adq_desc": "5个豆子+adq共用投手，2个adq专职投手",
+      "adq_fulltime": 2,
       "adq_fulltime_note": "",
       "dou_raw": "● 微信豆消耗1w，ROI 2.5\n● ADQ消耗2w，ROI 2.09",
       "dou_text": "微信豆33%，adq67%",
@@ -1433,7 +1433,7 @@
      "ctype": "视频号微信豆和adq均下跌",
      "ctype_reason": "",
      "d11": {
-      "signup": "未报名",
+      "signup": "报名混资补贴",
       "big_dates": "未填写",
       "stock": "充足",
       "cost_target_raw": "3-4w/d",
@@ -1518,6 +1518,228 @@
      "q4_regular_items": [
       "老款前开扣文胸",
       "内裤"
+     ]
+    },
+    {
+     "industry": "内衣",
+     "name": "梵客隆",
+     "aliases": [
+      "梵客隆"
+     ],
+     "sales": "关关",
+     "biz": {
+      "gmv_all": {
+       "raw": "120",
+       "val": 120.0
+      },
+      "gmv_vx": {
+       "raw": "20",
+       "val": 20.0
+      },
+      "ams": {
+       "raw": "0.74",
+       "val": 0.74
+      },
+      "gmv_all_yoy": {
+       "raw": "0.15",
+       "val": 0.15,
+       "label": "+15%"
+      },
+      "gmv_vx_yoy": {
+       "raw": "0.1",
+       "val": 0.1,
+       "label": "+10%"
+      },
+      "ams_yoy": {
+       "raw": "-86.23",
+       "val": -0.8623000000000001,
+       "label": "-86%"
+      },
+      "vx_share": {
+       "raw": "0.2",
+       "val": 0.2
+      },
+      "vx_tr": {
+       "raw": "0.3",
+       "val": 0.3
+      }
+     },
+     "staff": {
+      "adq_desc": "adq和微信豆共用4个投手",
+      "adq_fulltime": 0,
+      "adq_fulltime_note": "",
+      "dou_raw": "● 微信豆消耗10w/d，ROI 2.2\n● ADQ消耗1w/d，ROI 1.87",
+      "dou_text": "微信豆91%，adq9%",
+      "dou_pct": 91,
+      "adq_pct": 9,
+      "roi_note": "豆ROI 2.2｜ADQ ROI 1.87",
+      "dou_msg": ""
+     },
+     "ctype": "adq被豆子挤压",
+     "ctype_reason": "",
+     "d11": {
+      "signup": "未报名",
+      "big_dates": "未填写",
+      "stock": "充足",
+      "cost_target_raw": "1-2w/d",
+      "cost_target": 2.0,
+      "gmv_target_raw": "",
+      "gmv_target": null
+     },
+     "goods": {
+      "10月": {
+       "季节品": [],
+       "常规品": [
+        {
+         "name": "新款高腰收腹裤",
+         "n": 1
+        },
+        {
+         "name": "新款暖宫收腹裤",
+         "n": 1
+        },
+        {
+         "name": "新款鱼骨收腹裤",
+         "n": 1
+        }
+       ]
+      },
+      "11月": {
+       "季节品": [],
+       "常规品": [
+        {
+         "name": "新款高腰收腹裤",
+         "n": 1
+        },
+        {
+         "name": "新款暖宫收腹裤",
+         "n": 1
+        },
+        {
+         "name": "新款鱼骨收腹裤",
+         "n": 1
+        }
+       ]
+      },
+      "12月": {
+       "季节品": [],
+       "常规品": [
+        {
+         "name": "新款高腰收腹裤",
+         "n": 1
+        }
+       ]
+      }
+     },
+     "q4_season": 0,
+     "q4_regular": 3,
+     "q4_season_items": [],
+     "q4_regular_items": [
+      "新款高腰收腹裤",
+      "新款暖宫收腹裤",
+      "新款鱼骨收腹裤"
+     ]
+    },
+    {
+     "industry": "内衣",
+     "name": "千奈美",
+     "aliases": [
+      "千奈美"
+     ],
+     "sales": "关关",
+     "biz": {
+      "gmv_all": {
+       "raw": "",
+       "val": null
+      },
+      "gmv_vx": {
+       "raw": "",
+       "val": null
+      },
+      "ams": {
+       "raw": "",
+       "val": null
+      },
+      "gmv_all_yoy": {
+       "raw": "",
+       "val": null,
+       "label": ""
+      },
+      "gmv_vx_yoy": {
+       "raw": "",
+       "val": null,
+       "label": ""
+      },
+      "ams_yoy": {
+       "raw": "",
+       "val": null,
+       "label": ""
+      },
+      "vx_share": {
+       "raw": "",
+       "val": null
+      },
+      "vx_tr": {
+       "raw": "",
+       "val": null
+      }
+     },
+     "staff": {
+      "adq_desc": "1人抖音+adq，1人专职adq",
+      "adq_fulltime": 1,
+      "adq_fulltime_note": "",
+      "dou_raw": "",
+      "dou_text": "",
+      "dou_pct": null,
+      "adq_pct": null,
+      "roi_note": "",
+      "dou_msg": "未填写"
+     },
+     "ctype": "视频号生意增长",
+     "ctype_reason": "",
+     "d11": {
+      "signup": "未报名",
+      "big_dates": "未填写",
+      "stock": "充足",
+      "cost_target_raw": "3w/d",
+      "cost_target": 3.0,
+      "gmv_target_raw": "",
+      "gmv_target": null
+     },
+     "goods": {
+      "10月": {
+       "季节品": [],
+       "常规品": [
+        {
+         "name": "文胸",
+         "n": 1
+        }
+       ]
+      },
+      "11月": {
+       "季节品": [],
+       "常规品": [
+        {
+         "name": "文胸",
+         "n": 1
+        }
+       ]
+      },
+      "12月": {
+       "季节品": [],
+       "常规品": [
+        {
+         "name": "文胸",
+         "n": 1
+        }
+       ]
+      }
+     },
+     "q4_season": 0,
+     "q4_regular": 1,
+     "q4_season_items": [],
+     "q4_regular_items": [
+      "文胸"
      ]
     }
    ]
@@ -2006,7 +2228,7 @@
      "aliases": [
       "广州凯本恩贸易有限公司"
      ],
-     "sales": "",
+     "sales": "brownfan",
      "biz": {
       "gmv_all": {
        "raw": "55",
@@ -2026,9 +2248,9 @@
        "label": "-10%"
       },
       "gmv_vx_yoy": {
-       "raw": "0.8",
-       "val": 0.8,
-       "label": "+80%"
+       "raw": "-0.8",
+       "val": -0.8,
+       "label": "-80%"
       },
       "ams_yoy": {
        "raw": "-0.83",
@@ -2058,33 +2280,66 @@
      "ctype": "全平台生意下跌",
      "ctype_reason": "",
      "d11": {
-      "signup": "未填写",
+      "signup": "未报名",
       "big_dates": "未填写",
-      "stock": "未填写",
-      "cost_target_raw": "",
-      "cost_target": null,
-      "gmv_target_raw": "",
-      "gmv_target": null
+      "stock": "充足",
+      "cost_target_raw": "2",
+      "cost_target": 2.0,
+      "gmv_target_raw": "10",
+      "gmv_target": 10.0
      },
      "goods": {
       "10月": {
-       "季节品": [],
-       "常规品": []
+       "季节品": [
+        {
+         "name": "羽绒服",
+         "n": 1
+        }
+       ],
+       "常规品": [
+        {
+         "name": "羊绒t",
+         "n": 1
+        }
+       ]
       },
       "11月": {
-       "季节品": [],
-       "常规品": []
+       "季节品": [
+        {
+         "name": "羽绒服",
+         "n": 1
+        }
+       ],
+       "常规品": [
+        {
+         "name": "羊绒t",
+         "n": 1
+        }
+       ]
       },
       "12月": {
-       "季节品": [],
-       "常规品": []
+       "季节品": [
+        {
+         "name": "羽绒服",
+         "n": 1
+        }
+       ],
+       "常规品": [
+        {
+         "name": "羊绒t",
+         "n": 1
+        }
+       ]
       }
      },
-     "q4_season": 0,
-     "q4_regular": 0,
-     "q4_season_items": [],
-     "q4_regular_items": [],
-     "manual": true
+     "q4_season": 1,
+     "q4_regular": 1,
+     "q4_season_items": [
+      "羽绒服"
+     ],
+     "q4_regular_items": [
+      "羊绒t"
+     ]
     }
    ]
   },
@@ -2139,7 +2394,7 @@
       }
      },
      "staff": {
-      "adq_desc": "独立团队，10个adq投放运营",
+      "adq_desc": "独立团队，10个adq专职投放",
       "adq_fulltime": 10,
       "adq_fulltime_note": "",
       "dou_raw": "微信豆：ADQ=3:1",
@@ -2369,7 +2624,7 @@
       }
      },
      "staff": {
-      "adq_desc": "独立团队，2个adq投放运营",
+      "adq_desc": "独立团队，2个adq专职投放",
       "adq_fulltime": 2,
       "adq_fulltime_note": "",
       "dou_raw": "微信豆：ADQ=1:1",
@@ -2492,7 +2747,7 @@
       }
      },
      "staff": {
-      "adq_desc": "独立团队，1个adq投放运营",
+      "adq_desc": "独立团队，1个adq专职投手",
       "adq_fulltime": 1,
       "adq_fulltime_note": "",
       "dou_raw": "微信豆0，ADQ100%",
@@ -2611,7 +2866,7 @@
       }
      },
      "staff": {
-      "adq_desc": "独立团队，5个adq投放运营",
+      "adq_desc": "独立团队，5个adq专职投手",
       "adq_fulltime": 5,
       "adq_fulltime_note": "",
       "dou_raw": "微信豆60%，ADQ40%",
@@ -2696,9 +2951,9 @@
     },
     {
      "industry": "运动户外",
-     "name": "siinsiin",
+     "name": "SIINSIIN",
      "aliases": [
-      "siinsiin"
+      "SIINSIIN"
      ],
      "sales": "",
      "biz": {
@@ -2739,20 +2994,20 @@
       }
      },
      "staff": {
-      "adq_desc": "",
-      "adq_fulltime": 0,
+      "adq_desc": "独立团队，3个adq专职投手",
+      "adq_fulltime": 3,
       "adq_fulltime_note": "",
-      "dou_raw": "",
-      "dou_text": "",
-      "dou_pct": null,
-      "adq_pct": null,
+      "dou_raw": "微信豆60%，ADQ40%",
+      "dou_text": "微信豆60%，adq40%",
+      "dou_pct": 60,
+      "adq_pct": 40,
       "roi_note": "",
-      "dou_msg": "未填写"
+      "dou_msg": ""
      },
      "ctype": "全平台生意下跌",
      "ctype_reason": "",
      "d11": {
-      "signup": "未填写",
+      "signup": "未报名",
       "big_dates": "未填写",
       "stock": "未填写",
       "cost_target_raw": "",
@@ -2846,7 +3101,7 @@
      "ctype": "视频号生意增长",
      "ctype_reason": "",
      "d11": {
-      "signup": "报名全资补贴",
+      "signup": "未报名",
       "big_dates": "今年视频号一冲量退款率就会非常高，所以今年没计划怎么冲量",
       "stock": "充足",
       "cost_target_raw": "3w",
@@ -2949,7 +3204,7 @@
      "ctype": "视频号生意增长",
      "ctype_reason": "",
      "d11": {
-      "signup": "报名全资补贴",
+      "signup": "未报名",
       "big_dates": "未填写",
       "stock": "充足",
       "cost_target_raw": "2w",
@@ -3052,7 +3307,7 @@
      "ctype": "视频号生意增长",
      "ctype_reason": "",
      "d11": {
-      "signup": "报名全资补贴",
+      "signup": "未报名",
       "big_dates": "未填写",
       "stock": "充足",
       "cost_target_raw": "2w",
@@ -3108,108 +3363,6 @@
       "书包",
       "行李箱"
      ]
-    },
-    {
-     "industry": "箱包鞋靴",
-     "name": "mueka",
-     "aliases": [
-      "mueka"
-     ],
-     "sales": "brownfan",
-     "biz": {
-      "gmv_all": {
-       "raw": "10w",
-       "val": 10.0
-      },
-      "gmv_vx": {
-       "raw": "4w",
-       "val": 4.0
-      },
-      "ams": {
-       "raw": "0.5万",
-       "val": 0.5
-      },
-      "gmv_all_yoy": {
-       "raw": "0.5",
-       "val": 0.5,
-       "label": "+50%"
-      },
-      "gmv_vx_yoy": {
-       "raw": "0.3",
-       "val": 0.3,
-       "label": "+30%"
-      },
-      "ams_yoy": {
-       "raw": "+∞",
-       "val": "inf",
-       "label": "+∞"
-      },
-      "vx_share": {
-       "raw": "0.3",
-       "val": 0.3
-      },
-      "vx_tr": {
-       "raw": "0.25",
-       "val": 0.25
-      }
-     },
-     "staff": {
-      "adq_desc": "合并团队负责抖音+视频号投放",
-      "adq_fulltime": 0,
-      "adq_fulltime_note": "",
-      "dou_raw": "近7日，ADQ与微信豆消耗占比：70%，30%",
-      "dou_text": "微信豆30%，adq70%",
-      "dou_pct": 30,
-      "adq_pct": 70,
-      "roi_note": "",
-      "dou_msg": ""
-     },
-     "ctype": "视频号生意增长",
-     "ctype_reason": "",
-     "d11": {
-      "signup": "报名全资补贴",
-      "big_dates": "未填写",
-      "stock": "充足",
-      "cost_target_raw": "1w",
-      "cost_target": 1.0,
-      "gmv_target_raw": "6w",
-      "gmv_target": 6.0
-     },
-     "goods": {
-      "10月": {
-       "季节品": [],
-       "常规品": [
-        {
-         "name": "女包",
-         "n": 1
-        }
-       ]
-      },
-      "11月": {
-       "季节品": [],
-       "常规品": [
-        {
-         "name": "女包",
-         "n": 1
-        }
-       ]
-      },
-      "12月": {
-       "季节品": [],
-       "常规品": [
-        {
-         "name": "女包",
-         "n": 1
-        }
-       ]
-      }
-     },
-     "q4_season": 0,
-     "q4_regular": 1,
-     "q4_season_items": [],
-     "q4_regular_items": [
-      "女包"
-     ]
     }
    ]
   },
@@ -3217,151 +3370,6 @@
    "name": "珠宝配饰",
    "maps": [],
    "customers": [
-    {
-     "industry": "珠宝配饰",
-     "name": "睿泽珠宝鉴定",
-     "aliases": [
-      "睿泽珠宝鉴定"
-     ],
-     "sales": "jasperzhao",
-     "biz": {
-      "gmv_all": {
-       "raw": "467",
-       "val": 467.0
-      },
-      "gmv_vx": {
-       "raw": "150",
-       "val": 150.0
-      },
-      "ams": {
-       "raw": "0.34",
-       "val": 0.34
-      },
-      "gmv_all_yoy": {
-       "raw": "-0.26",
-       "val": -0.26,
-       "label": "-26%"
-      },
-      "gmv_vx_yoy": {
-       "raw": "-0.59",
-       "val": -0.59,
-       "label": "-59%"
-      },
-      "ams_yoy": {
-       "raw": "-0.49",
-       "val": -0.49,
-       "label": "-49%"
-      },
-      "vx_share": {
-       "raw": "0.32",
-       "val": 0.32
-      },
-      "vx_tr": {
-       "raw": "0.002",
-       "val": 0.002
-      }
-     },
-     "staff": {
-      "adq_desc": "抖音自投，视频号三方代投",
-      "adq_fulltime": 0,
-      "adq_fulltime_note": "",
-      "dou_raw": "微信豆1，adq1",
-      "dou_text": "微信豆50%，adq50%",
-      "dou_pct": 50,
-      "adq_pct": 50,
-      "roi_note": "",
-      "dou_msg": ""
-     },
-     "ctype": "adq被豆子挤压",
-     "ctype_reason": "",
-     "d11": {
-      "signup": "报名混资补贴",
-      "big_dates": "14、15、28、29",
-      "stock": "不足",
-      "cost_target_raw": "12",
-      "cost_target": 12.0,
-      "gmv_target_raw": "1500",
-      "gmv_target": 1500.0
-     },
-     "goods": {
-      "10月": {
-       "季节品": [
-        {
-         "name": "翡翠",
-         "n": 1
-        },
-        {
-         "name": "和田玉",
-         "n": 1
-        }
-       ],
-       "常规品": [
-        {
-         "name": "翡翠",
-         "n": 1
-        },
-        {
-         "name": "和田玉",
-         "n": 1
-        }
-       ]
-      },
-      "11月": {
-       "季节品": [
-        {
-         "name": "翡翠",
-         "n": 1
-        },
-        {
-         "name": "和田玉",
-         "n": 1
-        }
-       ],
-       "常规品": [
-        {
-         "name": "翡翠",
-         "n": 1
-        },
-        {
-         "name": "和田玉",
-         "n": 1
-        }
-       ]
-      },
-      "12月": {
-       "季节品": [
-        {
-         "name": "翡翠",
-         "n": 1
-        },
-        {
-         "name": "和田玉",
-         "n": 1
-        }
-       ],
-       "常规品": [
-        {
-         "name": "翡翠",
-         "n": 1
-        },
-        {
-         "name": "和田玉",
-         "n": 1
-        }
-       ]
-      }
-     },
-     "q4_season": 2,
-     "q4_regular": 2,
-     "q4_season_items": [
-      "翡翠",
-      "和田玉"
-     ],
-     "q4_regular_items": [
-      "翡翠",
-      "和田玉"
-     ]
-    },
     {
      "industry": "珠宝配饰",
      "name": "广州树语商贸有限公司",
@@ -3410,7 +3418,7 @@
       "adq_desc": "合并团队负责抖音+视频号投放",
       "adq_fulltime": 0,
       "adq_fulltime_note": "",
-      "dou_raw": "微信豆2，ADQ1",
+      "dou_raw": "微信豆66%，ADQ33%",
       "dou_text": "微信豆67%，adq33%",
       "dou_pct": 67,
       "adq_pct": 33,
@@ -3463,108 +3471,6 @@
      "q4_regular_items": [
       "皮带"
      ]
-    },
-    {
-     "industry": "珠宝配饰",
-     "name": "文银集币",
-     "aliases": [
-      "文银集币"
-     ],
-     "sales": "jasperzhao",
-     "biz": {
-      "gmv_all": {
-       "raw": "55",
-       "val": 55.0
-      },
-      "gmv_vx": {
-       "raw": "8",
-       "val": 8.0
-      },
-      "ams": {
-       "raw": "1.5",
-       "val": 1.5
-      },
-      "gmv_all_yoy": {
-       "raw": "0.18",
-       "val": 0.18,
-       "label": "+18%"
-      },
-      "gmv_vx_yoy": {
-       "raw": "+∞",
-       "val": "inf",
-       "label": "+∞"
-      },
-      "ams_yoy": {
-       "raw": "+∞",
-       "val": "inf",
-       "label": "+∞"
-      },
-      "vx_share": {
-       "raw": "0.145454545454545",
-       "val": 0.145454545454545
-      },
-      "vx_tr": {
-       "raw": "0.25",
-       "val": 0.25
-      }
-     },
-     "staff": {
-      "adq_desc": "合并团队负责抖音+视频号投放",
-      "adq_fulltime": 0,
-      "adq_fulltime_note": "",
-      "dou_raw": "0",
-      "dou_text": "",
-      "dou_pct": null,
-      "adq_pct": null,
-      "roi_note": "",
-      "dou_msg": "仅填写数字「0」，无法判断含义"
-     },
-     "ctype": "视频号生意增长",
-     "ctype_reason": "",
-     "d11": {
-      "signup": "报名混资补贴",
-      "big_dates": "未填写",
-      "stock": "充足",
-      "cost_target_raw": "5w",
-      "cost_target": 5.0,
-      "gmv_target_raw": "20",
-      "gmv_target": 20.0
-     },
-     "goods": {
-      "10月": {
-       "季节品": [
-        {
-         "name": "红品手串",
-         "n": 1
-        }
-       ],
-       "常规品": []
-      },
-      "11月": {
-       "季节品": [
-        {
-         "name": "红品手串",
-         "n": 1
-        }
-       ],
-       "常规品": []
-      },
-      "12月": {
-       "季节品": [
-        {
-         "name": "红品手串",
-         "n": 1
-        }
-       ],
-       "常规品": []
-      }
-     },
-     "q4_season": 1,
-     "q4_regular": 0,
-     "q4_season_items": [
-      "红品手串"
-     ],
-     "q4_regular_items": []
     }
    ]
   }
@@ -3572,35 +3478,19 @@
  "issues": [
   {
    "industry": "内衣",
-   "customer": "Ufeel",
-   "field": "adq专职投手数量",
-   "raw": "独立团队负责视频号ADQ投放",
-   "msg": "计 1：独立团队未注明人数，暂按 1 计",
-   "level": "warn"
+   "customer": "（整列）",
+   "field": "ams日耗（万元）_年同比",
+   "raw": "",
+   "msg": "该列数值为百分数口径（如 -89.59 表示 -89.59%），已统一 ÷100 换算为小数",
+   "level": "info"
   },
   {
    "industry": "内衣",
    "customer": "猫人夏宇",
    "field": "adq专职投手数量",
-   "raw": "2组投手，1组独立团队负责视频号投放",
-   "msg": "计 1：按独立组数计",
-   "level": "warn"
-  },
-  {
-   "industry": "内衣",
-   "customer": "完美记忆",
-   "field": "adq专职投手数量",
-   "raw": "独立团队，10人团队，项目制划分",
-   "msg": "计 10：按团队人数计",
-   "level": "warn"
-  },
-  {
-   "industry": "内衣",
-   "customer": "草本初色总部",
-   "field": "adq专职投手数量",
-   "raw": "合并团队，4个项目组其中1个组是独立做视频号",
-   "msg": "计 1：按独立组数计",
-   "level": "warn"
+   "raw": "adq专职投手2人",
+   "msg": "按「专职」识别，计 2 人",
+   "level": "info"
   },
   {
    "industry": "内衣",
@@ -3620,10 +3510,90 @@
   },
   {
    "industry": "内衣",
+   "customer": "焕丽女王",
+   "field": "adq专职投手数量",
+   "raw": "TTL30人 ADQ20人 微信豆10人 独立分开团队，4个adq专职投手",
+   "msg": "按「专职」识别，计 4 人",
+   "level": "info"
+  },
+  {
+   "industry": "内衣",
+   "customer": "草本初色天一",
+   "field": "adq专职投手数量",
+   "raw": "6个adq+豆子共用投手，4个专职adq投手",
+   "msg": "按「专职」识别，计 4 人",
+   "level": "info"
+  },
+  {
+   "industry": "内衣",
+   "customer": "宇凡传媒",
+   "field": "adq专职投手数量",
+   "raw": "3个adq专职投手",
+   "msg": "按「专职」识别，计 3 人",
+   "level": "info"
+  },
+  {
+   "industry": "内衣",
    "customer": "宇凡传媒",
    "field": "客户类型",
    "raw": "全平台GMV下跌",
    "msg": "写法已归一为「全平台生意下跌」",
+   "level": "info"
+  },
+  {
+   "industry": "内衣",
+   "customer": "洋奢",
+   "field": "adq专职投手数量",
+   "raw": "5个豆子+adq共用投手，2个adq专职投手",
+   "msg": "按「专职」识别，计 2 人",
+   "level": "info"
+  },
+  {
+   "industry": "内衣",
+   "customer": "千奈美",
+   "field": "adq专职投手数量",
+   "raw": "1人抖音+adq，1人专职adq",
+   "msg": "按「专职」识别，计 1 人",
+   "level": "info"
+  },
+  {
+   "industry": "男装",
+   "customer": "布先生",
+   "field": "adq专职投手数量",
+   "raw": "独立团队，2个投手专职adq",
+   "msg": "按「专职」识别，计 2 人",
+   "level": "info"
+  },
+  {
+   "industry": "男装",
+   "customer": "拇指衣橱",
+   "field": "adq专职投手数量",
+   "raw": "独立团队，2个投手专职adq",
+   "msg": "按「专职」识别，计 2 人",
+   "level": "info"
+  },
+  {
+   "industry": "女装",
+   "customer": "kolakola",
+   "field": "adq专职投手数量",
+   "raw": "独立团队，10个adq专职投放",
+   "msg": "按「专职」识别，计 10 人",
+   "level": "info"
+  },
+  {
+   "industry": "女装",
+   "customer": "茉寻",
+   "field": "adq专职投手数量",
+   "raw": "独立团队，2个adq专职投放",
+   "msg": "按「专职」识别，计 2 人",
+   "level": "info"
+  },
+  {
+   "industry": "运动户外",
+   "customer": "康舒护具",
+   "field": "adq专职投手数量",
+   "raw": "独立团队，1个adq专职投手",
+   "msg": "按「专职」识别，计 1 人",
    "level": "info"
   },
   {
@@ -3649,6 +3619,22 @@
    "raw": "/",
    "msg": "非数值，已保留原文",
    "level": "warn"
+  },
+  {
+   "industry": "运动户外",
+   "customer": "OES",
+   "field": "adq专职投手数量",
+   "raw": "独立团队，5个adq专职投手",
+   "msg": "按「专职」识别，计 5 人",
+   "level": "info"
+  },
+  {
+   "industry": "运动户外",
+   "customer": "SIINSIIN",
+   "field": "adq专职投手数量",
+   "raw": "独立团队，3个adq专职投手",
+   "msg": "按「专职」识别，计 3 人",
+   "level": "info"
   },
   {
    "industry": "箱包鞋靴",
@@ -3768,46 +3754,6 @@
    "field": "视频号日均GMV（万元）_年同比",
    "raw": "去年0.6万日均 增长566%",
    "msg": "文本已解析为 +566%",
-   "level": "info"
-  },
-  {
-   "industry": "箱包鞋靴",
-   "customer": "mueka",
-   "field": "全平台日均GMV（万元）",
-   "raw": "10w",
-   "msg": "文本已解析为 10 万元（区间/多值取最大）",
-   "level": "info"
-  },
-  {
-   "industry": "箱包鞋靴",
-   "customer": "mueka",
-   "field": "视频号日均GMV（万元）",
-   "raw": "4w",
-   "msg": "文本已解析为 4 万元（区间/多值取最大）",
-   "level": "info"
-  },
-  {
-   "industry": "箱包鞋靴",
-   "customer": "mueka",
-   "field": "ams日耗（万元）",
-   "raw": "0.5万",
-   "msg": "文本已解析为 0.5 万元（区间/多值取最大）",
-   "level": "info"
-  },
-  {
-   "industry": "珠宝配饰",
-   "customer": "文银集币",
-   "field": "微信豆投放摸底",
-   "raw": "0",
-   "msg": "仅填写数字「0」，无法判断含义",
-   "level": "warn"
-  },
-  {
-   "industry": "男装",
-   "customer": "广州凯本恩贸易有限公司",
-   "field": "客户范围",
-   "raw": "config.EXTRA_CUSTOMERS",
-   "msg": "盘点表中无该客户，按配置手动新增（客户类型：全平台生意下跌，已补充客户生意情况）；其余盘点信息待补充",
    "level": "info"
   },
   {

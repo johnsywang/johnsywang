@@ -95,24 +95,28 @@ def parse_ratio(v):
 
 # ---------------------------------------------------------------- 人力：adq 专职投手数
 def parse_adq_fulltime(desc):
-    """仅当描述含「独立」或「专职」时计数，否则 0。返回 (数量, 说明)。"""
-    t = s(desc).lower()
-    if not t or not ("独立" in t or "专职" in t):
+    """只数明确写了「专职」的 adq 投手，返回 (数量, 说明)。
+    「独立团队」「共用投手」「团队总人数」都不计；写了专职但没写人数时暂按 1 计并提示。
+    例：「6个adq+豆子共用投手，4个专职adq投手」→4；「TTL30人 ADQ20人 … 4个adq专职投手」→4；
+        「独立团队，2个微信豆和adq共用投手」→0；「adq专职投手2人」→2；「1人抖音+adq，1人专职adq」→1。"""
+    t = re.sub(r"\s+", "", s(desc).lower())
+    if "专职" not in t or re.search(r"(?:非|不|无)专职", t) and not re.search(r"(?<![非不无])专职", t):
         return 0, ""
+    q = r"(?:个|人|名|位)"
     pats = [
-        (rf"({NUM})\s*组独立", "按独立组数计"),
-        (rf"({NUM})\s*个组是独立", "按独立组数计"),
-        (rf"adq\s*({NUM})\s*人", ""),
-        (rf"({NUM})\s*个?\s*(?:投手)?\s*(?:专职)?\s*adq", ""),
-        (rf"({NUM})\s*个投手专职", ""),
-        (rf"({NUM})\s*(?:人|个)", "按团队人数计"),
+        rf"({NUM}){q}?(?:adq)?(?:投手)?专职",           # 2个投手专职adq / 4个专职adq投手 / 4个adq专职投手 / 1人专职adq
+        rf"专职(?:adq)?(?:投手|投放)?({NUM}){q}",        # adq专职投手2人
     ]
-    for p, msg in pats:
-        m = re.search(p, t)
-        if m:
-            n = float(m.group(1))
-            return (int(n) if n.is_integer() else n), msg
-    return 1, "独立团队未注明人数，暂按 1 计"
+    hits = []
+    for p in pats:
+        for m in re.finditer(p, t):
+            if not any(m.start() < e and s0 < m.end() for s0, e in (h[1] for h in hits)):
+                hits.append((float(m.group(1)), m.span()))
+    if not hits:
+        return 1, "写了专职但未注明人数，暂按 1 计"
+    n = sum(h[0] for h in hits)
+    n = int(n) if float(n).is_integer() else n
+    return n, ("多处专职人数已加总" if len(hits) > 1 else "")
 
 
 # ---------------------------------------------------------------- 微信豆 / ADQ 份额
@@ -391,7 +395,9 @@ def clean_customer(ind, r, cmap, scales=None):
     if dmsg and dmsg != "未填写":
         note(ind, c["name"], COLS["dou"], g("dou"), dmsg)
     if n_note:
-        note(ind, c["name"], "adq专职投手数量", adq_desc, f"计 {n}：{n_note}")
+        note(ind, c["name"], "adq专职投手数量", adq_desc, f"计 {n}：{n_note}", "warn" if "未注明" in n_note else "info")
+    elif n:
+        note(ind, c["name"], "adq专职投手数量", adq_desc, f"按「专职」识别，计 {n} 人", "info")
     c["staff"] = {"adq_desc": adq_desc, "adq_fulltime": n, "adq_fulltime_note": n_note,
                   "dou_raw": s(g("dou")), "dou_text": dtxt, "dou_pct": dp, "adq_pct": ap,
                   "roi_note": roi, "dou_msg": dmsg}
